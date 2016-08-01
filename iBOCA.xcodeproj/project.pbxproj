@@ -14,6 +14,7 @@
 		1BC2DFF91D4F821F0020D430 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BC2DFF71D4F821F0020D430 /* LaunchScreen.storyboard */; };
 		1BC2E0041D4F821F0020D430 /* iBOCATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC2E0031D4F821F0020D430 /* iBOCATests.swift */; };
 		1BC2E00F1D4F821F0020D430 /* iBOCAUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC2E00E1D4F821F0020D430 /* iBOCAUITests.swift */; };
+		E2901DCF1D4F8C3700080F82 /* OrientationTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2901DCE1D4F8C3700080F82 /* OrientationTask.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		1BC2E00A1D4F821F0020D430 /* iBOCAUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iBOCAUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BC2E00E1D4F821F0020D430 /* iBOCAUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iBOCAUITests.swift; sourceTree = "<group>"; };
 		1BC2E0101D4F821F0020D430 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E2901DCE1D4F8C3700080F82 /* OrientationTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrientationTask.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				1BC2DFEE1D4F821F0020D430 /* AppDelegate.swift */,
 				1BC2DFF01D4F821F0020D430 /* ViewController.swift */,
+				E2901DCE1D4F8C3700080F82 /* OrientationTask.swift */,
 				1BC2DFF21D4F821F0020D430 /* Main.storyboard */,
 				1BC2DFF51D4F821F0020D430 /* Assets.xcassets */,
 				1BC2DFF71D4F821F0020D430 /* LaunchScreen.storyboard */,
@@ -257,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BC2DFF11D4F821F0020D430 /* ViewController.swift in Sources */,
+				E2901DCF1D4F8C3700080F82 /* OrientationTask.swift in Sources */,
 				1BC2DFEF1D4F821F0020D430 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -484,6 +488,7 @@
 				1BC2E0151D4F821F0020D430 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1BC2E0161D4F821F0020D430 /* Build configuration list for PBXNativeTarget "iBOCATests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +497,7 @@
 				1BC2E0181D4F821F0020D430 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1BC2E0191D4F821F0020D430 /* Build configuration list for PBXNativeTarget "iBOCAUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +506,7 @@
 				1BC2E01B1D4F821F0020D430 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
