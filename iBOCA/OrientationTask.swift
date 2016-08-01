@@ -18,13 +18,15 @@ var Address : String?
 var Date : String?
 class OrientationTask:  ViewController {
     
-
+            //pickerview content set up
     @IBOutlet weak var SeasonPicker: UIPickerView!
     let seasonData = ["Spring", "Summer", "Fall", "Winter", "Don't know"]
  
     @IBOutlet weak var StatePicker: UIPickerView!
     let stateData = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia","Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"]
+   
     
+    //text field input and results
     @IBAction func updateDate(sender: AnyObject) {
         let d:UIDatePicker = sender as! UIDatePicker
         let formatter = NSDateFormatter()
@@ -43,11 +45,17 @@ class OrientationTask:  ViewController {
         
         
     }
+    var body:String?
     
-    override func viewDidLoad() {
-    super.viewDidLoad()
-    
+    override func viewDidLoad
+        () {
+        super.viewDidLoad()
+        SeasonPicker.delegate = self
+        StatePicker.delegate = self
         // Do any additional setup after loading the view.
+
+    Season = seasonData[SeasonPicker.selectedRowInComponent(0)]
+    State = stateData[StatePicker.selectedRowInComponent(0)]
     }
 
     
@@ -57,7 +65,35 @@ class OrientationTask:  ViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
+    
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        body = textView.text
+        
+        if text == "\n" {
+            textView.resignFirstResponder()
+            
+            return false
+        }
+        
+        return true
+    }
 
+    //pickerview setup and whatnot
+    
+    func numberOfComponentsInPickerView(pickerView : UIPickerView!) -> Int{
+        return 1
+    }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
         if pickerView == SeasonPicker {
@@ -86,8 +122,7 @@ class OrientationTask:  ViewController {
             State = stateData[row]
         }
     }
-    
-    
+  
     /*
     // MARK: - Navigation
 
