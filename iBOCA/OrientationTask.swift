@@ -58,6 +58,36 @@ class OrientationTask:  ViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
+        if pickerView == SeasonPicker {
+            return seasonData.count
+        } else if pickerView == StatePicker {
+            return stateData.count
+        }
+        return 1
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if pickerView == SeasonPicker {
+            Season = seasonData[row]
+            return seasonData[row]
+        } else if pickerView == StatePicker {
+            State = stateData[row]
+            return stateData[row]
+        }
+        return ""
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
+        if pickerView == SeasonPicker {
+            Season = seasonData[row]
+        } else if pickerView == StatePicker {
+            State = stateData[row]
+        }
+    }
+    
+    
     /*
     // MARK: - Navigation
 
