@@ -83,6 +83,12 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         let formatter = NSDateFormatter()
         formatter.dateFormat = "y-MM-dd"
         Date = formatter.stringFromDate(currentDate.date)
+        
+        print(Season)
+        print(State)
+        print(Town)
+        print(Date)
+        print(Address)
     }
    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -119,6 +125,15 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         return true
     }
 
+    @IBAction func DoneButton(sender: AnyObject) {
+        print(Season)
+        print(State)
+        print(Town)
+        print(Date)
+        print(Address)
+        
+        //BUG: won't record text field that the cursor last resides in
+    }
     //pickerview setup and whatnot
     
     func numberOfComponentsInPickerView(pickerView : UIPickerView!) -> Int{
@@ -160,5 +175,6 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
   */
     
  
-
+    
+    
 }
