@@ -16,7 +16,8 @@ var State : String?
 var Town : String?
 var Address : String?
 var Date : String?
-class OrientationTask:  ViewController {
+
+class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UITextFieldDelegate, UITextViewDelegate,UIPickerViewDelegate  {
     
             //pickerview content set up
     @IBOutlet weak var SeasonPicker: UIPickerView!
@@ -25,7 +26,9 @@ class OrientationTask:  ViewController {
     @IBOutlet weak var StatePicker: UIPickerView!
     let stateData = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia","Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"]
    
+    @IBOutlet weak var currentDate: UIDatePicker!
     
+    var body:String?
     //text field input and results
     @IBAction func updateDate(sender: AnyObject) {
         let d:UIDatePicker = sender as! UIDatePicker
@@ -45,20 +48,47 @@ class OrientationTask:  ViewController {
         
         
     }
-    var body:String?
+   
     
-    override func viewDidLoad
-        () {
+    override func viewDidLoad() {
         super.viewDidLoad()
+        
         SeasonPicker.delegate = self
         StatePicker.delegate = self
+       
         // Do any additional setup after loading the view.
 
     Season = seasonData[SeasonPicker.selectedRowInComponent(0)]
     State = stateData[StatePicker.selectedRowInComponent(0)]
+        
+       /* // load the defaults from presistant memory
+        emailOn = !NSUserDefaults.standardUserDefaults().boolForKey("emailOff")
+        resultsDisplayOn = !NSUserDefaults.standardUserDefaults().boolForKey("resultsDisplayOff")
+        announceOn = NSUserDefaults.standardUserDefaults().boolForKey("announceOn")
+        cloudOn = !NSUserDefaults.standardUserDefaults().boolForKey("cloudOff")
+        testmodeOn = NSUserDefaults.standardUserDefaults().boolForKey("testmodeOn")
+        
+        uniqueName = UIDevice.currentDevice().identifierForVendor!.UUIDString
+        ipadName = UIDevice.currentDevice().name
+        
+        if(NSUserDefaults.standardUserDefaults().objectForKey("emailAddress") != nil) {
+            emailAddress = NSUserDefaults.standardUserDefaults().objectForKey("emailAddress") as! String
+        }
+        */
+        
+        Town = ""
+        Address = ""
+        State = stateData[StatePicker.selectedRowInComponent(0)]
+        Season = seasonData[SeasonPicker.selectedRowInComponent(0)]
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "y-MM-dd"
+        Date = formatter.stringFromDate(currentDate.date)
     }
-
-    
+   
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
     
 
     override func didReceiveMemoryWarning() {
@@ -127,10 +157,8 @@ class OrientationTask:  ViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+  */
+    
+ 
 
 }
