@@ -10,6 +10,7 @@ import UIKit
 
 class ForwardDigitSpan: UIViewController {
 
+    @IBOutlet weak var resultLabel: UILabel!
     
     @IBOutlet weak var Label0: UILabel!
     
@@ -26,7 +27,7 @@ class ForwardDigitSpan: UIViewController {
     @IBOutlet weak var Label6: UILabel!
     
     var numResponse : [String] = []
-    
+    var numOrder : [String] = []
     
     @IBAction func tester(sender: AnyObject) {
         let num0 = String(arc4random_uniform(9))
@@ -53,8 +54,7 @@ class ForwardDigitSpan: UIViewController {
         print(num5)
         print(num6)
         print("LineBreak")
-        
-        let numOrder : [String] = [num0, num1,num2,num3,num4,num5,num6]
+        numOrder += [num0, num1, num2, num3, num4, num5, num6]
         print(numOrder)
         
     }
@@ -104,11 +104,47 @@ class ForwardDigitSpan: UIViewController {
     }
     
 
-   
+    var Results: [String] = []
+    var count = 0
     @IBAction func testDone(sender: AnyObject) {
-        if (numResponse[0] == numOrder[0]){
-            
+        if (numResponse == numOrder){
+            print("All values Correct")
+            Results.append("All values Correct")
         }
+        if(numResponse[0] != numOrder[0]){
+         print(" for Number 1, Expected: " + numOrder[0] + " Got: " + numResponse[0])
+            Results.append(" for Number 1, Expected: " + numOrder[0] + " Got: " + numResponse[0])
+        }
+        if(numResponse[1] != numOrder[1]){
+         print(" for Number 2, Expected: " + numOrder[1] + " Got: " + numResponse[1])
+            Results.append(" for Number 2, Expected: " + numOrder[1] + " Got: " + numResponse[1])
+            count+=1
+        }
+        if(numResponse[2] != numOrder[2]){
+          print(" for Number 3, Expected: " + numOrder[2] + " Got: " + numResponse[2])
+            count+=1
+        }
+        if(numResponse[3] != numOrder[3]){
+          print(" for Number 5, Expected: " + numOrder[3] + " Got: " + numResponse[3])
+            count+=1
+        }
+        if(numResponse[4] != numOrder[4]){
+           print(" for Number 5, Expected: " + numOrder[4] + " Got: " + numResponse[4])
+            count+=1
+        }
+        if(numResponse[5] != numOrder[5]){
+            print(" for Number 6, Expected: " + numOrder[5] + " Got: " + numResponse[5])
+            count+=1
+        }
+        if(numResponse[6] != numOrder[6]){
+            print(" for Number 7, Expected: " + numOrder[6] + " Got: " + numResponse[6])
+            count+=1
+        }
+        else{
+            print("this shouldn't happen")
+        }
+        self.resultLabel.text = "doodly"
+        
     }
     
     override func viewDidLoad() {

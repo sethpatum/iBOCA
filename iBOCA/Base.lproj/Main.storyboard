@@ -31,8 +31,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iGI-yg-K8B">
-                                <rect key="frame" x="351" y="424" width="322" height="30"/>
-                                <state key="normal" title="ONWARDS TO BACKWARDS DIGIT SPAN TASK"/>
+                                <rect key="frame" x="301" y="424" width="422" height="30"/>
+                                <state key="normal" title="ONWARDS TO BACKWARDS DIGIT SPAN TASK(Doesn't work)"/>
                                 <connections>
                                     <segue destination="4Eb-es-DlO" kind="show" id="ej2-qd-NaH"/>
                                 </connections>
@@ -203,12 +203,18 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cv6-7u-Kn2">
-                                <rect key="frame" x="467" y="640" width="91" height="30"/>
+                                <rect key="frame" x="467" y="556" width="91" height="30"/>
                                 <state key="normal" title="Done Testing"/>
                                 <connections>
                                     <action selector="testDone:" destination="7CJ-Qb-Bsb" eventType="touchUpInside" id="KOI-uF-B2r"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VZG-l1-V7G">
+                                <rect key="frame" x="332" y="594" width="391" height="174"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -222,6 +228,7 @@
                         <outlet property="Label4" destination="Jcp-om-zt4" id="1Gr-f0-R9B"/>
                         <outlet property="Label5" destination="ZKx-ir-kJe" id="pJh-Xa-u0F"/>
                         <outlet property="Label6" destination="tRu-aE-AjM" id="cAT-gV-ucD"/>
+                        <outlet property="resultLabel" destination="VZG-l1-V7G" id="XJ2-hM-3M4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ri2-gj-BcY" userLabel="First Responder" sceneMemberID="firstResponder"/>
