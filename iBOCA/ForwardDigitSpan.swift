@@ -113,37 +113,42 @@ class ForwardDigitSpan: UIViewController {
         }
         if(numResponse[0] != numOrder[0]){
          print(" for Number 1, Expected: " + numOrder[0] + " Got: " + numResponse[0])
-            Results.append(" for Number 1, Expected: " + numOrder[0] + " Got: " + numResponse[0])
+            Results.append(" for Number 1, Expected: " + numOrder[0] + " Got: " + numResponse[0] + "\n")
         }
         if(numResponse[1] != numOrder[1]){
          print(" for Number 2, Expected: " + numOrder[1] + " Got: " + numResponse[1])
-            Results.append(" for Number 2, Expected: " + numOrder[1] + " Got: " + numResponse[1])
+            Results.append(" for Number 2, Expected: " + numOrder[1] + " Got: " + numResponse[1] + "\n")
             count+=1
         }
         if(numResponse[2] != numOrder[2]){
           print(" for Number 3, Expected: " + numOrder[2] + " Got: " + numResponse[2])
+            Results.append(" for Number 3, Expected: " + numOrder[2] + " Got: " + numResponse[2] + "\n")
             count+=1
         }
         if(numResponse[3] != numOrder[3]){
           print(" for Number 5, Expected: " + numOrder[3] + " Got: " + numResponse[3])
+            Results.append(" for Number 4, Expected: " + numOrder[3] + " Got: " + numResponse[3] + "\n")
             count+=1
         }
         if(numResponse[4] != numOrder[4]){
            print(" for Number 5, Expected: " + numOrder[4] + " Got: " + numResponse[4])
+            Results.append(" for Number 5, Expected: " + numOrder[4] + " Got: " + numResponse[4] + "\n")
             count+=1
         }
         if(numResponse[5] != numOrder[5]){
             print(" for Number 6, Expected: " + numOrder[5] + " Got: " + numResponse[5])
+            Results.append(" for Number 6, Expected: " + numOrder[5] + " Got: " + numResponse[5] + "\n")
             count+=1
         }
         if(numResponse[6] != numOrder[6]){
             print(" for Number 7, Expected: " + numOrder[6] + " Got: " + numResponse[6])
+            Results.append(" for Number 7, Expected: " + numOrder[6] + " Got: " + numResponse[6] + "\n")
             count+=1
         }
         else{
             print("this shouldn't happen")
         }
-        self.resultLabel.text = "doodly"
+        self.resultLabel.text = "\(Results)"
         
     }
     

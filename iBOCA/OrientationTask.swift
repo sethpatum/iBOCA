@@ -24,12 +24,13 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
     let seasonData = ["Spring", "Summer", "Fall", "Winter", "Don't know"]
  
     @IBOutlet weak var StatePicker: UIPickerView!
-    let stateData = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia","Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"]
+    let stateData = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia","Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming", "Don't Know"]
    
     @IBOutlet weak var currentDate: UIDatePicker!
     
     var body:String?
     //text field input and results
+    
     @IBAction func updateDate(sender: AnyObject) {
         let d:UIDatePicker = sender as! UIDatePicker
         let formatter = NSDateFormatter()
@@ -37,17 +38,13 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         Date = formatter.stringFromDate(d.date)
     }
     
-    @IBOutlet weak var addressField: UITextField!
-    @IBAction func updateAddress(sender: AnyObject) {
-        Address = addressField.text
-    }
+    @IBOutlet weak var TownPicker: UIPickerView!
+    let townData = ["Correct", "Incorrect"]
     
-    @IBOutlet weak var townField: UITextField!
-    @IBAction func updateTown(sender: AnyObject) {
-         Town = townField.text
-        
-        
-    }
+    @IBOutlet weak var AddressPicker: UIPickerView!
+    let addressData = ["Correct", "Incorrect"]
+    
+   
    
     
     override func viewDidLoad() {
@@ -55,11 +52,8 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         
         SeasonPicker.delegate = self
         StatePicker.delegate = self
-       
-        // Do any additional setup after loading the view.
-
-    Season = seasonData[SeasonPicker.selectedRowInComponent(0)]
-    State = stateData[StatePicker.selectedRowInComponent(0)]
+        TownPicker.delegate = self
+        AddressPicker.delegate = self
         
        /* // load the defaults from presistant memory
         emailOn = !NSUserDefaults.standardUserDefaults().boolForKey("emailOff")
@@ -76,10 +70,11 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         }
         */
         
-        Town = ""
-        Address = ""
+        Town = townData[TownPicker.selectedRowInComponent(0)]
+        Address = addressData[AddressPicker.selectedRowInComponent(0)]
         State = stateData[StatePicker.selectedRowInComponent(0)]
         Season = seasonData[SeasonPicker.selectedRowInComponent(0)]
+        
         let formatter = NSDateFormatter()
         formatter.dateFormat = "y-MM-dd"
         Date = formatter.stringFromDate(currentDate.date)
@@ -114,6 +109,8 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
     }
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        
+        
         body = textView.text
         
         if text == "\n" {
@@ -132,7 +129,6 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         print(Date)
         print(Address)
         
-        //BUG: won't record text field that the cursor last resides in
     }
     //pickerview setup and whatnot
     
@@ -143,8 +139,15 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
         if pickerView == SeasonPicker {
             return seasonData.count
-        } else if pickerView == StatePicker {
+        }
+        else if pickerView == StatePicker {
             return stateData.count
+        }
+        else if pickerView == TownPicker {
+            return townData.count
+        }
+        else if pickerView == AddressPicker {
+            return addressData.count
         }
         return 1
     }
@@ -153,18 +156,36 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         if pickerView == SeasonPicker {
             Season = seasonData[row]
             return seasonData[row]
-        } else if pickerView == StatePicker {
+        }
+        else if pickerView == StatePicker {
             State = stateData[row]
             return stateData[row]
         }
+        else if pickerView == TownPicker {
+            Town = townData[row]
+            return townData[row]
+        }
+
+        else if pickerView == AddressPicker {
+            Address = addressData[row]
+            return addressData[row]
+        }
+
         return ""
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
         if pickerView == SeasonPicker {
             Season = seasonData[row]
-        } else if pickerView == StatePicker {
+        }
+        else if pickerView == StatePicker {
             State = stateData[row]
+        }
+        else if pickerView == TownPicker {
+            Town = townData[row]
+        }
+        else if pickerView == AddressPicker {
+            Address = addressData[row]
         }
     }
   

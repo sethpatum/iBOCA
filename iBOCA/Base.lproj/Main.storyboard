@@ -253,22 +253,14 @@
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G5g-Wp-9Q3">
                                 <rect key="frame" x="304" y="328" width="416" height="161"/>
                             </pickerView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ngc-3C-DIW">
-                                <rect key="frame" x="464" y="564" width="97" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="updateAddress:" destination="5Cz-GR-ydt" eventType="editingDidEnd" id="QDF-Of-Dqe"/>
-                                </connections>
-                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current Adress:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X2c-tW-4bD">
-                                <rect key="frame" x="172" y="567" width="120" height="21"/>
+                                <rect key="frame" x="172" y="677" width="120" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current Town:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SUU-v0-z3i">
-                                <rect key="frame" x="178" y="512" width="108" height="21"/>
+                                <rect key="frame" x="178" y="557" width="108" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -291,14 +283,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4WH-nG-e49">
-                                <rect key="frame" x="464" y="512" width="97" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="updateTown:" destination="5Cz-GR-ydt" eventType="editingDidEnd" id="0jj-Lb-OSh"/>
-                                </connections>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdC-re-Tb9">
                                 <rect key="frame" x="942" y="28" width="42" height="30"/>
                                 <state key="normal" title="DONE"/>
@@ -308,7 +292,7 @@
                                     <segue destination="BYZ-38-t0r" kind="show" id="dL7-Sq-hiA"/>
                                 </connections>
                             </button>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="slc-lJ-ird">
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="slc-lJ-ird">
                                 <rect key="frame" x="133" y="0.0" width="759" height="153"/>
                                 <date key="date" timeIntervalSinceReferenceDate="-31567338.392566979">
                                     <!--2000-01-01 15:17:41 +0000-->
@@ -317,17 +301,23 @@
                                     <action selector="updateDate:" destination="5Cz-GR-ydt" eventType="valueChanged" id="ANI-3U-oLQ"/>
                                 </connections>
                             </datePicker>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HXQ-cz-LoD">
+                                <rect key="frame" x="421" y="532" width="183" height="71"/>
+                            </pickerView>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hJa-oI-db9">
+                                <rect key="frame" x="421" y="657" width="183" height="61"/>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
+                        <outlet property="AddressPicker" destination="hJa-oI-db9" id="PAg-TI-wcX"/>
                         <outlet property="SeasonPicker" destination="5RO-Hz-93f" id="ez8-gY-ZYQ"/>
                         <outlet property="StatePicker" destination="G5g-Wp-9Q3" id="23F-Fw-NvP"/>
-                        <outlet property="addressField" destination="Ngc-3C-DIW" id="QBL-pr-Ehf"/>
+                        <outlet property="TownPicker" destination="HXQ-cz-LoD" id="GpB-eg-vKL"/>
                         <outlet property="currentDate" destination="slc-lJ-ird" id="YYa-GY-vpc"/>
-                        <outlet property="townField" destination="4WH-nG-e49" id="hKL-ja-zfZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NUE-cG-5MM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -506,6 +496,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="puZ-ea-H1g"/>
+        <segue reference="dL7-Sq-hiA"/>
     </inferredMetricsTieBreakers>
 </document>
