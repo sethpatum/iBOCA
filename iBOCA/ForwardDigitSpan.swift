@@ -11,11 +11,8 @@ import UIKit
 class ForwardDigitSpan: UIViewController {
 
     
-    
-   
-    
     @IBOutlet weak var Label0: UILabel!
-   
+    
     @IBOutlet weak var Label1: UILabel!
 
     @IBOutlet weak var Label2: UILabel!
@@ -28,8 +25,10 @@ class ForwardDigitSpan: UIViewController {
     
     @IBOutlet weak var Label6: UILabel!
     
+    var numResponse : [String] = []
     
-    @IBAction func Tester(sender: AnyObject) {
+    
+    @IBAction func tester(sender: AnyObject) {
         let num0 = String(arc4random_uniform(9))
         let num1 = String(arc4random_uniform(9))
         let num2 = String(arc4random_uniform(9))
@@ -46,16 +45,72 @@ class ForwardDigitSpan: UIViewController {
         self.Label5.text = num5
         self.Label6.text = num6
         
-         print(num0)
-         print(num1)
-         print(num2)
-         print(num3)
-         print(num4)
-         print(num5)
-         print(num6)
-         print("LineBreak")
+        print(num0)
+        print(num1)
+        print(num2)
+        print(num3)
+        print(num4)
+        print(num5)
+        print(num6)
+        print("LineBreak")
+        
+        let numOrder : [String] = [num0, num1,num2,num3,num4,num5,num6]
+        print(numOrder)
+        
     }
+    
+    
+    
+    @IBAction func button0(sender: AnyObject) {
+        numResponse.append("0")
+        print(numResponse)
+    }
+    
+    @IBAction func button1(sender: AnyObject) {
+         numResponse.append("1")
+        print(numResponse)
+    }
+    @IBAction func button2(sender: AnyObject) {
+         numResponse.append("2")
+        print(numResponse)
+    }
+    @IBAction func button3(sender: AnyObject) {
+         numResponse.append("3")
+        print(numResponse)
+    }
+    @IBAction func button4(sender: AnyObject) {
+         numResponse.append("4")
+        print(numResponse)
+    }
+    @IBAction func button5(sender: AnyObject) {
+         numResponse.append("5")
+        print(numResponse)
+    }
+    @IBAction func button6(sender: AnyObject) {
+         numResponse.append("6")
+        print(numResponse)
+    }
+    @IBAction func button7(sender: AnyObject) {
+         numResponse.append("7")
+        print(numResponse)
+    }
+    @IBAction func button8(sender: AnyObject) {
+         numResponse.append("8")
+        print(numResponse)
+    }
+    @IBAction func button9(sender: AnyObject) {
+         numResponse.append("9")
+        print(numResponse)
+    }
+    
+
    
+    @IBAction func testDone(sender: AnyObject) {
+        if (numResponse[0] == numOrder[0]){
+            
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
