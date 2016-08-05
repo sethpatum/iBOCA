@@ -170,7 +170,6 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
             Address = addressData[row]
             return addressData[row]
         }
-
         return ""
     }
     
