@@ -46,7 +46,7 @@ class SerialSevens: UIViewController {
         button0.hidden = false ; button1.hidden = false ; button2.hidden = false
         button3.hidden = false ; button4.hidden = false ; button5.hidden = false
         button6.hidden = false ; button7.hidden = false ; button8.hidden = false
-        button9.hidden = true
+        button9.hidden = false
         nextInput.hidden = false
     }
     @IBAction func press90(sender: AnyObject) {
@@ -60,7 +60,7 @@ class SerialSevens: UIViewController {
         button0.hidden = false ; button1.hidden = false ; button2.hidden = false
         button3.hidden = false ; button4.hidden = false ; button5.hidden = false
         button6.hidden = false ; button7.hidden = false ; button8.hidden = false
-        button9.hidden = true
+        button9.hidden = false
         nextInput.hidden = false
     }
     @IBAction func press80(sender: AnyObject) {
@@ -74,7 +74,7 @@ class SerialSevens: UIViewController {
         button0.hidden = false ; button1.hidden = false ; button2.hidden = false
         button3.hidden = false ; button4.hidden = false ; button5.hidden = false
         button6.hidden = false ; button7.hidden = false ; button8.hidden = false
-        button9.hidden = true
+        button9.hidden = false
         nextInput.hidden = false
     }
     @IBAction func press70(sender: AnyObject) {
@@ -88,7 +88,7 @@ class SerialSevens: UIViewController {
         button0.hidden = false ; button1.hidden = false ; button2.hidden = false
         button3.hidden = false ; button4.hidden = false ; button5.hidden = false
         button6.hidden = false ; button7.hidden = false ; button8.hidden = false
-        button9.hidden = true
+        button9.hidden = false
         nextInput.hidden = false
     }
     @IBAction func press60(sender: AnyObject) {
@@ -102,7 +102,7 @@ class SerialSevens: UIViewController {
         button0.hidden = false ; button1.hidden = false ; button2.hidden = false
         button3.hidden = false ; button4.hidden = false ; button5.hidden = false
         button6.hidden = false ; button7.hidden = false ; button8.hidden = false
-        button9.hidden = true
+        button9.hidden = false
         nextInput.hidden = false
     }
     @IBAction func press50(sender: AnyObject) {
@@ -116,7 +116,7 @@ class SerialSevens: UIViewController {
         button0.hidden = false ; button1.hidden = false ; button2.hidden = false
         button3.hidden = false ; button4.hidden = false ; button5.hidden = false
         button6.hidden = false ; button7.hidden = false ; button8.hidden = false
-        button9.hidden = true
+        button9.hidden = false
         nextInput.hidden = false
     }
     var recordNum : [Int] = []
@@ -161,12 +161,17 @@ class SerialSevens: UIViewController {
         print(recordNum)
     }
     
-    
+    var Records: [String] = []
     @IBAction func nextInput(sender: AnyObject) {
+        let name = String(recordNum[0]) + String(recordNum[1])
         recordNum = []
+        recordedNums.text = name
+        currentNum.text = name
+        Records.append(name)
+        print(Records)
     }
     
-    
+
     
     
     override func viewDidLoad() {
