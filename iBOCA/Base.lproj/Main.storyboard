@@ -30,6 +30,7 @@
                                 <state key="normal" title="0"/>
                                 <connections>
                                     <action selector="button0:" destination="7CJ-Qb-Bsb" eventType="touchUpInside" id="mZD-Ya-oJL"/>
+                                    <action selector="press0:" destination="ldB-3t-wMh" eventType="touchUpInside" id="wMs-Au-MvI"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7oQ-us-XXJ">
@@ -38,6 +39,7 @@
                                 <state key="normal" title="6"/>
                                 <connections>
                                     <action selector="button6:" destination="7CJ-Qb-Bsb" eventType="touchUpInside" id="lug-ph-v7g"/>
+                                    <action selector="press6:" destination="ldB-3t-wMh" eventType="touchUpInside" id="Wh6-CR-x8h"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3IC-RS-fra">
@@ -46,6 +48,7 @@
                                 <state key="normal" title="Next Input"/>
                                 <connections>
                                     <action selector="button6:" destination="7CJ-Qb-Bsb" eventType="touchUpInside" id="uzO-7C-wBN"/>
+                                    <action selector="nextInput:" destination="ldB-3t-wMh" eventType="touchUpInside" id="2ZF-wM-do6"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gdb-7E-5ke">
@@ -54,6 +57,7 @@
                                 <state key="normal" title="5"/>
                                 <connections>
                                     <action selector="button5:" destination="7CJ-Qb-Bsb" eventType="touchUpInside" id="9Zb-Yn-9He"/>
+                                    <action selector="press5:" destination="ldB-3t-wMh" eventType="touchUpInside" id="tpv-hg-3HK"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UqS-ZC-0FP">
@@ -62,6 +66,7 @@
                                 <state key="normal" title="4"/>
                                 <connections>
                                     <action selector="button4:" destination="7CJ-Qb-Bsb" eventType="touchUpInside" id="IDs-f5-6EA"/>
+                                    <action selector="press4:" destination="ldB-3t-wMh" eventType="touchUpInside" id="1ff-zY-rIb"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="INy-t4-37v">
@@ -70,6 +75,7 @@
                                 <state key="normal" title="3"/>
                                 <connections>
                                     <action selector="button3:" destination="7CJ-Qb-Bsb" eventType="touchUpInside" id="Bpe-LR-0kb"/>
+                                    <action selector="press3:" destination="ldB-3t-wMh" eventType="touchUpInside" id="vE6-cn-iO7"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8cM-t6-DbT">
@@ -78,6 +84,7 @@
                                 <state key="normal" title="2"/>
                                 <connections>
                                     <action selector="button2:" destination="7CJ-Qb-Bsb" eventType="touchUpInside" id="ghb-r4-1Wx"/>
+                                    <action selector="press2:" destination="ldB-3t-wMh" eventType="touchUpInside" id="J9W-y5-bCM"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ofg-Xq-Tl9">
@@ -86,6 +93,7 @@
                                 <state key="normal" title="1"/>
                                 <connections>
                                     <action selector="button1:" destination="7CJ-Qb-Bsb" eventType="touchUpInside" id="d38-zw-TjE"/>
+                                    <action selector="press1:" destination="ldB-3t-wMh" eventType="touchUpInside" id="6Hb-Gv-tIi"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tly-92-iaD">
@@ -94,6 +102,7 @@
                                 <state key="normal" title="100"/>
                                 <connections>
                                     <action selector="button0:" destination="7CJ-Qb-Bsb" eventType="touchUpInside" id="std-nh-ulV"/>
+                                    <action selector="press100:" destination="ldB-3t-wMh" eventType="touchUpInside" id="EWs-zZ-zwH"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iiK-vX-Gpo">
@@ -102,6 +111,7 @@
                                 <state key="normal" title="50"/>
                                 <connections>
                                     <action selector="button5:" destination="7CJ-Qb-Bsb" eventType="touchUpInside" id="a2G-3E-BW2"/>
+                                    <action selector="press50:" destination="ldB-3t-wMh" eventType="touchUpInside" id="aXn-zT-Xa5"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WUX-ZS-pnv">
@@ -110,6 +120,7 @@
                                 <state key="normal" title="60"/>
                                 <connections>
                                     <action selector="button4:" destination="7CJ-Qb-Bsb" eventType="touchUpInside" id="km0-QM-CH2"/>
+                                    <action selector="press60:" destination="ldB-3t-wMh" eventType="touchUpInside" id="MRx-UN-wRQ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2J2-E0-F8Q">
@@ -118,6 +129,7 @@
                                 <state key="normal" title="70"/>
                                 <connections>
                                     <action selector="button3:" destination="7CJ-Qb-Bsb" eventType="touchUpInside" id="7Cd-xI-STG"/>
+                                    <action selector="press70:" destination="ldB-3t-wMh" eventType="touchUpInside" id="5kX-i2-g8D"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1fS-jd-5s5">
@@ -126,6 +138,7 @@
                                 <state key="normal" title="80"/>
                                 <connections>
                                     <action selector="button2:" destination="7CJ-Qb-Bsb" eventType="touchUpInside" id="lsv-jb-qb3"/>
+                                    <action selector="press80:" destination="ldB-3t-wMh" eventType="touchUpInside" id="5K9-gB-a1K"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A6w-bW-sWp">
@@ -134,6 +147,7 @@
                                 <state key="normal" title="90"/>
                                 <connections>
                                     <action selector="button1:" destination="7CJ-Qb-Bsb" eventType="touchUpInside" id="RtB-iW-4Dk"/>
+                                    <action selector="press90:" destination="ldB-3t-wMh" eventType="touchUpInside" id="YJ4-eo-zag"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7fa-UO-gX3">
@@ -142,6 +156,7 @@
                                 <state key="normal" title="9"/>
                                 <connections>
                                     <action selector="button9:" destination="7CJ-Qb-Bsb" eventType="touchUpInside" id="iY2-Vf-eYi"/>
+                                    <action selector="press9:" destination="ldB-3t-wMh" eventType="touchUpInside" id="9jk-Pk-kAt"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bCv-gG-eZM">
@@ -150,6 +165,7 @@
                                 <state key="normal" title="8"/>
                                 <connections>
                                     <action selector="button8:" destination="7CJ-Qb-Bsb" eventType="touchUpInside" id="Twt-Bd-AuC"/>
+                                    <action selector="press8:" destination="ldB-3t-wMh" eventType="touchUpInside" id="Jpn-DK-yc4"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vDt-fa-ibT">
@@ -158,48 +174,49 @@
                                 <state key="normal" title="7"/>
                                 <connections>
                                     <action selector="button7:" destination="7CJ-Qb-Bsb" eventType="touchUpInside" id="A4K-Ws-Hop"/>
+                                    <action selector="press7:" destination="ldB-3t-wMh" eventType="touchUpInside" id="tCj-R5-DOp"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Input Patient response below" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2d-3B-hvD">
                                 <rect key="frame" x="401" y="255" width="222" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose the starting number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YXV-Ja-Rnt">
-                                <rect key="frame" x="405" y="67" width="215" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose a starting number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YXV-Ja-Rnt">
+                                <rect key="frame" x="421" y="67" width="199" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(Current Number)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PQ6-lV-zSB">
                                 <rect key="frame" x="444" y="373" width="136" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Expected:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kAy-sj-nQ4">
                                 <rect key="frame" x="381" y="511" width="77" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Recorded:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eyt-wS-6MF">
                                 <rect key="frame" x="379" y="549" width="79" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Numbers here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Hy-o5-0kQ">
-                                <rect key="frame" x="471" y="511" width="109" height="21"/>
+                                <rect key="frame" x="471" y="511" width="168" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Numbers here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BSJ-cP-qi5">
-                                <rect key="frame" x="471" y="549" width="109" height="21"/>
+                                <rect key="frame" x="471" y="549" width="168" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -207,6 +224,28 @@
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                    <connections>
+                        <outlet property="button0" destination="Ydc-3d-wua" id="Lw7-eo-Gz6"/>
+                        <outlet property="button1" destination="Ofg-Xq-Tl9" id="r08-C3-NXk"/>
+                        <outlet property="button2" destination="8cM-t6-DbT" id="q8d-4N-mgr"/>
+                        <outlet property="button3" destination="INy-t4-37v" id="FRo-cm-KAw"/>
+                        <outlet property="button4" destination="UqS-ZC-0FP" id="jef-I3-jcD"/>
+                        <outlet property="button5" destination="Gdb-7E-5ke" id="ACY-cu-IWH"/>
+                        <outlet property="button6" destination="7oQ-us-XXJ" id="0dN-rS-ywl"/>
+                        <outlet property="button7" destination="vDt-fa-ibT" id="3KP-Hf-yB4"/>
+                        <outlet property="button8" destination="bCv-gG-eZM" id="ANC-3E-aWW"/>
+                        <outlet property="button9" destination="7fa-UO-gX3" id="d4e-34-J9w"/>
+                        <outlet property="currentNum" destination="PQ6-lV-zSB" id="EAt-d5-Kzf"/>
+                        <outlet property="expectedNums" destination="2Hy-o5-0kQ" id="Kzz-hJ-P9f"/>
+                        <outlet property="nextInput" destination="3IC-RS-fra" id="TFh-tk-yFZ"/>
+                        <outlet property="recordedNums" destination="BSJ-cP-qi5" id="O8B-kq-UPY"/>
+                        <outlet property="start100" destination="tly-92-iaD" id="l86-be-Gru"/>
+                        <outlet property="start50" destination="iiK-vX-Gpo" id="BiT-gr-m4v"/>
+                        <outlet property="start60" destination="WUX-ZS-pnv" id="i4K-yK-8de"/>
+                        <outlet property="start70" destination="2J2-E0-F8Q" id="ffS-fm-QHb"/>
+                        <outlet property="start80" destination="1fS-jd-5s5" id="udQ-zd-8li"/>
+                        <outlet property="start90" destination="A6w-bW-sWp" id="ncF-UV-BvF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iyn-rw-y02" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -423,7 +462,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VZG-l1-V7G">
                                 <rect key="frame" x="309" y="594" width="391" height="174"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cv6-7u-Kn2">
@@ -438,7 +477,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Instruct the patient to say the numbers in forwards order Record patient response below" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fli-6f-82n">
                                 <rect key="frame" x="285" y="402" width="455" height="53"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -641,7 +680,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WPR-ky-Kkf">
                                 <rect key="frame" x="317" y="573" width="391" height="174"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1VK-Xs-MTx">
