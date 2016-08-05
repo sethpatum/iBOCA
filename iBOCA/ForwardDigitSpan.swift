@@ -271,9 +271,7 @@ class ForwardDigitSpan: UIViewController {
                 count+=1
             }
         }
-        else{
-            print("this shouldn't happen")
-        }
+        
         self.resultLabel.text = "\(Results)"
          test += 1
         numResponse = []

@@ -165,9 +165,10 @@ class SerialSevens: UIViewController {
     @IBAction func nextInput(sender: AnyObject) {
         let name = String(recordNum[0]) + String(recordNum[1])
         recordNum = []
-        recordedNums.text = name
         currentNum.text = name
         Records.append(name)
+        let name2 = String(Records)
+        recordedNums.text = name2
         print(Records)
     }
     
