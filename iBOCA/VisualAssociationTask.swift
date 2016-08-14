@@ -15,12 +15,18 @@ var halfImages = [String]()
 var recognizeIncorrect = [String]()
 
 var afterBreak = Bool()
+
 var imageSet = Int()
+
 var startTime = NSTimeInterval()
 var startTime2 = NSDate()
 var timer = NSTimer()
+
 var recallErrors = [Int]()
 var recallTimes = [Double]()
+
+var recognizeErrors = [Int]()
+var recognizeTimes = [Double]()
 
 class VisualAssociationTask: UIViewController {
     
@@ -28,6 +34,11 @@ class VisualAssociationTask: UIViewController {
     @IBOutlet weak var back: UIButton!
     @IBOutlet weak var start: UIButton!
     
+    @IBOutlet weak var next: UIButton!
+    
+    @IBOutlet weak var resultLabel: UILabel!
+    
+    @IBOutlet weak var delayLabel: UILabel!
     
     @IBOutlet weak var correct: UIButton!
     @IBOutlet weak var incorrect: UIButton!
@@ -50,6 +61,9 @@ class VisualAssociationTask: UIViewController {
     var image2 = UIImage()
     var imageView2 = UIImageView()
     
+    var arrowButton1 = UIButton()
+    var arrowButton2 = UIButton()
+    
     var orderRecognize = [Int]()
     
     var firstDisplay = Bool()
@@ -66,9 +80,26 @@ class VisualAssociationTask: UIViewController {
         
         if(afterBreak == true){
             timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "updateInDelay:", userInfo: nil, repeats: true)
+            delayLabel.text = "Recommended delay: 5 minutes"
         }
         
         print(afterBreak)
+        
+        let arrowpic = UIImage(named: "arrow") as UIImage?
+        
+        arrowButton1 = UIButton(type: UIButtonType.Custom) as UIButton
+        arrowButton1.frame = CGRectMake(211, 670, 90, 90)
+        arrowButton1.setImage(arrowpic, forState: .Normal)
+        arrowButton1.addTarget(self, action: "recognize1:", forControlEvents:.TouchUpInside)
+        arrowButton1.hidden = true
+        self.view.addSubview(arrowButton1)
+        
+        arrowButton2 = UIButton(type: UIButtonType.Custom) as UIButton
+        arrowButton2.frame = CGRectMake(723, 670, 90, 90)
+        arrowButton2.setImage(arrowpic, forState: .Normal)
+        arrowButton2.addTarget(self, action: "recognize2:", forControlEvents:.TouchUpInside)
+        arrowButton2.hidden = true
+        self.view.addSubview(arrowButton2)
         
         back.enabled = true
         start.enabled = true
@@ -76,6 +107,7 @@ class VisualAssociationTask: UIViewController {
         correct.hidden = true
         incorrect.hidden = true
         dk.hidden = true
+        next.hidden = true
         
     }
     
@@ -111,6 +143,19 @@ class VisualAssociationTask: UIViewController {
     }
     
     func startNewTask(){
+        
+        mixedImages = [String]()
+        halfImages = [String]()
+        recognizeIncorrect = [String]()
+        recallErrors = [Int]()
+        recallTimes = [Double]()
+        recognizeErrors = [Int]()
+        recognizeTimes = [Double]()
+        orderRecognize = [Int]()
+        testCount = 0
+        resultLabel.text = ""
+        timerLabel.text = ""
+        delayLabel.text = ""
         
         chooseImageSet()
         
@@ -160,9 +205,12 @@ class VisualAssociationTask: UIViewController {
         imageView.removeFromSuperview()
         print("in delay...")
         
+        delayLabel.text = "Recommended delay: 5 minutes"
+        
         afterBreak = true
         
         back.enabled = true
+        start.enabled = true
         
         timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "updateInDelay:", userInfo: nil, repeats: true)
         
@@ -282,6 +330,7 @@ class VisualAssociationTask: UIViewController {
     func resumeTask(){
         timer.invalidate()
         timerLabel.text = ""
+        delayLabel.text = ""
         
         let recallAlert = UIAlertController(title: "Recall", message: "Which item is missing from the picture?", preferredStyle: .Alert)
         recallAlert.addAction(UIAlertAction(title: "Continue", style: .Default, handler: { (action) -> Void in
@@ -358,7 +407,7 @@ class VisualAssociationTask: UIViewController {
         var diff: NSTimeInterval = currTime - startTime
         let minutes = UInt8(diff / 60.0)
         diff -= (NSTimeInterval(minutes)*60.0)
-        let seconds = Double(diff)
+        let seconds = Double(Int(diff*1000))/1000.0
         return seconds
         
     }
@@ -377,6 +426,9 @@ class VisualAssociationTask: UIViewController {
                 if(testCount == halfImages.count){
                     
                     imageView.removeFromSuperview()
+                    correct.hidden = true
+                    incorrect.hidden = true
+                    dk.hidden = true
                     
                     let recognizeAlert = UIAlertController(title: "Recognize", message: "Which picture have you previously seen?", preferredStyle: .Alert)
                     recognizeAlert.addAction(UIAlertAction(title: "Continue", style: .Default, handler: { (action) -> Void in
@@ -393,7 +445,6 @@ class VisualAssociationTask: UIViewController {
                     print("next pic!")
                     img.center = CGPoint(x: 512.0, y: 471.0)
                     
-                    imageView.removeFromSuperview()
                     outputImage(halfImages[testCount])
                     
                     correct.enabled = true
@@ -432,13 +483,129 @@ class VisualAssociationTask: UIViewController {
             outputRecognizeImages(recognizeIncorrect[testCount], name2: mixedImages[testCount])
         }
         
+        arrowButton1.hidden = false
+        arrowButton1.enabled = true
+        
+        arrowButton2.hidden = false
+        arrowButton2.enabled = true
+        
+        next.hidden = false
+        next.enabled = false
+        
+        startTime = NSDate.timeIntervalSinceReferenceDate()
+        
     }
     
     func randomizeRecognize(){
         
+        //if 0, correct image on left; if 1, correct on right
+        
         for(var k = 0; k < 4; k++){
             orderRecognize.append(Int(arc4random_uniform(2)))
         }
+        
+    }
+    
+    @IBAction func recognize1(sender: AnyObject){
+        
+        arrowButton1.enabled = false
+        arrowButton2.enabled = false
+        next.enabled = true
+        
+        if(orderRecognize[testCount] == 0){
+            recognizeErrors.append(0)
+            recognizeTimes.append(findTime())
+        }
+        else{
+            recognizeErrors.append(1)
+            recognizeTimes.append(findTime())
+        }
+        
+    }
+    
+    @IBAction func recognize2(sender: AnyObject){
+        
+        arrowButton1.enabled = false
+        arrowButton2.enabled = false
+        next.enabled = true
+        
+        if(orderRecognize[testCount] == 0){
+            recognizeErrors.append(1)
+            recognizeTimes.append(findTime())
+        }
+        else{
+            recognizeErrors.append(0)
+            recognizeTimes.append(findTime())
+        }
+        
+    }
+    
+    @IBAction func recognizeNext(sender: AnyObject) {
+        
+        testCount += 1
+        
+        if(testCount == mixedImages.count){
+            
+            arrowButton1.hidden = true
+            arrowButton2.hidden = true
+            next.hidden = true
+            
+            imageView1.removeFromSuperview()
+            imageView2.removeFromSuperview()
+            
+            done()
+            
+        }
+        
+        else{
+            
+            next.enabled = false
+            arrowButton1.enabled = true
+            arrowButton2.enabled = true
+            
+            if(orderRecognize[testCount] == 0) {
+                outputRecognizeImages(mixedImages[testCount], name2: recognizeIncorrect[testCount])
+            }
+            else{
+                outputRecognizeImages(recognizeIncorrect[testCount], name2: mixedImages[testCount])
+            }
+            
+        }
+        
+    }
+    
+    func done(){
+        back.enabled = true
+        start.enabled = true
+        
+        afterBreak = false
+        
+        var recallResult = ""
+        var recognizeResult = ""
+        
+        for(var k = 0; k < mixedImages.count; k++){
+            
+            if(recallErrors[k] == 0){
+                recallResult += "Recalled \(mixedImages[k]) correctly in \(recallTimes[k]) seconds\n"
+            }
+            if(recallErrors[k] == 1){
+                recallResult += "Recalled \(mixedImages[k]) incorrectly in \(recallTimes[k]) seconds\n"
+            }
+            if(recallErrors[k] == 2){
+                recallResult += "Couldn't recall \(mixedImages[k]) in \(recallTimes[k]) seconds\n"
+            }
+            
+            
+            if(recognizeErrors[k] == 0){
+                recognizeResult += "Recognized \(mixedImages[k]) correctly in \(recognizeTimes[k]) seconds\n"
+            }
+            if(recognizeErrors[k] == 1){
+                recognizeResult += "Recognized \(mixedImages[k]) incorrectly in \(recognizeTimes[k]) seconds\n"
+            }
+            
+        }
+        
+        resultLabel.text = recallResult + recognizeResult
         
     }
     
