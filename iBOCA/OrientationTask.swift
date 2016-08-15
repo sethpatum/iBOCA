@@ -87,7 +87,7 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
     }
    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
+                // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
     
@@ -137,6 +137,7 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
+        print("0:", pickerView)
         if pickerView == SeasonPicker {
             return seasonData.count
         }
@@ -153,6 +154,7 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        print("1:",pickerView)
         if pickerView == SeasonPicker {
             Season = seasonData[row]
             return seasonData[row]
@@ -165,7 +167,7 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
             Town = townData[row]
             return townData[row]
         }
-
+ 
         else if pickerView == AddressPicker {
             Address = addressData[row]
             return addressData[row]
@@ -174,6 +176,7 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
+        print("2:", pickerView)
         if pickerView == SeasonPicker {
             Season = seasonData[row]
         }

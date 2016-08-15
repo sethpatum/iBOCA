@@ -9,8 +9,16 @@
 import UIKit
 
 class BackwardDigitSpan: UIViewController {
-    var test = 0
     
+    @IBOutlet weak var countingLabel: UILabel!
+    
+    var timer = NSTimer()
+    var counter = 0
+    func updateCounter() {
+        countingLabel.text = String(counter++)
+    }
+    
+    var test = 0
     
     @IBOutlet weak var instruct1: UILabel!
     @IBOutlet weak var instruct2: UILabel!
@@ -103,6 +111,7 @@ class BackwardDigitSpan: UIViewController {
             button8.hidden = false
             button9.hidden = false
         }
+         timer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
     }
     
     
@@ -226,7 +235,10 @@ class BackwardDigitSpan: UIViewController {
     var count = 0
     
     @IBAction func testDone(sender: AnyObject) {
-        
+        timer.invalidate()
+        counter = 0
+        countingLabel.text = String(counter)
+                
         if (numResponse == numOrder){
             print("All values Correct")
             Results.append("All values Correct")
@@ -270,9 +282,6 @@ class BackwardDigitSpan: UIViewController {
                 Results.append(" for Number 7, Expected: " + numOrder[6] + " Got: " + numResponse[6])
                 count+=1
             }
-        }
-        else{
-            print("this shouldn't happen")
         }
         self.resultLabel.text = "\(Results)"
         test += 1

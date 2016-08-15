@@ -9,7 +9,14 @@
 import UIKit
 
 class SerialSevens: UIViewController {
-
+    var timer = NSTimer()
+    var counter = 0
+    
+    func updateCounter() {
+        countingLabel.text = String(counter++)
+    }
+    
+    
     @IBOutlet weak var expectedNums: UILabel!
     @IBOutlet weak var recordedNums: UILabel!
     @IBOutlet weak var currentNum: UILabel!
@@ -34,6 +41,8 @@ class SerialSevens: UIViewController {
     
     @IBOutlet weak var nextInput: UIButton!
     
+    
+    @IBOutlet weak var countingLabel: UILabel!
     var expectedNum : [Int] = []
     
     @IBAction func press100(sender: AnyObject) {
@@ -48,7 +57,10 @@ class SerialSevens: UIViewController {
         button6.hidden = false ; button7.hidden = false ; button8.hidden = false
         button9.hidden = false
         nextInput.hidden = false
+        
+        timer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
     }
+    
     @IBAction func press90(sender: AnyObject) {
         expectedNums.text = "83, 76, 69, 62, 55"
         start100.hidden = true
@@ -62,6 +74,7 @@ class SerialSevens: UIViewController {
         button6.hidden = false ; button7.hidden = false ; button8.hidden = false
         button9.hidden = false
         nextInput.hidden = false
+        timer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
     }
     @IBAction func press80(sender: AnyObject) {
         expectedNums.text = "73, 66, 59, 52, 45"
@@ -76,6 +89,7 @@ class SerialSevens: UIViewController {
         button6.hidden = false ; button7.hidden = false ; button8.hidden = false
         button9.hidden = false
         nextInput.hidden = false
+        timer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
     }
     @IBAction func press70(sender: AnyObject) {
        expectedNums.text = "63, 56, 49, 42, 35"
@@ -90,6 +104,7 @@ class SerialSevens: UIViewController {
         button6.hidden = false ; button7.hidden = false ; button8.hidden = false
         button9.hidden = false
         nextInput.hidden = false
+        timer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
     }
     @IBAction func press60(sender: AnyObject) {
        expectedNums.text = "53, 46, 39, 32, 25"
@@ -104,6 +119,7 @@ class SerialSevens: UIViewController {
         button6.hidden = false ; button7.hidden = false ; button8.hidden = false
         button9.hidden = false
         nextInput.hidden = false
+        timer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
     }
     @IBAction func press50(sender: AnyObject) {
        expectedNums.text = "43, 36, 29, 22, 15"
@@ -118,6 +134,7 @@ class SerialSevens: UIViewController {
         button6.hidden = false ; button7.hidden = false ; button8.hidden = false
         button9.hidden = false
         nextInput.hidden = false
+        timer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
     }
     var recordNum : [Int] = []
     @IBAction func press0(sender: AnyObject) {
@@ -170,6 +187,11 @@ class SerialSevens: UIViewController {
         let name2 = String(Records)
         recordedNums.text = name2
         print(Records)
+        
+        timer.invalidate()
+        counter = 0
+        countingLabel.text = String(counter)
+        timer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
     }
     
 
@@ -188,6 +210,20 @@ class SerialSevens: UIViewController {
             button8.hidden = true
             button9.hidden = true
             nextInput.hidden = true
+        
+        
+        
+     
+        
+     
+        
+        
+        func updateCounter() {
+            countingLabel.text = String(counter++)
+        }
+        
+        
+        
         // Do any additional setup after loading the view.
     }
 

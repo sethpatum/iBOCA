@@ -219,6 +219,12 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="evj-DS-RiR">
+                                <rect key="frame" x="696" y="549" width="89" height="47"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -235,6 +241,7 @@
                         <outlet property="button7" destination="vDt-fa-ibT" id="3KP-Hf-yB4"/>
                         <outlet property="button8" destination="bCv-gG-eZM" id="ANC-3E-aWW"/>
                         <outlet property="button9" destination="7fa-UO-gX3" id="d4e-34-J9w"/>
+                        <outlet property="countingLabel" destination="evj-DS-RiR" id="Afi-bP-nJs"/>
                         <outlet property="currentNum" destination="PQ6-lV-zSB" id="EAt-d5-Kzf"/>
                         <outlet property="expectedNums" destination="2Hy-o5-0kQ" id="Kzz-hJ-P9f"/>
                         <outlet property="nextInput" destination="3IC-RS-fra" id="TFh-tk-yFZ"/>
@@ -480,6 +487,12 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLD-TR-P1S">
+                                <rect key="frame" x="849" y="479" width="96" height="58"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -504,6 +517,7 @@
                         <outlet property="button7" destination="kqj-sK-Uba" id="4V3-7M-ee9"/>
                         <outlet property="button8" destination="Yxe-pH-890" id="obj-MM-z8S"/>
                         <outlet property="button9" destination="vI7-Io-koM" id="MAV-Cc-vfJ"/>
+                        <outlet property="countingLabel" destination="VLD-TR-P1S" id="Upt-ZO-dQB"/>
                         <outlet property="instruct1" destination="jzW-AP-HNg" id="w88-iu-n9D"/>
                         <outlet property="instruct2" destination="fli-6f-82n" id="WQF-vS-WLT"/>
                         <outlet property="resultLabel" destination="VZG-l1-V7G" id="XJ2-hM-3M4"/>
@@ -528,9 +542,6 @@
                         <subviews>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5RO-Hz-93f">
                                 <rect key="frame" x="316" y="181" width="393" height="135"/>
-                            </pickerView>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G5g-Wp-9Q3">
-                                <rect key="frame" x="304" y="328" width="416" height="161"/>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current Adress:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X2c-tW-4bD">
                                 <rect key="frame" x="172" y="677" width="120" height="21"/>
@@ -567,7 +578,6 @@
                                 <state key="normal" title="DONE"/>
                                 <connections>
                                     <action selector="DoneButton:" destination="5Cz-GR-ydt" eventType="touchUpInside" id="pXo-4V-0cf"/>
-                                    <action selector="updateTown:" destination="5Cz-GR-ydt" eventType="touchUpInside" id="8UP-gb-HnW"/>
                                     <segue destination="BYZ-38-t0r" kind="show" id="dL7-Sq-hiA"/>
                                 </connections>
                             </button>
@@ -586,6 +596,9 @@
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hJa-oI-db9">
                                 <rect key="frame" x="421" y="657" width="183" height="61"/>
                             </pickerView>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G5g-Wp-9Q3">
+                                <rect key="frame" x="304" y="328" width="416" height="161"/>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -601,7 +614,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NUE-cG-5MM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1143" y="126"/>
+            <point key="canvasLocation" x="1409" y="258"/>
         </scene>
         <!--Backward Digit Span-->
         <scene sceneID="rbc-3Q-FR7">
@@ -779,6 +792,12 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8uu-bZ-PJz">
+                                <rect key="frame" x="845" y="442" width="82" height="54"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -803,6 +822,7 @@
                         <outlet property="button7" destination="2BN-lr-SwB" id="CaV-HW-dj1"/>
                         <outlet property="button8" destination="KwA-gk-yVh" id="fe3-Uj-13b"/>
                         <outlet property="button9" destination="6Fj-od-XyT" id="suO-ZZ-DPu"/>
+                        <outlet property="countingLabel" destination="8uu-bZ-PJz" id="Ayi-AB-5BW"/>
                         <outlet property="instruct1" destination="BGO-zh-Tlb" id="4ug-35-j9g"/>
                         <outlet property="instruct2" destination="tra-2c-Zzj" id="hG2-kE-5fX"/>
                         <outlet property="resultLabel" destination="WPR-ky-Kkf" id="FaY-D9-aWe"/>
@@ -815,6 +835,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="xnw-sd-1nm"/>
+        <segue reference="dL7-Sq-hiA"/>
     </inferredMetricsTieBreakers>
 </document>

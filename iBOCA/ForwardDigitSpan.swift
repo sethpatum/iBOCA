@@ -11,7 +11,14 @@ import UIKit
 class ForwardDigitSpan: UIViewController {
      var test = 0
     
-   
+    @IBOutlet weak var countingLabel: UILabel!
+    var timer = NSTimer()
+    var counter = 0
+    func updateCounter() {
+        countingLabel.text = String(counter++)
+        print(counter)
+    }
+    
     @IBOutlet weak var instruct1: UILabel!
     @IBOutlet weak var instruct2: UILabel!
 
@@ -103,6 +110,7 @@ class ForwardDigitSpan: UIViewController {
         button8.hidden = false
         button9.hidden = false
         }
+         timer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
     }
     
     
@@ -226,6 +234,10 @@ class ForwardDigitSpan: UIViewController {
     var count = 0
     
     @IBAction func testDone(sender: AnyObject) {
+        timer.invalidate()
+        counter = 0
+        countingLabel.text = String(counter)
+      
         
         if (numResponse == numOrder){
             print("All values Correct")
