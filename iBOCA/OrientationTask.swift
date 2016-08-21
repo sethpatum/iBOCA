@@ -10,7 +10,7 @@ import UIKit
 import MessageUI
 
 var firstTimeThrough = true
-
+                    //declare variables to be defined by pickerviews
 var Season : String?
 var State : String?
 var Town : String?
@@ -19,7 +19,7 @@ var Date : String?
 
 class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UITextFieldDelegate, UITextViewDelegate,UIPickerViewDelegate  {
     
-            //pickerview content set up
+            //pickerview content set up(defines options)
     @IBOutlet weak var SeasonPicker: UIPickerView!
     let seasonData = ["Spring", "Summer", "Fall", "Winter", "Don't know"]
  
@@ -49,7 +49,7 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                                //declare pickerviews
         SeasonPicker.delegate = self
         StatePicker.delegate = self
         TownPicker.delegate = self
@@ -135,7 +135,7 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
     func numberOfComponentsInPickerView(pickerView : UIPickerView!) -> Int{
         return 1
     }
-    
+        //returns length of pickerview contents
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
         print("0:", pickerView)
         if pickerView == SeasonPicker {
@@ -152,7 +152,7 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         }
         return 1
     }
-    
+            ////sets the final variables to selected row of the pickerview's text
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         print("1:",pickerView)
         if pickerView == SeasonPicker {
@@ -174,7 +174,7 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         }
         return ""
     }
-    
+        //sets final variables to the selected row
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
         print("2:", pickerView)
         if pickerView == SeasonPicker {

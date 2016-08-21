@@ -137,13 +137,30 @@ class SerialSevens: UIViewController {
         timer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
     }
     var recordNum : [Int] = []
+    var current: [String] = []
     @IBAction func press0(sender: AnyObject) {
         recordNum.append(0)
         print(recordNum)
+        current.append("0")
+        if (currennt.size > 1){
+           let name = String(current[0]) + String(current[1])
+        }
+        else{
+            let name = String(current[0])
+        }
+        currentNum.text = name
     }
     @IBAction func press1(sender: AnyObject) {
         recordNum.append(1)
         print(recordNum)
+        current.append("1")
+        if (currennt.size > 1){
+            let name = String(current[0]) + String(current[1])
+        }
+        else{
+            let name = String(current[0])
+        }
+        currentNum.text = name
     }
     @IBAction func press2(sender: AnyObject) {
         recordNum.append(2)
@@ -182,7 +199,7 @@ class SerialSevens: UIViewController {
     @IBAction func nextInput(sender: AnyObject) {
         let name = String(recordNum[0]) + String(recordNum[1])
         recordNum = []
-        currentNum.text = name
+        currentNum.text = ""
         Records.append(name)
         let name2 = String(Records)
         recordedNums.text = name2
