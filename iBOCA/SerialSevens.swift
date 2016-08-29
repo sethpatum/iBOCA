@@ -138,29 +138,31 @@ class SerialSevens: UIViewController {
     }
     var recordNum : [Int] = []
     var current: [String] = []
+    var numb = ""
     @IBAction func press0(sender: AnyObject) {
         recordNum.append(0)
         print(recordNum)
         current.append("0")
-        if (currennt.size > 1){
-           let name = String(current[0]) + String(current[1])
+        
+        if (current.count > 1){
+           let numb = String(current[0]) + String(current[1])
         }
         else{
-            let name = String(current[0])
+            let numb = String(current[0])
         }
-        currentNum.text = name
+        currentNum.text = numb
     }
     @IBAction func press1(sender: AnyObject) {
         recordNum.append(1)
         print(recordNum)
         current.append("1")
-        if (currennt.size > 1){
-            let name = String(current[0]) + String(current[1])
+        if (current.count > 1){
+            let numb = String(current[0]) + String(current[1])
         }
         else{
-            let name = String(current[0])
+            let numb = String(current[0])
         }
-        currentNum.text = name
+        currentNum.text = numb
     }
     @IBAction func press2(sender: AnyObject) {
         recordNum.append(2)
