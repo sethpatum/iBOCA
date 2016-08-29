@@ -145,10 +145,10 @@ class SerialSevens: UIViewController {
         current.append("0")
         
         if (current.count > 1){
-           let numb = String(current[0]) + String(current[1])
+            numb = String(current[0]) + String(current[1])
         }
         else{
-            let numb = String(current[0])
+             numb = String(current[0])
         }
         currentNum.text = numb
     }
@@ -157,10 +157,10 @@ class SerialSevens: UIViewController {
         print(recordNum)
         current.append("1")
         if (current.count > 1){
-            let numb = String(current[0]) + String(current[1])
+             numb = String(current[0]) + String(current[1])
         }
         else{
-            let numb = String(current[0])
+             numb = String(current[0])
         }
         currentNum.text = numb
     }
