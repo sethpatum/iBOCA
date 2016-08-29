@@ -213,7 +213,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Numbers here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BSJ-cP-qi5">
-                                <rect key="frame" x="471" y="549" width="211" height="21"/>
+                                <rect key="frame" x="471" y="549" width="237" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -252,6 +252,7 @@
                         <outlet property="expectedNums" destination="2Hy-o5-0kQ" id="Kzz-hJ-P9f"/>
                         <outlet property="nextInput" destination="3IC-RS-fra" id="TFh-tk-yFZ"/>
                         <outlet property="recordedNums" destination="BSJ-cP-qi5" id="O8B-kq-UPY"/>
+                        <outlet property="resetButton" destination="qmt-Jp-vum" id="6Ck-Ro-wzq"/>
                         <outlet property="start100" destination="tly-92-iaD" id="l86-be-Gru"/>
                         <outlet property="start50" destination="iiK-vX-Gpo" id="BiT-gr-m4v"/>
                         <outlet property="start60" destination="WUX-ZS-pnv" id="i4K-yK-8de"/>
