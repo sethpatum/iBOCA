@@ -20,6 +20,8 @@ class BackwardDigitSpan: UIViewController {
     
     var test = 0
     
+    @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet weak var CurrentNums: UILabel!
     @IBOutlet weak var instruct1: UILabel!
     @IBOutlet weak var instruct2: UILabel!
     
@@ -110,6 +112,7 @@ class BackwardDigitSpan: UIViewController {
             button7.hidden = false
             button8.hidden = false
             button9.hidden = false
+            resetButton.hidden = false
         }
          timer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
     }
@@ -117,10 +120,12 @@ class BackwardDigitSpan: UIViewController {
     
     var responses = 0
     
-    
+    var nums1 = ""
     @IBAction func button0(sender: AnyObject) {
         numResponse.append("0")
         print(numResponse)
+        nums1 += numResponse[responses]
+        CurrentNums.text = nums1
         responses += 1
         if ( responses == (test + 4)){
             testDone.hidden = false
@@ -133,6 +138,8 @@ class BackwardDigitSpan: UIViewController {
     @IBAction func button1(sender: AnyObject) {
         numResponse.append("1")
         print(numResponse)
+        nums1 += numResponse[responses]
+        CurrentNums.text = nums1
         responses += 1
         if ( responses == (test + 4)){
             testDone.hidden = false
@@ -144,6 +151,8 @@ class BackwardDigitSpan: UIViewController {
     @IBAction func button2(sender: AnyObject) {
         numResponse.append("2")
         print(numResponse)
+        nums1 += numResponse[responses]
+        CurrentNums.text = nums1
         responses += 1
         if ( responses == (test + 4)){
             testDone.hidden = false
@@ -155,6 +164,8 @@ class BackwardDigitSpan: UIViewController {
     @IBAction func button3(sender: AnyObject) {
         numResponse.append("3")
         print(numResponse)
+        nums1 += numResponse[responses]
+        CurrentNums.text = nums1
         responses += 1
         if ( responses == (test + 4)){
             testDone.hidden = false
@@ -166,6 +177,8 @@ class BackwardDigitSpan: UIViewController {
     @IBAction func button4(sender: AnyObject) {
         numResponse.append("4")
         print(numResponse)
+        nums1 += numResponse[responses]
+        CurrentNums.text = nums1
         responses += 1
         if ( responses == (test + 4)){
             testDone.hidden = false
@@ -177,6 +190,8 @@ class BackwardDigitSpan: UIViewController {
     @IBAction func button5(sender: AnyObject) {
         numResponse.append("5")
         print(numResponse)
+        nums1 += numResponse[responses]
+        CurrentNums.text = nums1
         responses += 1
         if ( responses == (test + 4)){
             testDone.hidden = false
@@ -188,6 +203,8 @@ class BackwardDigitSpan: UIViewController {
     @IBAction func button6(sender: AnyObject) {
         numResponse.append("6")
         print(numResponse)
+        nums1 += numResponse[responses]
+        CurrentNums.text = nums1
         responses += 1
         if ( responses == (test + 4)){
             testDone.hidden = false
@@ -199,6 +216,8 @@ class BackwardDigitSpan: UIViewController {
     @IBAction func button7(sender: AnyObject) {
         numResponse.append("7")
         print(numResponse)
+        nums1 += numResponse[responses]
+        CurrentNums.text = nums1
         responses += 1
         if ( responses == (test + 4)){
             testDone.hidden = false
@@ -210,6 +229,8 @@ class BackwardDigitSpan: UIViewController {
     @IBAction func button8(sender: AnyObject) {
         numResponse.append("8")
         print(numResponse)
+        nums1 += numResponse[responses]
+        CurrentNums.text = nums1
         responses += 1
         if ( responses == (test + 4)){
             testDone.hidden = false
@@ -221,6 +242,8 @@ class BackwardDigitSpan: UIViewController {
     @IBAction func button9(sender: AnyObject) {
         numResponse.append("9")
         print(numResponse)
+        nums1 += numResponse[responses]
+        CurrentNums.text = nums1
         responses += 1
         if ( responses == (test + 4)){
             testDone.hidden = false
@@ -235,6 +258,8 @@ class BackwardDigitSpan: UIViewController {
         numResponse = []
         responses = 0
         testDone.hidden = true
+        nums1 = ""
+        CurrentNums.text = ""
     }
     var Results: [String] = []
     var count = 0
@@ -243,7 +268,8 @@ class BackwardDigitSpan: UIViewController {
         timer.invalidate()
         counter = 0
         countingLabel.text = String(counter)
-                
+        nums1 = ""
+        CurrentNums.text = nums1
         if (numResponse == numOrder){
             print("All values Correct")
             Results.append("All values Correct")
@@ -308,6 +334,7 @@ class BackwardDigitSpan: UIViewController {
             button9.hidden = true
             self.instruct1.text = ""
             self.instruct2.text = ""
+            resetButton.hidden = true
         }
     }
     
@@ -324,6 +351,7 @@ class BackwardDigitSpan: UIViewController {
         button7.hidden = true
         button8.hidden = true
         button9.hidden = true
+        resetButton.hidden = true
         // Do any additional setup after loading the view.
     }
     

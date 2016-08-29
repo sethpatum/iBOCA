@@ -684,12 +684,25 @@
                                     <action selector="ResetButton:" destination="7CJ-Qb-Bsb" eventType="touchUpInside" id="3m4-Tv-bit"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current Input:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tpj-qJ-M90">
+                                <rect key="frame" x="726" y="547" width="107" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nTt-Qz-w2y">
+                                <rect key="frame" x="726" y="576" width="144" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
+                        <outlet property="CurrentNums" destination="nTt-Qz-w2y" id="a4f-bU-ZBS"/>
                         <outlet property="Label0" destination="Ria-Hl-Lgh" id="3M7-TG-q9g"/>
                         <outlet property="Label1" destination="dDm-cI-A4C" id="tka-Nj-gRK"/>
                         <outlet property="Label2" destination="g6J-Cf-OSK" id="9RM-5S-sBk"/>
@@ -711,6 +724,7 @@
                         <outlet property="countingLabel" destination="VLD-TR-P1S" id="Upt-ZO-dQB"/>
                         <outlet property="instruct1" destination="jzW-AP-HNg" id="w88-iu-n9D"/>
                         <outlet property="instruct2" destination="fli-6f-82n" id="WQF-vS-WLT"/>
+                        <outlet property="resetButton" destination="4W9-hi-sHb" id="bXf-xC-MuD"/>
                         <outlet property="resultLabel" destination="VZG-l1-V7G" id="XJ2-hM-3M4"/>
                         <outlet property="testDone" destination="cv6-7u-Kn2" id="VqS-a5-ymK"/>
                     </connections>
@@ -996,12 +1010,25 @@
                                     <action selector="ResetButton:" destination="4Eb-es-DlO" eventType="touchUpInside" id="gFy-ba-OGb"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current Input:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1IT-y6-WT6">
+                                <rect key="frame" x="717" y="493" width="107" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xNu-Sl-QAv">
+                                <rect key="frame" x="717" y="517" width="155" height="25"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
+                        <outlet property="CurrentNums" destination="xNu-Sl-QAv" id="90O-Ba-6HQ"/>
                         <outlet property="Label0" destination="0w5-c0-KJK" id="zhh-uj-dkX"/>
                         <outlet property="Label1" destination="C2x-gH-PEN" id="3TS-cB-ZDI"/>
                         <outlet property="Label2" destination="eIk-Kw-zEk" id="8f1-ek-qi5"/>
@@ -1023,16 +1050,17 @@
                         <outlet property="countingLabel" destination="8uu-bZ-PJz" id="Ayi-AB-5BW"/>
                         <outlet property="instruct1" destination="BGO-zh-Tlb" id="4ug-35-j9g"/>
                         <outlet property="instruct2" destination="tra-2c-Zzj" id="hG2-kE-5fX"/>
+                        <outlet property="resetButton" destination="fuh-Xd-NJ3" id="im5-p4-zdt"/>
                         <outlet property="resultLabel" destination="WPR-ky-Kkf" id="FaY-D9-aWe"/>
                         <outlet property="testDone" destination="oIu-v6-Dd1" id="BIx-21-TCU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SRn-Yb-UaP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1790" y="959"/>
+            <point key="canvasLocation" x="1790" y="961"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="mwA-PF-xBP"/>
+        <segue reference="puZ-ea-H1g"/>
     </inferredMetricsTieBreakers>
 </document>
