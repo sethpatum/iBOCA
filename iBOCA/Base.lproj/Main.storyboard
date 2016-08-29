@@ -224,6 +224,13 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qmt-Jp-vum">
+                                <rect key="frame" x="219" y="369" width="89" height="30"/>
+                                <state key="normal" title="Reset Values"/>
+                                <connections>
+                                    <action selector="ResetButton:" destination="ldB-3t-wMh" eventType="touchUpInside" id="7x6-7j-itj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -633,6 +640,13 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4W9-hi-sHb">
+                                <rect key="frame" x="211" y="551" width="89" height="30"/>
+                                <state key="normal" title="Reset Values"/>
+                                <connections>
+                                    <action selector="ResetButton:" destination="7CJ-Qb-Bsb" eventType="touchUpInside" id="3m4-Tv-bit"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -938,6 +952,13 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fuh-Xd-NJ3">
+                                <rect key="frame" x="190" y="526" width="89" height="30"/>
+                                <state key="normal" title="Reset Values"/>
+                                <connections>
+                                    <action selector="ResetButton:" destination="4Eb-es-DlO" eventType="touchUpInside" id="gFy-ba-OGb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>

@@ -56,8 +56,6 @@ class SerialSevens: UIViewController {
         button3.hidden = false ; button4.hidden = false ; button5.hidden = false
         button6.hidden = false ; button7.hidden = false ; button8.hidden = false
         button9.hidden = false
-        nextInput.hidden = false
-        
         timer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
     }
     
@@ -73,7 +71,6 @@ class SerialSevens: UIViewController {
         button3.hidden = false ; button4.hidden = false ; button5.hidden = false
         button6.hidden = false ; button7.hidden = false ; button8.hidden = false
         button9.hidden = false
-        nextInput.hidden = false
         timer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
     }
     @IBAction func press80(sender: AnyObject) {
@@ -88,7 +85,6 @@ class SerialSevens: UIViewController {
         button3.hidden = false ; button4.hidden = false ; button5.hidden = false
         button6.hidden = false ; button7.hidden = false ; button8.hidden = false
         button9.hidden = false
-        nextInput.hidden = false
         timer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
     }
     @IBAction func press70(sender: AnyObject) {
@@ -103,7 +99,6 @@ class SerialSevens: UIViewController {
         button3.hidden = false ; button4.hidden = false ; button5.hidden = false
         button6.hidden = false ; button7.hidden = false ; button8.hidden = false
         button9.hidden = false
-        nextInput.hidden = false
         timer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
     }
     @IBAction func press60(sender: AnyObject) {
@@ -118,7 +113,6 @@ class SerialSevens: UIViewController {
         button3.hidden = false ; button4.hidden = false ; button5.hidden = false
         button6.hidden = false ; button7.hidden = false ; button8.hidden = false
         button9.hidden = false
-        nextInput.hidden = false
         timer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
     }
     @IBAction func press50(sender: AnyObject) {
@@ -133,68 +127,142 @@ class SerialSevens: UIViewController {
         button3.hidden = false ; button4.hidden = false ; button5.hidden = false
         button6.hidden = false ; button7.hidden = false ; button8.hidden = false
         button9.hidden = false
-        nextInput.hidden = false
         timer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
     }
     var recordNum : [Int] = []
-    var current: [String] = []
     var numb = ""
     @IBAction func press0(sender: AnyObject) {
         recordNum.append(0)
         print(recordNum)
-        current.append("0")
         
-        if (current.count > 1){
-            numb = String(current[0]) + String(current[1])
+        if (recordNum.count > 1){
+            numb = String(recordNum[0]) + String(recordNum[1])
         }
         else{
-             numb = String(current[0])
+             numb = String(recordNum[0])
         }
         currentNum.text = numb
     }
     @IBAction func press1(sender: AnyObject) {
         recordNum.append(1)
         print(recordNum)
-        current.append("1")
-        if (current.count > 1){
-             numb = String(current[0]) + String(current[1])
+        if (recordNum.count > 1){
+             numb = String(recordNum[0]) + String(recordNum[1])
         }
         else{
-             numb = String(current[0])
+             numb = String(recordNum[0])
         }
         currentNum.text = numb
     }
     @IBAction func press2(sender: AnyObject) {
         recordNum.append(2)
         print(recordNum)
+        if (recordNum.count > 1 && recordNum.count < 3){
+            numb = String(recordNum[0]) + String(recordNum[1])
+            nextInput.hidden = false
+        }
+        else{
+            numb = String(recordNum[0])
+            nextInput.hidden = true
+        }
+        currentNum.text = numb
     }
     @IBAction func press3(sender: AnyObject) {
         recordNum.append(3)
         print(recordNum)
+        if (recordNum.count > 1 && recordNum.count < 3){
+            numb = String(recordNum[0]) + String(recordNum[1])
+            nextInput.hidden = false
+        }
+        else{
+            numb = String(recordNum[0])
+            nextInput.hidden = true
+        }
+        currentNum.text = numb
     }
     @IBAction func press4(sender: AnyObject) {
         recordNum.append(4)
         print(recordNum)
+        if (recordNum.count > 1 && recordNum.count < 3){
+            numb = String(recordNum[0]) + String(recordNum[1])
+            nextInput.hidden = false
+        }
+        else{
+            numb = String(recordNum[0])
+            nextInput.hidden = true
+        }
+        currentNum.text = numb
     }
     @IBAction func press5(sender: AnyObject) {
         recordNum.append(5)
         print(recordNum)
+        if (recordNum.count > 1 && recordNum.count < 3){
+            numb = String(recordNum[0]) + String(recordNum[1])
+            nextInput.hidden = false
+        }
+        else{
+            numb = String(recordNum[0])
+            nextInput.hidden = true
+        }
+        currentNum.text = numb
     }
     @IBAction func press6(sender: AnyObject) {
         recordNum.append(6)
         print(recordNum)
+        if (recordNum.count > 1 && recordNum.count < 3){
+            numb = String(recordNum[0]) + String(recordNum[1])
+            nextInput.hidden = false
+        }
+        else{
+            numb = String(recordNum[0])
+            nextInput.hidden = true
+        }
+        currentNum.text = numb
     }
     @IBAction func press7(sender: AnyObject) {
         recordNum.append(7)
         print(recordNum)
+        if (recordNum.count > 1 && recordNum.count < 3){
+            numb = String(recordNum[0]) + String(recordNum[1])
+            nextInput.hidden = false
+        }
+        else{
+            numb = String(recordNum[0])
+            nextInput.hidden = true
+        }
+        currentNum.text = numb
     }
     @IBAction func press8(sender: AnyObject) {
         recordNum.append(8)
         print(recordNum)
+        if (recordNum.count > 1 && recordNum.count < 3){
+            numb = String(recordNum[0]) + String(recordNum[1])
+            nextInput.hidden = false
+        }
+        else{
+            numb = String(recordNum[0])
+            nextInput.hidden = true
+        }
+        currentNum.text = numb
     }
     @IBAction func press9(sender: AnyObject) {
         recordNum.append(9)
         print(recordNum)
+        if (recordNum.count > 1 && recordNum.count < 3){
+            numb = String(recordNum[0]) + String(recordNum[1])
+            nextInput.hidden = false
+        }
+        else{
+            numb = String(recordNum[0])
+            nextInput.hidden = true
+        }
+        currentNum.text = numb
+    }
+    
+    @IBAction func ResetButton(sender: AnyObject) {
+        recordNum = []
+        numb = ""
+        nextInput.hidden = true
     }
     
     var Records: [String] = []
@@ -206,15 +274,12 @@ class SerialSevens: UIViewController {
         let name2 = String(Records)
         recordedNums.text = name2
         print(Records)
-        
         timer.invalidate()
         counter = 0
         countingLabel.text = String(counter)
         timer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
+        nextInput.hidden = true
     }
-    
-
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -231,17 +296,9 @@ class SerialSevens: UIViewController {
             nextInput.hidden = true
         
         
-        
-     
-        
-     
-        
-        
         func updateCounter() {
             countingLabel.text = String(counter++)
         }
-        
-        
         
         // Do any additional setup after loading the view.
     }
@@ -250,16 +307,4 @@ class SerialSevens: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
