@@ -259,6 +259,12 @@ class SerialSevens: UIViewController {
         currentNum.text = numb
     }
     
+    @IBAction func ResetButton(sender: AnyObject) {
+        recordNum = []
+        numb = ""
+        nextInput.hidden = true
+    }
+    
     var Records: [String] = []
     @IBAction func nextInput(sender: AnyObject) {
         let name = String(recordNum[0]) + String(recordNum[1])

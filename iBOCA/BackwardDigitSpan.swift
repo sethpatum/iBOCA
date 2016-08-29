@@ -231,6 +231,11 @@ class BackwardDigitSpan: UIViewController {
     }
     
     
+    @IBAction func ResetButton(sender: AnyObject) {
+        numResponse = []
+        responses = 0
+        testDone.hidden = true
+    }
     var Results: [String] = []
     var count = 0
     
