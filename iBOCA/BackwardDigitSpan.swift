@@ -130,6 +130,18 @@ class BackwardDigitSpan: UIViewController {
         if ( responses == (test + 4)){
             testDone.hidden = false
         }
+        if(responses >= (test + 4)){
+            button0.enabled = false
+            button1.enabled = false
+            button2.enabled = false
+            button3.enabled = false
+            button4.enabled = false
+            button5.enabled = false
+            button6.enabled = false
+            button7.enabled = false
+            button8.enabled = false
+            button9.enabled = false
+        }
         else{
             testDone.hidden = true
         }
@@ -144,6 +156,18 @@ class BackwardDigitSpan: UIViewController {
         if ( responses == (test + 4)){
             testDone.hidden = false
         }
+        if(responses >= (test + 4)){
+            button0.enabled = false
+            button1.enabled = false
+            button2.enabled = false
+            button3.enabled = false
+            button4.enabled = false
+            button5.enabled = false
+            button6.enabled = false
+            button7.enabled = false
+            button8.enabled = false
+            button9.enabled = false
+        }
         else{
             testDone.hidden = true
         }
@@ -156,6 +180,18 @@ class BackwardDigitSpan: UIViewController {
         responses += 1
         if ( responses == (test + 4)){
             testDone.hidden = false
+        }
+        if(responses >= (test + 4)){
+            button0.enabled = false
+            button1.enabled = false
+            button2.enabled = false
+            button3.enabled = false
+            button4.enabled = false
+            button5.enabled = false
+            button6.enabled = false
+            button7.enabled = false
+            button8.enabled = false
+            button9.enabled = false
         }
         else{
             testDone.hidden = true
@@ -170,6 +206,18 @@ class BackwardDigitSpan: UIViewController {
         if ( responses == (test + 4)){
             testDone.hidden = false
         }
+        if(responses >= (test + 4)){
+            button0.enabled = false
+            button1.enabled = false
+            button2.enabled = false
+            button3.enabled = false
+            button4.enabled = false
+            button5.enabled = false
+            button6.enabled = false
+            button7.enabled = false
+            button8.enabled = false
+            button9.enabled = false
+        }
         else{
             testDone.hidden = true
         }
@@ -182,6 +230,18 @@ class BackwardDigitSpan: UIViewController {
         responses += 1
         if ( responses == (test + 4)){
             testDone.hidden = false
+        }
+        if(responses >= (test + 4)){
+            button0.enabled = false
+            button1.enabled = false
+            button2.enabled = false
+            button3.enabled = false
+            button4.enabled = false
+            button5.enabled = false
+            button6.enabled = false
+            button7.enabled = false
+            button8.enabled = false
+            button9.enabled = false
         }
         else{
             testDone.hidden = true
@@ -209,6 +269,18 @@ class BackwardDigitSpan: UIViewController {
         if ( responses == (test + 4)){
             testDone.hidden = false
         }
+        if(responses >= (test + 4)){
+            button0.enabled = false
+            button1.enabled = false
+            button2.enabled = false
+            button3.enabled = false
+            button4.enabled = false
+            button5.enabled = false
+            button6.enabled = false
+            button7.enabled = false
+            button8.enabled = false
+            button9.enabled = false
+        }
         else{
             testDone.hidden = true
         }
@@ -221,6 +293,18 @@ class BackwardDigitSpan: UIViewController {
         responses += 1
         if ( responses == (test + 4)){
             testDone.hidden = false
+        }
+        if(responses >= (test + 4)){
+            button0.enabled = false
+            button1.enabled = false
+            button2.enabled = false
+            button3.enabled = false
+            button4.enabled = false
+            button5.enabled = false
+            button6.enabled = false
+            button7.enabled = false
+            button8.enabled = false
+            button9.enabled = false
         }
         else{
             testDone.hidden = true
@@ -235,6 +319,18 @@ class BackwardDigitSpan: UIViewController {
         if ( responses == (test + 4)){
             testDone.hidden = false
         }
+        if(responses >= (test + 4)){
+            button0.enabled = false
+            button1.enabled = false
+            button2.enabled = false
+            button3.enabled = false
+            button4.enabled = false
+            button5.enabled = false
+            button6.enabled = false
+            button7.enabled = false
+            button8.enabled = false
+            button9.enabled = false
+        }
         else{
             testDone.hidden = true
         }
@@ -248,6 +344,18 @@ class BackwardDigitSpan: UIViewController {
         if ( responses == (test + 4)){
             testDone.hidden = false
         }
+        if(responses >= (test + 4)){
+            button0.enabled = false
+            button1.enabled = false
+            button2.enabled = false
+            button3.enabled = false
+            button4.enabled = false
+            button5.enabled = false
+            button6.enabled = false
+            button7.enabled = false
+            button8.enabled = false
+            button9.enabled = false
+        }
         else{
             testDone.hidden = true
         }
@@ -260,6 +368,16 @@ class BackwardDigitSpan: UIViewController {
         testDone.hidden = true
         nums1 = ""
         CurrentNums.text = ""
+        button0.enabled = true
+        button1.enabled = true
+        button2.enabled = true
+        button3.enabled = true
+        button4.enabled = true
+        button5.enabled = true
+        button6.enabled = true
+        button7.enabled = true
+        button8.enabled = true
+        button9.enabled = true
     }
     var Results: [String] = []
     var count = 0
@@ -313,6 +431,7 @@ class BackwardDigitSpan: UIViewController {
                 Results.append(" for Number 7, Expected: " + numOrder[6] + " Got: " + numResponse[6])
                 count+=1
             }
+            
         }
         self.resultLabel.text = "\(Results)"
         test += 1
@@ -337,6 +456,16 @@ class BackwardDigitSpan: UIViewController {
             resetButton.hidden = true
             countingLabel.hidden = true
         }
+        button0.enabled = true
+        button1.enabled = true
+        button2.enabled = true
+        button3.enabled = true
+        button4.enabled = true
+        button5.enabled = true
+        button6.enabled = true
+        button7.enabled = true
+        button8.enabled = true
+        button9.enabled = true
     }
     
     override func viewDidLoad() {

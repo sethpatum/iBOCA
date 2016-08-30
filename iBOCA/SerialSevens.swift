@@ -415,6 +415,16 @@ class SerialSevens: UIViewController {
             timer.invalidate()
         
         }
+        button0.enabled = true
+        button1.enabled = true
+        button2.enabled = true
+        button3.enabled = true
+        button4.enabled = true
+        button5.enabled = true
+        button6.enabled = true
+        button7.enabled = true
+        button8.enabled = true
+        button9.enabled = true
     }
     
     override func viewDidLoad() {
