@@ -335,6 +335,7 @@ class BackwardDigitSpan: UIViewController {
             self.instruct1.text = ""
             self.instruct2.text = ""
             resetButton.hidden = true
+            countingLabel.hidden = true
         }
     }
     
