@@ -138,6 +138,16 @@ class SerialSevens: UIViewController {
         
         if (recordNum.count > 1){
             numb = String(recordNum[0]) + String(recordNum[1])
+            button0.enabled = false
+            button1.enabled = false
+            button2.enabled = false
+            button3.enabled = false
+            button4.enabled = false
+            button5.enabled = false
+            button6.enabled = false
+            button7.enabled = false
+            button8.enabled = false
+            button9.enabled = false
         }
         else{
              numb = String(recordNum[0])
@@ -149,6 +159,16 @@ class SerialSevens: UIViewController {
         print(recordNum)
         if (recordNum.count > 1){
              numb = String(recordNum[0]) + String(recordNum[1])
+            button0.enabled = false
+            button1.enabled = false
+            button2.enabled = false
+            button3.enabled = false
+            button4.enabled = false
+            button5.enabled = false
+            button6.enabled = false
+            button7.enabled = false
+            button8.enabled = false
+            button9.enabled = false
         }
         else{
              numb = String(recordNum[0])
@@ -161,6 +181,16 @@ class SerialSevens: UIViewController {
         if (recordNum.count > 1 && recordNum.count < 3){
             numb = String(recordNum[0]) + String(recordNum[1])
             nextInput.hidden = false
+            button0.enabled = false
+            button1.enabled = false
+            button2.enabled = false
+            button3.enabled = false
+            button4.enabled = false
+            button5.enabled = false
+            button6.enabled = false
+            button7.enabled = false
+            button8.enabled = false
+            button9.enabled = false
         }
         else{
             numb = String(recordNum[0])
@@ -174,6 +204,16 @@ class SerialSevens: UIViewController {
         if (recordNum.count > 1 && recordNum.count < 3){
             numb = String(recordNum[0]) + String(recordNum[1])
             nextInput.hidden = false
+            button0.enabled = false
+            button1.enabled = false
+            button2.enabled = false
+            button3.enabled = false
+            button4.enabled = false
+            button5.enabled = false
+            button6.enabled = false
+            button7.enabled = false
+            button8.enabled = false
+            button9.enabled = false
         }
         else{
             numb = String(recordNum[0])
@@ -187,6 +227,16 @@ class SerialSevens: UIViewController {
         if (recordNum.count > 1 && recordNum.count < 3){
             numb = String(recordNum[0]) + String(recordNum[1])
             nextInput.hidden = false
+            button0.enabled = false
+            button1.enabled = false
+            button2.enabled = false
+            button3.enabled = false
+            button4.enabled = false
+            button5.enabled = false
+            button6.enabled = false
+            button7.enabled = false
+            button8.enabled = false
+            button9.enabled = false
         }
         else{
             numb = String(recordNum[0])
@@ -200,6 +250,16 @@ class SerialSevens: UIViewController {
         if (recordNum.count > 1 && recordNum.count < 3){
             numb = String(recordNum[0]) + String(recordNum[1])
             nextInput.hidden = false
+            button0.enabled = false
+            button1.enabled = false
+            button2.enabled = false
+            button3.enabled = false
+            button4.enabled = false
+            button5.enabled = false
+            button6.enabled = false
+            button7.enabled = false
+            button8.enabled = false
+            button9.enabled = false
         }
         else{
             numb = String(recordNum[0])
@@ -213,6 +273,16 @@ class SerialSevens: UIViewController {
         if (recordNum.count > 1 && recordNum.count < 3){
             numb = String(recordNum[0]) + String(recordNum[1])
             nextInput.hidden = false
+            button0.enabled = false
+            button1.enabled = false
+            button2.enabled = false
+            button3.enabled = false
+            button4.enabled = false
+            button5.enabled = false
+            button6.enabled = false
+            button7.enabled = false
+            button8.enabled = false
+            button9.enabled = false
         }
         else{
             numb = String(recordNum[0])
@@ -226,6 +296,16 @@ class SerialSevens: UIViewController {
         if (recordNum.count > 1 && recordNum.count < 3){
             numb = String(recordNum[0]) + String(recordNum[1])
             nextInput.hidden = false
+            button0.enabled = false
+            button1.enabled = false
+            button2.enabled = false
+            button3.enabled = false
+            button4.enabled = false
+            button5.enabled = false
+            button6.enabled = false
+            button7.enabled = false
+            button8.enabled = false
+            button9.enabled = false
         }
         else{
             numb = String(recordNum[0])
@@ -239,6 +319,16 @@ class SerialSevens: UIViewController {
         if (recordNum.count > 1 && recordNum.count < 3){
             numb = String(recordNum[0]) + String(recordNum[1])
             nextInput.hidden = false
+            button0.enabled = false
+            button1.enabled = false
+            button2.enabled = false
+            button3.enabled = false
+            button4.enabled = false
+            button5.enabled = false
+            button6.enabled = false
+            button7.enabled = false
+            button8.enabled = false
+            button9.enabled = false
         }
         else{
             numb = String(recordNum[0])
@@ -252,6 +342,16 @@ class SerialSevens: UIViewController {
         if (recordNum.count > 1 && recordNum.count < 3){
             numb = String(recordNum[0]) + String(recordNum[1])
             nextInput.hidden = false
+            button0.enabled = false
+            button1.enabled = false
+            button2.enabled = false
+            button3.enabled = false
+            button4.enabled = false
+            button5.enabled = false
+            button6.enabled = false
+            button7.enabled = false
+            button8.enabled = false
+            button9.enabled = false
         }
         else{
             numb = String(recordNum[0])
@@ -265,6 +365,16 @@ class SerialSevens: UIViewController {
         numb = ""
         nextInput.hidden = true
         currentNum.text = numb
+        button0.enabled = true
+        button1.enabled = true
+        button2.enabled = true
+        button3.enabled = true
+        button4.enabled = true
+        button5.enabled = true
+        button6.enabled = true
+        button7.enabled = true
+        button8.enabled = true
+        button9.enabled = true
     }
     
     var Records: [String] = []
