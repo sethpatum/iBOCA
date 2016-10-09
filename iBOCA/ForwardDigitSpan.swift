@@ -19,6 +19,8 @@ class ForwardDigitSpan: UIViewController {
         print(counter)
     }
     
+    @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet weak var CurrentNums: UILabel!
     @IBOutlet weak var instruct1: UILabel!
     @IBOutlet weak var instruct2: UILabel!
 
@@ -109,6 +111,7 @@ class ForwardDigitSpan: UIViewController {
         button7.hidden = false
         button8.hidden = false
         button9.hidden = false
+        resetButton.hidden = false
         }
          timer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
     }
@@ -116,13 +119,28 @@ class ForwardDigitSpan: UIViewController {
     
     var responses = 0
     
-    
+    //var nums : [String] = []
+    var nums1 = ""
     @IBAction func button0(sender: AnyObject) {
         numResponse.append("0")
         print(numResponse)
+        nums1 += numResponse[responses]
+        CurrentNums.text = nums1
         responses += 1
         if ( responses == (test + 4)){
             testDone.hidden = false
+        }
+        if(responses >= (test + 4)){
+            button0.enabled = false
+            button1.enabled = false
+            button2.enabled = false
+            button3.enabled = false
+            button4.enabled = false
+            button5.enabled = false
+            button6.enabled = false
+            button7.enabled = false
+            button8.enabled = false
+            button9.enabled = false
         }
         else{
             testDone.hidden = true
@@ -132,9 +150,23 @@ class ForwardDigitSpan: UIViewController {
     @IBAction func button1(sender: AnyObject) {
          numResponse.append("1")
         print(numResponse)
+        nums1 += numResponse[responses]
+        CurrentNums.text = nums1
         responses += 1
         if ( responses == (test + 4)){
             testDone.hidden = false
+        }
+        if(responses >= (test + 4)){
+            button0.enabled = false
+            button1.enabled = false
+            button2.enabled = false
+            button3.enabled = false
+            button4.enabled = false
+            button5.enabled = false
+            button6.enabled = false
+            button7.enabled = false
+            button8.enabled = false
+            button9.enabled = false
         }
         else{
             testDone.hidden = true
@@ -143,90 +175,210 @@ class ForwardDigitSpan: UIViewController {
     @IBAction func button2(sender: AnyObject) {
          numResponse.append("2")
         print(numResponse)
+        nums1 += numResponse[responses]
+        CurrentNums.text = nums1
         responses += 1
         if ( responses == (test + 4)){
             testDone.hidden = false
         }
+        if(responses >= (test + 4)){
+            button0.enabled = false
+            button1.enabled = false
+            button2.enabled = false
+            button3.enabled = false
+            button4.enabled = false
+            button5.enabled = false
+            button6.enabled = false
+            button7.enabled = false
+            button8.enabled = false
+            button9.enabled = false
+        }
         else{
             testDone.hidden = true
         }
+ 
     }
     @IBAction func button3(sender: AnyObject) {
          numResponse.append("3")
         print(numResponse)
+        nums1 += numResponse[responses]
+        CurrentNums.text = nums1
         responses += 1
         if ( responses == (test + 4)){
             testDone.hidden = false
         }
+        if(responses >= (test + 4)){
+            button0.enabled = false
+            button1.enabled = false
+            button2.enabled = false
+            button3.enabled = false
+            button4.enabled = false
+            button5.enabled = false
+            button6.enabled = false
+            button7.enabled = false
+            button8.enabled = false
+            button9.enabled = false
+        }
         else{
             testDone.hidden = true
         }
+
     }
     @IBAction func button4(sender: AnyObject) {
          numResponse.append("4")
         print(numResponse)
+        nums1 += numResponse[responses]
+        CurrentNums.text = nums1
         responses += 1
         if ( responses == (test + 4)){
             testDone.hidden = false
         }
+        if(responses >= (test + 4)){
+            button0.enabled = false
+            button1.enabled = false
+            button2.enabled = false
+            button3.enabled = false
+            button4.enabled = false
+            button5.enabled = false
+            button6.enabled = false
+            button7.enabled = false
+            button8.enabled = false
+            button9.enabled = false
+        }
         else{
             testDone.hidden = true
         }
+ 
     }
     @IBAction func button5(sender: AnyObject) {
          numResponse.append("5")
         print(numResponse)
+        nums1 += numResponse[responses]
+        CurrentNums.text = nums1
         responses += 1
         if ( responses == (test + 4)){
             testDone.hidden = false
         }
+        if(responses >= (test + 4)){
+            button0.enabled = false
+            button1.enabled = false
+            button2.enabled = false
+            button3.enabled = false
+            button4.enabled = false
+            button5.enabled = false
+            button6.enabled = false
+            button7.enabled = false
+            button8.enabled = false
+            button9.enabled = false
+        }
         else{
             testDone.hidden = true
         }
+     
     }
     @IBAction func button6(sender: AnyObject) {
          numResponse.append("6")
         print(numResponse)
+        nums1 += numResponse[responses]
+        CurrentNums.text = nums1
         responses += 1
         if ( responses == (test + 4)){
             testDone.hidden = false
         }
+        if(responses >= (test + 4)){
+            button0.enabled = false
+            button1.enabled = false
+            button2.enabled = false
+            button3.enabled = false
+            button4.enabled = false
+            button5.enabled = false
+            button6.enabled = false
+            button7.enabled = false
+            button8.enabled = false
+            button9.enabled = false
+        }
         else{
             testDone.hidden = true
         }
+  
     }
     @IBAction func button7(sender: AnyObject) {
          numResponse.append("7")
         print(numResponse)
+        nums1 += numResponse[responses]
+        CurrentNums.text = nums1
         responses += 1
         if ( responses == (test + 4)){
             testDone.hidden = false
         }
+        if(responses >= (test + 4)){
+            button0.enabled = false
+            button1.enabled = false
+            button2.enabled = false
+            button3.enabled = false
+            button4.enabled = false
+            button5.enabled = false
+            button6.enabled = false
+            button7.enabled = false
+            button8.enabled = false
+            button9.enabled = false
+        }
         else{
             testDone.hidden = true
         }
+   
     }
     @IBAction func button8(sender: AnyObject) {
          numResponse.append("8")
         print(numResponse)
+        nums1 += numResponse[responses]
+        CurrentNums.text = nums1
         responses += 1
         if ( responses == (test + 4)){
             testDone.hidden = false
         }
+        if(responses >= (test + 4)){
+            button0.enabled = false
+            button1.enabled = false
+            button2.enabled = false
+            button3.enabled = false
+            button4.enabled = false
+            button5.enabled = false
+            button6.enabled = false
+            button7.enabled = false
+            button8.enabled = false
+            button9.enabled = false
+        }
         else{
             testDone.hidden = true
         }
+  
     }
     @IBAction func button9(sender: AnyObject) {
          numResponse.append("9")
         print(numResponse)
+        nums1 += numResponse[responses]
+        CurrentNums.text = nums1
         responses += 1
-        if ( responses == (test + 4)){
+        if (responses == (test + 4)){
             testDone.hidden = false
+        }
+        if(responses >= (test + 4)){
+            button0.enabled = false
+            button1.enabled = false
+            button2.enabled = false
+            button3.enabled = false
+            button4.enabled = false
+            button5.enabled = false
+            button6.enabled = false
+            button7.enabled = false
+            button8.enabled = false
+            button9.enabled = false
         }
         else{
             testDone.hidden = true
         }
+ 
     }
     
     
@@ -234,6 +386,19 @@ class ForwardDigitSpan: UIViewController {
         numResponse = []
         responses = 0
         testDone.hidden = true
+        nums1 = ""
+        CurrentNums.text = ""
+        button0.enabled = true
+        button1.enabled = true
+        button2.enabled = true
+        button3.enabled = true
+        button4.enabled = true
+        button5.enabled = true
+        button6.enabled = true
+        button7.enabled = true
+        button8.enabled = true
+        button9.enabled = true
+
     }
     
     var Results: [String] = []
@@ -243,8 +408,8 @@ class ForwardDigitSpan: UIViewController {
         timer.invalidate()
         counter = 0
         countingLabel.text = String(counter)
-      
-        
+        nums1 = ""
+        CurrentNums.text = nums1
         if (numResponse == numOrder){
             print("All values Correct")
             Results.append("All values Correct")
@@ -288,6 +453,7 @@ class ForwardDigitSpan: UIViewController {
                 Results.append(" for Number 7, Expected: " + numOrder[6] + " Got: " + numResponse[6])
                 count+=1
             }
+
         }
         
         self.resultLabel.text = "\(Results)"
@@ -310,7 +476,20 @@ class ForwardDigitSpan: UIViewController {
             button9.hidden = true
             self.instruct1.text = ""
             self.instruct2.text = ""
+            resetButton.hidden = true
+            countingLabel.hidden=true
         }
+        button0.enabled = true
+        button1.enabled = true
+        button2.enabled = true
+        button3.enabled = true
+        button4.enabled = true
+        button5.enabled = true
+        button6.enabled = true
+        button7.enabled = true
+        button8.enabled = true
+        button9.enabled = true
+
     }
     
     override func viewDidLoad() {
@@ -326,6 +505,7 @@ class ForwardDigitSpan: UIViewController {
         button7.hidden = true
         button8.hidden = true
         button9.hidden = true
+        resetButton.hidden = true
         // Do any additional setup after loading the view.
     }
     

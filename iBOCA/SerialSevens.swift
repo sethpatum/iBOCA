@@ -17,6 +17,7 @@ class SerialSevens: UIViewController {
     }
     
     
+    @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var expectedNums: UILabel!
     @IBOutlet weak var recordedNums: UILabel!
     @IBOutlet weak var currentNum: UILabel!
@@ -137,6 +138,16 @@ class SerialSevens: UIViewController {
         
         if (recordNum.count > 1){
             numb = String(recordNum[0]) + String(recordNum[1])
+            button0.enabled = false
+            button1.enabled = false
+            button2.enabled = false
+            button3.enabled = false
+            button4.enabled = false
+            button5.enabled = false
+            button6.enabled = false
+            button7.enabled = false
+            button8.enabled = false
+            button9.enabled = false
         }
         else{
              numb = String(recordNum[0])
@@ -148,6 +159,16 @@ class SerialSevens: UIViewController {
         print(recordNum)
         if (recordNum.count > 1){
              numb = String(recordNum[0]) + String(recordNum[1])
+            button0.enabled = false
+            button1.enabled = false
+            button2.enabled = false
+            button3.enabled = false
+            button4.enabled = false
+            button5.enabled = false
+            button6.enabled = false
+            button7.enabled = false
+            button8.enabled = false
+            button9.enabled = false
         }
         else{
              numb = String(recordNum[0])
@@ -160,6 +181,16 @@ class SerialSevens: UIViewController {
         if (recordNum.count > 1 && recordNum.count < 3){
             numb = String(recordNum[0]) + String(recordNum[1])
             nextInput.hidden = false
+            button0.enabled = false
+            button1.enabled = false
+            button2.enabled = false
+            button3.enabled = false
+            button4.enabled = false
+            button5.enabled = false
+            button6.enabled = false
+            button7.enabled = false
+            button8.enabled = false
+            button9.enabled = false
         }
         else{
             numb = String(recordNum[0])
@@ -173,6 +204,16 @@ class SerialSevens: UIViewController {
         if (recordNum.count > 1 && recordNum.count < 3){
             numb = String(recordNum[0]) + String(recordNum[1])
             nextInput.hidden = false
+            button0.enabled = false
+            button1.enabled = false
+            button2.enabled = false
+            button3.enabled = false
+            button4.enabled = false
+            button5.enabled = false
+            button6.enabled = false
+            button7.enabled = false
+            button8.enabled = false
+            button9.enabled = false
         }
         else{
             numb = String(recordNum[0])
@@ -186,6 +227,16 @@ class SerialSevens: UIViewController {
         if (recordNum.count > 1 && recordNum.count < 3){
             numb = String(recordNum[0]) + String(recordNum[1])
             nextInput.hidden = false
+            button0.enabled = false
+            button1.enabled = false
+            button2.enabled = false
+            button3.enabled = false
+            button4.enabled = false
+            button5.enabled = false
+            button6.enabled = false
+            button7.enabled = false
+            button8.enabled = false
+            button9.enabled = false
         }
         else{
             numb = String(recordNum[0])
@@ -199,6 +250,16 @@ class SerialSevens: UIViewController {
         if (recordNum.count > 1 && recordNum.count < 3){
             numb = String(recordNum[0]) + String(recordNum[1])
             nextInput.hidden = false
+            button0.enabled = false
+            button1.enabled = false
+            button2.enabled = false
+            button3.enabled = false
+            button4.enabled = false
+            button5.enabled = false
+            button6.enabled = false
+            button7.enabled = false
+            button8.enabled = false
+            button9.enabled = false
         }
         else{
             numb = String(recordNum[0])
@@ -212,6 +273,16 @@ class SerialSevens: UIViewController {
         if (recordNum.count > 1 && recordNum.count < 3){
             numb = String(recordNum[0]) + String(recordNum[1])
             nextInput.hidden = false
+            button0.enabled = false
+            button1.enabled = false
+            button2.enabled = false
+            button3.enabled = false
+            button4.enabled = false
+            button5.enabled = false
+            button6.enabled = false
+            button7.enabled = false
+            button8.enabled = false
+            button9.enabled = false
         }
         else{
             numb = String(recordNum[0])
@@ -225,6 +296,16 @@ class SerialSevens: UIViewController {
         if (recordNum.count > 1 && recordNum.count < 3){
             numb = String(recordNum[0]) + String(recordNum[1])
             nextInput.hidden = false
+            button0.enabled = false
+            button1.enabled = false
+            button2.enabled = false
+            button3.enabled = false
+            button4.enabled = false
+            button5.enabled = false
+            button6.enabled = false
+            button7.enabled = false
+            button8.enabled = false
+            button9.enabled = false
         }
         else{
             numb = String(recordNum[0])
@@ -238,6 +319,16 @@ class SerialSevens: UIViewController {
         if (recordNum.count > 1 && recordNum.count < 3){
             numb = String(recordNum[0]) + String(recordNum[1])
             nextInput.hidden = false
+            button0.enabled = false
+            button1.enabled = false
+            button2.enabled = false
+            button3.enabled = false
+            button4.enabled = false
+            button5.enabled = false
+            button6.enabled = false
+            button7.enabled = false
+            button8.enabled = false
+            button9.enabled = false
         }
         else{
             numb = String(recordNum[0])
@@ -251,6 +342,16 @@ class SerialSevens: UIViewController {
         if (recordNum.count > 1 && recordNum.count < 3){
             numb = String(recordNum[0]) + String(recordNum[1])
             nextInput.hidden = false
+            button0.enabled = false
+            button1.enabled = false
+            button2.enabled = false
+            button3.enabled = false
+            button4.enabled = false
+            button5.enabled = false
+            button6.enabled = false
+            button7.enabled = false
+            button8.enabled = false
+            button9.enabled = false
         }
         else{
             numb = String(recordNum[0])
@@ -263,9 +364,21 @@ class SerialSevens: UIViewController {
         recordNum = []
         numb = ""
         nextInput.hidden = true
+        currentNum.text = numb
+        button0.enabled = true
+        button1.enabled = true
+        button2.enabled = true
+        button3.enabled = true
+        button4.enabled = true
+        button5.enabled = true
+        button6.enabled = true
+        button7.enabled = true
+        button8.enabled = true
+        button9.enabled = true
     }
     
     var Records: [String] = []
+    var responseNum = 0
     @IBAction func nextInput(sender: AnyObject) {
         let name = String(recordNum[0]) + String(recordNum[1])
         recordNum = []
@@ -279,6 +392,39 @@ class SerialSevens: UIViewController {
         countingLabel.text = String(counter)
         timer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
         nextInput.hidden = true
+        responseNum += 1
+        if (responseNum >= 5){
+            button0.hidden = true
+            button1.hidden = true
+            button2.hidden = true
+            button3.hidden = true
+            button4.hidden = true
+            button5.hidden = true
+            button6.hidden = true
+            button7.hidden = true
+            button8.hidden = true
+            button9.hidden = true
+            nextInput.hidden = true
+            resetButton.hidden = true
+            start100.hidden = true
+            start90.hidden = true
+            start80.hidden = true
+            start70.hidden = true
+            start60.hidden = true
+            start50.hidden = true
+            timer.invalidate()
+        
+        }
+        button0.enabled = true
+        button1.enabled = true
+        button2.enabled = true
+        button3.enabled = true
+        button4.enabled = true
+        button5.enabled = true
+        button6.enabled = true
+        button7.enabled = true
+        button8.enabled = true
+        button9.enabled = true
     }
     
     override func viewDidLoad() {
