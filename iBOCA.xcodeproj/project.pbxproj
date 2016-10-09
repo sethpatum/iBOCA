@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1B53650E1D7491CF0088B5D2 /* 3DFigureCopy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B53650D1D7491CF0088B5D2 /* 3DFigureCopy.swift */; };
+		1B6567401D7DE07B00C92FA3 /* SemanticListGeneration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B65673F1D7DE07B00C92FA3 /* SemanticListGeneration.swift */; };
 		1BC2DFEF1D4F821F0020D430 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC2DFEE1D4F821F0020D430 /* AppDelegate.swift */; };
 		1BC2DFF11D4F821F0020D430 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC2DFF01D4F821F0020D430 /* ViewController.swift */; };
 		1BC2DFF41D4F821F0020D430 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BC2DFF21D4F821F0020D430 /* Main.storyboard */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		1B53650D1D7491CF0088B5D2 /* 3DFigureCopy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 3DFigureCopy.swift; sourceTree = "<group>"; };
+		1B65673F1D7DE07B00C92FA3 /* SemanticListGeneration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SemanticListGeneration.swift; sourceTree = "<group>"; };
 		1BC2DFEB1D4F821F0020D430 /* iBOCA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iBOCA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BC2DFEE1D4F821F0020D430 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1BC2DFF01D4F821F0020D430 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				E2901DCE1D4F8C3700080F82 /* OrientationTask.swift */,
 				E29AF03F1D51134A00C4AF79 /* ForwardDigitSpan.swift */,
 				1BC2DFF21D4F821F0020D430 /* Main.storyboard */,
+				1B65673F1D7DE07B00C92FA3 /* SemanticListGeneration.swift */,
 				E27BA37E1D523B8400619C07 /* BackwardDigitSpan.swift */,
 				1BC2DFF51D4F821F0020D430 /* Assets.xcassets */,
 				1BC2DFF71D4F821F0020D430 /* LaunchScreen.storyboard */,
@@ -275,6 +278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E27BA37F1D523B8400619C07 /* BackwardDigitSpan.swift in Sources */,
+				1B6567401D7DE07B00C92FA3 /* SemanticListGeneration.swift in Sources */,
 				1B53650E1D7491CF0088B5D2 /* 3DFigureCopy.swift in Sources */,
 				1BC2DFF11D4F821F0020D430 /* ViewController.swift in Sources */,
 				E29AF0401D51134A00C4AF79 /* ForwardDigitSpan.swift in Sources */,
