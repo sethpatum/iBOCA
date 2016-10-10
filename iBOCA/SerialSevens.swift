@@ -137,8 +137,9 @@ class SerialSevens: UIViewController {
         recordNum.append(0)
         print(recordNum)
         
-        if (recordNum.count > 1){
+        if (recordNum.count > 1 && recordNum.count < 3){
             numb = String(recordNum[0]) + String(recordNum[1])
+            nextInput.hidden = false
             button0.enabled = false
             button1.enabled = false
             button2.enabled = false
@@ -152,14 +153,16 @@ class SerialSevens: UIViewController {
         }
         else{
              numb = String(recordNum[0])
+            nextInput.hidden = true
         }
         currentNum.text = numb
     }
     @IBAction func press1(sender: AnyObject) {
         recordNum.append(1)
         print(recordNum)
-        if (recordNum.count > 1){
+        if (recordNum.count > 1 && recordNum.count < 3){
              numb = String(recordNum[0]) + String(recordNum[1])
+            nextInput.hidden = false
             button0.enabled = false
             button1.enabled = false
             button2.enabled = false
@@ -173,6 +176,7 @@ class SerialSevens: UIViewController {
         }
         else{
              numb = String(recordNum[0])
+            nextInput.hidden = true
         }
         currentNum.text = numb
     }
