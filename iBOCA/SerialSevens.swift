@@ -17,6 +17,7 @@ class SerialSevens: UIViewController {
     }
     
     
+    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var expectedNums: UILabel!
     @IBOutlet weak var recordedNums: UILabel!
@@ -136,8 +137,9 @@ class SerialSevens: UIViewController {
         recordNum.append(0)
         print(recordNum)
         
-        if (recordNum.count > 1){
+        if (recordNum.count > 1 && recordNum.count < 3){
             numb = String(recordNum[0]) + String(recordNum[1])
+            nextInput.hidden = false
             button0.enabled = false
             button1.enabled = false
             button2.enabled = false
@@ -151,14 +153,16 @@ class SerialSevens: UIViewController {
         }
         else{
              numb = String(recordNum[0])
+            nextInput.hidden = true
         }
         currentNum.text = numb
     }
     @IBAction func press1(sender: AnyObject) {
         recordNum.append(1)
         print(recordNum)
-        if (recordNum.count > 1){
+        if (recordNum.count > 1 && recordNum.count < 3){
              numb = String(recordNum[0]) + String(recordNum[1])
+            nextInput.hidden = false
             button0.enabled = false
             button1.enabled = false
             button2.enabled = false
@@ -172,6 +176,7 @@ class SerialSevens: UIViewController {
         }
         else{
              numb = String(recordNum[0])
+            nextInput.hidden = true
         }
         currentNum.text = numb
     }
@@ -413,6 +418,8 @@ class SerialSevens: UIViewController {
             start60.hidden = true
             start50.hidden = true
             timer.invalidate()
+            countingLabel.hidden = true
+            timeLabel.hidden = true
         
         }
         button0.enabled = true

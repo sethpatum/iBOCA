@@ -20,6 +20,8 @@ class BackwardDigitSpan: UIViewController {
     
     var test = 0
     
+    @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var currentInput: UILabel!
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var CurrentNums: UILabel!
     @IBOutlet weak var instruct1: UILabel!
@@ -455,6 +457,9 @@ class BackwardDigitSpan: UIViewController {
             self.instruct2.text = ""
             resetButton.hidden = true
             countingLabel.hidden = true
+            currentInput.hidden = true
+            timerLabel.hidden = true
+             timer.invalidate() 
         }
         button0.enabled = true
         button1.enabled = true

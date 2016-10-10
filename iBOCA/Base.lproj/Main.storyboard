@@ -218,12 +218,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="evj-DS-RiR">
-                                <rect key="frame" x="696" y="549" width="89" height="47"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qmt-Jp-vum">
                                 <rect key="frame" x="219" y="369" width="89" height="30"/>
                                 <state key="normal" title="Reset Values"/>
@@ -231,6 +225,18 @@
                                     <action selector="ResetButton:" destination="ldB-3t-wMh" eventType="touchUpInside" id="7x6-7j-itj"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eqD-0a-srj">
+                                <rect key="frame" x="715" y="507" width="43" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="evj-DS-RiR">
+                                <rect key="frame" x="766" y="507" width="39" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -259,6 +265,7 @@
                         <outlet property="start70" destination="2J2-E0-F8Q" id="ffS-fm-QHb"/>
                         <outlet property="start80" destination="1fS-jd-5s5" id="udQ-zd-8li"/>
                         <outlet property="start90" destination="A6w-bW-sWp" id="ncF-UV-BvF"/>
+                        <outlet property="timeLabel" destination="eqD-0a-srj" id="8Sj-fr-J0s"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iyn-rw-y02" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -818,12 +825,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLD-TR-P1S">
-                                <rect key="frame" x="849" y="479" width="96" height="58"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4W9-hi-sHb">
                                 <rect key="frame" x="211" y="551" width="89" height="30"/>
                                 <state key="normal" title="Reset Values"/>
@@ -843,12 +844,25 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mmh-bG-vX3">
+                                <rect key="frame" x="772" y="466" width="43" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLD-TR-P1S">
+                                <rect key="frame" x="823" y="466" width="96" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
+                        <outlet property="CurrentInput" destination="tpj-qJ-M90" id="Hzh-3g-Ib8"/>
                         <outlet property="CurrentNums" destination="nTt-Qz-w2y" id="a4f-bU-ZBS"/>
                         <outlet property="Label0" destination="Ria-Hl-Lgh" id="3M7-TG-q9g"/>
                         <outlet property="Label1" destination="dDm-cI-A4C" id="tka-Nj-gRK"/>
@@ -874,6 +888,7 @@
                         <outlet property="resetButton" destination="4W9-hi-sHb" id="bXf-xC-MuD"/>
                         <outlet property="resultLabel" destination="VZG-l1-V7G" id="XJ2-hM-3M4"/>
                         <outlet property="testDone" destination="cv6-7u-Kn2" id="VqS-a5-ymK"/>
+                        <outlet property="timerLabel" destination="Mmh-bG-vX3" id="Sxn-bD-Hdh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ri2-gj-BcY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1139,7 +1154,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8uu-bZ-PJz">
-                                <rect key="frame" x="845" y="442" width="82" height="54"/>
+                                <rect key="frame" x="845" y="442" width="82" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1169,6 +1184,12 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mIM-J6-54i">
+                                <rect key="frame" x="794" y="442" width="43" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1195,11 +1216,13 @@
                         <outlet property="button8" destination="KwA-gk-yVh" id="fe3-Uj-13b"/>
                         <outlet property="button9" destination="6Fj-od-XyT" id="suO-ZZ-DPu"/>
                         <outlet property="countingLabel" destination="8uu-bZ-PJz" id="Ayi-AB-5BW"/>
+                        <outlet property="currentInput" destination="1IT-y6-WT6" id="7FZ-Ms-IaY"/>
                         <outlet property="instruct1" destination="BGO-zh-Tlb" id="4ug-35-j9g"/>
                         <outlet property="instruct2" destination="tra-2c-Zzj" id="hG2-kE-5fX"/>
                         <outlet property="resetButton" destination="fuh-Xd-NJ3" id="im5-p4-zdt"/>
                         <outlet property="resultLabel" destination="WPR-ky-Kkf" id="FaY-D9-aWe"/>
                         <outlet property="testDone" destination="oIu-v6-Dd1" id="BIx-21-TCU"/>
+                        <outlet property="timerLabel" destination="mIM-J6-54i" id="LQ1-g3-IEI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SRn-Yb-UaP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1208,6 +1231,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="mwA-PF-xBP"/>
+        <segue reference="vmf-Li-XgP"/>
     </inferredMetricsTieBreakers>
 </document>
