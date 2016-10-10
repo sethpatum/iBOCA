@@ -19,6 +19,8 @@ class ForwardDigitSpan: UIViewController {
         print(counter)
     }
     
+    @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var CurrentInput: UILabel!
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var CurrentNums: UILabel!
     @IBOutlet weak var instruct1: UILabel!
@@ -477,7 +479,10 @@ class ForwardDigitSpan: UIViewController {
             self.instruct1.text = ""
             self.instruct2.text = ""
             resetButton.hidden = true
-            countingLabel.hidden=true
+            countingLabel.hidden = true
+            CurrentInput.hidden = true
+            timerLabel.hidden = true
+            timer.invalidate()
         }
         button0.enabled = true
         button1.enabled = true

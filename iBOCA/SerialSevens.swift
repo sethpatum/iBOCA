@@ -17,6 +17,7 @@ class SerialSevens: UIViewController {
     }
     
     
+    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var expectedNums: UILabel!
     @IBOutlet weak var recordedNums: UILabel!
@@ -413,6 +414,8 @@ class SerialSevens: UIViewController {
             start60.hidden = true
             start50.hidden = true
             timer.invalidate()
+            countingLabel.hidden = true
+            timeLabel.hidden = true
         
         }
         button0.enabled = true
