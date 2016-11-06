@@ -9,11 +9,11 @@
 import UIKit
 
 class SerialSevens: UIViewController {
-    var timer = NSTimer()
+    var timer = Timer()
     var counter = 0
     
     func updateCounter() {
-        countingLabel.text = String(counter++)
+        countingLabel.text = String(describing: counter += 1)
     }
     
     
@@ -47,410 +47,410 @@ class SerialSevens: UIViewController {
     @IBOutlet weak var countingLabel: UILabel!
     var expectedNum : [Int] = []
     
-    @IBAction func press100(sender: AnyObject) {
+    @IBAction func press100(_ sender: AnyObject) {
         expectedNums.text = "93, 86, 79, 72, 65"
-        start90.hidden = true
-        start80.hidden = true
-        start70.hidden = true
-        start60.hidden = true
-        start50.hidden = true
-        button0.hidden = false ; button1.hidden = false ; button2.hidden = false
-        button3.hidden = false ; button4.hidden = false ; button5.hidden = false
-        button6.hidden = false ; button7.hidden = false ; button8.hidden = false
-        button9.hidden = false
-        timer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
+        start90.isHidden = true
+        start80.isHidden = true
+        start70.isHidden = true
+        start60.isHidden = true
+        start50.isHidden = true
+        button0.isHidden = false ; button1.isHidden = false ; button2.isHidden = false
+        button3.isHidden = false ; button4.isHidden = false ; button5.isHidden = false
+        button6.isHidden = false ; button7.isHidden = false ; button8.isHidden = false
+        button9.isHidden = false
+        timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(SerialSevens.updateCounter), userInfo: nil, repeats: true)
     }
     
-    @IBAction func press90(sender: AnyObject) {
+    @IBAction func press90(_ sender: AnyObject) {
         expectedNums.text = "83, 76, 69, 62, 55"
-        start100.hidden = true
-        start80.hidden = true
-        start70.hidden = true
-        start60.hidden = true
-        start50.hidden = true
+        start100.isHidden = true
+        start80.isHidden = true
+        start70.isHidden = true
+        start60.isHidden = true
+        start50.isHidden = true
         
-        button0.hidden = false ; button1.hidden = false ; button2.hidden = false
-        button3.hidden = false ; button4.hidden = false ; button5.hidden = false
-        button6.hidden = false ; button7.hidden = false ; button8.hidden = false
-        button9.hidden = false
-        timer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
+        button0.isHidden = false ; button1.isHidden = false ; button2.isHidden = false
+        button3.isHidden = false ; button4.isHidden = false ; button5.isHidden = false
+        button6.isHidden = false ; button7.isHidden = false ; button8.isHidden = false
+        button9.isHidden = false
+        timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(SerialSevens.updateCounter), userInfo: nil, repeats: true)
     }
-    @IBAction func press80(sender: AnyObject) {
+    @IBAction func press80(_ sender: AnyObject) {
         expectedNums.text = "73, 66, 59, 52, 45"
-        start100.hidden = true
-        start90.hidden = true
-        start70.hidden = true
-        start60.hidden = true
-        start50.hidden = true
+        start100.isHidden = true
+        start90.isHidden = true
+        start70.isHidden = true
+        start60.isHidden = true
+        start50.isHidden = true
         
-        button0.hidden = false ; button1.hidden = false ; button2.hidden = false
-        button3.hidden = false ; button4.hidden = false ; button5.hidden = false
-        button6.hidden = false ; button7.hidden = false ; button8.hidden = false
-        button9.hidden = false
-        timer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
+        button0.isHidden = false ; button1.isHidden = false ; button2.isHidden = false
+        button3.isHidden = false ; button4.isHidden = false ; button5.isHidden = false
+        button6.isHidden = false ; button7.isHidden = false ; button8.isHidden = false
+        button9.isHidden = false
+        timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(SerialSevens.updateCounter), userInfo: nil, repeats: true)
     }
-    @IBAction func press70(sender: AnyObject) {
+    @IBAction func press70(_ sender: AnyObject) {
        expectedNums.text = "63, 56, 49, 42, 35"
-        start90.hidden = true
-        start80.hidden = true
-        start100.hidden = true
-        start60.hidden = true
-        start50.hidden = true
+        start90.isHidden = true
+        start80.isHidden = true
+        start100.isHidden = true
+        start60.isHidden = true
+        start50.isHidden = true
         
-        button0.hidden = false ; button1.hidden = false ; button2.hidden = false
-        button3.hidden = false ; button4.hidden = false ; button5.hidden = false
-        button6.hidden = false ; button7.hidden = false ; button8.hidden = false
-        button9.hidden = false
-        timer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
+        button0.isHidden = false ; button1.isHidden = false ; button2.isHidden = false
+        button3.isHidden = false ; button4.isHidden = false ; button5.isHidden = false
+        button6.isHidden = false ; button7.isHidden = false ; button8.isHidden = false
+        button9.isHidden = false
+        timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(SerialSevens.updateCounter), userInfo: nil, repeats: true)
     }
-    @IBAction func press60(sender: AnyObject) {
+    @IBAction func press60(_ sender: AnyObject) {
        expectedNums.text = "53, 46, 39, 32, 25"
-        start90.hidden = true
-        start80.hidden = true
-        start70.hidden = true
-        start100.hidden = true
-        start50.hidden = true
+        start90.isHidden = true
+        start80.isHidden = true
+        start70.isHidden = true
+        start100.isHidden = true
+        start50.isHidden = true
         
-        button0.hidden = false ; button1.hidden = false ; button2.hidden = false
-        button3.hidden = false ; button4.hidden = false ; button5.hidden = false
-        button6.hidden = false ; button7.hidden = false ; button8.hidden = false
-        button9.hidden = false
-        timer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
+        button0.isHidden = false ; button1.isHidden = false ; button2.isHidden = false
+        button3.isHidden = false ; button4.isHidden = false ; button5.isHidden = false
+        button6.isHidden = false ; button7.isHidden = false ; button8.isHidden = false
+        button9.isHidden = false
+        timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(SerialSevens.updateCounter), userInfo: nil, repeats: true)
     }
-    @IBAction func press50(sender: AnyObject) {
+    @IBAction func press50(_ sender: AnyObject) {
        expectedNums.text = "43, 36, 29, 22, 15"
-        start90.hidden = true
-        start80.hidden = true
-        start70.hidden = true
-        start60.hidden = true
-        start100.hidden = true
+        start90.isHidden = true
+        start80.isHidden = true
+        start70.isHidden = true
+        start60.isHidden = true
+        start100.isHidden = true
         
-        button0.hidden = false ; button1.hidden = false ; button2.hidden = false
-        button3.hidden = false ; button4.hidden = false ; button5.hidden = false
-        button6.hidden = false ; button7.hidden = false ; button8.hidden = false
-        button9.hidden = false
-        timer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
+        button0.isHidden = false ; button1.isHidden = false ; button2.isHidden = false
+        button3.isHidden = false ; button4.isHidden = false ; button5.isHidden = false
+        button6.isHidden = false ; button7.isHidden = false ; button8.isHidden = false
+        button9.isHidden = false
+        timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(SerialSevens.updateCounter), userInfo: nil, repeats: true)
     }
     var recordNum : [Int] = []
     var numb = ""
-    @IBAction func press0(sender: AnyObject) {
+    @IBAction func press0(_ sender: AnyObject) {
         recordNum.append(0)
         print(recordNum)
         
         if (recordNum.count > 1 && recordNum.count < 3){
             numb = String(recordNum[0]) + String(recordNum[1])
-            nextInput.hidden = false
-            button0.enabled = false
-            button1.enabled = false
-            button2.enabled = false
-            button3.enabled = false
-            button4.enabled = false
-            button5.enabled = false
-            button6.enabled = false
-            button7.enabled = false
-            button8.enabled = false
-            button9.enabled = false
+            nextInput.isHidden = false
+            button0.isEnabled = false
+            button1.isEnabled = false
+            button2.isEnabled = false
+            button3.isEnabled = false
+            button4.isEnabled = false
+            button5.isEnabled = false
+            button6.isEnabled = false
+            button7.isEnabled = false
+            button8.isEnabled = false
+            button9.isEnabled = false
         }
         else{
              numb = String(recordNum[0])
-            nextInput.hidden = true
+            nextInput.isHidden = true
         }
         currentNum.text = numb
     }
-    @IBAction func press1(sender: AnyObject) {
+    @IBAction func press1(_ sender: AnyObject) {
         recordNum.append(1)
         print(recordNum)
         if (recordNum.count > 1 && recordNum.count < 3){
              numb = String(recordNum[0]) + String(recordNum[1])
-            nextInput.hidden = false
-            button0.enabled = false
-            button1.enabled = false
-            button2.enabled = false
-            button3.enabled = false
-            button4.enabled = false
-            button5.enabled = false
-            button6.enabled = false
-            button7.enabled = false
-            button8.enabled = false
-            button9.enabled = false
+            nextInput.isHidden = false
+            button0.isEnabled = false
+            button1.isEnabled = false
+            button2.isEnabled = false
+            button3.isEnabled = false
+            button4.isEnabled = false
+            button5.isEnabled = false
+            button6.isEnabled = false
+            button7.isEnabled = false
+            button8.isEnabled = false
+            button9.isEnabled = false
         }
         else{
              numb = String(recordNum[0])
-            nextInput.hidden = true
+            nextInput.isHidden = true
         }
         currentNum.text = numb
     }
-    @IBAction func press2(sender: AnyObject) {
+    @IBAction func press2(_ sender: AnyObject) {
         recordNum.append(2)
         print(recordNum)
         if (recordNum.count > 1 && recordNum.count < 3){
             numb = String(recordNum[0]) + String(recordNum[1])
-            nextInput.hidden = false
-            button0.enabled = false
-            button1.enabled = false
-            button2.enabled = false
-            button3.enabled = false
-            button4.enabled = false
-            button5.enabled = false
-            button6.enabled = false
-            button7.enabled = false
-            button8.enabled = false
-            button9.enabled = false
+            nextInput.isHidden = false
+            button0.isEnabled = false
+            button1.isEnabled = false
+            button2.isEnabled = false
+            button3.isEnabled = false
+            button4.isEnabled = false
+            button5.isEnabled = false
+            button6.isEnabled = false
+            button7.isEnabled = false
+            button8.isEnabled = false
+            button9.isEnabled = false
         }
         else{
             numb = String(recordNum[0])
-            nextInput.hidden = true
+            nextInput.isHidden = true
         }
         currentNum.text = numb
     }
-    @IBAction func press3(sender: AnyObject) {
+    @IBAction func press3(_ sender: AnyObject) {
         recordNum.append(3)
         print(recordNum)
         if (recordNum.count > 1 && recordNum.count < 3){
             numb = String(recordNum[0]) + String(recordNum[1])
-            nextInput.hidden = false
-            button0.enabled = false
-            button1.enabled = false
-            button2.enabled = false
-            button3.enabled = false
-            button4.enabled = false
-            button5.enabled = false
-            button6.enabled = false
-            button7.enabled = false
-            button8.enabled = false
-            button9.enabled = false
+            nextInput.isHidden = false
+            button0.isEnabled = false
+            button1.isEnabled = false
+            button2.isEnabled = false
+            button3.isEnabled = false
+            button4.isEnabled = false
+            button5.isEnabled = false
+            button6.isEnabled = false
+            button7.isEnabled = false
+            button8.isEnabled = false
+            button9.isEnabled = false
         }
         else{
             numb = String(recordNum[0])
-            nextInput.hidden = true
+            nextInput.isHidden = true
         }
         currentNum.text = numb
     }
-    @IBAction func press4(sender: AnyObject) {
+    @IBAction func press4(_ sender: AnyObject) {
         recordNum.append(4)
         print(recordNum)
         if (recordNum.count > 1 && recordNum.count < 3){
             numb = String(recordNum[0]) + String(recordNum[1])
-            nextInput.hidden = false
-            button0.enabled = false
-            button1.enabled = false
-            button2.enabled = false
-            button3.enabled = false
-            button4.enabled = false
-            button5.enabled = false
-            button6.enabled = false
-            button7.enabled = false
-            button8.enabled = false
-            button9.enabled = false
+            nextInput.isHidden = false
+            button0.isEnabled = false
+            button1.isEnabled = false
+            button2.isEnabled = false
+            button3.isEnabled = false
+            button4.isEnabled = false
+            button5.isEnabled = false
+            button6.isEnabled = false
+            button7.isEnabled = false
+            button8.isEnabled = false
+            button9.isEnabled = false
         }
         else{
             numb = String(recordNum[0])
-            nextInput.hidden = true
+            nextInput.isHidden = true
         }
         currentNum.text = numb
     }
-    @IBAction func press5(sender: AnyObject) {
+    @IBAction func press5(_ sender: AnyObject) {
         recordNum.append(5)
         print(recordNum)
         if (recordNum.count > 1 && recordNum.count < 3){
             numb = String(recordNum[0]) + String(recordNum[1])
-            nextInput.hidden = false
-            button0.enabled = false
-            button1.enabled = false
-            button2.enabled = false
-            button3.enabled = false
-            button4.enabled = false
-            button5.enabled = false
-            button6.enabled = false
-            button7.enabled = false
-            button8.enabled = false
-            button9.enabled = false
+            nextInput.isHidden = false
+            button0.isEnabled = false
+            button1.isEnabled = false
+            button2.isEnabled = false
+            button3.isEnabled = false
+            button4.isEnabled = false
+            button5.isEnabled = false
+            button6.isEnabled = false
+            button7.isEnabled = false
+            button8.isEnabled = false
+            button9.isEnabled = false
         }
         else{
             numb = String(recordNum[0])
-            nextInput.hidden = true
+            nextInput.isHidden = true
         }
         currentNum.text = numb
     }
-    @IBAction func press6(sender: AnyObject) {
+    @IBAction func press6(_ sender: AnyObject) {
         recordNum.append(6)
         print(recordNum)
         if (recordNum.count > 1 && recordNum.count < 3){
             numb = String(recordNum[0]) + String(recordNum[1])
-            nextInput.hidden = false
-            button0.enabled = false
-            button1.enabled = false
-            button2.enabled = false
-            button3.enabled = false
-            button4.enabled = false
-            button5.enabled = false
-            button6.enabled = false
-            button7.enabled = false
-            button8.enabled = false
-            button9.enabled = false
+            nextInput.isHidden = false
+            button0.isEnabled = false
+            button1.isEnabled = false
+            button2.isEnabled = false
+            button3.isEnabled = false
+            button4.isEnabled = false
+            button5.isEnabled = false
+            button6.isEnabled = false
+            button7.isEnabled = false
+            button8.isEnabled = false
+            button9.isEnabled = false
         }
         else{
             numb = String(recordNum[0])
-            nextInput.hidden = true
+            nextInput.isHidden = true
         }
         currentNum.text = numb
     }
-    @IBAction func press7(sender: AnyObject) {
+    @IBAction func press7(_ sender: AnyObject) {
         recordNum.append(7)
         print(recordNum)
         if (recordNum.count > 1 && recordNum.count < 3){
             numb = String(recordNum[0]) + String(recordNum[1])
-            nextInput.hidden = false
-            button0.enabled = false
-            button1.enabled = false
-            button2.enabled = false
-            button3.enabled = false
-            button4.enabled = false
-            button5.enabled = false
-            button6.enabled = false
-            button7.enabled = false
-            button8.enabled = false
-            button9.enabled = false
+            nextInput.isHidden = false
+            button0.isEnabled = false
+            button1.isEnabled = false
+            button2.isEnabled = false
+            button3.isEnabled = false
+            button4.isEnabled = false
+            button5.isEnabled = false
+            button6.isEnabled = false
+            button7.isEnabled = false
+            button8.isEnabled = false
+            button9.isEnabled = false
         }
         else{
             numb = String(recordNum[0])
-            nextInput.hidden = true
+            nextInput.isHidden = true
         }
         currentNum.text = numb
     }
-    @IBAction func press8(sender: AnyObject) {
+    @IBAction func press8(_ sender: AnyObject) {
         recordNum.append(8)
         print(recordNum)
         if (recordNum.count > 1 && recordNum.count < 3){
             numb = String(recordNum[0]) + String(recordNum[1])
-            nextInput.hidden = false
-            button0.enabled = false
-            button1.enabled = false
-            button2.enabled = false
-            button3.enabled = false
-            button4.enabled = false
-            button5.enabled = false
-            button6.enabled = false
-            button7.enabled = false
-            button8.enabled = false
-            button9.enabled = false
+            nextInput.isHidden = false
+            button0.isEnabled = false
+            button1.isEnabled = false
+            button2.isEnabled = false
+            button3.isEnabled = false
+            button4.isEnabled = false
+            button5.isEnabled = false
+            button6.isEnabled = false
+            button7.isEnabled = false
+            button8.isEnabled = false
+            button9.isEnabled = false
         }
         else{
             numb = String(recordNum[0])
-            nextInput.hidden = true
+            nextInput.isHidden = true
         }
         currentNum.text = numb
     }
-    @IBAction func press9(sender: AnyObject) {
+    @IBAction func press9(_ sender: AnyObject) {
         recordNum.append(9)
         print(recordNum)
         if (recordNum.count > 1 && recordNum.count < 3){
             numb = String(recordNum[0]) + String(recordNum[1])
-            nextInput.hidden = false
-            button0.enabled = false
-            button1.enabled = false
-            button2.enabled = false
-            button3.enabled = false
-            button4.enabled = false
-            button5.enabled = false
-            button6.enabled = false
-            button7.enabled = false
-            button8.enabled = false
-            button9.enabled = false
+            nextInput.isHidden = false
+            button0.isEnabled = false
+            button1.isEnabled = false
+            button2.isEnabled = false
+            button3.isEnabled = false
+            button4.isEnabled = false
+            button5.isEnabled = false
+            button6.isEnabled = false
+            button7.isEnabled = false
+            button8.isEnabled = false
+            button9.isEnabled = false
         }
         else{
             numb = String(recordNum[0])
-            nextInput.hidden = true
+            nextInput.isHidden = true
         }
         currentNum.text = numb
     }
     
-    @IBAction func ResetButton(sender: AnyObject) {
+    @IBAction func ResetButton(_ sender: AnyObject) {
         recordNum = []
         numb = ""
-        nextInput.hidden = true
+        nextInput.isHidden = true
         currentNum.text = numb
-        button0.enabled = true
-        button1.enabled = true
-        button2.enabled = true
-        button3.enabled = true
-        button4.enabled = true
-        button5.enabled = true
-        button6.enabled = true
-        button7.enabled = true
-        button8.enabled = true
-        button9.enabled = true
+        button0.isEnabled = true
+        button1.isEnabled = true
+        button2.isEnabled = true
+        button3.isEnabled = true
+        button4.isEnabled = true
+        button5.isEnabled = true
+        button6.isEnabled = true
+        button7.isEnabled = true
+        button8.isEnabled = true
+        button9.isEnabled = true
     }
     
     var Records: [String] = []
     var responseNum = 0
-    @IBAction func nextInput(sender: AnyObject) {
+    @IBAction func nextInput(_ sender: AnyObject) {
         let name = String(recordNum[0]) + String(recordNum[1])
         recordNum = []
         currentNum.text = ""
         Records.append(name)
-        let name2 = String(Records)
+        let name2 = String(describing: Records)
         recordedNums.text = name2
         print(Records)
         timer.invalidate()
         counter = 0
         countingLabel.text = String(counter)
-        timer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
-        nextInput.hidden = true
+        timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(SerialSevens.updateCounter), userInfo: nil, repeats: true)
+        nextInput.isHidden = true
         responseNum += 1
         if (responseNum >= 5){
-            button0.hidden = true
-            button1.hidden = true
-            button2.hidden = true
-            button3.hidden = true
-            button4.hidden = true
-            button5.hidden = true
-            button6.hidden = true
-            button7.hidden = true
-            button8.hidden = true
-            button9.hidden = true
-            nextInput.hidden = true
-            resetButton.hidden = true
-            start100.hidden = true
-            start90.hidden = true
-            start80.hidden = true
-            start70.hidden = true
-            start60.hidden = true
-            start50.hidden = true
+            button0.isHidden = true
+            button1.isHidden = true
+            button2.isHidden = true
+            button3.isHidden = true
+            button4.isHidden = true
+            button5.isHidden = true
+            button6.isHidden = true
+            button7.isHidden = true
+            button8.isHidden = true
+            button9.isHidden = true
+            nextInput.isHidden = true
+            resetButton.isHidden = true
+            start100.isHidden = true
+            start90.isHidden = true
+            start80.isHidden = true
+            start70.isHidden = true
+            start60.isHidden = true
+            start50.isHidden = true
             timer.invalidate()
-            countingLabel.hidden = true
-            timeLabel.hidden = true
+            countingLabel.isHidden = true
+            timeLabel.isHidden = true
         
         }
-        button0.enabled = true
-        button1.enabled = true
-        button2.enabled = true
-        button3.enabled = true
-        button4.enabled = true
-        button5.enabled = true
-        button6.enabled = true
-        button7.enabled = true
-        button8.enabled = true
-        button9.enabled = true
+        button0.isEnabled = true
+        button1.isEnabled = true
+        button2.isEnabled = true
+        button3.isEnabled = true
+        button4.isEnabled = true
+        button5.isEnabled = true
+        button6.isEnabled = true
+        button7.isEnabled = true
+        button8.isEnabled = true
+        button9.isEnabled = true
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-            button0.hidden = true
-            button1.hidden = true
-            button2.hidden = true
-            button3.hidden = true
-            button4.hidden = true
-            button5.hidden = true
-            button6.hidden = true
-            button7.hidden = true
-            button8.hidden = true
-            button9.hidden = true
-            nextInput.hidden = true
+            button0.isHidden = true
+            button1.isHidden = true
+            button2.isHidden = true
+            button3.isHidden = true
+            button4.isHidden = true
+            button5.isHidden = true
+            button6.isHidden = true
+            button7.isHidden = true
+            button8.isHidden = true
+            button9.isHidden = true
+            nextInput.isHidden = true
         
         
         func updateCounter() {
-            countingLabel.text = String(counter++)
+            countingLabel.text = String(describing: counter += 1)
         }
         
         // Do any additional setup after loading the view.

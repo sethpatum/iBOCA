@@ -54,11 +54,11 @@ class Demographics: UIViewController, MFMailComposeViewControllerDelegate, UITex
     @IBOutlet weak var MRField: UITextField!
     
     
-    @IBAction func updateName(sender: AnyObject) {
+    @IBAction func updateName(_ sender: AnyObject) {
         name = nameField.text
     }
     
-    @IBAction func updateMR(sender: AnyObject) {
+    @IBAction func updateMR(_ sender: AnyObject) {
         MR = MRField.text
     }
     
@@ -81,11 +81,11 @@ class Demographics: UIViewController, MFMailComposeViewControllerDelegate, UITex
         
         name = ""
         MR = ""
-        age = ageData[AgePicker.selectedRowInComponent(0)]
-        Gender = genderData[GenderPicker.selectedRowInComponent(0)]
-        Ethnicity = ethnicData[EthnicityPicker.selectedRowInComponent(0)]
-        Education = educationData[EducationPicker.selectedRowInComponent(0)]
-        Race = raceData[RacePicker.selectedRowInComponent(0)]
+        age = ageData[AgePicker.selectedRow(inComponent: 0)]
+        Gender = genderData[GenderPicker.selectedRow(inComponent: 0)]
+        Ethnicity = ethnicData[EthnicityPicker.selectedRow(inComponent: 0)]
+        Education = educationData[EducationPicker.selectedRow(inComponent: 0)]
+        Race = raceData[RacePicker.selectedRow(inComponent: 0)]
        
     }
 
@@ -95,11 +95,11 @@ class Demographics: UIViewController, MFMailComposeViewControllerDelegate, UITex
     }
     
                     //pickerview setup
-    func numberOfComponentsInPickerView(pickerView : UIPickerView!) -> Int{
+    func numberOfComponentsInPickerView(_ pickerView : UIPickerView!) -> Int{
         return 1
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
         if pickerView == AgePicker {
             return ageData.count
         } else if pickerView == GenderPicker {
@@ -114,7 +114,7 @@ class Demographics: UIViewController, MFMailComposeViewControllerDelegate, UITex
         return 1
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView == AgePicker {
             age = ageData[row]
             return ageData[row]
@@ -133,7 +133,7 @@ class Demographics: UIViewController, MFMailComposeViewControllerDelegate, UITex
         }
        return ""
     }
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == AgePicker {
             age = ageData[row]
         } else if pickerView == GenderPicker {
@@ -153,18 +153,18 @@ class Demographics: UIViewController, MFMailComposeViewControllerDelegate, UITex
         }
     }
     
-    func addOtherCondition(pickerView:UIPickerView){
-        let alert = UIAlertController(title: "Other", message: "Enter other ", preferredStyle: .Alert)
+    func addOtherCondition(_ pickerView:UIPickerView){
+        let alert = UIAlertController(title: "Other", message: "Enter other ", preferredStyle: .alert)
         
         //2. Add the text field. You can configure it however you need.
         
-        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
+        alert.addTextField(configurationHandler: { (textField) -> Void in
             textField.text = ""
             
         })
         
         //3. Grab the value from the text field, and print it when the user clicks OK.
-        alert.addAction(UIAlertAction(title: "Done", style: .Default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "Done", style: .default, handler: { (action) -> Void in
             let textField = alert.textFields![0] as UITextField
             //self.resultComments[self.count-startCount] = textField.text!
             let result = textField.text
@@ -184,10 +184,10 @@ class Demographics: UIViewController, MFMailComposeViewControllerDelegate, UITex
         }))
         
         // 4. Present the alert.
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
 
-    @IBAction func TestDone(sender: AnyObject) {
+    @IBAction func TestDone(_ sender: AnyObject) {
     print(name)
     print(MR)
     print(Gender)

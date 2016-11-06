@@ -18,9 +18,9 @@ var afterBreak = Bool()
 
 var imageSet = Int()
 
-var startTime = NSTimeInterval()
-var startTime2 = NSDate()
-var timer = NSTimer()
+var startTime = TimeInterval()
+var startTime2 = Foundation.Date()
+var timer = Timer()
 
 var recallErrors = [Int]()
 var recallTimes = [Double]()
@@ -34,7 +34,7 @@ class VisualAssociationTask: UIViewController {
     @IBOutlet weak var back: UIButton!
     @IBOutlet weak var start: UIButton!
     
-    @IBOutlet weak var next: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
     
     @IBOutlet weak var resultLabel: UILabel!
     
@@ -76,10 +76,10 @@ class VisualAssociationTask: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         //navigationItem.title = "back"
         
-        gesture = UIPanGestureRecognizer(target: self, action: Selector("wasDragged:"))
+        gesture = UIPanGestureRecognizer(target: self, action: #selector(VisualAssociationTask.wasDragged(_:)))
         
         if(afterBreak == true){
-            timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "updateInDelay:", userInfo: nil, repeats: true)
+            timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(VisualAssociationTask.updateInDelay(_:)), userInfo: nil, repeats: true)
             delayLabel.text = "Recommended delay: 5 minutes"
         }
         
@@ -87,58 +87,58 @@ class VisualAssociationTask: UIViewController {
         
         let arrowpic = UIImage(named: "arrow") as UIImage?
         
-        arrowButton1 = UIButton(type: UIButtonType.Custom) as UIButton
-        arrowButton1.frame = CGRectMake(211, 670, 90, 90)
-        arrowButton1.setImage(arrowpic, forState: .Normal)
-        arrowButton1.addTarget(self, action: "recognize1:", forControlEvents:.TouchUpInside)
-        arrowButton1.hidden = true
+        arrowButton1 = UIButton(type: UIButtonType.custom) as UIButton
+        arrowButton1.frame = CGRect(x: 211, y: 670, width: 90, height: 90)
+        arrowButton1.setImage(arrowpic, for: UIControlState())
+        arrowButton1.addTarget(self, action: #selector(VisualAssociationTask.recognize1(_:)), for:.touchUpInside)
+        arrowButton1.isHidden = true
         self.view.addSubview(arrowButton1)
         
-        arrowButton2 = UIButton(type: UIButtonType.Custom) as UIButton
-        arrowButton2.frame = CGRectMake(723, 670, 90, 90)
-        arrowButton2.setImage(arrowpic, forState: .Normal)
-        arrowButton2.addTarget(self, action: "recognize2:", forControlEvents:.TouchUpInside)
-        arrowButton2.hidden = true
+        arrowButton2 = UIButton(type: UIButtonType.custom) as UIButton
+        arrowButton2.frame = CGRect(x: 723, y: 670, width: 90, height: 90)
+        arrowButton2.setImage(arrowpic, for: UIControlState())
+        arrowButton2.addTarget(self, action: #selector(VisualAssociationTask.recognize2(_:)), for:.touchUpInside)
+        arrowButton2.isHidden = true
         self.view.addSubview(arrowButton2)
         
-        back.enabled = true
-        start.enabled = true
+        back.isEnabled = true
+        start.isEnabled = true
         
-        correct.hidden = true
-        incorrect.hidden = true
-        dk.hidden = true
-        next.hidden = true
+        correct.isHidden = true
+        incorrect.isHidden = true
+        dk.isHidden = true
+        nextButton.isHidden = true
         
     }
     
-    @IBAction func startButton(sender: AnyObject) {
+    @IBAction func startButton(_ sender: AnyObject) {
         
-        start.enabled = false
-        back.enabled = false
+        start.isEnabled = false
+        back.isEnabled = false
         
-        let startAlert = UIAlertController(title: "Start", message: "Choose start option", preferredStyle: .Alert)
+        let startAlert = UIAlertController(title: "Start", message: "Choose start option", preferredStyle: .alert)
         
-        startAlert.addAction(UIAlertAction(title: "Start New Task", style: .Default, handler: { (action) -> Void in
+        startAlert.addAction(UIAlertAction(title: "Start New Task", style: .default, handler: { (action) -> Void in
             print("start new")
             self.startNewTask()
             //action
         }))
         
         if(afterBreak == true){
-            startAlert.addAction(UIAlertAction(title: "Resume Task", style: .Default, handler: { (action) -> Void in
+            startAlert.addAction(UIAlertAction(title: "Resume Task", style: .default, handler: { (action) -> Void in
                 print("resume old")
                 self.resumeTask()
                 //action
             }))
         }
         
-        startAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action) -> Void in
+        startAlert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) -> Void in
             print("cancel")
-            self.back.enabled = true
+            self.back.isEnabled = true
             //action
         }))
         
-        self.presentViewController(startAlert, animated: true, completion: nil)
+        self.present(startAlert, animated: true, completion: nil)
         
     }
     
@@ -161,16 +161,16 @@ class VisualAssociationTask: UIViewController {
         
         firstDisplay = true
         
-        let newStartAlert = UIAlertController(title: "Display", message: "Name and try to remember these images", preferredStyle: .Alert)
-        newStartAlert.addAction(UIAlertAction(title: "Start", style: .Default, handler: { (action) -> Void in
+        let newStartAlert = UIAlertController(title: "Display", message: "Name and try to remember these images", preferredStyle: .alert)
+        newStartAlert.addAction(UIAlertAction(title: "Start", style: .default, handler: { (action) -> Void in
             print("start")
             self.displayRecursively(0)
             //action
         }))
-        self.presentViewController(newStartAlert, animated: true, completion: nil)
+        self.present(newStartAlert, animated: true, completion: nil)
     }
     
-    func displayRecursively(num : Int){
+    func displayRecursively(_ num : Int){
         
         if(num < mixedImages.count){
             self.outputImage(mixedImages[num])
@@ -188,13 +188,13 @@ class VisualAssociationTask: UIViewController {
                 
                 firstDisplay = false
                 
-                let nextAlert = UIAlertController(title: "Display", message: "Name and try to remember these images again", preferredStyle: .Alert)
-                nextAlert.addAction(UIAlertAction(title: "Continue", style: .Default, handler: { (action) -> Void in
+                let nextAlert = UIAlertController(title: "Display", message: "Name and try to remember these images again", preferredStyle: .alert)
+                nextAlert.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (action) -> Void in
                         print("continuing")
                         self.displayRecursively(0)
                         //action
                     }))
-                presentViewController(nextAlert, animated: true, completion: nil)
+                present(nextAlert, animated: true, completion: nil)
             }
             
         }
@@ -209,27 +209,27 @@ class VisualAssociationTask: UIViewController {
         
         afterBreak = true
         
-        back.enabled = true
-        start.enabled = true
+        back.isEnabled = true
+        start.isEnabled = true
         
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "updateInDelay:", userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(VisualAssociationTask.updateInDelay(_:)), userInfo: nil, repeats: true)
         
-        startTime = NSDate.timeIntervalSinceReferenceDate()
+        startTime = Foundation.Date.timeIntervalSinceReferenceDate
         
     }
     
-    func updateInDelay(timer: NSTimer) {
+    func updateInDelay(_ timer: Timer) {
         
-        let currTime = NSDate.timeIntervalSinceReferenceDate()
-        var diff: NSTimeInterval = currTime - startTime
+        let currTime = Foundation.Date.timeIntervalSinceReferenceDate
+        var diff: TimeInterval = currTime - startTime
         
         let minutes = UInt8(diff / 60.0)
         
-        diff -= (NSTimeInterval(minutes)*60.0)
+        diff -= (TimeInterval(minutes)*60.0)
         
         let seconds = UInt8(diff)
         
-        diff = NSTimeInterval(seconds)
+        diff = TimeInterval(seconds)
         
         let strMinutes = minutes > 9 ? String(minutes):"0"+String(minutes)
         let strSeconds = seconds > 9 ? String(seconds):"0"+String(seconds)
@@ -244,7 +244,7 @@ class VisualAssociationTask: UIViewController {
     }
 */
     
-    func outputImage(name: String) {
+    func outputImage(_ name: String) {
         
         imageView.removeFromSuperview()
         
@@ -263,17 +263,17 @@ class VisualAssociationTask: UIViewController {
             y = (575.0*(image.size.height)/(image.size.width))
         }
         
-        imageView = UIImageView(frame:CGRectMake((512.0-(x/2)), (471.0-(y/2)), x, y))
+        imageView = UIImageView(frame:CGRect(x: (512.0-(x/2)), y: (471.0-(y/2)), width: x, height: y))
         
         imageView.image = image
         
-        imageView.userInteractionEnabled = false
+        imageView.isUserInteractionEnabled = false
         
         self.view.addSubview(imageView)
         
     }
     
-    func outputRecognizeImages(name1: String, name2: String){
+    func outputRecognizeImages(_ name1: String, name2: String){
         
         imageView1.removeFromSuperview()
         imageView2.removeFromSuperview()
@@ -308,8 +308,8 @@ class VisualAssociationTask: UIViewController {
             y2 = (350.0*(image2.size.height)/(image2.size.width))
         }
         
-        imageView1 = UIImageView(frame: CGRectMake((256.0-(x1/2)), (471.0-(y1/2)), x1, y1))
-        imageView2 = UIImageView(frame: CGRectMake((768.0-(x2/2)), (471.0-(y2/2)), x2, y2))
+        imageView1 = UIImageView(frame: CGRect(x: (256.0-(x1/2)), y: (471.0-(y1/2)), width: x1, height: y1))
+        imageView2 = UIImageView(frame: CGRect(x: (768.0-(x2/2)), y: (471.0-(y2/2)), width: x2, height: y2))
         
         imageView1.image = image1
         imageView2.image = image2
@@ -332,22 +332,22 @@ class VisualAssociationTask: UIViewController {
         timerLabel.text = ""
         delayLabel.text = ""
         
-        let recallAlert = UIAlertController(title: "Recall", message: "Which item is missing from the picture?", preferredStyle: .Alert)
-        recallAlert.addAction(UIAlertAction(title: "Continue", style: .Default, handler: { (action) -> Void in
+        let recallAlert = UIAlertController(title: "Recall", message: "Which item is missing from the picture?", preferredStyle: .alert)
+        recallAlert.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (action) -> Void in
             print("recalling...")
             self.recall()
             //action
         }))
-        self.presentViewController(recallAlert, animated: true, completion: nil)
+        self.present(recallAlert, animated: true, completion: nil)
         
         
     }
     
     func recall(){
         
-        correct.hidden = false
-        incorrect.hidden = false
-        dk.hidden = false
+        correct.isHidden = false
+        incorrect.isHidden = false
+        dk.isHidden = false
         
         testCount = 0
         
@@ -355,88 +355,88 @@ class VisualAssociationTask: UIViewController {
         
         //timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "updateInRecall:", userInfo: nil, repeats: true)
         
-        startTime = NSDate.timeIntervalSinceReferenceDate()
+        startTime = Foundation.Date.timeIntervalSinceReferenceDate
         
     }
     
-    @IBAction func correctButton(sender: AnyObject) {
+    @IBAction func correctButton(_ sender: AnyObject) {
         
-        correct.enabled = false
-        incorrect.enabled = false
-        dk.enabled = false
+        correct.isEnabled = false
+        incorrect.isEnabled = false
+        dk.isEnabled = false
         
         recallErrors.append(0)
         recallTimes.append(findTime())
         
         imageView.addGestureRecognizer(gesture)
-        imageView.userInteractionEnabled = true
+        imageView.isUserInteractionEnabled = true
         
     }
     
-    @IBAction func incorrectButton(sender: AnyObject) {
+    @IBAction func incorrectButton(_ sender: AnyObject) {
         
-        correct.enabled = false
-        incorrect.enabled = false
-        dk.enabled = false
+        correct.isEnabled = false
+        incorrect.isEnabled = false
+        dk.isEnabled = false
         
         recallErrors.append(1)
         recallTimes.append(findTime())
         
         imageView.addGestureRecognizer(gesture)
-        imageView.userInteractionEnabled = true
+        imageView.isUserInteractionEnabled = true
         
     }
     
-    @IBAction func dkButton(sender: AnyObject) {
+    @IBAction func dkButton(_ sender: AnyObject) {
         
-        correct.enabled = false
-        incorrect.enabled = false
-        dk.enabled = false
+        correct.isEnabled = false
+        incorrect.isEnabled = false
+        dk.isEnabled = false
         
         recallErrors.append(2)
         recallTimes.append(findTime())
         
         imageView.addGestureRecognizer(gesture)
-        imageView.userInteractionEnabled = true
+        imageView.isUserInteractionEnabled = true
         
     }
     
     func findTime()->Double{
         
-        let currTime = NSDate.timeIntervalSinceReferenceDate()
-        var diff: NSTimeInterval = currTime - startTime
+        let currTime = Foundation.Date.timeIntervalSinceReferenceDate
+        var diff: TimeInterval = currTime - startTime
         let minutes = UInt8(diff / 60.0)
-        diff -= (NSTimeInterval(minutes)*60.0)
+        diff -= (TimeInterval(minutes)*60.0)
         let seconds = Double(Int(diff*1000))/1000.0
         return seconds
         
     }
     
-    func wasDragged(gesture: UIPanGestureRecognizer) {
+    func wasDragged(_ gesture: UIPanGestureRecognizer) {
         
-        let translation = gesture.translationInView(self.view)
+        let translation = gesture.translation(in: self.view)
         
         let img = gesture.view!
         img.center = CGPoint(x: self.view.bounds.width / 2 + translation.x, y: 471.0)
         
-        if gesture.state == UIGestureRecognizerState.Ended {
+        if gesture.state == UIGestureRecognizerState.ended {
             if img.center.x < 200 {
                 
                 testCount += 1
                 if(testCount == halfImages.count){
                     
                     imageView.removeFromSuperview()
-                    correct.hidden = true
-                    incorrect.hidden = true
-                    dk.hidden = true
+                    correct.isHidden = true
+                    incorrect.isHidden = true
+                    dk.isHidden = true
                     
-                    let recognizeAlert = UIAlertController(title: "Recognize", message: "Which picture have you previously seen?", preferredStyle: .Alert)
-                    recognizeAlert.addAction(UIAlertAction(title: "Continue", style: .Default, handler: { (action) -> Void in
+                    let recognizeAlert = UIAlertController(title: "Recognize", message: "Which picture have you previously seen?", preferredStyle: .alert)
+                    recognizeAlert.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (action) -> Void in
                         print("recognizing...")
                         self.recognize()
                         //action
                     }))
-                    self.presentViewController(recognizeAlert, animated: true, completion: nil)
+                    self.present(recognizeAlert, animated: true, completion: nil)
                     
                 }
                     
@@ -447,11 +447,11 @@ class VisualAssociationTask: UIViewController {
                     
                     outputImage(halfImages[testCount])
                     
-                    correct.enabled = true
-                    incorrect.enabled = true
-                    dk.enabled = true
+                    correct.isEnabled = true
+                    incorrect.isEnabled = true
+                    dk.isEnabled = true
                     
-                    startTime = NSDate.timeIntervalSinceReferenceDate()
+                    startTime = Foundation.Date.timeIntervalSinceReferenceDate
                     
                 }
                 
@@ -483,16 +483,16 @@ class VisualAssociationTask: UIViewController {
             outputRecognizeImages(recognizeIncorrect[testCount], name2: mixedImages[testCount])
         }
         
-        arrowButton1.hidden = false
-        arrowButton1.enabled = true
+        arrowButton1.isHidden = false
+        arrowButton1.isEnabled = true
         
-        arrowButton2.hidden = false
-        arrowButton2.enabled = true
+        arrowButton2.isHidden = false
+        arrowButton2.isEnabled = true
         
-        next.hidden = false
-        next.enabled = false
+        nextButton.isHidden = false
+        nextButton.isEnabled = false
         
-        startTime = NSDate.timeIntervalSinceReferenceDate()
+        startTime = Foundation.Date.timeIntervalSinceReferenceDate
         
     }
     
@@ -500,17 +500,17 @@ class VisualAssociationTask: UIViewController {
         
         //if 0, correct image on left; if 1, correct on right
         
-        for(var k = 0; k < 4; k++){
+        for k in 0 ..< 4 {
             orderRecognize.append(Int(arc4random_uniform(2)))
         }
         
     }
     
-    @IBAction func recognize1(sender: AnyObject){
+    @IBAction func recognize1(_ sender: AnyObject){
         
-        arrowButton1.enabled = false
-        arrowButton2.enabled = false
-        next.enabled = true
+        arrowButton1.isEnabled = false
+        arrowButton2.isEnabled = false
+        nextButton.isEnabled = true
         
         if(orderRecognize[testCount] == 0){
             recognizeErrors.append(0)
@@ -523,11 +523,11 @@ class VisualAssociationTask: UIViewController {
         
     }
     
-    @IBAction func recognize2(sender: AnyObject){
+    @IBAction func recognize2(_ sender: AnyObject){
         
-        arrowButton1.enabled = false
-        arrowButton2.enabled = false
-        next.enabled = true
+        arrowButton1.isEnabled = false
+        arrowButton2.isEnabled = false
+        nextButton.isEnabled = true
         
         if(orderRecognize[testCount] == 0){
             recognizeErrors.append(1)
@@ -540,15 +540,15 @@ class VisualAssociationTask: UIViewController {
         
     }
     
-    @IBAction func recognizeNext(sender: AnyObject) {
+    @IBAction func recognizeNext(_ sender: AnyObject) {
         
         testCount += 1
         
         if(testCount == mixedImages.count){
             
-            arrowButton1.hidden = true
-            arrowButton2.hidden = true
-            next.hidden = true
+            arrowButton1.isHidden = true
+            arrowButton2.isHidden = true
+            nextButton.isHidden = true
             
             imageView1.removeFromSuperview()
             imageView2.removeFromSuperview()
@@ -559,9 +559,9 @@ class VisualAssociationTask: UIViewController {
         
         else{
             
-            next.enabled = false
-            arrowButton1.enabled = true
-            arrowButton2.enabled = true
+            nextButton.isEnabled = false
+            arrowButton1.isEnabled = true
+            arrowButton2.isEnabled = true
             
             if(orderRecognize[testCount] == 0) {
                 outputRecognizeImages(mixedImages[testCount], name2: recognizeIncorrect[testCount])
@@ -575,15 +575,15 @@ class VisualAssociationTask: UIViewController {
     }
     
     func done(){
-        back.enabled = true
-        start.enabled = true
+        back.isEnabled = true
+        start.isEnabled = true
         
         afterBreak = false
         
         var recallResult = ""
         var recognizeResult = ""
         
-        for(var k = 0; k < mixedImages.count; k++){
+        for k in 0 ..< mixedImages.count {
             
             if(recallErrors[k] == 0){
                 recallResult += "Recalled \(mixedImages[k]) correctly in \(recallTimes[k]) seconds\n"
@@ -609,10 +609,10 @@ class VisualAssociationTask: UIViewController {
         
     }
     
-    func delay(delay:Double, closure:()->()) {
+    func delay(_ delay:Double, closure:@escaping ()->()) {
         
-        dispatch_after(
-            dispatch_time( DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), closure)
+        DispatchQueue.main.asyncAfter(
+            deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: closure)
         
         
     }
@@ -622,8 +622,8 @@ class VisualAssociationTask: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.Landscape
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.landscape
     }
     
     

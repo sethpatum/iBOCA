@@ -31,11 +31,11 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
     var body:String?
     //text field input and results
     
-    @IBAction func updateDate(sender: AnyObject) {
+    @IBAction func updateDate(_ sender: AnyObject) {
         let d:UIDatePicker = sender as! UIDatePicker
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "y-MM-dd"
-        Date = formatter.stringFromDate(d.date)
+        Date = formatter.string(from: d.date)
     }
     
     @IBOutlet weak var TownPicker: UIPickerView!
@@ -70,14 +70,14 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         }
         */
         
-        Town = townData[TownPicker.selectedRowInComponent(0)]
-        Address = addressData[AddressPicker.selectedRowInComponent(0)]
-        State = stateData[StatePicker.selectedRowInComponent(0)]
-        Season = seasonData[SeasonPicker.selectedRowInComponent(0)]
+        Town = townData[TownPicker.selectedRow(inComponent: 0)]
+        Address = addressData[AddressPicker.selectedRow(inComponent: 0)]
+        State = stateData[StatePicker.selectedRow(inComponent: 0)]
+        Season = seasonData[SeasonPicker.selectedRow(inComponent: 0)]
         
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "y-MM-dd"
-        Date = formatter.stringFromDate(currentDate.date)
+        Date = formatter.string(from: currentDate.date)
         
         print(Season)
         print(State)
@@ -86,7 +86,7 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         print(Address)
     }
    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
                 // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
@@ -97,18 +97,18 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         // Dispose of any resources that can be recreated.
     }
     
-    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
-        dismissViewControllerAnimated(true, completion: nil)
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        dismiss(animated: true, completion: nil)
     }
     
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         
         return true
     }
     
-    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
         
         body = textView.text
@@ -122,7 +122,7 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         return true
     }
 
-    @IBAction func DoneButton(sender: AnyObject) {
+    @IBAction func DoneButton(_ sender: AnyObject) {
         print(Season)
         print(State)
         print(Town)
@@ -132,11 +132,11 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
     }
     //pickerview setup and whatnot
     
-    func numberOfComponentsInPickerView(pickerView : UIPickerView!) -> Int{
+    func numberOfComponentsInPickerView(_ pickerView : UIPickerView!) -> Int{
         return 1
     }
         //returns length of pickerview contents
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
         print("0:", pickerView)
         if pickerView == SeasonPicker {
             return seasonData.count
@@ -153,7 +153,7 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         return 1
     }
             ////sets the final variables to selected row of the pickerview's text
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         print("1:",pickerView)
         if pickerView == SeasonPicker {
             Season = seasonData[row]
@@ -175,7 +175,7 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         return ""
     }
         //sets final variables to the selected row
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
         print("2:", pickerView)
         if pickerView == SeasonPicker {
             Season = seasonData[row]

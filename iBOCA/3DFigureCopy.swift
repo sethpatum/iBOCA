@@ -25,9 +25,9 @@ class ThreeDFigureCopy: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        StartButton.enabled = true
-        CorrectButton.enabled = false
-        IncorrectButton.enabled = false
+        StartButton.isEnabled = true
+        CorrectButton.isEnabled = false
+        IncorrectButton.isEnabled = false
         
         // Do any additional setup after loading the view.
     }
@@ -39,7 +39,7 @@ class ThreeDFigureCopy: UIViewController {
     
     func drawImage() {
         if curr < imagelist.count {
-            var imageView = UIImageView(frame:CGRectMake(100, 100, 600, 400))
+            let imageView = UIImageView(frame:CGRect(x: 100, y: 100, width: 600, height: 400))
             let image = UIImage(named: imagelist[curr])
             imageView.image = image
             imageView.layer.borderWidth = 2
@@ -48,17 +48,17 @@ class ThreeDFigureCopy: UIViewController {
             let result = drawCustomImage(CGSize(width: 600, height: 400))
             
         } else {
-            StartButton.enabled = true
-            CorrectButton.enabled = false
-            IncorrectButton.enabled = false
+            StartButton.isEnabled = true
+            CorrectButton.isEnabled = false
+            IncorrectButton.isEnabled = false
         }
     }
     
-    @IBAction func StartAction(sender: UIButton) {
+    @IBAction func StartAction(_ sender: UIButton) {
         curr = 0
-        StartButton.enabled = false
-        CorrectButton.enabled = true
-        IncorrectButton.enabled = true
+        StartButton.isEnabled = false
+        CorrectButton.isEnabled = true
+        IncorrectButton.isEnabled = true
         
         if  drawing != nil {
             drawing.removeFromSuperview()
@@ -79,14 +79,14 @@ class ThreeDFigureCopy: UIViewController {
     }
     
     
-    @IBAction func CorrectAction(sender: UIButton) {
+    @IBAction func CorrectAction(_ sender: UIButton) {
         correctList.append(imagelist[curr])
         curr  = curr + 1
         drawImage()
     }
     
     
-    @IBAction func IncorrectAction(sender: UIButton) {
+    @IBAction func IncorrectAction(_ sender: UIButton) {
         incorrectList.append(imagelist[curr])
         curr  = curr + 1
         drawImage()
@@ -94,7 +94,7 @@ class ThreeDFigureCopy: UIViewController {
     
 
     
-    func drawCustomImage(size: CGSize) -> UIImage {
+    func drawCustomImage(_ size: CGSize) -> UIImage {
         
         // Setup our context
         //let bounds = CGRect(origin: CGPoint.zero, size: size)
@@ -112,7 +112,7 @@ class ThreeDFigureCopy: UIViewController {
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        return image
+        return image!
     }
     
 }

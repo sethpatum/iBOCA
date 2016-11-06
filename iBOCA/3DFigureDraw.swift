@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class ThreeDFigureDraw: UIView {
-    private var currPath = UIBezierPath()
+    fileprivate var currPath = UIBezierPath()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -23,37 +23,37 @@ class ThreeDFigureDraw: UIView {
     }
     
     func setupView() {
-        backgroundColor = UIColor.whiteColor()
+        backgroundColor = UIColor.white
         currPath.lineWidth = 5
-        currPath.lineCapStyle = CGLineCap.Round
+        currPath.lineCapStyle = CGLineCap.round
     }
     
-    override func drawRect(rect: CGRect) {
-        UIColor.blackColor().set()
-        opaque = false
+    override func draw(_ rect: CGRect) {
+        UIColor.black.set()
+        isOpaque = false
         backgroundColor = nil
         currPath.stroke()
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first! as UITouch
-        currPath.moveToPoint(touch.locationInView(self))
+        currPath.move(to: touch.location(in: self))
         setNeedsDisplay()
     }
     
-    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first! as UITouch
-        currPath.addLineToPoint(touch.locationInView(self))
+        currPath.addLine(to: touch.location(in: self))
         setNeedsDisplay()
     }
     
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
     }
     
     func drawandclearResults() {
-        UIColor.blackColor().set()
-        opaque = false
+        UIColor.black.set()
+        isOpaque = false
         backgroundColor = nil
         currPath.stroke()
         currPath.removeAllPoints()
