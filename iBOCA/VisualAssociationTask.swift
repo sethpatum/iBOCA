@@ -6,10 +6,11 @@
 //  Copyright © 2016 sunspot. All rights reserved.
 //
 
-import Foundation
+//import Foundation
 
 import UIKit
 
+/*
 var mixedImages = [String]()
 var halfImages = [String]()
 var recognizeIncorrect = [String]()
@@ -27,9 +28,9 @@ var recallTimes = [Double]()
 
 var recognizeErrors = [Int]()
 var recognizeTimes = [Double]()
-
+*/
 class VisualAssociationTask: UIViewController {
-    
+    /*
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var back: UIButton!
     @IBOutlet weak var start: UIButton!
@@ -69,6 +70,12 @@ class VisualAssociationTask: UIViewController {
     var firstDisplay = Bool()
     
     var testCount = Int()
+    */
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    /*
     
     override func viewDidLoad() {
         
@@ -267,7 +274,8 @@ class VisualAssociationTask: UIViewController {
         
         imageView.image = image
         
-        imageView.isUserInteractionEnabled = false
+        imageView.removeGestureRecognizer(gesture)
+        //imageView.userInteractionEnabled = false
         
         self.view.addSubview(imageView)
         
@@ -369,7 +377,7 @@ class VisualAssociationTask: UIViewController {
         recallTimes.append(findTime())
         
         imageView.addGestureRecognizer(gesture)
-        imageView.isUserInteractionEnabled = true
+        //imageView.userInteractionEnabled = true
         
     }
     
@@ -383,7 +391,7 @@ class VisualAssociationTask: UIViewController {
         recallTimes.append(findTime())
         
         imageView.addGestureRecognizer(gesture)
-        imageView.isUserInteractionEnabled = true
+        //imageView.userInteractionEnabled = true
         
     }
     
@@ -397,7 +405,7 @@ class VisualAssociationTask: UIViewController {
         recallTimes.append(findTime())
         
         imageView.addGestureRecognizer(gesture)
-        imageView.isUserInteractionEnabled = true
+        //imageView.userInteractionEnabled = true
         
     }
     
@@ -442,7 +450,7 @@ class VisualAssociationTask: UIViewController {
                     
                 else{
                     
-                    print("next pic!")
+                    print("nextpic!")
                     img.center = CGPoint(x: 512.0, y: 471.0)
                     
                     outputImage(halfImages[testCount])
@@ -626,5 +634,6 @@ class VisualAssociationTask: UIViewController {
         return UIInterfaceOrientationMask.landscape
     }
     
-    
+    */
+ 
 }
