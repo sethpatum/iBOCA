@@ -246,7 +246,7 @@ class VisualAssociationTask: UIViewController {
     }
     
     /*
-    func updateInRecall(timer: NSTimer) {
+    func updateInRecall(timer: Timer) {
         
     }
 */
@@ -361,7 +361,7 @@ class VisualAssociationTask: UIViewController {
         
         outputImage(halfImages[testCount])
         
-        //timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "updateInRecall:", userInfo: nil, repeats: true)
+        //timer = Timer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "updateInRecall:", userInfo: nil, repeats: true)
         
         startTime = Foundation.Date.timeIntervalSinceReferenceDate
         
