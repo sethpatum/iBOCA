@@ -15,8 +15,8 @@ class ForwardDigitSpan: UIViewController {
     var timer = Timer()
     var counter = 0
     func updateCounter() {
-        countingLabel.text = String(describing: counter += 1)
-        print(counter)
+        counter += 1
+        countingLabel.text = String(counter)
     }
     
     @IBOutlet weak var timerLabel: UILabel!
