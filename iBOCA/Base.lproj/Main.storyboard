@@ -915,7 +915,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Begin"/>
                                 <connections>
-                                    <action selector="tester:" destination="7CJ-Qb-Bsb" eventType="touchUpInside" id="pBx-3c-a46"/>
+                                    <action selector="tester:" destination="7CJ-Qb-Bsb" eventType="touchUpInside" id="fQC-KI-f2n"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="     " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g6J-Cf-OSK">
@@ -1283,7 +1283,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Begin"/>
                                 <connections>
-                                    <action selector="tester:" destination="4Eb-es-DlO" eventType="touchUpInside" id="a7Y-50-3JD"/>
+                                    <action selector="tester:" destination="4Eb-es-DlO" eventType="touchUpInside" id="A5g-JG-oEb"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Read the following numbers aloud:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BGO-zh-Tlb">
@@ -1532,6 +1532,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="MMK-fK-fBe"/>
+        <segue reference="puZ-ea-H1g"/>
     </inferredMetricsTieBreakers>
 </document>
