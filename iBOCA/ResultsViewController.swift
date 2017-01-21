@@ -31,45 +31,45 @@ class ResultsViewController: UIViewController {
     }
     
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(_ tableView: UITableView) -> Int {
         return resultsArray.numResults()
     }
     
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        let res:Results = resultsArray.get(index: section)
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        let res:Results = resultsArray.get(section)
         if(res.collapsed == false)
         {
-            let res:Results = resultsArray.get(index: section)
+            let res:Results = resultsArray.get(section)
             return res.numRows()
         }
         return 0;
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "ABC"
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
         return 50
     }
     
-    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 1
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-         let res:Results = resultsArray.get(index: indexPath.section)
+    func tableView(_ tableView: UITableView, heightForRowAtIndexPath indexPath: IndexPath) -> CGFloat {
+         let res:Results = resultsArray.get(indexPath.section)
         if(res.collapsed == false){
-            return CGFloat(res.heightForRow(i: indexPath.row))
+            return CGFloat(res.heightForRow(indexPath.row))
         }
         
         return 2;
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let res:Results = resultsArray.get(index: section)
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let res:Results = resultsArray.get(section)
         
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 40))
         headerView.backgroundColor = UIColor.gray
@@ -79,31 +79,31 @@ class ResultsViewController: UIViewController {
         headerString.text = String(section+1) + ".  " + res.header()
         headerView .addSubview(headerString)
         
-        let headerTapped = UITapGestureRecognizer (target: self, action:"sectionHeaderTapped:")
+        let headerTapped = UITapGestureRecognizer (target: self, action:#selector(ResultsViewController.sectionHeaderTapped(_:)))
         headerView .addGestureRecognizer(headerTapped)
         
         return headerView
     }
     
-    func sectionHeaderTapped(recognizer: UITapGestureRecognizer) {
-        let indexPath : NSIndexPath = NSIndexPath(row: 0, section: 0)
+    func sectionHeaderTapped(_ recognizer: UITapGestureRecognizer) {
+        let indexPath : IndexPath = IndexPath(row: 0, section: 0)
         //let indexPath : NSIndexPath = NSIndexPath(row: 0, section:(recognizer.view?.as, Int!),!)
         
-        let res:Results = resultsArray.get(index: indexPath.section)
+        let res:Results = resultsArray.get(indexPath.section)
         if (indexPath.row == 0) {
             
             res.collapsed = !res.collapsed
            
             //reload specific section animated
-            let range = NSMakeRange(indexPath.section, 1)
-            let sectionToReload = NSIndexSet(indexesIn: range)
-            self.tableView .reloadSections(sectionToReload as IndexSet, with:UITableViewRowAnimation.fade)
+            let range = NSMakeRange(indexPath.section, 1) as NSRange
+            let sectionToReload = IndexSet(integersIn:range.toRange()!)
+            self.tableView.reloadSections(sectionToReload as IndexSet, with:UITableViewRowAnimation.fade)
         }
         
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
-        let res:Results = resultsArray.get(index: indexPath.section)
+    func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell{
+        let res:Results = resultsArray.get(indexPath.section)
         
         let CellIdentifier = "Cell"
         var cell :UITableViewCell
@@ -113,7 +113,7 @@ class ResultsViewController: UIViewController {
             cell.textLabel?.text = "click to enlarge"
         }
         else{
-            res.setRow(i: indexPath.row, cell:cell)
+            res.setRow(indexPath.row, cell:cell)
         }
         
         return cell

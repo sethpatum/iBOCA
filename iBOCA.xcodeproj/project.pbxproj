@@ -247,16 +247,16 @@
 					1BC2DFEA1D4F821F0020D430 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 66YNRJ6GN4;
-						LastSwiftMigration = 0810;
+						LastSwiftMigration = 0820;
 					};
 					1BC2DFFE1D4F821F0020D430 = {
 						CreatedOnToolsVersion = 7.3.1;
-						LastSwiftMigration = 0810;
+						LastSwiftMigration = 0820;
 						TestTargetID = 1BC2DFEA1D4F821F0020D430;
 					};
 					1BC2E0091D4F821F0020D430 = {
 						CreatedOnToolsVersion = 7.3.1;
-						LastSwiftMigration = 0810;
+						LastSwiftMigration = 0820;
 						TestTargetID = 1BC2DFEA1D4F821F0020D430;
 					};
 				};

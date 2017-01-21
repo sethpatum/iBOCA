@@ -12,8 +12,8 @@ var resultsArray : AllResults = AllResults()
 
 class Results: NSObject {
     var name:String?
-    var startTime:NSDate?
-    var endTime:NSDate?
+    var startTime:Foundation.Date?
+    var endTime:Foundation.Date?
     var shortDescription:String?
     var longDescription : NSMutableArray = NSMutableArray()
     var screenshot : UIImage?
@@ -21,7 +21,7 @@ class Results: NSObject {
     var collapsed : Bool = true // for use by the View Controller
     
     // Constructor
-    func Results(nm:String, startTime:NSDate, endTime:NSDate) {
+    func Results(_ nm:String, startTime:Foundation.Date, endTime:Foundation.Date) {
         name = nm
         self.startTime = startTime
         self.endTime = endTime
@@ -50,7 +50,7 @@ class Results: NSObject {
     
     
     // All rows are same height, except the screeshot
-    func heightForRow(i:Int) -> Int {
+    func heightForRow(_ i:Int) -> Int {
         if i < longDescription.count {
              return 60
         }
@@ -62,7 +62,7 @@ class Results: NSObject {
     
     
     // either a text row are a screenshot raw
-    func setRow(i:Int, cell:UITableViewCell) {
+    func setRow(_ i:Int, cell:UITableViewCell) {
         if i < longDescription.count {
             cell.textLabel?.text = longDescription.object(at: i) as? String
             cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
@@ -86,7 +86,7 @@ class Results: NSObject {
         screenshot = UIGraphicsGetImageFromCurrentImageContext()
     }
     
-    func displayLocal(view:UIView?, imageView:UIImageView?, results:UILabel) {
+    func displayLocal(_ view:UIView?, imageView:UIImageView?, results:UILabel) {
 //        if resultsDisplayOn == true {
             if view != nil && imageView != nil {
                 view!.addSubview(imageView!)
