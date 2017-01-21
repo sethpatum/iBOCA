@@ -937,22 +937,29 @@
                                 <state key="normal" title="Repeat"/>
                             </button>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xCz-uz-7g9">
-                                <rect key="frame" x="179" y="409" width="667" height="125"/>
+                                <rect key="frame" x="179" y="421" width="667" height="125"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EWl-ff-VdV">
+                                <rect key="frame" x="495" y="196" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Start"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kr3-2p-MY4">
+                                <rect key="frame" x="751" y="196" width="41" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Finish"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
-                        <outlet property="CategoryPicker" destination="xCz-uz-7g9" id="bIL-Lj-0hD"/>
-                        <outlet property="CorrectButton" destination="Tt8-rh-alh" id="j8s-MV-sr0"/>
-                        <outlet property="IncorrectButton" destination="iD2-aE-5w8" id="PRR-P8-xKg"/>
-                        <outlet property="RepeatButton" destination="89l-7i-vIC" id="4Le-cK-qij"/>
+                        <outlet property="CategoryPicker" destination="xCz-uz-7g9" id="tjf-pR-zPb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tmS-1q-kD7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1609" y="1090"/>
+            <point key="canvasLocation" x="1608.984375" y="1089.84375"/>
         </scene>
         <!--Forward Digit Span-->
         <scene sceneID="eMI-Qj-H1z">
