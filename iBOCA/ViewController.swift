@@ -9,21 +9,18 @@
 import UIKit
 import MessageUI
 
-class ViewController: UIViewController{
+class ViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         navigationItem.title = nil
     }
 
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        emailOn = !UserDefaults.standard.bool(forKey: "emailOff")
-        if(UserDefaults.standard.object(forKey: "emailAddress") != nil) {
-            emailAddress = UserDefaults.standard.object(forKey: "emailAddress") as! String
-        }
-
     }
 
     override func didReceiveMemoryWarning() {

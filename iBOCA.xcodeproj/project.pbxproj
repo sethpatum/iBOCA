@@ -29,6 +29,7 @@
 		F24E6E6E1E1BC2C300E29995 /* AllResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24E6E6A1E1BC2C300E29995 /* AllResults.swift */; };
 		F24E6E6F1E1BC2C300E29995 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24E6E6B1E1BC2C300E29995 /* ResultsViewController.swift */; };
 		F24E6E701E1BC2C300E29995 /* ScaleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24E6E6C1E1BC2C300E29995 /* ScaleView.swift */; };
+		F27728A61E33C91A004F8A6E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27728A51E33C91A004F8A6E /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		F24E6E6A1E1BC2C300E29995 /* AllResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllResults.swift; sourceTree = "<group>"; };
 		F24E6E6B1E1BC2C300E29995 /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		F24E6E6C1E1BC2C300E29995 /* ScaleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleView.swift; sourceTree = "<group>"; };
+		F27728A51E33C91A004F8A6E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 				1BC2DFEE1D4F821F0020D430 /* AppDelegate.swift */,
 				E2C906EA1D54DA1B00C0824E /* SerialSevens.swift */,
 				1BC2DFF01D4F821F0020D430 /* ViewController.swift */,
+				F27728A51E33C91A004F8A6E /* MainViewController.swift */,
 				E15949081D56DF3500413166 /* VisualAssociationTask.swift */,
 				E2B9F7FF1DD144A70035FE0B /* VATask.swift */,
 				E2901DCE1D4F8C3700080F82 /* OrientationTask.swift */,
@@ -328,6 +331,7 @@
 				F24E6E6D1E1BC2C300E29995 /* Results.swift in Sources */,
 				1B49EEF31DAC3B6600931E8C /* 3DFigureDraw.swift in Sources */,
 				F24E6E681E1BBBA600E29995 /* SetupViewController.swift in Sources */,
+				F27728A61E33C91A004F8A6E /* MainViewController.swift in Sources */,
 				F24E6E701E1BC2C300E29995 /* ScaleView.swift in Sources */,
 				1BC2DFEF1D4F821F0020D430 /* AppDelegate.swift in Sources */,
 			);
