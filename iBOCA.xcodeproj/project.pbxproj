@@ -138,13 +138,13 @@
 				1BC2DFF21D4F821F0020D430 /* Main.storyboard */,
 				1B65673F1D7DE07B00C92FA3 /* SemanticListGeneration.swift */,
 				E27BA37E1D523B8400619C07 /* BackwardDigitSpan.swift */,
+				F24E6E671E1BBBA600E29995 /* SetupViewController.swift */,
 				F24E6E711E1BC2D800E29995 /* Results */,
 				1BC2DFF51D4F821F0020D430 /* Assets.xcassets */,
 				1BC2DFF71D4F821F0020D430 /* LaunchScreen.storyboard */,
 				1B53650D1D7491CF0088B5D2 /* 3DFigureCopy.swift */,
 				1B49EEF21DAC3B6600931E8C /* 3DFigureDraw.swift */,
 				1BC2DFFA1D4F821F0020D430 /* Info.plist */,
-				F24E6E671E1BBBA600E29995 /* SetupViewController.swift */,
 			);
 			path = iBOCA;
 			sourceTree = "<group>";
