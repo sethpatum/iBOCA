@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -509,6 +509,14 @@
                                     <action selector="sendEmail:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5hN-Po-gQ4"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Of0-Tm-Eos">
+                                <rect key="frame" x="462" y="383" width="100" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Demographics"/>
+                                <connections>
+                                    <segue destination="7sQ-B6-R4d" kind="show" id="pO1-Kc-Fdx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -609,7 +617,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="emailChanged:" destination="sGl-dC-nwN" eventType="editingDidEnd" id="pmb-eY-1FL"/>
+                                    <action selector="emailChanged:" destination="sGl-dC-nwN" eventType="editingChanged" id="oFS-I7-bIY"/>
                                 </connections>
                             </textField>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BRY-oX-oEE">
@@ -747,22 +755,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oUl-vQ-ybZ">
-                                <rect key="frame" x="507" y="28" width="517" height="80"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <action selector="TestDone:" destination="7sQ-B6-R4d" eventType="touchUpInside" id="XBV-87-bPW"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="mwA-PF-xBP"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CIK-jd-rod">
                                 <rect key="frame" x="464" y="101" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="updateName:" destination="7sQ-B6-R4d" eventType="editingDidEnd" id="lkz-jh-Z8J"/>
+                                    <action selector="updateName:" destination="7sQ-B6-R4d" eventType="editingChanged" id="TLP-nZ-xI8"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="MR#" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JK8-nd-2CT">
@@ -771,7 +770,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="updateMR:" destination="7sQ-B6-R4d" eventType="editingDidEnd" id="qXI-1B-s74"/>
+                                    <action selector="updateMR:" destination="7sQ-B6-R4d" eventType="editingChanged" id="VUb-Hb-KSq"/>
                                 </connections>
                             </textField>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="etS-mS-xye">
@@ -843,6 +842,15 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oUl-vQ-ybZ">
+                                <rect key="frame" x="663" y="47" width="341" height="79"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back/Done"/>
+                                <connections>
+                                    <action selector="TestDone:" destination="7sQ-B6-R4d" eventType="touchUpInside" id="XBV-87-bPW"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="Mrz-rk-sZx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -852,13 +860,15 @@
                         <outlet property="EthnicityPicker" destination="JVC-vd-2If" id="mnE-FZ-4MX"/>
                         <outlet property="GenderPicker" destination="etS-mS-xye" id="KFo-no-nNY"/>
                         <outlet property="MRField" destination="JK8-nd-2CT" id="FU6-en-S8J"/>
+                        <outlet property="MRLabel" destination="1uq-hQ-pX9" id="Pz1-c3-70Q"/>
                         <outlet property="RacePicker" destination="2Ra-LU-vyr" id="CMU-TD-jlQ"/>
                         <outlet property="nameField" destination="CIK-jd-rod" id="ZkI-zi-u6T"/>
+                        <outlet property="nameLabel" destination="81c-DT-MJx" id="IUM-Be-VJM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EnL-3e-Mw3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1564" y="1090"/>
+            <point key="canvasLocation" x="-1564.453125" y="1089.84375"/>
         </scene>
         <!--ThreeD Figure Copy-->
         <scene sceneID="Crh-fR-n20">
