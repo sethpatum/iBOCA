@@ -31,15 +31,16 @@ class ScaleView: UIView {
         
         let context = UIGraphicsGetCurrentContext();
         let aFont = UIFont(name: "Optima-Bold", size: 10)
-        let attr:CFDictionary = [NSFontAttributeName:aFont!,NSForegroundColorAttributeName:UIColor.blackColor()]
-        
+//        let attr:CFDictionary = [NSFontAttributeName:aFont!,NSForegroundColorAttributeName:UIColor.blackColor()]
+        let attr:NSDictionary = [NSFontAttributeName:aFont!,NSForegroundColorAttributeName:UIColor.black]
+
         
         for i in 0...100 {
             let path = UIBezierPath()
             path.lineWidth = 5
             path.lineCapStyle = CGLineCap.round
             
-            let v = CGFloat(i)*(xEnd-xStart)/100.0 + xStart
+            var v = CGFloat(i)*(xEnd-xStart)/100.0 + xStart
             let next = CGPoint(x:v, y:10.0)
             path.move(to: prev)
             path.addLine(to: next)
@@ -54,9 +55,10 @@ class ScaleView: UIView {
             if i % 10 == 0 {
                 let text = CFAttributedStringCreate(nil, String(Int(c)) as CFString!, attr)
                 let line = CTLineCreateWithAttributedString(text!)
-                context!.textMatrix = CGAffineTransformMake(CGFloat(1), CGFloat(0), CGFloat(0), CGFloat(-1),CGFloat(0), CGFloat(0))
-                CGContextSetTextPosition(context, CGFloat(v), CGFloat(25))
+                context!.textMatrix = CGAffineTransform(a: CGFloat(1), b: CGFloat(0), c: CGFloat(0), d: CGFloat(-1), tx: CGFloat(0), ty: CGFloat(0))
+                context!.textPosition = CGPoint(x: v, y: 25)
                 CTLineDraw(line, context!)
+                
             }
         }
         

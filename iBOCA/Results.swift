@@ -29,7 +29,7 @@ class Results: NSObject {
     
     // Return the string function to put on the header
     func header() -> String {
-        let elapsedTime = endTime!.timeIntervalSinceDate(startTime!)
+        let elapsedTime = endTime!.timeIntervalSince(startTime! as Date)
         let duration = Int(elapsedTime)
         if shortDescription == nil {
             return name! + " (" + String(duration) + " secs): "
@@ -64,8 +64,8 @@ class Results: NSObject {
     // either a text row are a screenshot raw
     func setRow(i:Int, cell:UITableViewCell) {
         if i < longDescription.count {
-            cell.textLabel?.text = longDescription.objectAtIndex(i) as? String
-            cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+            cell.textLabel?.text = longDescription.object(at: i) as? String
+            cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
             cell.textLabel?.numberOfLines = 0
         }
         if i == longDescription.count && screenshot != nil {
@@ -78,16 +78,16 @@ class Results: NSObject {
     }
     
     func TakeScreeshot() {
-        let layer = UIApplication.sharedApplication().keyWindow!.layer
-        let scale = UIScreen.mainScreen().scale
+        let layer = UIApplication.shared.keyWindow!.layer
+        let scale = UIScreen.main.scale
         UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, scale);
         
-        layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        layer.render(in: UIGraphicsGetCurrentContext()!)
         screenshot = UIGraphicsGetImageFromCurrentImageContext()
     }
     
     func displayLocal(view:UIView?, imageView:UIImageView?, results:UILabel) {
-        if resultsDisplayOn == true {
+//        if resultsDisplayOn == true {
             if view != nil && imageView != nil {
                 view!.addSubview(imageView!)
             }
@@ -99,6 +99,6 @@ class Results: NSObject {
             results.text = str
         }
         
-    }
+//    }
    
 }

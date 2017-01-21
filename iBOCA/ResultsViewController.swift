@@ -71,7 +71,7 @@ class ResultsViewController: UIViewController {
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let res:Results = resultsArray.get(index: section)
         
-        let headerView = UIView(frame: CGRectMake(0, 0, tableView.frame.size.width, 40))
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 40))
         headerView.backgroundColor = UIColor.gray
         headerView.tag = section
         
@@ -86,7 +86,9 @@ class ResultsViewController: UIViewController {
     }
     
     func sectionHeaderTapped(recognizer: UITapGestureRecognizer) {
-        let indexPath : NSIndexPath = NSIndexPath(forRow: 0, inSection:(recognizer.view?.as, Int!),!)
+        let indexPath : NSIndexPath = NSIndexPath(row: 0, section: 0)
+        //let indexPath : NSIndexPath = NSIndexPath(row: 0, section:(recognizer.view?.as, Int!),!)
+        
         let res:Results = resultsArray.get(index: indexPath.section)
         if (indexPath.row == 0) {
             
