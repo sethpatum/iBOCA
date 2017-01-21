@@ -21,7 +21,7 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
     
             //pickerview content set up(defines options)
     @IBOutlet weak var SeasonPicker: UIPickerView!
-    let seasonData = ["Spring", "Summer", "Fall", "Winter", "Don't know"]
+    let seasonData = ["Spring", "Summer", "Fall", "Winter", "Do not know"]
  
     @IBOutlet weak var StatePicker: UIPickerView!
     let stateData = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia","Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming", "Don't Know"]
@@ -79,11 +79,6 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         formatter.dateFormat = "y-MM-dd"
         Date = formatter.string(from: currentDate.date)
         
-        print(Season)
-        print(State)
-        print(Town)
-        print(Date)
-        print(Address)
     }
    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -123,11 +118,13 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
     }
 
     @IBAction func DoneButton(_ sender: AnyObject) {
-        print(Season)
-        print(State)
-        print(Town)
-        print(Date)
-        print(Address)
+        var Results: [String] = [];
+        Results.append(Season!)
+        Results.append(State!)
+        Results.append(Town!)
+        Results.append(Date!)
+        Results.append(Address!)
+        print(Results)
         
     }
     //pickerview setup and whatnot

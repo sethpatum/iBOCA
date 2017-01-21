@@ -16,6 +16,8 @@ var Gender : String?
 var Education : String?
 var Race : String?
 var Ethnicity : String?
+var Results1: [String] = []
+
 
 
 func makeAgeData() -> [String] {
@@ -188,12 +190,13 @@ class Demographics: UIViewController, MFMailComposeViewControllerDelegate, UITex
     }
 
     @IBAction func TestDone(_ sender: AnyObject) {
-    print(name)
-    print(MR)
-    print(Gender)
-    print(Ethnicity)
-    print(Education)
-    print(age)
-    print(Race)
+    Results1.append(name!)
+    Results1.append(MR!)
+    Results1.append(Gender!)
+    Results1.append(Ethnicity!)
+    Results1.append(Education!)
+    Results1.append(age!)
+    Results1.append(Race!)
+    print(Results1)
     }
 }
