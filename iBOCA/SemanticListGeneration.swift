@@ -9,8 +9,6 @@
 import UIKit
 
 class SemanticListGeneration: UIViewController {
-
-    
     
     @IBOutlet weak var IncorrectButton: UIButton!
     @IBOutlet weak var CorrectButton: UIButton!
