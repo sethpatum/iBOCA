@@ -7,25 +7,63 @@
 //
 
 import UIKit
+var Category : String?
 
-class SemanticListGeneration: UIViewController {
+class SemanticListGeneration: UIViewController, UIPickerViewDelegate {
     
     @IBOutlet weak var IncorrectButton: UIButton!
     @IBOutlet weak var CorrectButton: UIButton!
     @IBOutlet weak var RepeatButton: UIButton!
     
+    
+  
     @IBOutlet weak var CategoryPicker: UIPickerView!
+    let CategoryData = ["Animals", "Occupations", "Fruit", "Vegitables", "Clothing", "Furniture"]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        CategoryPicker.delegate = self
+        
+        Category = CategoryData[CategoryPicker.selectedRow(inComponent: 0)]
 
         // Do any additional setup after loading the view.
+    }
+    
+    func numberOfComponentsInPickerView(_ pickerView : UIPickerView!) -> Int{
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
+        if pickerView == CategoryPicker {
+            return CategoryData.count
+        } else {
+            return 1
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if pickerView == CategoryPicker {
+            Category = CategoryData[row]
+            return CategoryData[row]
+        } else {
+            return ""
+        }
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView == CategoryPicker {
+            Category = CategoryData[row]
+        } else  {
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+
         // Dispose of any resources that can be recreated.
     }
+    
+    
     
 
     /*
