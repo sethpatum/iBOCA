@@ -105,7 +105,7 @@ class SimpleMemoryTask: UIViewController {
         
     }
     
-    @IBAction func startButton(sender: AnyObject) {
+    @IBAction func startButton(_ sender: Any) {
         
         start.isEnabled = false
         back.isEnabled = false
@@ -427,11 +427,11 @@ class SimpleMemoryTask: UIViewController {
         next1.isHidden = false
         next1.isEnabled = true
         
-        next1.addTarget(self, action: "nextButtonRecall:", for: UIControlEvents.touchUpInside)
+        next1.addTarget(self, action: #selector(nextButtonRecall), for: UIControlEvents.touchUpInside)
         
-        var places = [(312, 150), (312, 250), (312, 350), (312, 450), (312, 550)]
+        var places = [(312, 175), (312, 250), (312, 325), (312, 400), (312, 475), (312, 550), (312, 625)]
         
-        for k in 0 ..< 5 {
+        for k in 0 ..< 7 {
             let(a,b) = places[k]
             
             let x : CGFloat = CGFloat(a)
@@ -443,7 +443,7 @@ class SimpleMemoryTask: UIViewController {
             button.frame = CGRect(x: x, y: y, width: 400, height: 70)
             button.titleLabel!.font = UIFont.systemFont(ofSize: 50)
             
-            if(k < 4){
+            if(k < 6){
                 button.setTitle(imagesSM[k], for: UIControlState.normal)
             }
             else{
@@ -486,6 +486,7 @@ class SimpleMemoryTask: UIViewController {
             }
         }
     }
+    
     
     @IBAction func nextButtonRecall(sender: AnyObject) {
         
@@ -531,6 +532,8 @@ class SimpleMemoryTask: UIViewController {
         
         arrowButton2.isHidden = false
         arrowButton2.isEnabled = true
+        
+        print("in recognize()")
         
     }
     
@@ -589,6 +592,8 @@ class SimpleMemoryTask: UIViewController {
             arrowButton1.isEnabled = true
             arrowButton2.isEnabled = true
             
+            print("in nextButtonRecognize, testcount = \(testCount), orderRecognie.count = \(orderRecognize.count)")
+            
             if(orderRecognize[testCount] == 0) {
                 outputRecognizeImages(name1: imagesSM[testCount], name2: recognizeIncorrectSM[testCount])
             }
@@ -639,7 +644,7 @@ class SimpleMemoryTask: UIViewController {
         
         //if 0, correct image on left; if 1, correct on right
         
-        for k in 0 ..< 4 {
+        for k in 0 ..< 6 {
             orderRecognize.append(Int(arc4random_uniform(2)))
         }
         
