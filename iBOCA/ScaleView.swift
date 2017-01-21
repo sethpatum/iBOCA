@@ -26,7 +26,7 @@ class ScaleView: UIView {
     }
     
     
-    func lineseg(xStart:CGFloat, xEnd:CGFloat, cStart:CGFloat, cEnd:CGFloat) {
+    func lineseg(_ xStart:CGFloat, xEnd:CGFloat, cStart:CGFloat, cEnd:CGFloat) {
         var prev = CGPoint(x:xStart, y:10)
         
         let context = UIGraphicsGetCurrentContext();
@@ -40,13 +40,13 @@ class ScaleView: UIView {
             path.lineWidth = 5
             path.lineCapStyle = CGLineCap.round
             
-            var v = CGFloat(i)*(xEnd-xStart)/100.0 + xStart
+            let v = CGFloat(i)*(xEnd-xStart)/100.0 + xStart
             let next = CGPoint(x:v, y:10.0)
             path.move(to: prev)
             path.addLine(to: next)
             
             let c = CGFloat(i)*(cEnd-cStart)/100.0 + cStart
-            let cgc = getColor(i: Double(c))
+            let cgc = getColor(Double(c))
             let uic = UIColor(cgColor:cgc)
             uic.set()
             path.stroke()
@@ -67,13 +67,13 @@ class ScaleView: UIView {
     override func draw(_ rect: CGRect) {
         let mid = bounds.width / 2 - 20
         let end = bounds.width - 80.0
-        lineseg(xStart: 80.0, xEnd:mid, cStart:0.0, cEnd:10.0)
-        lineseg(xStart: mid, xEnd:end, cStart:10.0, cEnd:60.0)
+        lineseg(80.0, xEnd:mid, cStart:0.0, cEnd:10.0)
+        lineseg(mid, xEnd:end, cStart:10.0, cEnd:60.0)
         
     }
     
     
-    func getColor(i: Double) -> CGColor {
+    func getColor(_ i: Double) -> CGColor {
         if (i < 5.0) {
             let h = CGFloat(0.3 - i / 15.0)
             return UIColor(hue: h, saturation: 1.0, brightness: 1.0, alpha: 1.0).cgColor

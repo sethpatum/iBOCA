@@ -12,10 +12,10 @@ class ForwardDigitSpan: UIViewController {
      var test = 0
     
     @IBOutlet weak var countingLabel: UILabel!
-    var timer = NSTimer()
+    var timer = Timer()
     var counter = 0
     func updateCounter() {
-        countingLabel.text = String(counter++)
+        countingLabel.text = String(describing: counter += 1)
         print(counter)
     }
     
@@ -63,7 +63,7 @@ class ForwardDigitSpan: UIViewController {
     var numOrder : [String] = []
     
     
-    @IBAction func tester(sender: AnyObject) {
+    @IBAction func tester(_ sender: AnyObject) {
         print (test)
         if(test >= 0 && test < 4){
         let num0 = String(arc4random_uniform(9))
@@ -101,21 +101,21 @@ class ForwardDigitSpan: UIViewController {
             self.Label6.text = ""
         }
         print(numOrder)
-        Randomize.hidden = true
+        Randomize.isHidden = true
         if(test < 4){
-        button0.hidden = false
-        button1.hidden = false
-        button2.hidden = false
-        button3.hidden = false
-        button4.hidden = false
-        button5.hidden = false
-        button6.hidden = false
-        button7.hidden = false
-        button8.hidden = false
-        button9.hidden = false
-        resetButton.hidden = false
+        button0.isHidden = false
+        button1.isHidden = false
+        button2.isHidden = false
+        button3.isHidden = false
+        button4.isHidden = false
+        button5.isHidden = false
+        button6.isHidden = false
+        button7.isHidden = false
+        button8.isHidden = false
+        button9.isHidden = false
+        resetButton.isHidden = false
         }
-         timer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: Selector("updateCounter"), userInfo: nil, repeats: true)
+         timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(ForwardDigitSpan.updateCounter), userInfo: nil, repeats: true)
     }
     
     
@@ -123,290 +123,290 @@ class ForwardDigitSpan: UIViewController {
     
     //var nums : [String] = []
     var nums1 = ""
-    @IBAction func button0(sender: AnyObject) {
+    @IBAction func button0(_ sender: AnyObject) {
         numResponse.append("0")
         print(numResponse)
         nums1 += numResponse[responses]
         CurrentNums.text = nums1
         responses += 1
         if ( responses == (test + 4)){
-            testDone.hidden = false
+            testDone.isHidden = false
         }
         if(responses >= (test + 4)){
-            button0.enabled = false
-            button1.enabled = false
-            button2.enabled = false
-            button3.enabled = false
-            button4.enabled = false
-            button5.enabled = false
-            button6.enabled = false
-            button7.enabled = false
-            button8.enabled = false
-            button9.enabled = false
+            button0.isEnabled = false
+            button1.isEnabled = false
+            button2.isEnabled = false
+            button3.isEnabled = false
+            button4.isEnabled = false
+            button5.isEnabled = false
+            button6.isEnabled = false
+            button7.isEnabled = false
+            button8.isEnabled = false
+            button9.isEnabled = false
         }
         else{
-            testDone.hidden = true
+            testDone.isHidden = true
         }
     }
     
-    @IBAction func button1(sender: AnyObject) {
+    @IBAction func button1(_ sender: AnyObject) {
          numResponse.append("1")
         print(numResponse)
         nums1 += numResponse[responses]
         CurrentNums.text = nums1
         responses += 1
         if ( responses == (test + 4)){
-            testDone.hidden = false
+            testDone.isHidden = false
         }
         if(responses >= (test + 4)){
-            button0.enabled = false
-            button1.enabled = false
-            button2.enabled = false
-            button3.enabled = false
-            button4.enabled = false
-            button5.enabled = false
-            button6.enabled = false
-            button7.enabled = false
-            button8.enabled = false
-            button9.enabled = false
+            button0.isEnabled = false
+            button1.isEnabled = false
+            button2.isEnabled = false
+            button3.isEnabled = false
+            button4.isEnabled = false
+            button5.isEnabled = false
+            button6.isEnabled = false
+            button7.isEnabled = false
+            button8.isEnabled = false
+            button9.isEnabled = false
         }
         else{
-            testDone.hidden = true
+            testDone.isHidden = true
         }
     }
-    @IBAction func button2(sender: AnyObject) {
+    @IBAction func button2(_ sender: AnyObject) {
          numResponse.append("2")
         print(numResponse)
         nums1 += numResponse[responses]
         CurrentNums.text = nums1
         responses += 1
         if ( responses == (test + 4)){
-            testDone.hidden = false
+            testDone.isHidden = false
         }
         if(responses >= (test + 4)){
-            button0.enabled = false
-            button1.enabled = false
-            button2.enabled = false
-            button3.enabled = false
-            button4.enabled = false
-            button5.enabled = false
-            button6.enabled = false
-            button7.enabled = false
-            button8.enabled = false
-            button9.enabled = false
+            button0.isEnabled = false
+            button1.isEnabled = false
+            button2.isEnabled = false
+            button3.isEnabled = false
+            button4.isEnabled = false
+            button5.isEnabled = false
+            button6.isEnabled = false
+            button7.isEnabled = false
+            button8.isEnabled = false
+            button9.isEnabled = false
         }
         else{
-            testDone.hidden = true
+            testDone.isHidden = true
         }
  
     }
-    @IBAction func button3(sender: AnyObject) {
+    @IBAction func button3(_ sender: AnyObject) {
          numResponse.append("3")
         print(numResponse)
         nums1 += numResponse[responses]
         CurrentNums.text = nums1
         responses += 1
         if ( responses == (test + 4)){
-            testDone.hidden = false
+            testDone.isHidden = false
         }
         if(responses >= (test + 4)){
-            button0.enabled = false
-            button1.enabled = false
-            button2.enabled = false
-            button3.enabled = false
-            button4.enabled = false
-            button5.enabled = false
-            button6.enabled = false
-            button7.enabled = false
-            button8.enabled = false
-            button9.enabled = false
+            button0.isEnabled = false
+            button1.isEnabled = false
+            button2.isEnabled = false
+            button3.isEnabled = false
+            button4.isEnabled = false
+            button5.isEnabled = false
+            button6.isEnabled = false
+            button7.isEnabled = false
+            button8.isEnabled = false
+            button9.isEnabled = false
         }
         else{
-            testDone.hidden = true
+            testDone.isHidden = true
         }
 
     }
-    @IBAction func button4(sender: AnyObject) {
+    @IBAction func button4(_ sender: AnyObject) {
          numResponse.append("4")
         print(numResponse)
         nums1 += numResponse[responses]
         CurrentNums.text = nums1
         responses += 1
         if ( responses == (test + 4)){
-            testDone.hidden = false
+            testDone.isHidden = false
         }
         if(responses >= (test + 4)){
-            button0.enabled = false
-            button1.enabled = false
-            button2.enabled = false
-            button3.enabled = false
-            button4.enabled = false
-            button5.enabled = false
-            button6.enabled = false
-            button7.enabled = false
-            button8.enabled = false
-            button9.enabled = false
+            button0.isEnabled = false
+            button1.isEnabled = false
+            button2.isEnabled = false
+            button3.isEnabled = false
+            button4.isEnabled = false
+            button5.isEnabled = false
+            button6.isEnabled = false
+            button7.isEnabled = false
+            button8.isEnabled = false
+            button9.isEnabled = false
         }
         else{
-            testDone.hidden = true
+            testDone.isHidden = true
         }
  
     }
-    @IBAction func button5(sender: AnyObject) {
+    @IBAction func button5(_ sender: AnyObject) {
          numResponse.append("5")
         print(numResponse)
         nums1 += numResponse[responses]
         CurrentNums.text = nums1
         responses += 1
         if ( responses == (test + 4)){
-            testDone.hidden = false
+            testDone.isHidden = false
         }
         if(responses >= (test + 4)){
-            button0.enabled = false
-            button1.enabled = false
-            button2.enabled = false
-            button3.enabled = false
-            button4.enabled = false
-            button5.enabled = false
-            button6.enabled = false
-            button7.enabled = false
-            button8.enabled = false
-            button9.enabled = false
+            button0.isEnabled = false
+            button1.isEnabled = false
+            button2.isEnabled = false
+            button3.isEnabled = false
+            button4.isEnabled = false
+            button5.isEnabled = false
+            button6.isEnabled = false
+            button7.isEnabled = false
+            button8.isEnabled = false
+            button9.isEnabled = false
         }
         else{
-            testDone.hidden = true
+            testDone.isHidden = true
         }
      
     }
-    @IBAction func button6(sender: AnyObject) {
+    @IBAction func button6(_ sender: AnyObject) {
          numResponse.append("6")
         print(numResponse)
         nums1 += numResponse[responses]
         CurrentNums.text = nums1
         responses += 1
         if ( responses == (test + 4)){
-            testDone.hidden = false
+            testDone.isHidden = false
         }
         if(responses >= (test + 4)){
-            button0.enabled = false
-            button1.enabled = false
-            button2.enabled = false
-            button3.enabled = false
-            button4.enabled = false
-            button5.enabled = false
-            button6.enabled = false
-            button7.enabled = false
-            button8.enabled = false
-            button9.enabled = false
+            button0.isEnabled = false
+            button1.isEnabled = false
+            button2.isEnabled = false
+            button3.isEnabled = false
+            button4.isEnabled = false
+            button5.isEnabled = false
+            button6.isEnabled = false
+            button7.isEnabled = false
+            button8.isEnabled = false
+            button9.isEnabled = false
         }
         else{
-            testDone.hidden = true
+            testDone.isHidden = true
         }
   
     }
-    @IBAction func button7(sender: AnyObject) {
+    @IBAction func button7(_ sender: AnyObject) {
          numResponse.append("7")
         print(numResponse)
         nums1 += numResponse[responses]
         CurrentNums.text = nums1
         responses += 1
         if ( responses == (test + 4)){
-            testDone.hidden = false
+            testDone.isHidden = false
         }
         if(responses >= (test + 4)){
-            button0.enabled = false
-            button1.enabled = false
-            button2.enabled = false
-            button3.enabled = false
-            button4.enabled = false
-            button5.enabled = false
-            button6.enabled = false
-            button7.enabled = false
-            button8.enabled = false
-            button9.enabled = false
+            button0.isEnabled = false
+            button1.isEnabled = false
+            button2.isEnabled = false
+            button3.isEnabled = false
+            button4.isEnabled = false
+            button5.isEnabled = false
+            button6.isEnabled = false
+            button7.isEnabled = false
+            button8.isEnabled = false
+            button9.isEnabled = false
         }
         else{
-            testDone.hidden = true
+            testDone.isHidden = true
         }
    
     }
-    @IBAction func button8(sender: AnyObject) {
+    @IBAction func button8(_ sender: AnyObject) {
          numResponse.append("8")
         print(numResponse)
         nums1 += numResponse[responses]
         CurrentNums.text = nums1
         responses += 1
         if ( responses == (test + 4)){
-            testDone.hidden = false
+            testDone.isHidden = false
         }
         if(responses >= (test + 4)){
-            button0.enabled = false
-            button1.enabled = false
-            button2.enabled = false
-            button3.enabled = false
-            button4.enabled = false
-            button5.enabled = false
-            button6.enabled = false
-            button7.enabled = false
-            button8.enabled = false
-            button9.enabled = false
+            button0.isEnabled = false
+            button1.isEnabled = false
+            button2.isEnabled = false
+            button3.isEnabled = false
+            button4.isEnabled = false
+            button5.isEnabled = false
+            button6.isEnabled = false
+            button7.isEnabled = false
+            button8.isEnabled = false
+            button9.isEnabled = false
         }
         else{
-            testDone.hidden = true
+            testDone.isHidden = true
         }
   
     }
-    @IBAction func button9(sender: AnyObject) {
+    @IBAction func button9(_ sender: AnyObject) {
          numResponse.append("9")
         print(numResponse)
         nums1 += numResponse[responses]
         CurrentNums.text = nums1
         responses += 1
         if (responses == (test + 4)){
-            testDone.hidden = false
+            testDone.isHidden = false
         }
         if(responses >= (test + 4)){
-            button0.enabled = false
-            button1.enabled = false
-            button2.enabled = false
-            button3.enabled = false
-            button4.enabled = false
-            button5.enabled = false
-            button6.enabled = false
-            button7.enabled = false
-            button8.enabled = false
-            button9.enabled = false
+            button0.isEnabled = false
+            button1.isEnabled = false
+            button2.isEnabled = false
+            button3.isEnabled = false
+            button4.isEnabled = false
+            button5.isEnabled = false
+            button6.isEnabled = false
+            button7.isEnabled = false
+            button8.isEnabled = false
+            button9.isEnabled = false
         }
         else{
-            testDone.hidden = true
+            testDone.isHidden = true
         }
  
     }
     
     
-    @IBAction func ResetButton(sender: AnyObject) {
+    @IBAction func ResetButton(_ sender: AnyObject) {
         numResponse = []
         responses = 0
-        testDone.hidden = true
+        testDone.isHidden = true
         nums1 = ""
         CurrentNums.text = ""
-        button0.enabled = true
-        button1.enabled = true
-        button2.enabled = true
-        button3.enabled = true
-        button4.enabled = true
-        button5.enabled = true
-        button6.enabled = true
-        button7.enabled = true
-        button8.enabled = true
-        button9.enabled = true
+        button0.isEnabled = true
+        button1.isEnabled = true
+        button2.isEnabled = true
+        button3.isEnabled = true
+        button4.isEnabled = true
+        button5.isEnabled = true
+        button6.isEnabled = true
+        button7.isEnabled = true
+        button8.isEnabled = true
+        button9.isEnabled = true
 
     }
     
     var Results: [String] = []
     var count = 0
     
-    @IBAction func testDone(sender: AnyObject) {
+    @IBAction func testDone(_ sender: AnyObject) {
         timer.invalidate()
         counter = 0
         countingLabel.text = String(counter)
@@ -462,60 +462,60 @@ class ForwardDigitSpan: UIViewController {
          test += 1
         numResponse = []
         numOrder = []
-        Randomize.hidden = false
+        Randomize.isHidden = false
         responses = 0
-        testDone.hidden = true
+        testDone.isHidden = true
         if (test >= 4){
-            button0.hidden = true
-            button1.hidden = true
-            button2.hidden = true
-            button3.hidden = true
-            button4.hidden = true
-            button5.hidden = true
-            button6.hidden = true
-            button7.hidden = true
-            button8.hidden = true
-            button9.hidden = true
+            button0.isHidden = true
+            button1.isHidden = true
+            button2.isHidden = true
+            button3.isHidden = true
+            button4.isHidden = true
+            button5.isHidden = true
+            button6.isHidden = true
+            button7.isHidden = true
+            button8.isHidden = true
+            button9.isHidden = true
             self.instruct1.text = ""
             self.instruct2.text = ""
-            resetButton.hidden = true
-            countingLabel.hidden = true
-            CurrentInput.hidden = true
-            timerLabel.hidden = true
+            resetButton.isHidden = true
+            countingLabel.isHidden = true
+            CurrentInput.isHidden = true
+            timerLabel.isHidden = true
             timer.invalidate()
         }
-        button0.enabled = true
-        button1.enabled = true
-        button2.enabled = true
-        button3.enabled = true
-        button4.enabled = true
-        button5.enabled = true
-        button6.enabled = true
-        button7.enabled = true
-        button8.enabled = true
-        button9.enabled = true
+        button0.isEnabled = true
+        button1.isEnabled = true
+        button2.isEnabled = true
+        button3.isEnabled = true
+        button4.isEnabled = true
+        button5.isEnabled = true
+        button6.isEnabled = true
+        button7.isEnabled = true
+        button8.isEnabled = true
+        button9.isEnabled = true
 
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        testDone.hidden = true
-        button0.hidden = true
-        button1.hidden = true
-        button2.hidden = true
-        button3.hidden = true
-        button4.hidden = true
-        button5.hidden = true
-        button6.hidden = true
-        button7.hidden = true
-        button8.hidden = true
-        button9.hidden = true
-        resetButton.hidden = true
+        testDone.isHidden = true
+        button0.isHidden = true
+        button1.isHidden = true
+        button2.isHidden = true
+        button3.isHidden = true
+        button4.isHidden = true
+        button5.isHidden = true
+        button6.isHidden = true
+        button7.isHidden = true
+        button8.isHidden = true
+        button9.isHidden = true
+        resetButton.isHidden = true
         // Do any additional setup after loading the view.
     }
     
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }

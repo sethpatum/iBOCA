@@ -181,18 +181,18 @@ class VATask: UIViewController {
         let newStartAlert = UIAlertController(title: "Display", message: "Name and try to remember these images", preferredStyle: .alert)
         newStartAlert.addAction(UIAlertAction(title: "Start", style: .default, handler: { (action) -> Void in
             print("start")
-            self.displayRecursively(num: 0)
+            self.displayRecursively(0)
             //action
         }))
         self.present(newStartAlert, animated: true, completion: nil)
     }
     
-    func displayRecursively(num : Int){
+    func displayRecursively(_ num : Int){
         
         if(num < mixedImages.count){
-            self.outputImage(name: mixedImages[num])
+            self.outputImage(mixedImages[num])
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0){
-                self.displayRecursively(num: num+1)
+                self.displayRecursively(num+1)
             }
         }
         else{
@@ -208,7 +208,7 @@ class VATask: UIViewController {
                 let nextAlert = UIAlertController(title: "Display", message: "Name and try to remember these images again", preferredStyle: .alert)
                 nextAlert.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (action) -> Void in
                     print("continuing")
-                    self.displayRecursively(num: 0)
+                    self.displayRecursively(0)
                     //action
                 }))
                 present(nextAlert, animated: true, completion: nil)
@@ -231,13 +231,13 @@ class VATask: UIViewController {
         
         timerVA = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updateInDelay), userInfo: nil, repeats: true)
         
-        startTimeVA = NSDate.timeIntervalSinceReferenceDate
+        startTimeVA = Foundation.Date.timeIntervalSinceReferenceDate
         
     }
     
-    func updateInDelay(timer: Timer) {
+    func updateInDelay(_ timer: Timer) {
         
-        let currTime = NSDate.timeIntervalSinceReferenceDate
+        let currTime = Foundation.Date.timeIntervalSinceReferenceDate
         var diff: TimeInterval = currTime - startTimeVA
         
         let minutes = UInt8(diff / 60.0)
@@ -261,7 +261,7 @@ class VATask: UIViewController {
      }
      */
     
-    func outputImage(name: String) {
+    func outputImage(_ name: String) {
         
         imageView.removeFromSuperview()
         
@@ -290,7 +290,7 @@ class VATask: UIViewController {
         
     }
     
-    func outputRecognizeImages(name1: String, name2: String){
+    func outputRecognizeImages(_ name1: String, name2: String){
         
         imageView1.removeFromSuperview()
         imageView2.removeFromSuperview()
@@ -399,7 +399,7 @@ class VATask: UIViewController {
         
         testCount = 0
         
-        outputImage(name: halfImages[testCount])
+        outputImage(halfImages[testCount])
         
         //timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "updateInRecall:", userInfo: nil, repeats: true)
         
@@ -452,7 +452,7 @@ class VATask: UIViewController {
     
     func findTime()->Double{
         
-        let currTime = NSDate.timeIntervalSinceReferenceDate
+        let currTime = Foundation.Date.timeIntervalSinceReferenceDate
         var diff: TimeInterval = currTime - startTimeVA
         let minutes = UInt8(diff / 60.0)
         diff -= (TimeInterval(minutes)*60.0)
@@ -461,7 +461,7 @@ class VATask: UIViewController {
         
     }
     
-    func wasDragged(gesture: UIPanGestureRecognizer) {
+    func wasDragged(_ gesture: UIPanGestureRecognizer) {
         
         let translation = gesture.translation(in: self.view)
         
@@ -494,7 +494,7 @@ class VATask: UIViewController {
                     print("next pic!")
                     img.center = CGPoint(x: 512.0, y: 471.0)
                     
-                    outputImage(name: halfImages[testCount])
+                    outputImage(halfImages[testCount])
                     
                     correct.isEnabled = true
                     incorrect.isEnabled = true
@@ -526,10 +526,10 @@ class VATask: UIViewController {
         randomizeRecognize()
         
         if(orderRecognize[testCount] == 0) {
-            outputRecognizeImages(name1: mixedImages[testCount], name2: recognizeIncorrectVA[testCount])
+            outputRecognizeImages(mixedImages[testCount], name2: recognizeIncorrectVA[testCount])
         }
         else{
-            outputRecognizeImages(name1: recognizeIncorrectVA[testCount], name2: mixedImages[testCount])
+            outputRecognizeImages(recognizeIncorrectVA[testCount], name2: mixedImages[testCount])
         }
         
         arrowButton1.isHidden = false
@@ -541,7 +541,7 @@ class VATask: UIViewController {
         next1.isHidden = false
         next1.isEnabled = false
         
-        startTimeVA = NSDate.timeIntervalSinceReferenceDate
+        startTimeVA = Foundation.Date.timeIntervalSinceReferenceDate
         
     }
     
@@ -555,7 +555,7 @@ class VATask: UIViewController {
         
     }
     
-    @IBAction func recognize1(sender: AnyObject){
+    @IBAction func recognize1(_ sender: AnyObject){
         
         arrowButton1.isEnabled = false
         arrowButton2.isEnabled = false
@@ -572,7 +572,7 @@ class VATask: UIViewController {
         
     }
     
-    @IBAction func recognize2(sender: AnyObject){
+    @IBAction func recognize2(_ sender: AnyObject){
         
         arrowButton1.isEnabled = false
         arrowButton2.isEnabled = false
@@ -614,10 +614,10 @@ class VATask: UIViewController {
             arrowButton2.isEnabled = true
             
             if(orderRecognize[testCount] == 0) {
-                outputRecognizeImages(name1: mixedImages[testCount], name2: recognizeIncorrectVA[testCount])
+                outputRecognizeImages(mixedImages[testCount], name2: recognizeIncorrectVA[testCount])
             }
             else{
-                outputRecognizeImages(name1: recognizeIncorrectVA[testCount], name2: mixedImages[testCount])
+                outputRecognizeImages(recognizeIncorrectVA[testCount], name2: mixedImages[testCount])
             }
             
         }
@@ -659,7 +659,7 @@ class VATask: UIViewController {
         
     }
     
-    func delay(delay:Double, closure:()->()) {
+    func delay(_ delay:Double, closure:()->()) {
         /*
         dispatch_after(
             dispatch_time( dispatch_time_t(DISPATCH_TIME_NOW), Int64(delay * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), closure)

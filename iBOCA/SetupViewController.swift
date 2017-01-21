@@ -15,9 +15,8 @@ var emailAddress : String = ""
 
 
 class SetupViewController: ViewController{
-    
+
     @IBOutlet weak var emailOnOff: UISwitch!
-    
     @IBOutlet weak var email: UITextField!
     
     
@@ -27,10 +26,10 @@ class SetupViewController: ViewController{
         email.isEnabled = emailOn
         UserDefaults.standard.set(!emailOn, forKey: "emailOff")
         UserDefaults.standard.synchronize()
+
     }
     
-    
-     @IBAction func emailChanged(_ sender: Any) {
+    @IBAction func emailChanged(_ sender: Any) {
         emailAddress = email.text!
         UserDefaults.standard.set(emailAddress, forKey:"emailAddress")
         UserDefaults.standard.synchronize()
