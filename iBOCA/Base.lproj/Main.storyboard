@@ -400,6 +400,24 @@
             </objects>
             <point key="canvasLocation" x="1096" y="-1329"/>
         </scene>
+        <!--Simple Memory Task-->
+        <scene sceneID="T5m-TA-tDV">
+            <objects>
+                <viewController id="Soq-Lw-miz" customClass="SimpleMemoryTask" customModule="iBOCA" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KZy-Si-ySZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="QDC-WX-DA2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jqK-8W-CYm">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tbE-AL-MIb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-633" y="27"/>
+        </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -1596,6 +1614,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="puZ-ea-H1g"/>
+        <segue reference="lnl-8U-qJ1"/>
     </inferredMetricsTieBreakers>
 </document>
