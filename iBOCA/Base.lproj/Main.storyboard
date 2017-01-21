@@ -400,6 +400,76 @@
             </objects>
             <point key="canvasLocation" x="1096" y="-1329"/>
         </scene>
+        <!--Simple Memory Task-->
+        <scene sceneID="T5m-TA-tDV">
+            <objects>
+                <viewController id="Soq-Lw-miz" customClass="SimpleMemoryTask" customModule="iBOCA" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KZy-Si-ySZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="QDC-WX-DA2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jqK-8W-CYm">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kOo-OD-hLe">
+                                <rect key="frame" x="907" y="96" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="ZXe-jH-G6o"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSG-Q9-ZmP">
+                                <rect key="frame" x="222" y="276" width="581" height="216"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="75"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zfb-RO-aaj">
+                                <rect key="frame" x="257" y="212" width="509" height="82"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="25" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NRm-Lw-Ust">
+                                <rect key="frame" x="56" y="179" width="885" height="512"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ORv-Rw-hsI">
+                                <rect key="frame" x="47" y="96" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Start"/>
+                                <connections>
+                                    <action selector="startButton:" destination="Soq-Lw-miz" eventType="touchUpInside" id="kaa-2A-P9a"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oCK-4i-97i">
+                                <rect key="frame" x="126" y="96" width="32" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Next"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="back" destination="kOo-OD-hLe" id="qPi-vw-2qY"/>
+                        <outlet property="delayLabel" destination="zfb-RO-aaj" id="wHY-nr-rJa"/>
+                        <outlet property="next1" destination="oCK-4i-97i" id="P5n-gw-eSS"/>
+                        <outlet property="resultLabel" destination="NRm-Lw-Ust" id="0cI-eI-BV1"/>
+                        <outlet property="start" destination="ORv-Rw-hsI" id="5JO-0s-QnB"/>
+                        <outlet property="timerLabel" destination="ZSG-Q9-ZmP" id="bE2-TY-CYs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tbE-AL-MIb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-770.5078125" y="-103.125"/>
+        </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -428,9 +498,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iGI-yg-K8B">
-                                <rect key="frame" x="301" y="424" width="422" height="30"/>
+                                <rect key="frame" x="351" y="424" width="322" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="ONWARDS TO BACKWARDS DIGIT SPAN TASK(Doesn't work)"/>
+                                <state key="normal" title="ONWARDS TO BACKWARDS DIGIT SPAN TASK"/>
                                 <connections>
                                     <segue destination="4Eb-es-DlO" kind="show" id="ej2-qd-NaH"/>
                                 </connections>
@@ -489,6 +559,22 @@
                                 <state key="normal" title="Send Email"/>
                                 <connections>
                                     <action selector="sendEmail:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5hN-Po-gQ4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Of0-Tm-Eos">
+                                <rect key="frame" x="462" y="383" width="100" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Demographics"/>
+                                <connections>
+                                    <segue destination="7sQ-B6-R4d" kind="show" id="pO1-Kc-Fdx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Yk-2H-hs0">
+                                <rect key="frame" x="459" y="297" width="107" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Simple Memory"/>
+                                <connections>
+                                    <segue destination="Soq-Lw-miz" kind="show" id="1Ce-5F-Xm0"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -591,7 +677,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="emailChanged:" destination="sGl-dC-nwN" eventType="editingDidEnd" id="pmb-eY-1FL"/>
+                                    <action selector="emailChanged:" destination="sGl-dC-nwN" eventType="editingChanged" id="oFS-I7-bIY"/>
                                 </connections>
                             </textField>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BRY-oX-oEE">
@@ -729,22 +815,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oUl-vQ-ybZ">
-                                <rect key="frame" x="507" y="28" width="517" height="80"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <action selector="TestDone:" destination="7sQ-B6-R4d" eventType="touchUpInside" id="XBV-87-bPW"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="mwA-PF-xBP"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CIK-jd-rod">
                                 <rect key="frame" x="464" y="101" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="updateName:" destination="7sQ-B6-R4d" eventType="editingDidEnd" id="lkz-jh-Z8J"/>
+                                    <action selector="updateName:" destination="7sQ-B6-R4d" eventType="editingChanged" id="TLP-nZ-xI8"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="MR#" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JK8-nd-2CT">
@@ -753,7 +830,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="updateMR:" destination="7sQ-B6-R4d" eventType="editingDidEnd" id="qXI-1B-s74"/>
+                                    <action selector="updateMR:" destination="7sQ-B6-R4d" eventType="editingChanged" id="VUb-Hb-KSq"/>
                                 </connections>
                             </textField>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="etS-mS-xye">
@@ -825,6 +902,15 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oUl-vQ-ybZ">
+                                <rect key="frame" x="663" y="47" width="341" height="79"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back/Done"/>
+                                <connections>
+                                    <action selector="TestDone:" destination="7sQ-B6-R4d" eventType="touchUpInside" id="XBV-87-bPW"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="Mrz-rk-sZx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -834,13 +920,15 @@
                         <outlet property="EthnicityPicker" destination="JVC-vd-2If" id="mnE-FZ-4MX"/>
                         <outlet property="GenderPicker" destination="etS-mS-xye" id="KFo-no-nNY"/>
                         <outlet property="MRField" destination="JK8-nd-2CT" id="FU6-en-S8J"/>
+                        <outlet property="MRLabel" destination="1uq-hQ-pX9" id="Pz1-c3-70Q"/>
                         <outlet property="RacePicker" destination="2Ra-LU-vyr" id="CMU-TD-jlQ"/>
                         <outlet property="nameField" destination="CIK-jd-rod" id="ZkI-zi-u6T"/>
+                        <outlet property="nameLabel" destination="81c-DT-MJx" id="IUM-Be-VJM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EnL-3e-Mw3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1564" y="1090"/>
+            <point key="canvasLocation" x="-1564.453125" y="1089.84375"/>
         </scene>
         <!--ThreeD Figure Copy-->
         <scene sceneID="Crh-fR-n20">
@@ -1248,8 +1336,8 @@
                                 <rect key="frame" x="316" y="181" width="393" height="135"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current Adress:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X2c-tW-4bD">
-                                <rect key="frame" x="172" y="677" width="120" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current Address:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X2c-tW-4bD">
+                                <rect key="frame" x="172" y="677" width="130" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1603,6 +1691,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="puZ-ea-H1g"/>
+        <segue reference="ZXe-jH-G6o"/>
     </inferredMetricsTieBreakers>
 </document>
