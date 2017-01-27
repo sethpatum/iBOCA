@@ -45,26 +45,26 @@ class VATask: UIViewController {
     @IBOutlet weak var dk: UIButton!
     
     
-    var mixed0 = ["BackpackBall", "ChairDog", "PaddleHelmet", "RacquetBalls"]
-    var half0 = ["Backpack", "Chair", "Paddle", "Racquet"]
-    var incorrect0 = ["CarDog", "HornDuck", "PlantRabbit", "ToasterWrench"]
+    var mixed0 = ["Backpack-Soccer", "Chair-Dog", "Dogbowl-Rope", "Mixer-Tennis", "Pot-Shoe"]
+    var half0 = ["Backpack", "Chair", "Dogbowl", "Mixer", "Pot"]
+    var incorrect0 = ["Backpack-Other", "Chair-Other", "Dogbowl-Other", "Mixer-Other", "Pot-Other"]
         //["red", "yellow", "blue", "black"]
     
-    var mixed1 = ["BarneyRod", "DogSunglasses", "PaintingCello", "StoveChicken"]
-    var half1 = ["Barney", "Dog", "Painting", "Stove"]
-    var incorrect1 = ["BackpackBall", "ChairDog", "PaddleHelmet", "RacquetBalls"]
+    var mixed1 = ["Barney-FishingRod", "Chess-Calculator", "Goal-Bike", "Painting-Cello", "Racquet-Baseball"]
+    var half1 = ["Barney", "Chess", "Goal", "Painting", "Racquet"]
+    var incorrect1 = ["Barney-Other", "Chess-Other", "Goal-Other", "Painting-Other", "Racquet-Other"]
         //["red", "yellow", "blue", "black"]
     
-    var mixed2 = ["BikeOwl", "GolfShovel", "PiggybankPlant", "TeapotFlower"]
-    var half2 = ["Bike", "Golf", "Piggybank", "Teapot"]
-    var incorrect2 = ["BarneyRod", "DogSunglasses", "PaintingCello", "StoveChicken"]
+    var mixed2 = ["Birdcage-Car", "Dog-Hat", "Horn-Duck", "Plant-Rabbit", "Teapot-Flower"]
+    var half2 = ["Birdcage", "Dog", "Horn", "Plant", "Teapot"]
+    var incorrect2 = ["Birdcage-Other", "Dog-Other", "Horn-Other", "Plant-Other", "Teapot-Other"]
         //["red", "yellow", "blue", "black"]
-    
+    /*
     var mixed3 = ["CarDog", "HornDuck", "PlantRabbit", "ToasterWrench"]
     var half3 = ["Car", "Horn", "Plant", "Toaster"]
     var incorrect3 = ["BikeOwl", "GolfShovel", "PiggybankPlant", "TeapotFlower"]
         //["red", "yellow", "blue", "black"]
-    
+    */
     var imageName = ""
     var image = UIImage()
     var imageView = UIImageView()
@@ -177,6 +177,8 @@ class VATask: UIViewController {
         chooseImageSet()
         
         firstDisplay = true
+        timerLabel.text = ""
+        delayLabel.text = ""
         
         let newStartAlert = UIAlertController(title: "Display", message: "Name and try to remember these images", preferredStyle: .alert)
         newStartAlert.addAction(UIAlertAction(title: "Start", style: .default, handler: { (action) -> Void in
@@ -339,7 +341,7 @@ class VATask: UIViewController {
     
     func chooseImageSet(){
         
-        imageSetVA = Int(arc4random_uniform(4))
+        imageSetVA = Int(arc4random_uniform(3))
         
         if (imageSetVA == 0) {
             mixedImages = mixed0
@@ -357,12 +359,6 @@ class VATask: UIViewController {
             mixedImages = mixed2
             halfImages = half2
             recognizeIncorrectVA = incorrect2
-        }
-        
-        if (imageSetVA == 3) {
-            mixedImages = mixed3
-            halfImages = half3
-            recognizeIncorrectVA = incorrect3
         }
         
     }
@@ -549,7 +545,7 @@ class VATask: UIViewController {
         
         //if 0, correct image on left; if 1, correct on right
         
-        for k in 0 ..< 4 {
+        for k in 0 ..< 5 {
             self.orderRecognize.append(Int(arc4random_uniform(2)))
         }
         
