@@ -10,8 +10,8 @@ import Foundation
 
 import UIKit
 
-var emailOn  : Bool = false
-var emailAddress : String = ""
+//var emailOn  : Bool = false
+//var emailAddress : String = ""
 
 
 class SetupViewController: ViewController{

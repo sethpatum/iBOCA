@@ -18,6 +18,9 @@ var Race : String?
 var Ethnicity : String?
 var Results1: [String] = []
 
+//added:
+var emailOn  : Bool = false
+var emailAddress : String = ""
 
 
 func makeAgeData() -> [String] {
@@ -54,6 +57,9 @@ class Demographics: UIViewController, MFMailComposeViewControllerDelegate, UITex
     @IBOutlet weak var MRLabel: UILabel!
     @IBOutlet weak var MRField: UITextField!
     
+//added:
+    @IBOutlet weak var emailOnOff: UISwitch!
+    @IBOutlet weak var email: UITextField!
     
     @IBAction func updateName(_ sender: AnyObject) {
         name = nameField.text
@@ -63,10 +69,41 @@ class Demographics: UIViewController, MFMailComposeViewControllerDelegate, UITex
         MR = MRField.text
     }
     
+//added:
+    @IBAction func emailOnOff(_ sender: Any) {
+        emailOn = emailOnOff.isOn
+        
+        email.isEnabled = emailOn
+        UserDefaults.standard.set(!emailOn, forKey: "emailOff")
+        UserDefaults.standard.synchronize()
+        
+    }
+    
+//added:
+    @IBAction func emailChanged(_ sender: Any) {
+        emailAddress = email.text!
+        UserDefaults.standard.set(emailAddress, forKey:"emailAddress")
+        UserDefaults.standard.synchronize()
+    }
     
     
+    @IBOutlet weak var done: UIButton!
     
+    @IBAction func done(_ sender: Any) {
     
+        let alert = UIAlertController(title: "Continue", message: "Done with information?", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Back", style: .default, handler: { (action) -> Void in
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (action) -> Void in
+            let main = self.storyboard?.instantiateViewController(withIdentifier: "main") as! MainViewController
+            self.present(main, animated: true, completion: nil)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+        
+    }
     
     
     override func viewDidLoad() {
@@ -87,6 +124,18 @@ class Demographics: UIViewController, MFMailComposeViewControllerDelegate, UITex
         Ethnicity = ethnicData[EthnicityPicker.selectedRow(inComponent: 0)]
         Education = educationData[EducationPicker.selectedRow(inComponent: 0)]
         Race = raceData[RacePicker.selectedRow(inComponent: 0)]
+        
+        
+//added:
+        emailOn = !UserDefaults.standard.bool(forKey: "emailOff")
+        
+        if(UserDefaults.standard.object(forKey: "emailAddress") != nil) {
+            emailAddress = UserDefaults.standard.object(forKey: "emailAddress") as! String
+        }
+        
+        email.isEnabled = emailOn
+        emailOnOff.isOn = emailOn
+        email.text = emailAddress
        
     }
 
