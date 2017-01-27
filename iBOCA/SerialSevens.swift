@@ -13,7 +13,8 @@ class SerialSevens: UIViewController {
     var counter = 0
     
     func updateCounter() {
-        countingLabel.text = String(describing: counter += 1)
+        counter += 1
+        countingLabel.text = String(counter)
     }
     
     
@@ -449,9 +450,7 @@ class SerialSevens: UIViewController {
             nextInput.isHidden = true
         
         
-        func updateCounter() {
-            countingLabel.text = String(describing: counter += 1)
-        }
+        
         
         // Do any additional setup after loading the view.
     }
