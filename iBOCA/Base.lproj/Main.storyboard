@@ -470,6 +470,78 @@
             </objects>
             <point key="canvasLocation" x="-770.5078125" y="-103.125"/>
         </scene>
+        <!--Cats And Dogs View Controller-->
+        <scene sceneID="gCc-kr-KZ3">
+            <objects>
+                <viewController id="kzf-ng-R8q" customClass="CatsAndDogsViewController" customModule="iBOCA" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8ax-ma-9lx"/>
+                        <viewControllerLayoutGuide type="bottom" id="4fF-6v-TgJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="55V-EG-XhK">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r5O-2M-9Dq">
+                                <rect key="frame" x="46" y="58" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Start"/>
+                                <connections>
+                                    <action selector="StartTest:" destination="kzf-ng-R8q" eventType="touchUpInside" id="jcK-YR-u1b"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SPt-IE-2go">
+                                <rect key="frame" x="128" y="58" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="End"/>
+                                <connections>
+                                    <action selector="EndTest:" destination="kzf-ng-R8q" eventType="touchUpInside" id="Quw-UY-7cV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JC5-hU-DsF">
+                                <rect key="frame" x="225" y="58" width="39" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Reset"/>
+                                <connections>
+                                    <action selector="Reset:" destination="kzf-ng-R8q" eventType="touchUpInside" id="Gdg-k9-HOy"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EJW-CZ-HT8">
+                                <rect key="frame" x="326" y="58" width="32" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Help"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rb1-16-qUN">
+                                <rect key="frame" x="429" y="58" width="37" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="selectionDone:" destination="kzf-ng-R8q" eventType="touchUpInside" id="hRk-D6-Jcj"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="30" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wzl-ke-4rO">
+                                <rect key="frame" x="46" y="119" width="908" height="587"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="endButton" destination="SPt-IE-2go" id="dEB-2p-lCv"/>
+                        <outlet property="helpButton" destination="EJW-CZ-HT8" id="VaZ-g1-hdE"/>
+                        <outlet property="resetButton" destination="JC5-hU-DsF" id="9OB-hT-wzj"/>
+                        <outlet property="resultsLabel" destination="Wzl-ke-4rO" id="GJ4-cr-4Tu"/>
+                        <outlet property="selectionDoneButton" destination="Rb1-16-qUN" id="9Ma-0d-wQE"/>
+                        <outlet property="startButton" destination="r5O-2M-9Dq" id="Ide-tW-bsX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b43-W2-YEC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5.859375" y="-488.28125"/>
+        </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -567,6 +639,14 @@
                                 <state key="normal" title="Setup - NO LONGER NEED"/>
                                 <connections>
                                     <segue destination="EHs-aA-24A" kind="show" id="P1Y-wm-oqG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pTk-PH-Jfg">
+                                <rect key="frame" x="462" y="383" width="101" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Cats and Dogs"/>
+                                <connections>
+                                    <segue destination="kzf-ng-R8q" kind="show" id="DD9-Uh-bPW"/>
                                 </connections>
                             </button>
                         </subviews>
