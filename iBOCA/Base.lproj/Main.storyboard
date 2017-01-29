@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7sQ-B6-R4d">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7sQ-B6-R4d">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -1484,10 +1484,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mZD-EP-d5J">
-                                <rect key="frame" x="524" y="40" width="132" height="30"/>
+                                <rect key="frame" x="524" y="31" width="132" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Done"/>
+                                <state key="normal" title="End"/>
                                 <connections>
                                     <action selector="StopButtonWithSender:" destination="1Yj-YM-GH3" eventType="touchUpInside" id="yfV-b0-5l3"/>
                                 </connections>
@@ -1510,11 +1510,21 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="anl-6e-fIn">
+                                <rect key="frame" x="908" y="31" width="74" height="62"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="Om5-iP-bEQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="doneButton" destination="mZD-EP-d5J" id="VGR-cn-48t"/>
+                        <outlet property="doneButton" destination="anl-6e-fIn" id="JW7-EE-dmo"/>
+                        <outlet property="endButton" destination="mZD-EP-d5J" id="R8Z-bD-t9f"/>
                         <outlet property="resultsLabel" destination="wZC-n2-che" id="bIa-ML-PdE"/>
                         <outlet property="startButton" destination="MK0-oR-YjC" id="td6-P9-LY7"/>
                         <outlet property="testPicker" destination="eyl-7T-31Y" id="6mn-nR-AJ9"/>
@@ -1896,6 +1906,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="LIO-jb-9kR"/>
+        <segue reference="Om5-iP-bEQ"/>
     </inferredMetricsTieBreakers>
 </document>
