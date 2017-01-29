@@ -10,13 +10,24 @@ import UIKit
 var Category : String?
 
 class SemanticListGeneration: UIViewController, UIPickerViewDelegate {
+    var counter = 30
+    var myTimer : Timer = Timer()
     
-    @IBOutlet weak var IncorrectButton: UIButton!
+    var resCorrect = 0
+    var resIncorrect = 0
+    var resRepeat = 0
+    
+    var startTime = Foundation.Date()
+    
     @IBOutlet weak var CorrectButton: UIButton!
+    @IBOutlet weak var IncorrectButton: UIButton!
     @IBOutlet weak var RepeatButton: UIButton!
+    @IBOutlet weak var StartButton: UIButton!
+    @IBOutlet weak var BackButton: UIButton!
+    @IBOutlet weak var TimerLabel: UILabel!
+    @IBOutlet weak var SelectLabel: UILabel!
+    @IBOutlet weak var ResultLabel: UILabel!
     
-    
-  
     @IBOutlet weak var CategoryPicker: UIPickerView!
     let CategoryData = ["Animals", "Occupations", "Fruit", "Vegitables", "Clothing", "Furniture"]
     
@@ -27,8 +38,59 @@ class SemanticListGeneration: UIViewController, UIPickerViewDelegate {
         
         Category = CategoryData[CategoryPicker.selectedRow(inComponent: 0)]
 
-        // Do any additional setup after loading the view.
+        StartButton.isHidden = false
+        BackButton.isHidden = false
+        IncorrectButton.isHidden = true
+        CorrectButton.isHidden = true
+        RepeatButton.isHidden = true
+        CategoryPicker.isHidden = false
+        TimerLabel.isHidden = true
+        SelectLabel.isHidden = false
+        
+        TimerLabel.text = ""
+        ResultLabel.text = ""
     }
+    
+    
+    @IBAction func StartPressed(_ sender: Any) {
+        print(Category ?? "none")
+        
+        self.StartButton.isHidden = true
+        BackButton.isHidden = true
+        IncorrectButton.isHidden = false
+        CorrectButton.isHidden = false
+        RepeatButton.isHidden = false
+        CategoryPicker.isHidden = true
+        TimerLabel.isHidden = false
+        SelectLabel.isHidden = true
+        
+        counter = 60
+        myTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
+        
+        resCorrect = 0
+        resIncorrect = 0
+        resRepeat = 0
+        ResultLabel.text = "Correct:\(resCorrect), Incorrect:\(resIncorrect), Repeat:\(resRepeat)"
+
+    }
+    
+       
+    
+    @IBAction func correctPressed(_ sender: Any) {
+        resCorrect += 1
+        ResultLabel.text = "Correct:\(resCorrect), Incorrect:\(resIncorrect), Repeat:\(resRepeat)"
+    }
+    
+    @IBAction func incorrectPressed(_ sender: Any) {
+        resIncorrect += 1
+        ResultLabel.text = "Correct:\(resCorrect), Incorrect:\(resIncorrect), Repeat:\(resRepeat)"
+    }
+    
+    @IBAction func repeatPressed(_ sender: Any) {
+        resRepeat += 1
+        ResultLabel.text = "Correct:\(resCorrect), Incorrect:\(resIncorrect), Repeat:\(resRepeat)"
+    }
+  
     
     func numberOfComponentsInPickerView(_ pickerView : UIPickerView!) -> Int{
         return 1
@@ -56,6 +118,36 @@ class SemanticListGeneration: UIViewController, UIPickerViewDelegate {
         } else  {
         }
     }
+    
+    
+    func updateCounter() {
+        //you code, this is an example
+        if counter >= 0 {
+            print("\(counter) seconds to the end of the world")
+            TimerLabel.text = "00:\(counter)"
+            counter -= 1
+        } else {
+            myTimer.invalidate()
+            print("Done timer")
+            
+            StartButton.isHidden = false
+            BackButton.isHidden = false
+            IncorrectButton.isHidden = true
+            CorrectButton.isHidden = true
+            RepeatButton.isHidden = true
+            CategoryPicker.isHidden = false
+            TimerLabel.isHidden = true
+            SelectLabel.isHidden = false
+            
+            let result = Results()
+            result.name = "Semantic List Generation"
+            result.startTime = startTime
+            result.endTime = Foundation.Date()
+            result.shortDescription = "Correct:\(resCorrect), Incorrect:\(resIncorrect), Repeat:\(resRepeat)"
+            
+        }
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

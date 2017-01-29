@@ -10,6 +10,7 @@ import Foundation
 
 import UIKit
 import MessageUI
+var screenSize : CGRect?
 
 class MainViewController: UIViewController, MFMailComposeViewControllerDelegate, UITextFieldDelegate, UITextViewDelegate {
     var mailSubject : String = "CNToolkit Results"
@@ -39,6 +40,8 @@ class MainViewController: UIViewController, MFMailComposeViewControllerDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        screenSize = UIScreen.main.bounds
         
         emailOn = !UserDefaults.standard.bool(forKey: "emailOff")
         if(UserDefaults.standard.object(forKey: "emailAddress") != nil) {
