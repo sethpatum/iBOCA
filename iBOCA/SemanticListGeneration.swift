@@ -124,7 +124,8 @@ class SemanticListGeneration: UIViewController, UIPickerViewDelegate {
         //you code, this is an example
         if counter >= 0 {
             print("\(counter) seconds to the end of the world")
-            TimerLabel.text = "00:\(counter)"
+            let precnt = counter < 10 ? "0" : ""
+            TimerLabel.text = "00:\(precnt)\(counter)"
             counter -= 1
         } else {
             myTimer.invalidate()

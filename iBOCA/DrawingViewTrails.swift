@@ -9,7 +9,6 @@ import Foundation
 
 import UIKit
 
-var selectedTest = ""
 
 
 class DrawingViewTrails: UIView {
@@ -131,11 +130,11 @@ class DrawingViewTrails: UIView {
         setNeedsDisplay()
     }
     
-    func drawBubble(bubble:(Int, Int, String)) {
+    func drawBubble(bubble:(String, Int, Int)) {
         //println("in drawbubble")
         
         
-        let (x, y, name) = bubble
+        let (name, x, y) = bubble
         //println("Bubble \(bubble)")
         
         let context = UIGraphicsGetCurrentContext();
@@ -167,8 +166,8 @@ class DrawingViewTrails: UIView {
         // create the line of text
         let line = CTLineCreateWithAttributedString(text!)
         
-// Don't know how to conver this to swift3 -Saman
-//       context!.textMatrix = CGAffineTransformMake(CGFloat(1), CGFloat(0), CGFloat(0), CGFloat(-1),CGFloat(0), CGFloat(0))
+       context?.textMatrix = CGAffineTransform(rotationAngle: CGFloat.pi).scaledBy(x: -1, y: 1)
+  
         
         let num = name.characters.count
         
@@ -187,23 +186,17 @@ class DrawingViewTrails: UIView {
             let attr = [NSFontAttributeName:aFont!,NSForegroundColorAttributeName:UIColor.black]
             let text = CFAttributedStringCreate(nil, "START" as CFString!, attr as CFDictionary!)
             let line = CTLineCreateWithAttributedString(text!)
- //Don't know how to conver to swift 3 -Saman
- //           CGContextSetTextMatrix(context, CGAffineTransformMake(CGFloat(1), CGFloat(0), CGFloat(0), CGFloat(-1),CGFloat(0), CGFloat(0)))
-            
+           
             context?.textPosition = CGPoint(x:CGFloat(x-28), y:CGFloat(y+41))
             CTLineDraw(line, context!)
         }
         
-        if ((selectedTest == "Trails A" && name == "25") ||
-            (selectedTest == "Trails A Practice" && name == "6") ||
-            (selectedTest == "Trails B" && name == "13") ||
-            (selectedTest == "Trails B Practice" && name == "C")) {
+        if (TrailsTests[selectedTest].1.last?.0 == name) {
             let aFont = UIFont(name: "Menlo", size: 19)
             let attr = [NSFontAttributeName:aFont!,NSForegroundColorAttributeName:UIColor.black]
             let text = CFAttributedStringCreate(nil, "END" as CFString!, attr as CFDictionary!)
-            let line = CTLineCreateWithAttributedString(text!)
-//Don't know how to conver to swift 3 -Saman
-//            CGContextSetTextMatrix(context, CGAffineTransformMake(CGFloat(1), CGFloat(0), CGFloat(0), CGFloat(-1),CGFloat(0), CGFloat(0)))
+            let line = CTLineCreateWithAttributedString(text!)           
+            
             context?.textPosition = CGPoint(x:CGFloat(x-16), y:CGFloat(y+41))
             CTLineDraw(line, context!)
         }
