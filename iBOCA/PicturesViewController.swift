@@ -31,7 +31,7 @@ class PicturesViewController: ViewController {
     
     var wrongList = [String]()
     
-    
+/*
     @IBAction func HelpButton(sender: AnyObject) {
         if(selectedTest == "Naming Pictures") {
             let vc = storyboard!.instantiateViewController(withIdentifier: "Naming Pictures Help") as UIViewController
@@ -41,6 +41,7 @@ class PicturesViewController: ViewController {
             navigationController?.pushViewController(vc, animated:true)
         }
     }
+ */
     
     
     @IBAction func reset(sender: AnyObject) {
@@ -59,24 +60,24 @@ class PicturesViewController: ViewController {
         corr = 0
         imageName = getImageName()
         
-        var imageView4 = UIImageView(frame:CGRect(x: 107.0, y: 171.0, width: 800.0, height: 600.0))
-        
+        let imageView4 = UIImageView(frame:CGRect(x: 107.0, y: 171.0, width: 800.0, height: 600.0))
+/*
         if(selectedTest == "Famous Faces") {
             imageView4 = UIImageView(frame:CGRect(x: 207.0, y: 171.0, width: 600.0, height: 600.0))
         }
-        
+*/
         let image4 = UIImage(named: imageName)
         imageView4.image = image4
         self.view.addSubview(imageView4)
         correctButton.isEnabled = true
         incorrectButton.isEnabled = true
         
-        if selectedTest == "Naming Pictures" {
+//        if selectedTest == "Naming Pictures" {
             placeLabel.text = "\(count+1)/\(namingImages.count)"
-        }
-        else {
-            placeLabel.text = "\(count+1)/\(namingImages2.count)"
-        }
+//        }
+//        else {
+//            placeLabel.text = "\(count+1)/\(namingImages2.count)"
+//        }
         
     }
     
@@ -103,11 +104,13 @@ class PicturesViewController: ViewController {
             
             imageName = getImageName()
             
-            var imageView1 = UIImageView(frame:CGRect(x: 107.0, y: 171.0, width: 800.0, height: 600.0))
+            let imageView1 = UIImageView(frame:CGRect(x: 107.0, y: 171.0, width: 800.0, height: 600.0))
             
+/*
             if(selectedTest == "Famous Faces") {
                 imageView1 = UIImageView(frame:CGRect(x: 207.0, y: 171.0, width: 600.0, height: 600.0))
             }
+*/
             
             let image1 = UIImage(named: imageName)
             imageView1.image = image1
@@ -115,16 +118,18 @@ class PicturesViewController: ViewController {
             
             order.append(true)
             
-            if selectedTest == "Naming Pictures" {
+//            if selectedTest == "Naming Pictures" {
                 if count != namingImages.count {
                     placeLabel.text = "\(count+1)/\(namingImages.count)"
                 }
-            }
+//            }
+/*
             else {
                 if count != namingImages2.count {
                     placeLabel.text = "\(count+1)/\(namingImages2.count)"
                 }
             }
+ */
             
         }
         
@@ -150,28 +155,30 @@ class PicturesViewController: ViewController {
             
         else{
             imageName = getImageName()
-            var imageView2 = UIImageView(frame:CGRect(x: 107.0, y: 171.0, width: 800.0, height: 600.0))
-            
+            let imageView2 = UIImageView(frame:CGRect(x: 107.0, y: 171.0, width: 800.0, height: 600.0))
+/*
             if(selectedTest == "Famous Faces") {
                 imageView2 = UIImageView(frame:CGRect(x: 207.0, y: 171.0, width: 600.0, height: 600.0))
             }
-            
+*/
             let image2 = UIImage(named: imageName)
             imageView2.image = image2
             self.view.addSubview(imageView2)
             
             order.append(false)
             
-            if selectedTest == "Naming Pictures" {
+//            if selectedTest == "Naming Pictures" {
                 if count != namingImages.count-1 {
                     placeLabel.text = "\(count+1)/\(namingImages.count)"
                 }
-            }
+//            }
+/*
             else {
                 if count != namingImages2.count-1 {
                     placeLabel.text = "\(count+1)/\(namingImages2.count)"
                 }
             }
+ */
             
         }
         
@@ -198,22 +205,22 @@ class PicturesViewController: ViewController {
         
         imageName = getImageName()
         
-        var imageView3 = UIImageView(frame:CGRect(x: 107.0, y: 171.0, width: 800.0, height: 600.0))
-        
+        let imageView3 = UIImageView(frame:CGRect(x: 107.0, y: 171.0, width: 800.0, height: 600.0))
+/*
         if(selectedTest == "Famous Faces") {
             imageView3 = UIImageView(frame:CGRect(x: 207.0, y: 171.0, width: 600.0, height: 600.0))
         }
-        
+*/
         let image3 = UIImage(named: imageName)
         imageView3.image = image3
         self.view.addSubview(imageView3)
         
-        if selectedTest == "Naming Pictures" {
+//        if selectedTest == "Naming Pictures" {
             placeLabel.text = "\(count+1)/\(namingImages.count)"
-        }
-        else {
-            placeLabel.text = "\(count+1)/\(namingImages2.count)"
-        }
+//        }
+//        else {
+//            placeLabel.text = "\(count+1)/\(namingImages2.count)"
+//        }
         
     }
     
@@ -252,24 +259,24 @@ class PicturesViewController: ViewController {
         super.viewDidLoad()
         
         print(selectedTest, terminator: "")
-        if(selectedTest == "Naming Pictures") {
+//        if(selectedTest == "Naming Pictures") {
             self.title = "Naming Pictures"
             totalCount = namingImages.count
-        } else {
-            self.title = "Famous People"
-            totalCount = namingImages2.count
-        }
+//        } else {
+//            self.title = "Famous People"
+//            totalCount = namingImages2.count
+//        }
         
         count = 0
         corr = 0
         imageName = getImageName()
         
-        var imageView = UIImageView(frame:CGRect(x: 107.0, y: 171.0, width: 800.0, height: 600.0))
-        
+        let imageView = UIImageView(frame:CGRect(x: 107.0, y: 171.0, width: 800.0, height: 600.0))
+/*
         if(selectedTest == "Famous Faces") {
             imageView = UIImageView(frame:CGRect(x: 207.0, y: 171.0, width: 600.0, height: 600.0))
         }
-        
+*/
         let image = UIImage(named: imageName)
         imageView.image = image
         self.view.addSubview(imageView)
@@ -277,12 +284,12 @@ class PicturesViewController: ViewController {
         backButton.isEnabled = false
         resetButton.isEnabled = false
         
-        if selectedTest == "Naming Pictures" {
+//        if selectedTest == "Naming Pictures" {
             placeLabel.text = "\(count+1)/\(namingImages.count)"
-        }
-        else {
-            placeLabel.text = "\(count+1)/\(namingImages2.count)"
-        }
+//        }
+//        else {
+//            placeLabel.text = "\(count+1)/\(namingImages2.count)"
+//        }
     }
     
 /*
@@ -300,13 +307,13 @@ class PicturesViewController: ViewController {
     
     func getImageName()->String{
         
-        if(selectedTest == "Naming Pictures") {
+//        if(selectedTest == "Naming Pictures") {
             print(count)
             
             return namingImages[count]
-        } else {
-            return namingImages2[count]
-        }
+//        } else {
+//            return namingImages2[count]
+//        }
         
     }
     
