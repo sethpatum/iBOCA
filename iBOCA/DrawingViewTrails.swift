@@ -9,7 +9,6 @@ import Foundation
 
 import UIKit
 
-var selectedTest = ""
 
 
 class DrawingViewTrails: UIView {
@@ -131,11 +130,11 @@ class DrawingViewTrails: UIView {
         setNeedsDisplay()
     }
     
-    func drawBubble(bubble:(Int, Int, String)) {
+    func drawBubble(bubble:(String, Int, Int)) {
         //println("in drawbubble")
         
         
-        let (x, y, name) = bubble
+        let (name, x, y) = bubble
         //println("Bubble \(bubble)")
         
         let context = UIGraphicsGetCurrentContext();
@@ -194,10 +193,7 @@ class DrawingViewTrails: UIView {
             CTLineDraw(line, context!)
         }
         
-        if ((selectedTest == "Trails A" && name == "25") ||
-            (selectedTest == "Trails A Practice" && name == "6") ||
-            (selectedTest == "Trails B" && name == "13") ||
-            (selectedTest == "Trails B Practice" && name == "C")) {
+        if (TrailsTests[selectedTest].1.last?.0 == name) {
             let aFont = UIFont(name: "Menlo", size: 19)
             let attr = [NSFontAttributeName:aFont!,NSForegroundColorAttributeName:UIColor.black]
             let text = CFAttributedStringCreate(nil, "END" as CFString!, attr as CFDictionary!)

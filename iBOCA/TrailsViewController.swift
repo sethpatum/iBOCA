@@ -14,9 +14,10 @@ var timedConnectionsA = [Double]()
 var displayImgTrailsA = false
 var bubbleColor:UIColor?
 
+var selectedTest = 0
 
 
-class TrailsAViewController: ViewController {
+class TrailsAViewController: ViewController, UIPickerViewDelegate {
     
     var drawingView: DrawingViewTrails!
     
@@ -28,40 +29,45 @@ class TrailsAViewController: ViewController {
     @IBOutlet weak var timerLabel: UILabel!
     
     @IBOutlet weak var startButton: UIButton!
-    @IBOutlet weak var practiceBotton: UIButton!
     @IBOutlet weak var doneButton: UIButton!
-
+    
+    @IBOutlet weak var testPicker: UIPickerView!
+    var TestTypes : [String] = []
     
     @IBOutlet weak var resultsLabel: UILabel!
     
     @IBAction func StartButton(sender: AnyObject) {
-        if(selectedTest == "Trails A Practice") {
-            selectedTest = "Trails A"
-        } else if(selectedTest == "Trails B Practice") {
-            selectedTest = "Trails B"
-        }
-        self.title = selectedTest
+
+        
+        self.title = TrailsTests[selectedTest].0
         
         startTest()
     }
     
     
-    @IBAction func PracticeButton(sender: AnyObject) {
-        if(selectedTest == "Trails A") {
-            selectedTest = "Trails A Practice"
-        } else if(selectedTest == "Trails B") {
-            selectedTest = "Trails B Practice"
-        }
-        self.title = selectedTest
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        startTest()
+        for test in TrailsTests {
+            TestTypes.append(test.0)
+        }
+        testPicker.delegate = self
+        testPicker.transform = CGAffineTransform(scaleX: 0.5, y: 1.0)
+        selectedTest = testPicker.selectedRow(inComponent: 0)
+        
+        
+        self.title = TestTypes[selectedTest]
+        
+        doneButton.isEnabled = false
+        
     }
+    
     
     
     func startTest() {
         
         startButton.isEnabled = false
-        practiceBotton.isEnabled = false
+        testPicker.isHidden = false
         doneButton.isEnabled = true
         self.navigationItem.setHidesBackButton(true, animated:true)
         
@@ -104,7 +110,7 @@ class TrailsAViewController: ViewController {
     @IBAction func StopButton(sender: AnyObject) {
         
         startButton.isEnabled = true
-        practiceBotton.isEnabled = true
+        testPicker.isHidden = true
         doneButton.isEnabled = false
         self.navigationItem.setHidesBackButton(false, animated:true)
         
@@ -126,15 +132,36 @@ class TrailsAViewController: ViewController {
     } */
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        self.title = selectedTest
-        
-        doneButton.isEnabled = false
-        
+    
+    func numberOfComponentsInPickerView(_ pickerView : UIPickerView!) -> Int{
+        return 1
     }
     
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
+        if pickerView == testPicker {
+            return TestTypes.count
+        } else {
+            return 1
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if pickerView == testPicker {
+            selectedTest = row
+            return TestTypes[row]
+        } else {
+            return ""
+        }
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView == testPicker {
+            selectedTest = row
+        } else  {
+        }
+    }
+
+    
+  
  /* Not sure how to conver to swift 3 -Saman
      override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.Landscape
@@ -210,7 +237,7 @@ class TrailsAViewController: ViewController {
         displayImgTrailsA = false
         
         startButton.isEnabled = true
-        practiceBotton.isEnabled = true
+        testPicker.isHidden = true
         doneButton.isEnabled = false
         self.navigationItem.setHidesBackButton(false, animated:false)
         
