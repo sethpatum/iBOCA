@@ -26,17 +26,25 @@ class TapInOrderBackwardsViewController: UIViewController {
     var ended = false
     
     @IBOutlet weak var StartButton: UIButton!
-    @IBOutlet weak var endButton: UIButton!
-    @IBOutlet weak var resetButton: UIButton!
-    @IBOutlet weak var helpButton: UIButton!
     
+    @IBOutlet weak var endButton: UIButton!
+    
+    @IBOutlet weak var resetButton: UIButton!
+    
+    @IBOutlet weak var backButton: UIButton!
     
     @IBOutlet weak var resultsLabel: UILabel!
     
     //start from 1st button; reset all info
-    @IBAction func Reset(sender: AnyObject) {
+    
+    @IBAction func Reset(_ sender: Any) {
         
         print("in reset")
+        
+        backButton.isEnabled = false
+        StartButton.isEnabled = false
+        endButton.isEnabled = true
+        resetButton.isEnabled = true
         
         numplaces = 0
         numRepeats = 0
@@ -49,11 +57,14 @@ class TapInOrderBackwardsViewController: UIViewController {
             self.buttonList[index].backgroundColor = UIColor.red
         }
         
+        StartTest(resetButton)
+        
+        /*
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5){
             self.drawSequenceRecursively(num: self.numplaces)
             self.startTime2 = NSDate()
         }
-        
+        */
     }
     
     //allow buttons to be pressed
@@ -145,7 +156,7 @@ class TapInOrderBackwardsViewController: UIViewController {
         
         endButton.isEnabled = false
         resetButton.isEnabled = false
-        
+        backButton.isEnabled = true
         
         randomizeBoard()
         
@@ -153,21 +164,22 @@ class TapInOrderBackwardsViewController: UIViewController {
         
     }
     
-    @IBAction func StartTest(sender: AnyObject) {
+    @IBAction func StartTest(_ sender: Any) {
         
         ended = false
         
         self.navigationItem.setHidesBackButton(true, animated:true)
-        helpButton.isEnabled = false
         StartButton.isEnabled = false
         endButton.isEnabled = true
         resetButton.isEnabled = true
+        backButton.isEnabled = false
         
         numplaces = 0
         numRepeats = 0
         
         randomizeOrder()
         
+/*
         if let wnd = self.view{
             
             let v = UIView(frame: wnd.bounds)
@@ -182,6 +194,7 @@ class TapInOrderBackwardsViewController: UIViewController {
                 v.removeFromSuperview()
             })
         }
+*/
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
             self.drawSequenceRecursively(num: self.numplaces)
@@ -193,39 +206,28 @@ class TapInOrderBackwardsViewController: UIViewController {
     }
     
     
-    @IBAction func endButton(sender: AnyObject) {
+    @IBAction func endButton(_ sender: Any) {
         self.navigationItem.setHidesBackButton(false, animated:true)
-        helpButton.isEnabled = true
-        StartButton.isEnabled = true
+        StartButton.isEnabled = false
         endButton.isEnabled = false
-        resetButton.isEnabled = false
+        resetButton.isEnabled = true
+        backButton.isEnabled = true
         
         
         donetest()
         
-    }
-    @IBAction func helpBhutton(sender: AnyObject) {
-        self.navigationItem.setHidesBackButton(false, animated:true)
-        helpButton.isEnabled = true
-        StartButton.isEnabled = true
-        endButton.isEnabled = false
-        resetButton.isEnabled = false
-        
-        numplaces = 0
-        numRepeats = 0
-        //donetest()
     }
     
     func donetest() {
         
         ended = true
         
+        StartButton.isEnabled = false
+        self.endButton.isEnabled = false
+        self.resetButton.isEnabled = true
+        backButton.isEnabled = true
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-            self.navigationItem.setHidesBackButton(false, animated:true)
-            self.helpButton.isEnabled = true
-            self.StartButton.isEnabled = true
-            self.endButton.isEnabled = false
-            self.resetButton.isEnabled = false
             
             let result = Results()
             result.name = "Backward Spatial Span"
@@ -414,12 +416,18 @@ class TapInOrderBackwardsViewController: UIViewController {
     //user completed sequence; reset repeats, increase numplaces so 1 more button lights up
     func next(){
         numplaces = numplaces + 1
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
             if self.ended == false {
                 print("next; DRAWING RECURSIVE SEQUENCE")
                 self.numRepeats = 0
                 self.currpressed = 0
                 self.randomizeOrder()
+                
+                for (index, _) in self.order.enumerated() {
+                    self.buttonList[index].backgroundColor = UIColor.blue
+                }
+                
+/*
                 if let wnd = self.view{
                     
                     let v = UIView(frame: wnd.bounds)
@@ -435,8 +443,15 @@ class TapInOrderBackwardsViewController: UIViewController {
                     })
                     
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
-                    self.drawSequenceRecursively(num: 0)
+ */
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.2){
+                    
+                    for (index, _) in self.order.enumerated() {
+                        self.buttonList[index].backgroundColor = UIColor.red
+                    }
+//TRYING A THING:
+                    self.drawSequenceRecursively(num: self.numplaces)
                 }
             }
         }
