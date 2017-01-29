@@ -29,6 +29,7 @@ class TrailsAViewController: ViewController, UIPickerViewDelegate {
     @IBOutlet weak var timerLabel: UILabel!
     
     @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var endButton: UIButton!
     @IBOutlet weak var doneButton: UIButton!
     
     @IBOutlet weak var testPicker: UIPickerView!
@@ -37,7 +38,7 @@ class TrailsAViewController: ViewController, UIPickerViewDelegate {
     @IBOutlet weak var resultsLabel: UILabel!
     
     @IBAction func StartButton(sender: AnyObject) {
-
+        
         
         self.title = TrailsTests[selectedTest].0
         
@@ -52,23 +53,29 @@ class TrailsAViewController: ViewController, UIPickerViewDelegate {
             TestTypes.append(test.0)
         }
         testPicker.delegate = self
-        testPicker.transform = CGAffineTransform(scaleX: 0.5, y: 1.0)
+        testPicker.transform = CGAffineTransform(scaleX: 0.8, y: 1.0)
         selectedTest = testPicker.selectedRow(inComponent: 0)
+        endButton.isHidden = true
+        doneButton.isHidden = false
+        startButton.isHidden = false
+        testPicker.isHidden = false
+        timerLabel.text = ""
+        resultsLabel.text = ""
         
         
         self.title = TestTypes[selectedTest]
         
-        doneButton.isEnabled = false
+        endButton.isEnabled = false
         
     }
     
     
-    
     func startTest() {
-        
         startButton.isEnabled = false
-        testPicker.isHidden = false
-        doneButton.isEnabled = true
+        testPicker.isHidden = true
+        endButton.isEnabled = true
+        endButton.isHidden = false
+        doneButton.isHidden = true
         self.navigationItem.setHidesBackButton(true, animated:true)
         
         if drawingView !== nil {
@@ -108,28 +115,27 @@ class TrailsAViewController: ViewController, UIPickerViewDelegate {
     }
     
     @IBAction func StopButton(sender: AnyObject) {
-        
         startButton.isEnabled = true
-        testPicker.isHidden = true
-        doneButton.isEnabled = false
-        self.navigationItem.setHidesBackButton(false, animated:true)
+        testPicker.isHidden = false
+        endButton.isHidden = true
+        doneButton.isHidden = false
         
         stopTrailsA = true
         done()
     }
     
     
- /*   @IBAction func HelpButton(sender: AnyObject) {
-        if(selectedTest == "Trails A" || selectedTest == "Trails A Practice") {
-            let vc = storyboard!.instantiateViewController(withIdentifier: "Trails A Help") as UIViewController
-            navigationController!.pushViewController(vc, animated:true)
-        } else {
-            let vc = storyboard!.instantiateViewController(withIdentifier: "Trails B Help") as UIViewController
-            navigationController!.pushViewController(vc, animated:true)
-        }
-        stopTrailsA = true
-        done()
-    } */
+    /*   @IBAction func HelpButton(sender: AnyObject) {
+     if(selectedTest == "Trails A" || selectedTest == "Trails A Practice") {
+     let vc = storyboard!.instantiateViewController(withIdentifier: "Trails A Help") as UIViewController
+     navigationController!.pushViewController(vc, animated:true)
+     } else {
+     let vc = storyboard!.instantiateViewController(withIdentifier: "Trails B Help") as UIViewController
+     navigationController!.pushViewController(vc, animated:true)
+     }
+     stopTrailsA = true
+     done()
+     } */
     
     
     
@@ -159,13 +165,13 @@ class TrailsAViewController: ViewController, UIPickerViewDelegate {
         } else  {
         }
     }
-
     
-  
- /* Not sure how to conver to swift 3 -Saman
+    
+    
+    /* Not sure how to conver to swift 3 -Saman
      override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.Landscape
-    } */
+     return UIInterfaceOrientationMask.Landscape
+     } */
     
     
     override func didReceiveMemoryWarning() {
@@ -208,18 +214,18 @@ class TrailsAViewController: ViewController, UIPickerViewDelegate {
             drawingView.canDraw = false
             let imageSize = CGSize(width: screenSize!.maxX, height: screenSize!.maxY - 135)
             imageView = UIImageView(frame: CGRect(origin: CGPoint(x: 0, y: 135), size: imageSize))
- /*           if resultsDisplayOn == true {
-                self.view.addSubview(imageView)
-            }
-            let image = drawCustomImage(imageSize)
-            imageView.image = image */
+            /*           if resultsDisplayOn == true {
+             self.view.addSubview(imageView)
+             }
+             let image = drawCustomImage(imageSize)
+             imageView.image = image */
             
             // add to results
             let result = Results()
             result.name = self.title
             result.startTime = startTime2 as Date
             result.endTime = Foundation.Date()
-//            result.screenshot = image
+            //            result.screenshot = image
             
             var num = timePassedTrailsA
             let minutes = UInt8(num / 60.0)
@@ -237,9 +243,9 @@ class TrailsAViewController: ViewController, UIPickerViewDelegate {
         displayImgTrailsA = false
         
         startButton.isEnabled = true
-        testPicker.isHidden = true
-        doneButton.isEnabled = false
-        self.navigationItem.setHidesBackButton(false, animated:false)
+        testPicker.isHidden = false
+        endButton.isHidden = true
+        doneButton.isHidden = false
         
         bubbleColor = UIColor(red:0.6, green:0.0, blue:0.0, alpha:1.0)
         
