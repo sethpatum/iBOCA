@@ -14,7 +14,7 @@ class ThreeDFigureCopy: UIViewController {
     @IBOutlet weak var CorrectButton: UIButton!
     @IBOutlet weak var IncorrectButton: UIButton!
     
-    var imagelist = ["Backpack", "Bike", "Car"]
+    var imagelist = ["Circle2", "rhombus", "rectprism"]
     var curr = 0
     var correctList = [String]()
     var incorrectList = [String]()
@@ -51,6 +51,10 @@ class ThreeDFigureCopy: UIViewController {
             StartButton.isEnabled = true
             CorrectButton.isEnabled = false
             IncorrectButton.isEnabled = false
+            let result = Results()
+            result.name = "3D Figure Copy"
+            result.shortDescription = "Correct:\(correctList), Incorrect:\(incorrectList)"
+
         }
     }
     

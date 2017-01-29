@@ -391,9 +391,10 @@ class BackwardDigitSpan: UIViewController {
         countingLabel.text = String(counter)
         nums1 = ""
         CurrentNums.text = nums1
+        Results.append ("Backwards Digit Span:")
         if (numResponse == numOrder){
             print("All values Correct")
-            Results.append("All values Correct")
+            Results.append(" All values Correct")
         }
         if(numResponse[0] != numOrder[0]){
             print(" for Number 1, Expected: " + numOrder[0] + " Got: " + numResponse[0])
