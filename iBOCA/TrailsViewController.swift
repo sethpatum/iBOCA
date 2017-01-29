@@ -28,8 +28,9 @@ class TrailsAViewController: ViewController {
     @IBOutlet weak var timerLabel: UILabel!
     
     @IBOutlet weak var startButton: UIButton!
-    @IBOutlet weak var practiceButton: UIButton!
+    @IBOutlet weak var practiceBotton: UIButton!
     @IBOutlet weak var doneButton: UIButton!
+
     
     @IBOutlet weak var resultsLabel: UILabel!
     
@@ -60,7 +61,7 @@ class TrailsAViewController: ViewController {
     func startTest() {
         
         startButton.isEnabled = false
-        practiceButton.isEnabled = false
+        practiceBotton.isEnabled = false
         doneButton.isEnabled = true
         self.navigationItem.setHidesBackButton(true, animated:true)
         
@@ -88,9 +89,7 @@ class TrailsAViewController: ViewController {
         
         startTime2 = Foundation.Date()
         
-        //let aSelector : Selector = "update"
-        
-        var timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: Selector("update:"), userInfo: nil, repeats: true)
+        var timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(update(timer:)), userInfo: nil, repeats: true)
         
         startTime = NSDate.timeIntervalSinceReferenceDate
         timedConnectionsA = [Double]()
@@ -100,13 +99,12 @@ class TrailsAViewController: ViewController {
         drawingView.canDraw = true
         
         bubbleColor = UIColor.red
-        
     }
     
     @IBAction func StopButton(sender: AnyObject) {
         
         startButton.isEnabled = true
-        practiceButton.isEnabled = true
+        practiceBotton.isEnabled = true
         doneButton.isEnabled = false
         self.navigationItem.setHidesBackButton(false, animated:true)
         
@@ -115,7 +113,7 @@ class TrailsAViewController: ViewController {
     }
     
     
-    @IBAction func HelpButton(sender: AnyObject) {
+ /*   @IBAction func HelpButton(sender: AnyObject) {
         if(selectedTest == "Trails A" || selectedTest == "Trails A Practice") {
             let vc = storyboard!.instantiateViewController(withIdentifier: "Trails A Help") as UIViewController
             navigationController!.pushViewController(vc, animated:true)
@@ -125,7 +123,7 @@ class TrailsAViewController: ViewController {
         }
         stopTrailsA = true
         done()
-    }
+    } */
     
     
     override func viewDidLoad() {
@@ -212,7 +210,7 @@ class TrailsAViewController: ViewController {
         displayImgTrailsA = false
         
         startButton.isEnabled = true
-        practiceButton.isEnabled = true
+        practiceBotton.isEnabled = true
         doneButton.isEnabled = false
         self.navigationItem.setHidesBackButton(false, animated:false)
         

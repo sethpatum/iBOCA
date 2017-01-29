@@ -104,7 +104,7 @@ class DrawingViewTrails: UIView {
     }
     
     override func draw(_ rect: CGRect) {
-        //println("in drawRect")
+        print("in drawRect")
         
         
         for bubble in bubbles.bubblelist {
@@ -118,7 +118,7 @@ class DrawingViewTrails: UIView {
         mainPath.stroke()
         UIColor.blue.set()
         errorPath.stroke()
-        
+        print("DoneDrawRect")
     }
     
     func reset() {

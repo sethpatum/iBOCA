@@ -555,7 +555,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ed-7V-lnU">
-                                <rect key="frame" x="375" y="345" width="274" height="30"/>
+                                <rect key="frame" x="375" y="246" width="274" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="ONWARDS TO THE ORIENTATION TASK"/>
                                 <connections>
@@ -570,7 +570,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iGI-yg-K8B">
-                                <rect key="frame" x="351" y="424" width="322" height="30"/>
+                                <rect key="frame" x="351" y="325" width="322" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="ONWARDS TO BACKWARDS DIGIT SPAN TASK"/>
                                 <connections>
@@ -578,7 +578,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Apg-tP-eG1">
-                                <rect key="frame" x="356" y="515" width="312" height="30"/>
+                                <rect key="frame" x="356" y="416" width="312" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="ONWARDS TO FORWARDS DIGIT SPAN TASK"/>
                                 <connections>
@@ -586,7 +586,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="20k-0w-xV2">
-                                <rect key="frame" x="385" y="579" width="255" height="30"/>
+                                <rect key="frame" x="385" y="480" width="255" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="ONWARDS TO SERIAL SEVENS TASK"/>
                                 <connections>
@@ -594,7 +594,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wVm-Sl-bFV">
-                                <rect key="frame" x="431" y="469" width="162" height="30"/>
+                                <rect key="frame" x="431" y="370" width="162" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="3D FIGURE COPY TASK"/>
                                 <connections>
@@ -602,15 +602,15 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s7T-J7-lcV">
-                                <rect key="frame" x="485" y="697" width="55" height="30"/>
+                                <rect key="frame" x="427" y="598" width="172" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="THING2"/>
+                                <state key="normal" title="Semantic List Generation"/>
                                 <connections>
                                     <segue destination="XYk-wu-CQY" kind="show" id="ZPX-aV-emr"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2DB-z8-IDB">
-                                <rect key="frame" x="450" y="639" width="124" height="30"/>
+                                <rect key="frame" x="450" y="540" width="124" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Visual Association"/>
                                 <connections>
@@ -626,7 +626,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Yk-2H-hs0">
-                                <rect key="frame" x="459" y="297" width="107" height="30"/>
+                                <rect key="frame" x="459" y="198" width="107" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Simple Memory"/>
                                 <connections>
@@ -642,11 +642,19 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pTk-PH-Jfg">
-                                <rect key="frame" x="462" y="383" width="101" height="30"/>
+                                <rect key="frame" x="462" y="284" width="101" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Cats and Dogs"/>
                                 <connections>
                                     <segue destination="kzf-ng-R8q" kind="show" id="DD9-Uh-bPW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="144-5O-YWO">
+                                <rect key="frame" x="494" y="665" width="37" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Trails"/>
+                                <connections>
+                                    <segue destination="1Yj-YM-GH3" kind="show" id="e6U-ZI-T3Y"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1473,6 +1481,74 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ri2-gj-BcY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="19" y="1090"/>
+        </scene>
+        <!--TrailsA View Controller-->
+        <scene sceneID="SCM-XG-oKr">
+            <objects>
+                <viewController id="1Yj-YM-GH3" customClass="TrailsAViewController" customModule="iBOCA" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="m29-n8-Gbe"/>
+                        <viewControllerLayoutGuide type="bottom" id="0xb-46-aQl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9qh-JG-QRx">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MK0-oR-YjC">
+                                <rect key="frame" x="56" y="40" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Start"/>
+                                <connections>
+                                    <action selector="StartButtonWithSender:" destination="1Yj-YM-GH3" eventType="touchUpInside" id="a2b-DP-FUa"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mZD-EP-d5J">
+                                <rect key="frame" x="369" y="40" width="132" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="StopButtonWithSender:" destination="1Yj-YM-GH3" eventType="touchUpInside" id="yfV-b0-5l3"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Timer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DBn-hb-2P1">
+                                <rect key="frame" x="595" y="45" width="102" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Results" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wZC-n2-che">
+                                <rect key="frame" x="725" y="43" width="279" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZaW-Ql-n96">
+                                <rect key="frame" x="203" y="40" width="129" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Practice"/>
+                                <connections>
+                                    <action selector="PracticeButtonWithSender:" destination="1Yj-YM-GH3" eventType="touchUpInside" id="Y0h-mG-r2z"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="doneButton" destination="mZD-EP-d5J" id="VGR-cn-48t"/>
+                        <outlet property="practiceBotton" destination="ZaW-Ql-n96" id="TNb-3t-NsU"/>
+                        <outlet property="resultsLabel" destination="wZC-n2-che" id="bIa-ML-PdE"/>
+                        <outlet property="startButton" destination="MK0-oR-YjC" id="td6-P9-LY7"/>
+                        <outlet property="timerLabel" destination="DBn-hb-2P1" id="uWO-Dw-Q6x"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tmu-pT-5WY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3657.4218749999995" y="1102.34375"/>
         </scene>
         <!--OrientationTask-->
         <scene sceneID="yx5-Hj-mlZ">
