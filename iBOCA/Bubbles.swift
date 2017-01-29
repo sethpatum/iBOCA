@@ -53,20 +53,23 @@ class BubblesA {
     //Rotate (180 degrees) or mirror (on x or y) the point
     var xt:Bool = true
     var yt:Bool = true
-    func transform(coord:(Int, Int)) -> (Int, Int) {
-        var x = coord.0
-        var y = coord.1
-        if xt  {
+    
+    func transform(coord:(String, Int, Int)) -> (String, Int, Int) {
+        var x = coord.1
+        var y = coord.2
+       /* if xt  {
             x  = 1010 - x
         }
         if yt {
             y = 625 - y
-        }
-        return (Int(CGFloat(x)*screenSize!.maxX/1024.0), Int(CGFloat(y)*screenSize!.maxY/768.0))
+        } */
+        return (coord.0, Int(CGFloat(x)*screenSize!.maxX/1024.0), Int(CGFloat(y)*screenSize!.maxY/768.0))
     }
+    
     
     init() {
         bubblelist = TrailsTests[selectedTest].1
+        bubblelist = bubblelist.map(transform)
     }
     
     
