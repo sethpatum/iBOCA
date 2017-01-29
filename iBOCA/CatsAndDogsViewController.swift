@@ -40,14 +40,13 @@ class CatsAndDogsViewController: ViewController {
     
     var ended = false
     
+    @IBOutlet weak var backButton: UIButton!
     
     @IBOutlet weak var startButton: UIButton!
     
     @IBOutlet weak var endButton: UIButton!
     
     @IBOutlet weak var resetButton: UIButton!
-    
-    @IBOutlet weak var helpButton: UIButton!
     
     @IBOutlet weak var selectionDoneButton: UIButton!
     
@@ -58,6 +57,44 @@ class CatsAndDogsViewController: ViewController {
     @IBAction func Reset(_ sender: Any) {
         print("in reset")
         
+        if(buttonList != nil){
+            for k in 0 ..< buttonList.count {
+                buttonList[k].removeFromSuperview()
+            }
+        }
+        if(imageList != nil){
+            for j in 0 ..< imageList.count {
+                imageList[j].removeFromSuperview()
+            }
+        }
+        
+        buttonList = [UIButton]()
+        imageList = [UIImageView]()
+        order = [Int]()
+        pressed = [Int]()
+        correctDogs = [Int]()
+        missedDogs = [Int]()
+        incorrectCats = [Int]()
+        missedCats = [Int]()
+        incorrectRandom = [Int]()
+        times = [Double]()
+        timePassed = Double()
+        startTime = TimeInterval()
+        startTime2 = NSDate()
+        cats = 0 //# cats
+        dogs = 1 //# dogs
+        level = 0 //current level
+        repetition = 0
+        ended = false
+        startButton.isEnabled = false
+        endButton.isEnabled = false
+        resetButton.isEnabled = false
+        selectionDoneButton.isEnabled = false
+        backButton.isEnabled = true
+        
+        StartTest(resetButton)
+        
+        /*
         cats = 0
         dogs = 1
         level = 0
@@ -75,6 +112,7 @@ class CatsAndDogsViewController: ViewController {
             self.display()
             self.startTime2 = NSDate()
         }
+ */
         
     }
     
@@ -195,6 +233,14 @@ class CatsAndDogsViewController: ViewController {
         
         self.navigationItem.title = "Cats And Dogs"
         
+        startButton.isEnabled = true
+        endButton.isEnabled = false
+        resetButton.isEnabled = false
+        selectionDoneButton.isEnabled = false
+        backButton.isEnabled = true
+        
+        
+        /*
         endButton.isEnabled = false
         resetButton.isEnabled = false
         
@@ -237,6 +283,7 @@ class CatsAndDogsViewController: ViewController {
             self.view.addSubview(button)
             
         }
+ */
         
     }
     
@@ -246,6 +293,11 @@ class CatsAndDogsViewController: ViewController {
     
     func display(){
         print("Displaying...")
+        
+        selectionDoneButton.isEnabled = false
+        endButton.isEnabled = false
+        resetButton.isEnabled = false
+        
         for index in 0 ..< order.count {
             UIView.animate(withDuration: 0.6, animations:{
                 self.buttonList[index].frame = CGRect(x: self.buttonList[index].frame.origin.x - 110, y: self.buttonList[index].frame.origin.y, width: self.buttonList[index].frame.size.width, height: self.buttonList[index].frame.size.height)
@@ -259,34 +311,90 @@ class CatsAndDogsViewController: ViewController {
                         self.buttonList[index].frame.size.height)
                 })
             }
+            /*
+            self.selectionDoneButton.isEnabled = true
+            
+            self.enableButtons()
+            self.startTime = NSDate.timeIntervalSinceReferenceDate
+ */
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.7){
+            self.selectionDoneButton.isEnabled = true
+            self.endButton.isEnabled = true
+            self.resetButton.isEnabled = true
             self.enableButtons()
             self.startTime = NSDate.timeIntervalSinceReferenceDate
         }
+        
     }
     
     @IBAction func StartTest(_ sender: Any) {
         
+        endButton.isEnabled = false
+        resetButton.isEnabled = false
+        selectionDoneButton.isEnabled = false
+        startButton.isEnabled = false
+        backButton.isEnabled = false
+        
+        randomizeBoard()
+        
+        randomizeOrder()
+        
+        for i in 0 ..< order.count {
+            let(a,b) = places[order[i]]
+            
+            let x : CGFloat = CGFloat(a)
+            let y : CGFloat = CGFloat(b)
+            
+            if(i <= dogs - 1) {
+                
+                let image = UIImage(named: "dog")!
+                let imageView = UIImageView(frame:CGRect(x: x, y: y, width: 100.0*(image.size.width)/(image.size.height), height: 100.0))
+                imageView.image = image
+                self.view.addSubview(imageView)
+                imageList.append(imageView)
+                
+            }
+                
+            else {
+                if(i <= cats + dogs - 1) {
+                    
+                    let image = UIImage(named: "cat1")!
+                    let imageView = UIImageView(frame:CGRect(x: x, y: y, width: 100.0*(image.size.width)/(image.size.height), height: 100.0))
+                    imageView.image = image
+                    self.view.addSubview(imageView)
+                    imageList.append(imageView)
+                    
+                }
+            }
+            
+            let button = UIButton(type: UIButtonType.system)
+            buttonList.append(button)
+            button.frame = CGRect(x: x, y: y, width: 100, height: 100)
+            button.backgroundColor = UIColor.blue
+            self.view.addSubview(button)
+            
+        }
+        
         var timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
         
-        self.startTime = NSDate.timeIntervalSinceReferenceDate
+        startTime = NSDate.timeIntervalSinceReferenceDate
         
-        self.ended = false
+        ended = false
         
         self.navigationItem.setHidesBackButton(true, animated:true)
         
-        self.helpButton.isEnabled = false
-        self.startButton.isEnabled = false
-        self.endButton.isEnabled = true
-        self.resetButton.isEnabled = true
+        level = 0
+        cats = 0
+        dogs = 1
         
-        self.level = 0
-        self.cats = 0
-        self.dogs = 1
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
-            self.display()
-            self.startTime2 = NSDate()
-        }
+        alert(info: "Tap all the dogs", display: true, start: true)
+        
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
+//            self.display()
+//            self.startTime2 = NSDate()
+//        }
         
         self.resultsLabel.text = ""
     }
@@ -294,10 +402,11 @@ class CatsAndDogsViewController: ViewController {
     
     @IBAction func EndTest(_ sender: Any) {
         self.navigationItem.setHidesBackButton(false, animated:true)
-        helpButton.isEnabled = true
-        startButton.isEnabled = true
+        startButton.isEnabled = false
         endButton.isEnabled = false
-        resetButton.isEnabled = false
+        selectionDoneButton.isEnabled = false
+        resetButton.isEnabled = true
+        backButton.isEnabled = true
         donetest()
         
     }
@@ -319,10 +428,10 @@ class CatsAndDogsViewController: ViewController {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
             self.navigationItem.setHidesBackButton(false, animated:true)
-            self.helpButton.isEnabled = true
-            self.startButton.isEnabled = true
+            self.startButton.isEnabled = false
             self.endButton.isEnabled = false
-            self.resetButton.isEnabled = false
+            self.resetButton.isEnabled = true
+            self.backButton.isEnabled = true
             
             for (index, _) in self.order.enumerated() {
                 self.buttonList[index].backgroundColor = UIColor.darkGray
@@ -331,13 +440,12 @@ class CatsAndDogsViewController: ViewController {
             
             var result = ""
             
-            for k in 0 ..< 25 {
-                result += "\(self.correctDogs[k]) dogs correctly selected out of \(self.missedDogs[k]+self.correctDogs[k]) dogs; \(self.incorrectCats[k]) cats incorrectly selected out of \(self.incorrectCats[k]+self.missedCats[k]) cats; \(self.incorrectRandom[k]) empty places incorrectly selected. Time: \(self.times[k]) seconds\n"
+            for k in 0 ..< self.level {
+                result.append("\(self.correctDogs[k]) dogs correctly selected out of \(self.missedDogs[k]+self.correctDogs[k]) dogs; \(self.incorrectCats[k]) cats incorrectly selected out of \(self.incorrectCats[k]+self.missedCats[k]) cats; \(self.incorrectRandom[k]) empty places incorrectly selected. Time: \(self.times[k]) seconds\n")
             }
             
+            print(result)
             self.resultLabel.text = result
-            
-            
             
         }
     }
@@ -402,7 +510,7 @@ class CatsAndDogsViewController: ViewController {
         else {
             
             if(level == 0){
-                alert(info: "Tap all the dogs")
+//                alert(info: "Tap all the dogs", display: true)
                 cats = 0
                 dogs = 1
             }
@@ -424,7 +532,7 @@ class CatsAndDogsViewController: ViewController {
             }
             
             if(level == 5){
-                alert(info: "Tap all the dogs.\nDo NOT tap the cats")
+//                alert(info: "Tap all the dogs.\nDo NOT tap the cats", display: true)
                 cats = 2
                 dogs = 1
             }
@@ -467,7 +575,7 @@ class CatsAndDogsViewController: ViewController {
             }
             
             if(level == 15){
-                alert(info: "Tap all the cats.\nDo NOT tap the dogs")
+//                alert(info: "Tap all the cats.\nDo NOT tap the dogs", display: true)
                 dogs = 2
                 cats = 1
             }
@@ -563,12 +671,24 @@ class CatsAndDogsViewController: ViewController {
                 
             }
             
-            display()
+            if(level == 0){
+                alert(info: "Tap all the dogs", display: true, start: true)
+            }
+            if(level == 5){
+                alert(info: "Tap all the dogs.\nDo NOT tap the cats", display: true, start: false)
+            }
+            if(level == 15){
+                alert(info: "Tap all the cats.\nDo NOT tap the dogs", display: true, start: false)
+            }
+            
+            if(level != 0 && level != 5 && level != 15){
+                display()
+            }
             
         }
     }
     
-    func alert(info:String){
+    func alert(info:String, display: Bool, start: Bool){
         let alert = UIAlertController(title: "Instructions", message: info, preferredStyle: .alert)
         /*
          //2. Add the text field. You can configure it however you need.
@@ -580,43 +700,18 @@ class CatsAndDogsViewController: ViewController {
          */
         //3. Grab the value from the text field, and print it when the user clicks OK.
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+            if(display == true){
+                self.display()
+            }
+            if(start == true){
+                self.startTime2 = NSDate()
+            }
         }))
         
         // 4. Present the alert.
         self.present(alert, animated: true, completion: nil)
     }
-    /*
-    func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-    func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.landscape
-    }
-    
-        
-    //delay function
-    func delay(delay:Double, closure:()->()) {
-        
-        dispatch_after(
-            dispatch_time( DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), closure)
-        
-        
-    }
- 
-    func getColor(i: Double, alpha: Double = 1.0) ->CGColor {
-        if (i < 5.0) {
-            let h = CGFloat(0.3 - i / 15.0)
-            return UIColor(hue: h, saturation: 1.0, brightness: 1.0, alpha: CGFloat(alpha)).cgColor
-        } else if (i < 60) {
-            let b = CGFloat((60.0 - i)/55.0)
-            return UIColor(hue: 0.0, saturation: 1.0, brightness: b, alpha: CGFloat(alpha)).cgColor
-        } else {
-            return UIColor(hue: 0.0, saturation: 1.0, brightness: 0.0, alpha: CGFloat(alpha)).cgColor
-        }
-    }
-    */
 }
 
 

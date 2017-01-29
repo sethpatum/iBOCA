@@ -166,8 +166,8 @@ class DrawingViewTrails: UIView {
         // create the line of text
         let line = CTLineCreateWithAttributedString(text!)
         
-// Don't know how to conver this to swift3 -Saman
-//       context!.textMatrix = CGAffineTransformMake(CGFloat(1), CGFloat(0), CGFloat(0), CGFloat(-1),CGFloat(0), CGFloat(0))
+       context?.textMatrix = CGAffineTransform(rotationAngle: CGFloat.pi).scaledBy(x: -1, y: 1)
+  
         
         let num = name.characters.count
         
@@ -186,9 +186,7 @@ class DrawingViewTrails: UIView {
             let attr = [NSFontAttributeName:aFont!,NSForegroundColorAttributeName:UIColor.black]
             let text = CFAttributedStringCreate(nil, "START" as CFString!, attr as CFDictionary!)
             let line = CTLineCreateWithAttributedString(text!)
- //Don't know how to conver to swift 3 -Saman
- //           CGContextSetTextMatrix(context, CGAffineTransformMake(CGFloat(1), CGFloat(0), CGFloat(0), CGFloat(-1),CGFloat(0), CGFloat(0)))
-            
+           
             context?.textPosition = CGPoint(x:CGFloat(x-28), y:CGFloat(y+41))
             CTLineDraw(line, context!)
         }
@@ -197,9 +195,8 @@ class DrawingViewTrails: UIView {
             let aFont = UIFont(name: "Menlo", size: 19)
             let attr = [NSFontAttributeName:aFont!,NSForegroundColorAttributeName:UIColor.black]
             let text = CFAttributedStringCreate(nil, "END" as CFString!, attr as CFDictionary!)
-            let line = CTLineCreateWithAttributedString(text!)
-//Don't know how to conver to swift 3 -Saman
-//            CGContextSetTextMatrix(context, CGAffineTransformMake(CGFloat(1), CGFloat(0), CGFloat(0), CGFloat(-1),CGFloat(0), CGFloat(0)))
+            let line = CTLineCreateWithAttributedString(text!)           
+            
             context?.textPosition = CGPoint(x:CGFloat(x-16), y:CGFloat(y+41))
             CTLineDraw(line, context!)
         }
