@@ -32,15 +32,14 @@ class TapInOrderViewController: ViewController {
     
     @IBOutlet weak var resetButton: UIButton!
     
-    @IBOutlet weak var helpButton: UIButton!
-    
     @IBOutlet weak var resultsLabel: UILabel!
     
     
     
     
     //start from 1st button; reset all info
-    @IBAction func Reset(sender: AnyObject) {
+    
+    @IBAction func Reset(_ sender: Any) {
         
         print("in reset")
         
@@ -195,14 +194,13 @@ class TapInOrderViewController: ViewController {
     }
     
     
-    @IBAction func StartTest(sender: AnyObject) {
+    @IBAction func StartTest(_ sender: Any) {
         
 //delay(1.5){}
         ended = false
         
         self.navigationItem.setHidesBackButton(true, animated:true)
         
-        helpButton.isEnabled = false
         startButton.isEnabled = false
         endButton.isEnabled = true
         resetButton.isEnabled = true
@@ -213,6 +211,7 @@ class TapInOrderViewController: ViewController {
         
         randomizeOrder()
         
+/*
         if let wnd = self.view{
             
             let v = UIView(frame: wnd.bounds)
@@ -227,6 +226,7 @@ class TapInOrderViewController: ViewController {
                 v.removeFromSuperview()
             })
         }
+ */
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
             self.drawSequenceRecursively(num: 0)
             self.startTime2 = NSDate()
@@ -236,9 +236,8 @@ class TapInOrderViewController: ViewController {
         self.resultsLabel.text = ""
     }
     
-    @IBAction func EndTest(sender: AnyObject) {
+    @IBAction func EndTest(_ sender: Any) {
         self.navigationItem.setHidesBackButton(false, animated:true)
-        helpButton.isEnabled = true
         startButton.isEnabled = true
         endButton.isEnabled = false
         resetButton.isEnabled = false
@@ -256,7 +255,6 @@ class TapInOrderViewController: ViewController {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
             self.navigationItem.setHidesBackButton(false, animated:true)
-            self.helpButton.isEnabled = true
             self.startButton.isEnabled = true
             self.endButton.isEnabled = false
             self.resetButton.isEnabled = false
@@ -453,6 +451,48 @@ class TapInOrderViewController: ViewController {
     func next(){
         
         numplaces = numplaces + 1
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4){
+            if self.ended == false {
+                print("next; DRAWING RECURSIVE SEQUENCE")
+                self.numRepeats = 0
+                self.currpressed = 0
+                self.randomizeOrder()
+                
+                for (index, _) in self.order.enumerated() {
+                    self.buttonList[index].backgroundColor = UIColor.blue
+                }
+                
+/*
+                if let wnd = self.view{
+                    
+                    let v = UIView(frame: wnd.bounds)
+                    v.backgroundColor = UIColor.white
+                    v.alpha = 1
+                    
+                    wnd.addSubview(v)
+                    UIView.animate(withDuration: 2, animations: {
+                        v.alpha = 0.0
+                    }, completion: {(finished:Bool) in
+                        print("inside")
+                        v.removeFromSuperview()
+                    })
+                    
+                }
+ */
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
+                    
+                    for (index, _) in self.order.enumerated() {
+                        self.buttonList[index].backgroundColor = UIColor.red
+                    }
+                    
+                    self.drawSequenceRecursively(num: 0)
+                }
+                
+            }
+        }
+        
+/*
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
             if self.ended == false {
                 print("next; DRAWING RECURSIVE SEQUENCE")
@@ -480,6 +520,7 @@ class TapInOrderViewController: ViewController {
                 
             }
         }
+ */
         
     }
     
