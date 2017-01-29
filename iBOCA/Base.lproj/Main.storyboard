@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7sQ-B6-R4d">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7sQ-B6-R4d">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -540,7 +540,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b43-W2-YEC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5.859375" y="-488.28125"/>
+            <point key="canvasLocation" x="1575" y="261"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -720,7 +720,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VLF-5w-EfR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="697" y="-490"/>
+            <point key="canvasLocation" x="697" y="-612"/>
         </scene>
         <!--Setup View Controller-->
         <scene sceneID="QL8-L6-Du5">
@@ -1117,38 +1117,78 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <state key="normal" title="Correct"/>
+                                <connections>
+                                    <action selector="correctPressed:" destination="XYk-wu-CQY" eventType="touchUpInside" id="U9T-VN-uRT"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iD2-aE-5w8">
                                 <rect key="frame" x="435" y="90" width="154" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <state key="normal" title="Incorrect"/>
+                                <connections>
+                                    <action selector="incorrectPressed:" destination="XYk-wu-CQY" eventType="touchUpInside" id="d12-sE-xfj"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="89l-7i-vIC">
                                 <rect key="frame" x="697" y="90" width="149" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <state key="normal" title="Repeat"/>
+                                <connections>
+                                    <action selector="repeatPressed:" destination="XYk-wu-CQY" eventType="touchUpInside" id="bPs-Ee-SBa"/>
+                                </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xCz-uz-7g9">
                                 <rect key="frame" x="179" y="421" width="667" height="125"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EWl-ff-VdV">
-                                <rect key="frame" x="495" y="196" width="34" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kwx-85-Rx3">
+                                <rect key="frame" x="428" y="260" width="168" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9jh-F2-7MI">
+                                <rect key="frame" x="277" y="636" width="469" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fQE-1C-Vrb">
+                                <rect key="frame" x="55" y="90" width="75" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <state key="normal" title="Start"/>
+                                <connections>
+                                    <action selector="StartPressed:" destination="XYk-wu-CQY" eventType="touchUpInside" id="wAo-Kf-yVC"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kr3-2p-MY4">
-                                <rect key="frame" x="751" y="196" width="41" height="30"/>
+                                <rect key="frame" x="904" y="90" width="88" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Finish"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="finishPressed:" destination="XYk-wu-CQY" eventType="touchUpInside" id="03J-Oy-Qas"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="FPU-UR-8EY"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
+                        <outlet property="BackButton" destination="kr3-2p-MY4" id="E62-X5-mof"/>
                         <outlet property="CategoryPicker" destination="xCz-uz-7g9" id="tjf-pR-zPb"/>
+                        <outlet property="CorrectButton" destination="Tt8-rh-alh" id="GL4-hE-PXS"/>
+                        <outlet property="IncorrectButton" destination="iD2-aE-5w8" id="34p-ef-Hpd"/>
+                        <outlet property="RepeatButton" destination="89l-7i-vIC" id="SuW-lq-4Ek"/>
+                        <outlet property="ResultLabel" destination="9jh-F2-7MI" id="eOl-JY-oYm"/>
+                        <outlet property="SelectLabel" destination="K0a-DI-shc" id="IXr-i4-VyL"/>
+                        <outlet property="StartButton" destination="fQE-1C-Vrb" id="wWs-ft-EHO"/>
+                        <outlet property="TimerLabel" destination="Kwx-85-Rx3" id="iGL-9Z-dkP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tmS-1q-kD7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1797,6 +1837,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="MMK-fK-fBe"/>
+        <segue reference="FPU-UR-8EY"/>
     </inferredMetricsTieBreakers>
 </document>
