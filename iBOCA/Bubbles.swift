@@ -9,11 +9,6 @@
 import Foundation
 import UIKit
 
-let foo1 : [(String, [(String, Int, Int)])]  = [("Foo", [("A", 1, 1),
-                                       ("B", 2, 2)])]
-
-
-
 let TrailsTests : [(String, [(String, Int, Int)])] =
     [("Practice",[("1", 810, 280),
                   ("2", 710, 245),
@@ -51,18 +46,18 @@ class BubblesA {
     
     
     //Rotate (180 degrees) or mirror (on x or y) the point
-    var xt:Bool = true
-    var yt:Bool = true
+    var xt:Bool = false
+    var yt:Bool = false
     
     func transform(coord:(String, Int, Int)) -> (String, Int, Int) {
         var x = coord.1
         var y = coord.2
-       /* if xt  {
+        if xt  {
             x  = 1010 - x
         }
         if yt {
             y = 625 - y
-        } */
+        }
         return (coord.0, Int(CGFloat(x)*screenSize!.maxX/1024.0), Int(CGFloat(y)*screenSize!.maxY/768.0))
     }
     
