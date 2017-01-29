@@ -219,13 +219,14 @@ class TrailsAViewController: ViewController, UIPickerViewDelegate {
              }
              let image = drawCustomImage(imageSize)
              imageView.image = image */
+            let image = drawCustomImage(size: imageSize)
             
             // add to results
             let result = Results()
             result.name = self.title
             result.startTime = startTime2 as Date
             result.endTime = Foundation.Date()
-            //            result.screenshot = image
+            result.screenshot = image
             
             var num = timePassedTrailsA
             let minutes = UInt8(num / 60.0)

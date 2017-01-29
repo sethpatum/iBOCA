@@ -67,7 +67,7 @@ class AllResults  {
         }
         
         // Put the time scale at the end of the e-mail
-        let scaleImage = UIImage(named: "scale")
+        let scaleImage = UIImage(named: "timescale")
         let imageString = returnEmailStringBase64EncodedImage(scaleImage!)
         e += "<p> <h3>scale</h3>\n"
         e += "<img src='data:image/png;base64,\(imageString)' width='\(scaleImage!.size.width)' height='\(scaleImage!.size.height)'><p>\n"

@@ -12,7 +12,7 @@ import UIKit
 import MessageUI
 var screenSize : CGRect?
 
-class MainViewController: UIViewController, MFMailComposeViewControllerDelegate, UITextFieldDelegate, UITextViewDelegate {
+class MainViewController: UIViewController, MFMailComposeViewControllerDelegate{
     var mailSubject : String = "CNToolkit Results"
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -22,7 +22,7 @@ class MainViewController: UIViewController, MFMailComposeViewControllerDelegate,
     @IBAction func sendEmail(_ sender: Any) {
         var body:String?
         
-        if(emailOn) {
+        if(emailOn && MFMailComposeViewController.canSendMail()) {
             body = resultsArray.emailBody()
             let picker = MFMailComposeViewController()
             picker.mailComposeDelegate = self
@@ -30,12 +30,15 @@ class MainViewController: UIViewController, MFMailComposeViewControllerDelegate,
             picker.setMessageBody(body!, isHTML: true)
             picker.setToRecipients([emailAddress])
             //           MainViewController(picker, animated: true, completion: nil)
+            present(picker, animated: true)
         }
         resultsArray.doneWithPatient()
     }
     
     
-    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
