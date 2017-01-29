@@ -521,10 +521,19 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JFY-6y-BWw">
+                                <rect key="frame" x="892" y="58" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="AER-wR-ZtZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="JFY-6y-BWw" id="pHx-IS-Lkm"/>
                         <outlet property="endButton" destination="SPt-IE-2go" id="dEB-2p-lCv"/>
                         <outlet property="resetButton" destination="JC5-hU-DsF" id="9OB-hT-wzj"/>
                         <outlet property="resultLabel" destination="Wzl-ke-4rO" id="5M4-fZ-ddv"/>
@@ -535,7 +544,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b43-W2-YEC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5.859375" y="-488.28125"/>
+            <point key="canvasLocation" x="31" y="-597"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -1792,6 +1801,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="MMK-fK-fBe"/>
+        <segue reference="AER-wR-ZtZ"/>
     </inferredMetricsTieBreakers>
 </document>

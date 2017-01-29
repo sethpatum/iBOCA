@@ -40,6 +40,7 @@ class CatsAndDogsViewController: ViewController {
     
     var ended = false
     
+    @IBOutlet weak var backButton: UIButton!
     
     @IBOutlet weak var startButton: UIButton!
     
@@ -55,6 +56,17 @@ class CatsAndDogsViewController: ViewController {
     
     @IBAction func Reset(_ sender: Any) {
         print("in reset")
+        
+        if(buttonList != nil){
+            for k in 0 ..< buttonList.count {
+                buttonList[k].removeFromSuperview()
+            }
+        }
+        if(imageList != nil){
+            for j in 0 ..< imageList.count {
+                imageList[j].removeFromSuperview()
+            }
+        }
         
         buttonList = [UIButton]()
         imageList = [UIImageView]()
@@ -78,6 +90,7 @@ class CatsAndDogsViewController: ViewController {
         endButton.isEnabled = false
         resetButton.isEnabled = false
         selectionDoneButton.isEnabled = false
+        backButton.isEnabled = true
         
         StartTest(resetButton)
         
@@ -224,6 +237,7 @@ class CatsAndDogsViewController: ViewController {
         endButton.isEnabled = false
         resetButton.isEnabled = false
         selectionDoneButton.isEnabled = false
+        backButton.isEnabled = true
         
         
         /*
@@ -320,6 +334,7 @@ class CatsAndDogsViewController: ViewController {
         resetButton.isEnabled = false
         selectionDoneButton.isEnabled = false
         startButton.isEnabled = false
+        backButton.isEnabled = false
         
         randomizeBoard()
         
@@ -391,6 +406,7 @@ class CatsAndDogsViewController: ViewController {
         endButton.isEnabled = false
         selectionDoneButton.isEnabled = false
         resetButton.isEnabled = true
+        backButton.isEnabled = true
         donetest()
         
     }
@@ -415,6 +431,7 @@ class CatsAndDogsViewController: ViewController {
             self.startButton.isEnabled = false
             self.endButton.isEnabled = false
             self.resetButton.isEnabled = true
+            self.backButton.isEnabled = true
             
             for (index, _) in self.order.enumerated() {
                 self.buttonList[index].backgroundColor = UIColor.darkGray
@@ -424,17 +441,11 @@ class CatsAndDogsViewController: ViewController {
             var result = ""
             
             for k in 0 ..< self.level {
-//                result += "\(self.correctDogs[k]) dogs correctly selected out of \(self.missedDogs[k]+self.correctDogs[k]) dogs; \(self.incorrectCats[k]) cats incorrectly selected out of \(self.incorrectCats[k]+self.missedCats[k]) cats; \(self.incorrectRandom[k]) empty places incorrectly selected. Time: \(self.times[k]) seconds\n"
-                
                 result.append("\(self.correctDogs[k]) dogs correctly selected out of \(self.missedDogs[k]+self.correctDogs[k]) dogs; \(self.incorrectCats[k]) cats incorrectly selected out of \(self.incorrectCats[k]+self.missedCats[k]) cats; \(self.incorrectRandom[k]) empty places incorrectly selected. Time: \(self.times[k]) seconds\n")
-                
-//                print("\(self.correctDogs[k]) dogs correctly selected out of \(self.missedDogs[k]+self.correctDogs[k]) dogs; \(self.incorrectCats[k]) cats incorrectly selected out of \(self.incorrectCats[k]+self.missedCats[k]) cats; \(self.incorrectRandom[k]) empty places incorrectly selected. Time: \(self.times[k]) seconds\n")
             }
             
             print(result)
             self.resultLabel.text = result
-            
-            
             
         }
     }
@@ -700,38 +711,7 @@ class CatsAndDogsViewController: ViewController {
         // 4. Present the alert.
         self.present(alert, animated: true, completion: nil)
     }
-    /*
-    func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-    func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.landscape
-    }
-    
-        
-    //delay function
-    func delay(delay:Double, closure:()->()) {
-        
-        dispatch_after(
-            dispatch_time( DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), closure)
-        
-        
-    }
- 
-    func getColor(i: Double, alpha: Double = 1.0) ->CGColor {
-        if (i < 5.0) {
-            let h = CGFloat(0.3 - i / 15.0)
-            return UIColor(hue: h, saturation: 1.0, brightness: 1.0, alpha: CGFloat(alpha)).cgColor
-        } else if (i < 60) {
-            let b = CGFloat((60.0 - i)/55.0)
-            return UIColor(hue: 0.0, saturation: 1.0, brightness: b, alpha: CGFloat(alpha)).cgColor
-        } else {
-            return UIColor(hue: 0.0, saturation: 1.0, brightness: 0.0, alpha: CGFloat(alpha)).cgColor
-        }
-    }
-    */
 }
 
 
