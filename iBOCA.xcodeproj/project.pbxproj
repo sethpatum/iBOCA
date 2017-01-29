@@ -17,6 +17,9 @@
 		1BC2DFF91D4F821F0020D430 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BC2DFF71D4F821F0020D430 /* LaunchScreen.storyboard */; };
 		1BC2E0041D4F821F0020D430 /* iBOCATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC2E0031D4F821F0020D430 /* iBOCATests.swift */; };
 		1BC2E00F1D4F821F0020D430 /* iBOCAUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC2E00E1D4F821F0020D430 /* iBOCAUITests.swift */; };
+		43343D441E3E66A3001779AC /* TapInOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43343D431E3E66A3001779AC /* TapInOrderViewController.swift */; };
+		43343D461E3E66BC001779AC /* TapInOrderBackwardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43343D451E3E66BC001779AC /* TapInOrderBackwardsViewController.swift */; };
+		43343D481E3E66D5001779AC /* PicturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43343D471E3E66D5001779AC /* PicturesViewController.swift */; };
 		4386775C1E33D551000309F2 /* SimpleMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4386775B1E33D551000309F2 /* SimpleMemory.swift */; };
 		43960F4C1E3C0758006FDC7B /* CatsAndDogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43960F4B1E3C0758006FDC7B /* CatsAndDogsViewController.swift */; };
 		E272DF021D74957F002F8295 /* Demographics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E272DF011D74957F002F8295 /* Demographics.swift */; };
@@ -70,6 +73,9 @@
 		1BC2E00A1D4F821F0020D430 /* iBOCAUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iBOCAUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BC2E00E1D4F821F0020D430 /* iBOCAUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iBOCAUITests.swift; sourceTree = "<group>"; };
 		1BC2E0101D4F821F0020D430 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		43343D431E3E66A3001779AC /* TapInOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapInOrderViewController.swift; sourceTree = "<group>"; };
+		43343D451E3E66BC001779AC /* TapInOrderBackwardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapInOrderBackwardsViewController.swift; sourceTree = "<group>"; };
+		43343D471E3E66D5001779AC /* PicturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PicturesViewController.swift; sourceTree = "<group>"; };
 		4386775B1E33D551000309F2 /* SimpleMemory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleMemory.swift; sourceTree = "<group>"; };
 		43960F4B1E3C0758006FDC7B /* CatsAndDogsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatsAndDogsViewController.swift; sourceTree = "<group>"; };
 		E272DF011D74957F002F8295 /* Demographics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Demographics.swift; sourceTree = "<group>"; };
@@ -158,6 +164,9 @@
 				1B53650D1D7491CF0088B5D2 /* 3DFigureCopy.swift */,
 				1B49EEF21DAC3B6600931E8C /* 3DFigureDraw.swift */,
 				1BC2DFFA1D4F821F0020D430 /* Info.plist */,
+				43343D431E3E66A3001779AC /* TapInOrderViewController.swift */,
+				43343D451E3E66BC001779AC /* TapInOrderBackwardsViewController.swift */,
+				43343D471E3E66D5001779AC /* PicturesViewController.swift */,
 			);
 			path = iBOCA;
 			sourceTree = "<group>";
@@ -339,6 +348,7 @@
 				E27BA37F1D523B8400619C07 /* BackwardDigitSpan.swift in Sources */,
 				E2B9F8001DD144A70035FE0B /* VATask.swift in Sources */,
 				1B6567401D7DE07B00C92FA3 /* SemanticListGeneration.swift in Sources */,
+				43343D461E3E66BC001779AC /* TapInOrderBackwardsViewController.swift in Sources */,
 				1B53650E1D7491CF0088B5D2 /* 3DFigureCopy.swift in Sources */,
 				1BC2DFF11D4F821F0020D430 /* ViewController.swift in Sources */,
 				E272DF021D74957F002F8295 /* Demographics.swift in Sources */,
@@ -351,6 +361,8 @@
 				E2901DCF1D4F8C3700080F82 /* OrientationTask.swift in Sources */,
 				F261D4EA1E3E33F00039A545 /* Bubbles.swift in Sources */,
 				F24E6E6D1E1BC2C300E29995 /* Results.swift in Sources */,
+				43343D441E3E66A3001779AC /* TapInOrderViewController.swift in Sources */,
+				43343D481E3E66D5001779AC /* PicturesViewController.swift in Sources */,
 				1B49EEF31DAC3B6600931E8C /* 3DFigureDraw.swift in Sources */,
 				F24E6E681E1BBBA600E29995 /* SetupViewController.swift in Sources */,
 				F27728A61E33C91A004F8A6E /* MainViewController.swift in Sources */,
