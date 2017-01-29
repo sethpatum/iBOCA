@@ -34,6 +34,7 @@ class TapInOrderViewController: ViewController {
     
     @IBOutlet weak var resultsLabel: UILabel!
     
+    @IBOutlet weak var backButton: UIButton!
     
     
     
@@ -42,6 +43,11 @@ class TapInOrderViewController: ViewController {
     @IBAction func Reset(_ sender: Any) {
         
         print("in reset")
+        
+        backButton.isEnabled = false
+        startButton.isEnabled = false
+        endButton.isEnabled = true
+        resetButton.isEnabled = true
         
         numplaces = 0
         numRepeats = 0
@@ -54,6 +60,9 @@ class TapInOrderViewController: ViewController {
             self.buttonList[index].backgroundColor = UIColor.red
         }
         
+        StartTest(resetButton)
+        
+        /*
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5){
             if let wnd = self.view{
                 
@@ -72,6 +81,7 @@ class TapInOrderViewController: ViewController {
             self.drawSequenceRecursively(num: 0)
             self.startTime2 = NSDate()
         }
+ */
         
     }
     
@@ -97,8 +107,7 @@ class TapInOrderViewController: ViewController {
     }
     
     //stop buttons from being pressed
-    func disableButtons(
-        ) {
+    func disableButtons() {
         for (index, _) in order.enumerated() {
             buttonList[index].removeTarget(self, action: #selector(buttonAction), for: UIControlEvents.touchUpInside)
             print("buttons disabled")
@@ -185,6 +194,7 @@ class TapInOrderViewController: ViewController {
         
         endButton.isEnabled = false
         resetButton.isEnabled = false
+        backButton.isEnabled = true
         
         
         randomizeBoard()
@@ -204,6 +214,7 @@ class TapInOrderViewController: ViewController {
         startButton.isEnabled = false
         endButton.isEnabled = true
         resetButton.isEnabled = true
+        backButton.isEnabled = false
         
         numplaces = 0
         numRepeats = 0
@@ -238,14 +249,11 @@ class TapInOrderViewController: ViewController {
     
     @IBAction func EndTest(_ sender: Any) {
         self.navigationItem.setHidesBackButton(false, animated:true)
-        startButton.isEnabled = true
+        startButton.isEnabled = false
         endButton.isEnabled = false
-        resetButton.isEnabled = false
+        resetButton.isEnabled = true
+        backButton.isEnabled = true
         donetest()
-        
-    }
-    
-    func drawstart() {
         
     }
     
@@ -253,11 +261,16 @@ class TapInOrderViewController: ViewController {
         
         ended = true
         
+        startButton.isEnabled = false
+        endButton.isEnabled = false
+        resetButton.isEnabled = true
+        backButton.isEnabled = true
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-            self.navigationItem.setHidesBackButton(false, animated:true)
-            self.startButton.isEnabled = true
-            self.endButton.isEnabled = false
-            self.resetButton.isEnabled = false
+//            self.navigationItem.setHidesBackButton(false, animated:true)
+//            self.startButton.isEnabled = true
+//           self.endButton.isEnabled = false
+//            self.resetButton.isEnabled = false
             
             let result = Results()
             result.name = "Forward Spatial Span"
@@ -452,7 +465,7 @@ class TapInOrderViewController: ViewController {
         
         numplaces = numplaces + 1
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
             if self.ended == false {
                 print("next; DRAWING RECURSIVE SEQUENCE")
                 self.numRepeats = 0
@@ -480,7 +493,7 @@ class TapInOrderViewController: ViewController {
                     
                 }
  */
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.2){
                     
                     for (index, _) in self.order.enumerated() {
                         self.buttonList[index].backgroundColor = UIColor.red
