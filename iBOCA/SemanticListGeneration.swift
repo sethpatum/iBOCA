@@ -32,6 +32,7 @@ class SemanticListGeneration: UIViewController, UIPickerViewDelegate {
     let CategoryData = ["Animals", "Occupations", "Fruit", "Vegetables", "Clothing", "Furniture"]
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         CategoryPicker.delegate = self
@@ -145,6 +146,7 @@ class SemanticListGeneration: UIViewController, UIPickerViewDelegate {
             result.startTime = startTime
             result.endTime = Foundation.Date()
             result.shortDescription = "Correct:\(resCorrect), Incorrect:\(resIncorrect), Repeat:\(resRepeat)"
+            resultsArray.add(result)
             
         }
     }

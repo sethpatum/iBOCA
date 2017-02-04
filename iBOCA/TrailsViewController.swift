@@ -38,7 +38,7 @@ class TrailsAViewController: ViewController, UIPickerViewDelegate {
     @IBOutlet weak var resultsLabel: UILabel!
     
     @IBAction func StartButton(sender: AnyObject) {
-        
+        testPicker.isHidden = true
         
         self.title = TrailsTests[selectedTest].0
         
@@ -239,6 +239,8 @@ class TrailsAViewController: ViewController, UIPickerViewDelegate {
             result.longDescription.add("The incorrect segments are \(drawingView.incorrectlist)")
             
             resultsArray.add(result)
+            
+            testPicker.isHidden = false
         }
         
         displayImgTrailsA = false

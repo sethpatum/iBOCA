@@ -10,6 +10,8 @@ import Foundation
 
 import UIKit
 
+var StartTime = Foundation.Date()
+
 var mixedImages = [String]()
 var halfImages = [String]()
 var recognizeIncorrectVA = [String]()
@@ -652,7 +654,12 @@ class VATask: UIViewController {
         }
         
         resultLabel.text = recallResult + recognizeResult
-        
+        let result = Results()
+        result.name = "VA Task"
+        result.startTime = StartTime
+        result.endTime = Foundation.Date()
+        result.shortDescription = "Recalled: \(recallResult), Recognized: \(recognizeResult )"
+        resultsArray.add(result)
     }
     
     func delay(_ delay:Double, closure:()->()) {
