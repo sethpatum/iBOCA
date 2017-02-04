@@ -21,7 +21,7 @@ var incorrectImageSetSM = Int()
 
 var startTimeSM = TimeInterval()
 var timerSM = Timer()
-
+var StartTimer = Foundation.Date()
 class SimpleMemoryTask: UIViewController {
     
     @IBOutlet weak var timerLabel: UILabel!
@@ -629,7 +629,12 @@ class SimpleMemoryTask: UIViewController {
             if(recognizeErrors[k] == 1){
                 recognizeResult += "Recognized \(imagesSM[k]) incorrectly in \(recognizeTimes[k]) seconds\n"
             }
-            
+            let result = Results()
+            result.name = "Simple Memory"
+            result.startTime = StartTimer
+            result.endTime = Foundation.Date()
+            result.shortDescription = "(\(recognizeResult) and \(recallResult))"
+            resultsArray.add(result)
         }
         
         if(buttonTaps[imagesSM.count] == true){
