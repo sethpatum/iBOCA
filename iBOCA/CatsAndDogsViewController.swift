@@ -42,7 +42,7 @@ class CatsAndDogsViewController: ViewController {
     
     @IBOutlet weak var backButton: UIButton!
     
-    @IBOutlet weak var startButton: UIButton!
+//    @IBOutlet weak var startButton: UIButton!
     
     @IBOutlet weak var endButton: UIButton!
     
@@ -86,13 +86,14 @@ class CatsAndDogsViewController: ViewController {
         level = 0 //current level
         repetition = 0
         ended = false
-        startButton.isEnabled = false
+//        startButton.isEnabled = false
         endButton.isEnabled = false
         resetButton.isEnabled = false
         selectionDoneButton.isEnabled = false
         backButton.isEnabled = true
         
-        StartTest(resetButton)
+//        StartTest(resetButton)
+        startAlert()
         
         /*
         cats = 0
@@ -233,12 +234,14 @@ class CatsAndDogsViewController: ViewController {
         
         self.navigationItem.title = "Cats And Dogs"
         
-        startButton.isEnabled = true
+//        startButton.isEnabled = true
         endButton.isEnabled = false
         resetButton.isEnabled = false
         selectionDoneButton.isEnabled = false
         backButton.isEnabled = true
-        
+        print("here")
+        startAlert()
+        print("getting here")
         
         /*
         endButton.isEnabled = false
@@ -287,6 +290,22 @@ class CatsAndDogsViewController: ViewController {
         
     }
     
+    func startAlert(){
+        
+        print("getting to start alert")
+        
+        let alert = UIAlertController(title: "Start", message: "Follow instructions to tap cats and dogs behind the boxes.\nTap \"Done Tapping\" for next round.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Start", style: .default, handler: { (action) -> Void in
+            self.StartTest()
+        }))
+  
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+//        self.present(alert, animated: true, completion: nil)
+        
+    }
     
     func update(timer: Timer) {
     }
@@ -328,12 +347,12 @@ class CatsAndDogsViewController: ViewController {
         
     }
     
-    @IBAction func StartTest(_ sender: Any) {
+    func StartTest() {
         
         endButton.isEnabled = false
         resetButton.isEnabled = false
         selectionDoneButton.isEnabled = false
-        startButton.isEnabled = false
+//        startButton.isEnabled = false
         backButton.isEnabled = false
         
         randomizeBoard()
@@ -402,7 +421,7 @@ class CatsAndDogsViewController: ViewController {
     
     @IBAction func EndTest(_ sender: Any) {
         self.navigationItem.setHidesBackButton(false, animated:true)
-        startButton.isEnabled = false
+//        startButton.isEnabled = false
         endButton.isEnabled = false
         selectionDoneButton.isEnabled = false
         resetButton.isEnabled = true
@@ -428,7 +447,7 @@ class CatsAndDogsViewController: ViewController {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
             self.navigationItem.setHidesBackButton(false, animated:true)
-            self.startButton.isEnabled = false
+//            self.startButton.isEnabled = false
             self.endButton.isEnabled = false
             self.resetButton.isEnabled = true
             self.backButton.isEnabled = true
@@ -510,7 +529,7 @@ class CatsAndDogsViewController: ViewController {
         else {
             
             if(level == 0){
-//                alert(info: "Tap all the dogs", display: true)
+//                alert(info: "Tap all the dogs.", display: true)
                 cats = 0
                 dogs = 1
             }
@@ -672,13 +691,13 @@ class CatsAndDogsViewController: ViewController {
             }
             
             if(level == 0){
-                alert(info: "Tap all the dogs", display: true, start: true)
+                alert(info: "Tap all the dogs.\nPress \"Done Tapping\" to continue.", display: true, start: true)
             }
             if(level == 5){
-                alert(info: "Tap all the dogs.\nDo NOT tap the cats", display: true, start: false)
+                alert(info: "Tap all the dogs.\nDo NOT tap the cats.\nPress \"Done Tapping\" to continue.", display: true, start: false)
             }
             if(level == 15){
-                alert(info: "Tap all the cats.\nDo NOT tap the dogs", display: true, start: false)
+                alert(info: "Tap all the cats.\nDo NOT tap the dogs.\nPress \"Done Tapping\" to continue.", display: true, start: false)
             }
             
             if(level != 0 && level != 5 && level != 15){
