@@ -42,11 +42,11 @@ class ThreeDFigureCopy: UIViewController {
     
     func drawImage() {
         //BUGBUG: This should not happen after the last result when the results are generated. However, for some reason, then the last drawn image is missing in the results! this will fix it.
-        let img = drawCustomImage(CGSize(width: 600, height: 400))
+        let img = drawCustomImage(CGSize(width: 500, height: 300))
         resultImages.append(img)
 
         if curr < imagelist.count {
-            let imageView = UIImageView(frame:CGRect(x: 100, y: 100, width: 600, height: 400))
+            let imageView = UIImageView(frame:CGRect(x: 200, y: 80, width: 500, height: 300))
             let image = UIImage(named: imagelist[curr])
             imageView.image = image
             imageView.layer.borderWidth = 2
@@ -86,7 +86,7 @@ class ThreeDFigureCopy: UIViewController {
         }
        
 
-        let drawingFrame = CGRect(x: 100, y: 600, width: 600, height: 400)
+        let drawingFrame = CGRect(x: 200, y: 430, width: 500, height: 300)
         drawing = ThreeDFigureDraw(frame: drawingFrame)
         drawing.layer.borderWidth = 2
         self.view.addSubview(drawing)
