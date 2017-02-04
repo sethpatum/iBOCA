@@ -28,7 +28,6 @@
 		E29AF0401D51134A00C4AF79 /* ForwardDigitSpan.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29AF03F1D51134A00C4AF79 /* ForwardDigitSpan.swift */; };
 		E2B9F8001DD144A70035FE0B /* VATask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B9F7FF1DD144A70035FE0B /* VATask.swift */; };
 		E2C906EB1D54DA1B00C0824E /* SerialSevens.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C906EA1D54DA1B00C0824E /* SerialSevens.swift */; };
-		F24E6E681E1BBBA600E29995 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24E6E671E1BBBA600E29995 /* SetupViewController.swift */; };
 		F24E6E6D1E1BC2C300E29995 /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24E6E691E1BC2C300E29995 /* Results.swift */; };
 		F24E6E6E1E1BC2C300E29995 /* AllResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24E6E6A1E1BC2C300E29995 /* AllResults.swift */; };
 		F24E6E6F1E1BC2C300E29995 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24E6E6B1E1BC2C300E29995 /* ResultsViewController.swift */; };
@@ -84,7 +83,6 @@
 		E29AF03F1D51134A00C4AF79 /* ForwardDigitSpan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForwardDigitSpan.swift; sourceTree = "<group>"; };
 		E2B9F7FF1DD144A70035FE0B /* VATask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VATask.swift; sourceTree = "<group>"; };
 		E2C906EA1D54DA1B00C0824E /* SerialSevens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerialSevens.swift; sourceTree = "<group>"; };
-		F24E6E671E1BBBA600E29995 /* SetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
 		F24E6E691E1BC2C300E29995 /* Results.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
 		F24E6E6A1E1BC2C300E29995 /* AllResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllResults.swift; sourceTree = "<group>"; };
 		F24E6E6B1E1BC2C300E29995 /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
@@ -157,7 +155,6 @@
 				1BC2DFF21D4F821F0020D430 /* Main.storyboard */,
 				1B65673F1D7DE07B00C92FA3 /* SemanticListGeneration.swift */,
 				E27BA37E1D523B8400619C07 /* BackwardDigitSpan.swift */,
-				F24E6E671E1BBBA600E29995 /* SetupViewController.swift */,
 				F24E6E711E1BC2D800E29995 /* Results */,
 				1BC2DFF51D4F821F0020D430 /* Assets.xcassets */,
 				1BC2DFF71D4F821F0020D430 /* LaunchScreen.storyboard */,
@@ -364,7 +361,6 @@
 				43343D441E3E66A3001779AC /* TapInOrderViewController.swift in Sources */,
 				43343D481E3E66D5001779AC /* PicturesViewController.swift in Sources */,
 				1B49EEF31DAC3B6600931E8C /* 3DFigureDraw.swift in Sources */,
-				F24E6E681E1BBBA600E29995 /* SetupViewController.swift in Sources */,
 				F27728A61E33C91A004F8A6E /* MainViewController.swift in Sources */,
 				43960F4C1E3C0758006FDC7B /* CatsAndDogsViewController.swift in Sources */,
 				F24E6E701E1BC2C300E29995 /* ScaleView.swift in Sources */,

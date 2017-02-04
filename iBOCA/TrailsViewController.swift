@@ -226,7 +226,7 @@ class TrailsAViewController: ViewController, UIPickerViewDelegate {
             result.name = self.title
             result.startTime = startTime2 as Date
             result.endTime = Foundation.Date()
-            result.screenshot = image
+            result.screenshot.append(image)
             
             var num = timePassedTrailsA
             let minutes = UInt8(num / 60.0)

@@ -16,8 +16,11 @@ class ThreeDFigureCopy: UIViewController {
     
     var imagelist = ["Circle2", "rhombus", "rectprism"]
     var curr = 0
-    var correctList = [String]()
-    var incorrectList = [String]()
+    var resultImages : [UIImage] = []
+    var resultCondition : [Bool] = []
+    var resultTime : [Double] = []
+    var startTime : Double = 0
+    var startTime2 = Foundation.Date()
     
     var drawing : ThreeDFigureDraw!
     var drawingImageView : UIImageView!
@@ -38,23 +41,32 @@ class ThreeDFigureCopy: UIViewController {
     }
     
     func drawImage() {
+        //BUGBUG: This should not happen after the last result when the results are generated. However, for some reason, then the last drawn image is missing in the results! this will fix it.
+        let img = drawCustomImage(CGSize(width: 600, height: 400))
+        resultImages.append(img)
+
         if curr < imagelist.count {
             let imageView = UIImageView(frame:CGRect(x: 100, y: 100, width: 600, height: 400))
             let image = UIImage(named: imagelist[curr])
             imageView.image = image
             imageView.layer.borderWidth = 2
             self.view.addSubview(imageView)
-            
-            let result = drawCustomImage(CGSize(width: 600, height: 400))
-            
         } else {
             StartButton.isEnabled = true
             CorrectButton.isEnabled = false
             IncorrectButton.isEnabled = false
+            
             let result = Results()
             result.name = "3D Figure Copy"
-            result.shortDescription = "Correct:\(correctList), Incorrect:\(incorrectList)"
-
+            result.startTime = startTime2
+            result.endTime = Foundation.Date()
+            result.longDescription.add("Tests: \(imagelist)")
+            result.longDescription.add("Test Outcomes: \(resultCondition)")
+            result.longDescription.add("Test Times: \(resultTime)")
+            for shot in resultImages {
+                result.screenshot.append(shot)
+            }
+            resultsArray.add(result)
         }
     }
     
@@ -79,19 +91,24 @@ class ThreeDFigureCopy: UIViewController {
         drawing.layer.borderWidth = 2
         self.view.addSubview(drawing)
         
+        startTime = TimeInterval()
         drawImage()
     }
     
     
     @IBAction func CorrectAction(_ sender: UIButton) {
-        correctList.append(imagelist[curr])
+        resultCondition.append(true)
+        resultTime.append(TimeInterval() - startTime)
+        startTime = TimeInterval()
         curr  = curr + 1
         drawImage()
     }
     
     
     @IBAction func IncorrectAction(_ sender: UIButton) {
-        incorrectList.append(imagelist[curr])
+        resultCondition.append(false)
+        resultTime.append(TimeInterval() - startTime)
+        startTime = TimeInterval()
         curr  = curr + 1
         drawImage()
     }

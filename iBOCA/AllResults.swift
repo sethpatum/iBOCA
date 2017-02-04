@@ -59,9 +59,9 @@ class AllResults  {
                     }
                 }
                 
-                if(r.screenshot != nil) {
-                    let imageString = returnEmailStringBase64EncodedImage(r.screenshot!)
-                    e += "<img src='data:image/png;base64,\(imageString)' width='\(r.screenshot!.size.width)' height='\(r.screenshot!.size.height)'><p>\n"
+                for shot in r.screenshot {
+                    let imageString = returnEmailStringBase64EncodedImage(shot)
+                    e += "<img src='data:image/png;base64,\(imageString)' width='\(shot.size.width)' height='\(shot.size.height)'><p>\n"
                 }
             }
         }
