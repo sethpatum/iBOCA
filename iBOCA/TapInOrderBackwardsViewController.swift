@@ -246,6 +246,8 @@ class TapInOrderBackwardsViewController: UIViewController {
             
             resultsArray.add(result)
             
+            Status[TestBackwardSpatialSpan] = TestStatus.Done
+            
             self.numplaces = 0
             self.numRepeats = 0
             

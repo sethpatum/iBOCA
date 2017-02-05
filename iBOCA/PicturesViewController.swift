@@ -279,6 +279,7 @@ class PicturesViewController: ViewController {
             result.longDescription.add("The incorrect pictures were the \(wrongList)")
         }
         resultsArray.add(result)
+        Status[TestNampingPictures] = TestStatus.Done
         
 //        if resultsDisplayOn == true {
             var str:String = "\(corr) correct out of \(count)"

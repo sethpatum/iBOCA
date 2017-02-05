@@ -134,7 +134,7 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         result.endTime = Foundation.Date()
         result.shortDescription = "Season: \(Season), State: \(State), Town: \(Town), Date: \(Date), Address: \(Address)"
         resultsArray.add(result)
-        
+        Status[TestOrientation] = TestStatus.Done
     }
     //pickerview setup and whatnot
     

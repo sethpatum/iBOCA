@@ -752,6 +752,21 @@
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="Button3DFigureCopy" destination="wVm-Sl-bFV" id="hQN-2A-Rmq"/>
+                        <outlet property="ButtonBackwardDigitSpan" destination="iGI-yg-K8B" id="vCN-mO-EBp"/>
+                        <outlet property="ButtonBackwardSpatialSpan" destination="XZh-ak-pPY" id="AbD-uZ-RNY"/>
+                        <outlet property="ButtonCatsAndDogs" destination="pTk-PH-Jfg" id="bup-65-N9r"/>
+                        <outlet property="ButtonForwardDigitSpan" destination="Apg-tP-eG1" id="CLT-yG-8RG"/>
+                        <outlet property="ButtonForwardSpatialSpan" destination="BND-a5-1RQ" id="pau-PN-dqu"/>
+                        <outlet property="ButtonNamingPictures" destination="s0w-I5-XUL" id="lzK-TP-Uvs"/>
+                        <outlet property="ButtonOrientation" destination="0ed-7V-lnU" id="O7j-IY-lgV"/>
+                        <outlet property="ButtonSemanticListGeneration" destination="s7T-J7-lcV" id="lym-7b-k48"/>
+                        <outlet property="ButtonSimpleMemory" destination="9Yk-2H-hs0" id="zvc-Jr-z4p"/>
+                        <outlet property="ButtonTrails" destination="144-5O-YWO" id="wAt-bD-Lpf"/>
+                        <outlet property="ButtonVIsualAssociation" destination="2DB-z8-IDB" id="Npm-ef-9Qd"/>
+                        <outlet property="ButtonnSerialSevens" destination="20k-0w-xV2" id="eUK-eV-USN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

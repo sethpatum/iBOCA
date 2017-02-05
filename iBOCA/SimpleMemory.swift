@@ -119,6 +119,7 @@ class SimpleMemoryTask: UIViewController {
         
         startAlert.addAction(UIAlertAction(title: "Start New Task", style: .default, handler: { (action) -> Void in
             print("start new")
+            Status[TestSimpleMemory] = TestStatus.Running
             self.startNewTask()
             //action
         }))
@@ -695,6 +696,7 @@ class SimpleMemoryTask: UIViewController {
         }
         
         resultLabel.text = recallResult + recognizeResult
+        Status[TestSimpleMemory] = TestStatus.Done
         
     }
     

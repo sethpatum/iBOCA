@@ -240,6 +240,8 @@ class TrailsAViewController: ViewController, UIPickerViewDelegate {
             
             resultsArray.add(result)
             
+            Status[TestTrails] = TestStatus.Done
+            
             testPicker.isHidden = false
         }
         
