@@ -429,6 +429,7 @@ class SerialSevens: UIViewController {
             result.endTime = Foundation.Date()
             result.shortDescription = "\(Records)"
             resultsArray.add(result)
+            Status[TestSerialSevens] = TestStatus.Done
         }
         button0.isEnabled = true
         button1.isEnabled = true

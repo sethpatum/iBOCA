@@ -138,6 +138,7 @@ class VATask: UIViewController {
         
         startAlert.addAction(UIAlertAction(title: "Start New Task", style: .default, handler: { (action) -> Void in
             print("start new")
+            Status[TestVisualAssociation] = TestStatus.Running
             self.startNewTask()
             //action
         }))
@@ -660,6 +661,7 @@ class VATask: UIViewController {
         result.endTime = Foundation.Date()
         result.shortDescription = "Recalled: \(recallResult), Recognized: \(recognizeResult )"
         resultsArray.add(result)
+        Status[TestVisualAssociation] = TestStatus.Done
     }
     
     func delay(_ delay:Double, closure:()->()) {

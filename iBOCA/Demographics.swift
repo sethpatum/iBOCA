@@ -23,6 +23,30 @@ var emailOn  : Bool = false
 var emailAddress : String = ""
 
 
+
+
+let TestOrientation = 1
+let TestSimpleMemory = 2
+let TestVisualAssociation = 3
+let TestTrails = 4
+let TestForwardDigitSpan = 5
+let TestBackwardsDigitSpan = 6
+let TestCatsAndDogs = 7
+let Test3DFigureCopy = 8
+let TestSerialSevens = 9
+let TestForwardSpatialSpan = 10
+let TestBackwardSpatialSpan = 11
+let TestNampingPictures = 12
+let TestSemanticListGeneration = 13
+
+
+enum TestStatus {
+    case NotStarted, Running, Done
+}
+
+var Status  = [TestStatus](repeating: TestStatus.NotStarted, count: 14)
+
+
 func makeAgeData() -> [String] {
     var str:[String] = []
     for i in 1...120 {
@@ -124,6 +148,20 @@ class Demographics: UIViewController, MFMailComposeViewControllerDelegate, UITex
         Ethnicity = ethnicData[EthnicityPicker.selectedRow(inComponent: 0)]
         Education = educationData[EducationPicker.selectedRow(inComponent: 0)]
         Race = raceData[RacePicker.selectedRow(inComponent: 0)]
+        
+        Status[TestOrientation] = TestStatus.NotStarted
+        Status[TestSimpleMemory] = TestStatus.NotStarted
+        Status[TestVisualAssociation] = TestStatus.NotStarted
+        Status[TestTrails] = TestStatus.NotStarted
+        Status[TestForwardDigitSpan] = TestStatus.NotStarted
+        Status[TestBackwardsDigitSpan] = TestStatus.NotStarted
+        Status[TestCatsAndDogs] = TestStatus.NotStarted
+        Status[Test3DFigureCopy] = TestStatus.NotStarted
+        Status[TestSerialSevens] = TestStatus.NotStarted
+        Status[TestForwardSpatialSpan] = TestStatus.NotStarted
+        Status[TestBackwardSpatialSpan] = TestStatus.NotStarted
+        Status[TestNampingPictures] = TestStatus.NotStarted
+        Status[TestSemanticListGeneration] = TestStatus.NotStarted
         
         
 //added:

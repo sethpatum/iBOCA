@@ -291,6 +291,8 @@ class TapInOrderViewController: ViewController {
             
             resultsArray.add(result)
             
+            Status[TestForwardSpatialSpan] = TestStatus.Done
+            
             self.numplaces = 0
             self.numRepeats = 0
             

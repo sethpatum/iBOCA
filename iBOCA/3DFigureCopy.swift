@@ -67,6 +67,7 @@ class ThreeDFigureCopy: UIViewController {
                 result.screenshot.append(shot)
             }
             resultsArray.add(result)
+            Status[Test3DFigureCopy] = TestStatus.Done
         }
     }
     
