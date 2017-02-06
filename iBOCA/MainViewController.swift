@@ -19,18 +19,17 @@ class MainViewController: UIViewController, MFMailComposeViewControllerDelegate{
     
     @IBOutlet weak var ButtonOrientation: UIButton!
     @IBOutlet weak var ButtonSimpleMemory: UIButton!
-    @IBOutlet weak var ButtonVIsualAssociation: UIButton!
+    @IBOutlet weak var ButtonVisualAssociation: UIButton!
     @IBOutlet weak var ButtonTrails: UIButton!
     @IBOutlet weak var ButtonForwardDigitSpan: UIButton!
     @IBOutlet weak var ButtonBackwardDigitSpan: UIButton!
     @IBOutlet weak var ButtonCatsAndDogs: UIButton!
     @IBOutlet weak var Button3DFigureCopy: UIButton!
-    @IBOutlet weak var ButtonnSerialSevens: UIButton!
+    @IBOutlet weak var ButtonSerialSevens: UIButton!
     @IBOutlet weak var ButtonForwardSpatialSpan: UIButton!
     @IBOutlet weak var ButtonBackwardSpatialSpan: UIButton!
     @IBOutlet weak var ButtonNamingPictures: UIButton!
     @IBOutlet weak var ButtonSemanticListGeneration: UIButton!
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         navigationItem.title = nil
     }
@@ -70,13 +69,13 @@ class MainViewController: UIViewController, MFMailComposeViewControllerDelegate{
         
         updateButton(button: ButtonOrientation, status: Status[TestOrientation])
         updateButton(button: ButtonSimpleMemory, status: Status[TestSimpleMemory])
-        updateButton(button: ButtonVIsualAssociation, status: Status[TestVisualAssociation])
+        updateButton(button: ButtonVisualAssociation, status: Status[TestVisualAssociation])
         updateButton(button: ButtonTrails, status: Status[TestTrails])
         updateButton(button: ButtonForwardDigitSpan, status: Status[TestForwardDigitSpan])
         updateButton(button: ButtonBackwardDigitSpan, status: Status[TestBackwardsDigitSpan])
         updateButton(button: ButtonCatsAndDogs, status: Status[TestCatsAndDogs])
         updateButton(button: Button3DFigureCopy, status: Status[Test3DFigureCopy])
-        updateButton(button: ButtonnSerialSevens, status: Status[TestSerialSevens])
+        updateButton(button: ButtonSerialSevens, status: Status[TestSerialSevens])
         updateButton(button: ButtonForwardSpatialSpan, status: Status[TestForwardSpatialSpan])
         updateButton(button: ButtonBackwardSpatialSpan, status: Status[TestBackwardSpatialSpan])
         updateButton(button: ButtonNamingPictures, status: Status[TestNampingPictures])

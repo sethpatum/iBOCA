@@ -753,19 +753,19 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="Button3DFigureCopy" destination="wVm-Sl-bFV" id="hQN-2A-Rmq"/>
-                        <outlet property="ButtonBackwardDigitSpan" destination="iGI-yg-K8B" id="vCN-mO-EBp"/>
-                        <outlet property="ButtonBackwardSpatialSpan" destination="XZh-ak-pPY" id="AbD-uZ-RNY"/>
-                        <outlet property="ButtonCatsAndDogs" destination="pTk-PH-Jfg" id="bup-65-N9r"/>
-                        <outlet property="ButtonForwardDigitSpan" destination="Apg-tP-eG1" id="CLT-yG-8RG"/>
-                        <outlet property="ButtonForwardSpatialSpan" destination="BND-a5-1RQ" id="pau-PN-dqu"/>
-                        <outlet property="ButtonNamingPictures" destination="s0w-I5-XUL" id="lzK-TP-Uvs"/>
-                        <outlet property="ButtonOrientation" destination="0ed-7V-lnU" id="O7j-IY-lgV"/>
-                        <outlet property="ButtonSemanticListGeneration" destination="s7T-J7-lcV" id="lym-7b-k48"/>
-                        <outlet property="ButtonSimpleMemory" destination="9Yk-2H-hs0" id="zvc-Jr-z4p"/>
-                        <outlet property="ButtonTrails" destination="144-5O-YWO" id="wAt-bD-Lpf"/>
-                        <outlet property="ButtonVIsualAssociation" destination="2DB-z8-IDB" id="Npm-ef-9Qd"/>
-                        <outlet property="ButtonnSerialSevens" destination="20k-0w-xV2" id="eUK-eV-USN"/>
+                        <outlet property="Button3DFigureCopy" destination="wVm-Sl-bFV" id="mit-NS-NTk"/>
+                        <outlet property="ButtonBackwardDigitSpan" destination="iGI-yg-K8B" id="cLX-6k-xkU"/>
+                        <outlet property="ButtonBackwardSpatialSpan" destination="XZh-ak-pPY" id="gbD-Gc-tO7"/>
+                        <outlet property="ButtonCatsAndDogs" destination="pTk-PH-Jfg" id="1ym-uA-vsz"/>
+                        <outlet property="ButtonForwardDigitSpan" destination="Apg-tP-eG1" id="jyn-hx-1Z5"/>
+                        <outlet property="ButtonForwardSpatialSpan" destination="BND-a5-1RQ" id="Dui-uy-O7n"/>
+                        <outlet property="ButtonNamingPictures" destination="s0w-I5-XUL" id="z7Q-1E-POs"/>
+                        <outlet property="ButtonOrientation" destination="0ed-7V-lnU" id="UAf-cc-MGk"/>
+                        <outlet property="ButtonSemanticListGeneration" destination="s7T-J7-lcV" id="wJn-So-C5r"/>
+                        <outlet property="ButtonSerialSevens" destination="20k-0w-xV2" id="B4v-Gm-2lA"/>
+                        <outlet property="ButtonSimpleMemory" destination="9Yk-2H-hs0" id="9i8-lJ-pVO"/>
+                        <outlet property="ButtonTrails" destination="144-5O-YWO" id="1s5-im-83b"/>
+                        <outlet property="ButtonVisualAssociation" destination="2DB-z8-IDB" id="pGz-jC-OIz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -1019,7 +1019,7 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="48"/>
                                 <state key="normal" title="Go to Tests"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="Ewa-Yc-CuA"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="yy7-wo-qvD"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yws-ZT-SJu">
@@ -1040,13 +1040,10 @@
                                     <segue destination="7sQ-B6-R4d" kind="show" id="wUZ-dV-K0X"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Image Here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zUQ-dz-RSI">
-                                <rect key="frame" x="468" y="190" width="88" height="21"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="iBoca logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="b3O-WQ-2Bx">
+                                <rect key="frame" x="166" y="70" width="693" height="272"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -2097,11 +2094,12 @@
     </scenes>
     <resources>
         <image name="ellison1.jpg" width="960" height="960"/>
+        <image name="iBoca logo.png" width="1376" height="594"/>
         <image name="izzy1.jpg" width="960" height="960"/>
         <image name="seth1.jpg" width="960" height="960"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="yy7-wo-qvD"/>
         <segue reference="kTw-7t-VZN"/>
-        <segue reference="Ewa-Yc-CuA"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -25,6 +25,7 @@
 		E2037F1D1E47E83D00EE13EB /* izzy1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2037F1C1E47E83D00EE13EB /* izzy1.jpg */; };
 		E2037F1F1E47E85500EE13EB /* seth1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2037F1E1E47E85500EE13EB /* seth1.jpg */; };
 		E2037F211E47E86900EE13EB /* ellison1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2037F201E47E86900EE13EB /* ellison1.jpg */; };
+		E2037F231E47F3E600EE13EB /* iBoca logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E2037F221E47F3E600EE13EB /* iBoca logo.png */; };
 		E272DF021D74957F002F8295 /* Demographics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E272DF011D74957F002F8295 /* Demographics.swift */; };
 		E27BA37F1D523B8400619C07 /* BackwardDigitSpan.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27BA37E1D523B8400619C07 /* BackwardDigitSpan.swift */; };
 		E2901DCF1D4F8C3700080F82 /* OrientationTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2901DCE1D4F8C3700080F82 /* OrientationTask.swift */; };
@@ -83,6 +84,7 @@
 		E2037F1C1E47E83D00EE13EB /* izzy1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = izzy1.jpg; sourceTree = "<group>"; };
 		E2037F1E1E47E85500EE13EB /* seth1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = seth1.jpg; sourceTree = "<group>"; };
 		E2037F201E47E86900EE13EB /* ellison1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ellison1.jpg; sourceTree = "<group>"; };
+		E2037F221E47F3E600EE13EB /* iBoca logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iBoca logo.png"; sourceTree = "<group>"; };
 		E272DF011D74957F002F8295 /* Demographics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Demographics.swift; sourceTree = "<group>"; };
 		E27BA37E1D523B8400619C07 /* BackwardDigitSpan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackwardDigitSpan.swift; sourceTree = "<group>"; };
 		E2901DCE1D4F8C3700080F82 /* OrientationTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrientationTask.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 		E2037F1B1E47E7F000EE13EB /* Pictures */ = {
 			isa = PBXGroup;
 			children = (
+				E2037F221E47F3E600EE13EB /* iBoca logo.png */,
 				E2037F201E47E86900EE13EB /* ellison1.jpg */,
 				E2037F1E1E47E85500EE13EB /* seth1.jpg */,
 				E2037F1C1E47E83D00EE13EB /* izzy1.jpg */,
@@ -334,6 +337,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2037F211E47E86900EE13EB /* ellison1.jpg in Resources */,
+				E2037F231E47F3E600EE13EB /* iBoca logo.png in Resources */,
 				1BC2DFF91D4F821F0020D430 /* LaunchScreen.storyboard in Resources */,
 				E2037F1F1E47E85500EE13EB /* seth1.jpg in Resources */,
 				1BC2DFF61D4F821F0020D430 /* Assets.xcassets in Resources */,
