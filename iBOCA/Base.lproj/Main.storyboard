@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RmL-Z6-Ri2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RmL-Z6-Ri2">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -744,7 +744,7 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <state key="normal" title="Back To Start Page"/>
                                 <connections>
-                                    <segue destination="RmL-Z6-Ri2" kind="show" id="Ahl-wP-pho"/>
+                                    <segue destination="RmL-Z6-Ri2" kind="show" identifier="BackToLanding" id="Ahl-wP-pho"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -999,12 +999,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Qy-4B-9H3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5130.46875" y="1087.5"/>
+            <point key="canvasLocation" x="-5873" y="1025"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="V6Q-aq-Cnk">
             <objects>
-                <viewController id="RmL-Z6-Ri2" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LandingPage" id="RmL-Z6-Ri2" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xmi-Xp-Iqt"/>
                         <viewControllerLayoutGuide type="bottom" id="T9a-N2-4YX"/>
@@ -1013,15 +1013,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hkA-Bz-fX3">
-                                <rect key="frame" x="284" y="369" width="457" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="48"/>
-                                <state key="normal" title="Go to Tests"/>
-                                <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="yy7-wo-qvD"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yws-ZT-SJu">
                                 <rect key="frame" x="259" y="547" width="507" height="98"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1031,26 +1022,26 @@
                                     <segue destination="crm-7O-3rs" kind="show" id="vvj-hT-lCK"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6FK-Qi-BU3">
-                                <rect key="frame" x="347" y="441" width="331" height="104"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="48"/>
-                                <state key="normal" title="Demographics"/>
-                                <connections>
-                                    <segue destination="7sQ-B6-R4d" kind="show" id="wUZ-dV-K0X"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="iBoca logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="b3O-WQ-2Bx">
                                 <rect key="frame" x="166" y="70" width="693" height="272"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hkA-Bz-fX3">
+                                <rect key="frame" x="284" y="431" width="457" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="48"/>
+                                <state key="normal" title="Go to Tests"/>
+                                <connections>
+                                    <segue destination="7sQ-B6-R4d" kind="show" id="YmJ-Ej-S1q"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3qx-4e-i3I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5104.1015625" y="1822.65625"/>
+            <point key="canvasLocation" x="-5873" y="1807"/>
         </scene>
         <!--Demographics-->
         <scene sceneID="1qk-yG-6Pt">
@@ -1183,11 +1174,12 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jh2-I1-x4w">
-                                <rect key="frame" x="836" y="64" width="34" height="30"/>
+                                <rect key="frame" x="837" y="64" width="104" height="62"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Back"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Next"/>
                                 <connections>
-                                    <segue destination="RmL-Z6-Ri2" kind="show" id="LA2-F2-9Xo"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="Ipq-nJ-yUj"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1209,7 +1201,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EnL-3e-Mw3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5110" y="2479"/>
+            <point key="canvasLocation" x="-5117.578125" y="1805.46875"/>
         </scene>
         <!--ThreeD Figure Copy-->
         <scene sceneID="Crh-fR-n20">
@@ -2099,7 +2091,7 @@
         <image name="seth1.jpg" width="960" height="960"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yy7-wo-qvD"/>
-        <segue reference="kTw-7t-VZN"/>
+        <segue reference="Ipq-nJ-yUj"/>
+        <segue reference="Ahl-wP-pho"/>
     </inferredMetricsTieBreakers>
 </document>

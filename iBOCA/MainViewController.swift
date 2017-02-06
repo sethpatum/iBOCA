@@ -48,6 +48,7 @@ class MainViewController: UIViewController, MFMailComposeViewControllerDelegate{
             present(picker, animated: true)
         }
         resultsArray.doneWithPatient()
+        self.performSegue(withIdentifier: "BackToLanding", sender: self)
     }
     
     
