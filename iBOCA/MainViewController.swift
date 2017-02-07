@@ -15,7 +15,7 @@ var screenSize : CGRect?
 
 
 class MainViewController: UIViewController, MFMailComposeViewControllerDelegate{
-    var mailSubject : String = "CNToolkit Results"
+    var mailSubject : String = "iBOCA Results"
     
     @IBOutlet weak var ButtonOrientation: UIButton!
     @IBOutlet weak var ButtonSimpleMemory: UIButton!
@@ -30,6 +30,7 @@ class MainViewController: UIViewController, MFMailComposeViewControllerDelegate{
     @IBOutlet weak var ButtonBackwardSpatialSpan: UIButton!
     @IBOutlet weak var ButtonNamingPictures: UIButton!
     @IBOutlet weak var ButtonSemanticListGeneration: UIButton!
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         navigationItem.title = nil
     }
@@ -37,7 +38,7 @@ class MainViewController: UIViewController, MFMailComposeViewControllerDelegate{
     @IBAction func sendEmail(_ sender: Any) {
         var body:String?
         
-        if(emailOn && MFMailComposeViewController.canSendMail()) {
+        if(emailOn && MFMailComposeViewController.canSendMail() && resultsArray.numResults() > 0) {
             body = resultsArray.emailBody()
             let picker = MFMailComposeViewController()
             picker.mailComposeDelegate = self
