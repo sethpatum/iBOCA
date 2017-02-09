@@ -59,15 +59,15 @@ class AllResults  {
                     }
                 }
                 
-                if(r.screenshot != nil) {
-                    let imageString = returnEmailStringBase64EncodedImage(r.screenshot!)
-                    e += "<img src='data:image/png;base64,\(imageString)' width='\(r.screenshot!.size.width)' height='\(r.screenshot!.size.height)'><p>\n"
+                for shot in r.screenshot {
+                    let imageString = returnEmailStringBase64EncodedImage(shot)
+                    e += "<img src='data:image/png;base64,\(imageString)' width='\(shot.size.width)' height='\(shot.size.height)'><p>\n"
                 }
             }
         }
         
         // Put the time scale at the end of the e-mail
-        let scaleImage = UIImage(named: "scale")
+        let scaleImage = UIImage(named: "timescale")
         let imageString = returnEmailStringBase64EncodedImage(scaleImage!)
         e += "<p> <h3>scale</h3>\n"
         e += "<img src='data:image/png;base64,\(imageString)' width='\(scaleImage!.size.width)' height='\(scaleImage!.size.height)'><p>\n"

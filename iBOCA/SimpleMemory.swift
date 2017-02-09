@@ -21,7 +21,7 @@ var incorrectImageSetSM = Int()
 
 var startTimeSM = TimeInterval()
 var timerSM = Timer()
-
+var StartTimer = Foundation.Date()
 class SimpleMemoryTask: UIViewController {
     
     @IBOutlet weak var timerLabel: UILabel!
@@ -77,11 +77,6 @@ class SimpleMemoryTask: UIViewController {
         
         gesture = UIPanGestureRecognizer(target: self, action: #selector(wasDragged))
         
-        if(afterBreakSM == true){
-            timerSM = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updateInDelay), userInfo: nil, repeats: true)
-            delayLabel.text = "Recommended delay: 1 minute"
-        }
-        
         let arrowpic = UIImage(named: "arrow") as UIImage?
         
         arrowButton1 = UIButton(type: UIButtonType.custom) as UIButton
@@ -101,17 +96,64 @@ class SimpleMemoryTask: UIViewController {
         next1.isHidden = true
         
         back.isEnabled = true
-        start.isEnabled = true
+//        start.isEnabled = true
+        
+        if(afterBreakSM == true){
+            timerSM = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updateInDelay), userInfo: nil, repeats: true)
+            delayLabel.text = "Recommended delay: 1 minute"
+            start.isHidden = false
+        }
+        else{
+            start.isHidden = true
+            startAlert()
+        }
+        
+    }
+    
+    func startAlert(){
+        
+        back.isEnabled = false
+        next1.isHidden = true
+        
+        let startAlert = UIAlertController(title: "Start", message: "Choose start option", preferredStyle: .alert)
+        
+        startAlert.addAction(UIAlertAction(title: "Start New Task", style: .default, handler: { (action) -> Void in
+            print("start new")
+            Status[TestSimpleMemory] = TestStatus.Running
+            self.startNewTask()
+            //action
+        }))
+        
+        if(afterBreakSM == true){
+            startAlert.addAction(UIAlertAction(title: "Resume Task", style: .default, handler: { (action) -> Void in
+                print("resume old")
+                self.resumeTask()
+                //action
+            }))
+        }
+        
+        startAlert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) -> Void in
+            print("cancel")
+            self.back.isEnabled = true
+            //action
+        }))
+        
+        DispatchQueue.main.async {
+            self.present(startAlert, animated: true, completion: nil)
+        }
         
     }
     
     @IBAction func startButton(_ sender: Any) {
         
-        start.isEnabled = false
+        start.isHidden = true
         back.isEnabled = false
         
         next1.isHidden = true
         
+        startAlert()
+        
+/*
         let startAlert = UIAlertController(title: "Start", message: "Choose start option", preferredStyle: .alert)
         
         startAlert.addAction(UIAlertAction(title: "Start New Task", style: .default, handler: { (action) -> Void in
@@ -135,10 +177,13 @@ class SimpleMemoryTask: UIViewController {
         }))
         
         self.present(startAlert, animated: true, completion: nil)
+ */
         
     }
     
     func startNewTask(){
+        
+        timerSM.invalidate()
         
         recognizeIncorrectSM = [String]()
         imagesSM = [String]()
@@ -151,6 +196,9 @@ class SimpleMemoryTask: UIViewController {
         timerLabel.text = ""
         delayLabel.text = ""
         afterBreakSM = false
+        
+        
+        start.isHidden = true
         
         chooseImageSet()
         
@@ -366,7 +414,8 @@ class SimpleMemoryTask: UIViewController {
         afterBreakSM = true
         
         back.isEnabled = true
-        start.isEnabled = true
+        
+        start.isHidden = false
         
         timerSM = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updateInDelay), userInfo: nil, repeats: true)
         
@@ -511,10 +560,10 @@ class SimpleMemoryTask: UIViewController {
     
     func recognize(){
         
-        next1.removeTarget(self, action: #selector(nextButtonRecall), for:.touchUpInside)
-        next1.addTarget(self, action: #selector(nextButtonRecognize), for:.touchUpInside)
-        next1.isHidden = false
-        next1.isEnabled = true
+//        next1.removeTarget(self, action: #selector(nextButtonRecall), for:.touchUpInside)
+//        next1.addTarget(self, action: #selector(nextButtonRecognize), for:.touchUpInside)
+//        next1.isHidden = false
+//        next1.isEnabled = true
         
         testCount = 0
         
@@ -540,7 +589,7 @@ class SimpleMemoryTask: UIViewController {
     @IBAction func recognize1(sender: AnyObject){
         arrowButton1.isEnabled = false
         arrowButton2.isEnabled = false
-        next1.isEnabled = true
+//        next1.isEnabled = true
         
         if(orderRecognize[testCount] == 0){
             recognizeErrors.append(0)
@@ -550,13 +599,16 @@ class SimpleMemoryTask: UIViewController {
             recognizeErrors.append(1)
             recognizeTimes.append(findTime())
         }
+        
+        nextButtonRecognize()
+        
     }
     
     @IBAction func recognize2(sender: AnyObject){
         
         arrowButton1.isEnabled = false
         arrowButton2.isEnabled = false
-        next1.isEnabled = true
+//        next1.isEnabled = true
         
         if(orderRecognize[testCount] == 0){
             recognizeErrors.append(1)
@@ -567,9 +619,11 @@ class SimpleMemoryTask: UIViewController {
             recognizeTimes.append(findTime())
         }
         
+        nextButtonRecognize()
+        
     }
     
-    @IBAction func nextButtonRecognize(sender: AnyObject){
+    func nextButtonRecognize(){
         
         testCount += 1
         
@@ -577,7 +631,7 @@ class SimpleMemoryTask: UIViewController {
             
             arrowButton1.isHidden = true
             arrowButton2.isHidden = true
-            next1.isHidden = true
+//            next1.isHidden = true
             
             imageView1.removeFromSuperview()
             imageView2.removeFromSuperview()
@@ -588,7 +642,7 @@ class SimpleMemoryTask: UIViewController {
             
         else{
             
-            next1.isEnabled = false
+//            next1.isEnabled = false
             arrowButton1.isEnabled = true
             arrowButton2.isEnabled = true
             
@@ -608,7 +662,7 @@ class SimpleMemoryTask: UIViewController {
     func done(){
         
         back.isEnabled = true
-        start.isEnabled = true
+        start.isHidden = false
         afterBreakSM = false
         
         var recallResult = ""
@@ -629,7 +683,12 @@ class SimpleMemoryTask: UIViewController {
             if(recognizeErrors[k] == 1){
                 recognizeResult += "Recognized \(imagesSM[k]) incorrectly in \(recognizeTimes[k]) seconds\n"
             }
-            
+            let result = Results()
+            result.name = "Simple Memory"
+            result.startTime = StartTimer
+            result.endTime = Foundation.Date()
+            result.shortDescription = "(\(recognizeResult) and \(recallResult))"
+            resultsArray.add(result)
         }
         
         if(buttonTaps[imagesSM.count] == true){
@@ -637,6 +696,7 @@ class SimpleMemoryTask: UIViewController {
         }
         
         resultLabel.text = recallResult + recognizeResult
+        Status[TestSimpleMemory] = TestStatus.Done
         
     }
     

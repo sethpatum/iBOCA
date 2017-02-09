@@ -17,6 +17,8 @@ var Town : String?
 var Address : String?
 var Date : String?
 
+var startTime = Foundation.Date()
+
 class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UITextFieldDelegate, UITextViewDelegate,UIPickerViewDelegate  {
     
             //pickerview content set up(defines options)
@@ -118,14 +120,21 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
     }
 
     @IBAction func DoneButton(_ sender: AnyObject) {
-        var Results: [String] = [];
+       /* var Results: [String] = [];
         Results.append(Season!)
         Results.append(State!)
         Results.append(Town!)
         Results.append(Date!)
         Results.append(Address!)
         print(Results)
-        
+        */
+        let result = Results()
+        result.name = "Orientation"
+        result.startTime = startTime
+        result.endTime = Foundation.Date()
+        result.shortDescription = "Season: \(Season), State: \(State), Town: \(Town), Date: \(Date), Address: \(Address)"
+        resultsArray.add(result)
+        Status[TestOrientation] = TestStatus.Done
     }
     //pickerview setup and whatnot
     

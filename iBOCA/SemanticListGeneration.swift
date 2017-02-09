@@ -29,7 +29,8 @@ class SemanticListGeneration: UIViewController, UIPickerViewDelegate {
     @IBOutlet weak var ResultLabel: UILabel!
     
     @IBOutlet weak var CategoryPicker: UIPickerView!
-    let CategoryData = ["Animals", "Occupations", "Fruit", "Vegitables", "Clothing", "Furniture"]
+    let CategoryData = ["Animals", "Occupations", "Fruit", "Vegetables", "Clothing", "Furniture"]
+    
     
     
     override func viewDidLoad() {

@@ -16,7 +16,7 @@ class Results: NSObject {
     var endTime:Foundation.Date?
     var shortDescription:String?
     var longDescription : NSMutableArray = NSMutableArray()
-    var screenshot : UIImage?
+    var screenshot : [UIImage] = []
     
     var collapsed : Bool = true // for use by the View Controller
     
@@ -39,13 +39,9 @@ class Results: NSObject {
     }
     
     
-    // Number of rows should be long description + one if there is a screenshot
+    // Number of rows should be long description + # of screenshots
     func numRows() -> Int {
-        if screenshot == nil {
-            return longDescription.count
-        } else {
-            return longDescription.count + 1
-        }
+            return longDescription.count + screenshot.count
     }
     
     
@@ -54,9 +50,9 @@ class Results: NSObject {
         if i < longDescription.count {
              return 60
         }
-        if i == longDescription.count && screenshot != nil {
+ /*       if i == longDescription.count && screenshot != nil {
             return 500
-        }
+        } */
         return 0
     }
     
@@ -68,12 +64,12 @@ class Results: NSObject {
             cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
             cell.textLabel?.numberOfLines = 0
         }
-        if i == longDescription.count && screenshot != nil {
+  /*      if i == longDescription.count && screenshot != nil {
             cell.imageView?.image = screenshot
             cell.textLabel?.text = nil
         } else {
             cell.imageView?.image = nil
-        }
+        } */
         
     }
     
@@ -83,7 +79,7 @@ class Results: NSObject {
         UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, scale);
         
         layer.render(in: UIGraphicsGetCurrentContext()!)
-        screenshot = UIGraphicsGetImageFromCurrentImageContext()
+        screenshot.append(UIGraphicsGetImageFromCurrentImageContext()!)
     }
     
     func displayLocal(_ view:UIView?, imageView:UIImageView?, results:UILabel) {

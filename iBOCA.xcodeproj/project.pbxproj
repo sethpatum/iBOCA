@@ -22,13 +22,16 @@
 		43343D481E3E66D5001779AC /* PicturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43343D471E3E66D5001779AC /* PicturesViewController.swift */; };
 		4386775C1E33D551000309F2 /* SimpleMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4386775B1E33D551000309F2 /* SimpleMemory.swift */; };
 		43960F4C1E3C0758006FDC7B /* CatsAndDogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43960F4B1E3C0758006FDC7B /* CatsAndDogsViewController.swift */; };
+		E2037F1D1E47E83D00EE13EB /* izzy1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2037F1C1E47E83D00EE13EB /* izzy1.jpg */; };
+		E2037F1F1E47E85500EE13EB /* seth1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2037F1E1E47E85500EE13EB /* seth1.jpg */; };
+		E2037F211E47E86900EE13EB /* ellison1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E2037F201E47E86900EE13EB /* ellison1.jpg */; };
+		E2037F231E47F3E600EE13EB /* iBoca logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E2037F221E47F3E600EE13EB /* iBoca logo.png */; };
 		E272DF021D74957F002F8295 /* Demographics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E272DF011D74957F002F8295 /* Demographics.swift */; };
 		E27BA37F1D523B8400619C07 /* BackwardDigitSpan.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27BA37E1D523B8400619C07 /* BackwardDigitSpan.swift */; };
 		E2901DCF1D4F8C3700080F82 /* OrientationTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2901DCE1D4F8C3700080F82 /* OrientationTask.swift */; };
 		E29AF0401D51134A00C4AF79 /* ForwardDigitSpan.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29AF03F1D51134A00C4AF79 /* ForwardDigitSpan.swift */; };
 		E2B9F8001DD144A70035FE0B /* VATask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B9F7FF1DD144A70035FE0B /* VATask.swift */; };
 		E2C906EB1D54DA1B00C0824E /* SerialSevens.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C906EA1D54DA1B00C0824E /* SerialSevens.swift */; };
-		F24E6E681E1BBBA600E29995 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24E6E671E1BBBA600E29995 /* SetupViewController.swift */; };
 		F24E6E6D1E1BC2C300E29995 /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24E6E691E1BC2C300E29995 /* Results.swift */; };
 		F24E6E6E1E1BC2C300E29995 /* AllResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24E6E6A1E1BC2C300E29995 /* AllResults.swift */; };
 		F24E6E6F1E1BC2C300E29995 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24E6E6B1E1BC2C300E29995 /* ResultsViewController.swift */; };
@@ -78,13 +81,16 @@
 		43343D471E3E66D5001779AC /* PicturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PicturesViewController.swift; sourceTree = "<group>"; };
 		4386775B1E33D551000309F2 /* SimpleMemory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleMemory.swift; sourceTree = "<group>"; };
 		43960F4B1E3C0758006FDC7B /* CatsAndDogsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatsAndDogsViewController.swift; sourceTree = "<group>"; };
+		E2037F1C1E47E83D00EE13EB /* izzy1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = izzy1.jpg; sourceTree = "<group>"; };
+		E2037F1E1E47E85500EE13EB /* seth1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = seth1.jpg; sourceTree = "<group>"; };
+		E2037F201E47E86900EE13EB /* ellison1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ellison1.jpg; sourceTree = "<group>"; };
+		E2037F221E47F3E600EE13EB /* iBoca logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iBoca logo.png"; sourceTree = "<group>"; };
 		E272DF011D74957F002F8295 /* Demographics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Demographics.swift; sourceTree = "<group>"; };
 		E27BA37E1D523B8400619C07 /* BackwardDigitSpan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackwardDigitSpan.swift; sourceTree = "<group>"; };
 		E2901DCE1D4F8C3700080F82 /* OrientationTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrientationTask.swift; sourceTree = "<group>"; };
 		E29AF03F1D51134A00C4AF79 /* ForwardDigitSpan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForwardDigitSpan.swift; sourceTree = "<group>"; };
 		E2B9F7FF1DD144A70035FE0B /* VATask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VATask.swift; sourceTree = "<group>"; };
 		E2C906EA1D54DA1B00C0824E /* SerialSevens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerialSevens.swift; sourceTree = "<group>"; };
-		F24E6E671E1BBBA600E29995 /* SetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
 		F24E6E691E1BC2C300E29995 /* Results.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
 		F24E6E6A1E1BC2C300E29995 /* AllResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllResults.swift; sourceTree = "<group>"; };
 		F24E6E6B1E1BC2C300E29995 /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +149,7 @@
 		1BC2DFED1D4F821F0020D430 /* iBOCA */ = {
 			isa = PBXGroup;
 			children = (
+				E2037F1B1E47E7F000EE13EB /* Pictures */,
 				F261D4E41E3E33620039A545 /* Trails */,
 				1BC2DFEE1D4F821F0020D430 /* AppDelegate.swift */,
 				43960F4B1E3C0758006FDC7B /* CatsAndDogsViewController.swift */,
@@ -157,7 +164,6 @@
 				1BC2DFF21D4F821F0020D430 /* Main.storyboard */,
 				1B65673F1D7DE07B00C92FA3 /* SemanticListGeneration.swift */,
 				E27BA37E1D523B8400619C07 /* BackwardDigitSpan.swift */,
-				F24E6E671E1BBBA600E29995 /* SetupViewController.swift */,
 				F24E6E711E1BC2D800E29995 /* Results */,
 				1BC2DFF51D4F821F0020D430 /* Assets.xcassets */,
 				1BC2DFF71D4F821F0020D430 /* LaunchScreen.storyboard */,
@@ -187,6 +193,18 @@
 				1BC2E0101D4F821F0020D430 /* Info.plist */,
 			);
 			path = iBOCAUITests;
+			sourceTree = "<group>";
+		};
+		E2037F1B1E47E7F000EE13EB /* Pictures */ = {
+			isa = PBXGroup;
+			children = (
+				E2037F221E47F3E600EE13EB /* iBoca logo.png */,
+				E2037F201E47E86900EE13EB /* ellison1.jpg */,
+				E2037F1E1E47E85500EE13EB /* seth1.jpg */,
+				E2037F1C1E47E83D00EE13EB /* izzy1.jpg */,
+			);
+			name = Pictures;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		F24E6E711E1BC2D800E29995 /* Results */ = {
@@ -318,9 +336,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2037F211E47E86900EE13EB /* ellison1.jpg in Resources */,
+				E2037F231E47F3E600EE13EB /* iBoca logo.png in Resources */,
 				1BC2DFF91D4F821F0020D430 /* LaunchScreen.storyboard in Resources */,
+				E2037F1F1E47E85500EE13EB /* seth1.jpg in Resources */,
 				1BC2DFF61D4F821F0020D430 /* Assets.xcassets in Resources */,
 				1BC2DFF41D4F821F0020D430 /* Main.storyboard in Resources */,
+				E2037F1D1E47E83D00EE13EB /* izzy1.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,7 +386,6 @@
 				43343D441E3E66A3001779AC /* TapInOrderViewController.swift in Sources */,
 				43343D481E3E66D5001779AC /* PicturesViewController.swift in Sources */,
 				1B49EEF31DAC3B6600931E8C /* 3DFigureDraw.swift in Sources */,
-				F24E6E681E1BBBA600E29995 /* SetupViewController.swift in Sources */,
 				F27728A61E33C91A004F8A6E /* MainViewController.swift in Sources */,
 				43960F4C1E3C0758006FDC7B /* CatsAndDogsViewController.swift in Sources */,
 				F24E6E701E1BC2C300E29995 /* ScaleView.swift in Sources */,

@@ -11,7 +11,8 @@ import UIKit
 class SerialSevens: UIViewController {
     var timer = Timer()
     var counter = 0
-    
+    var StartTime = Foundation.Date()
+
     func updateCounter() {
         counter += 1
         countingLabel.text = String(counter)
@@ -422,6 +423,13 @@ class SerialSevens: UIViewController {
             countingLabel.isHidden = true
             timeLabel.isHidden = true
         
+            let result = Results()
+            result.name = "Serial Sevens"
+            result.startTime = StartTime
+            result.endTime = Foundation.Date()
+            result.shortDescription = "\(Records)"
+            resultsArray.add(result)
+            Status[TestSerialSevens] = TestStatus.Done
         }
         button0.isEnabled = true
         button1.isEnabled = true
