@@ -146,6 +146,7 @@ class SemanticListGeneration: UIViewController, UIPickerViewDelegate {
             result.endTime = Foundation.Date()
             result.shortDescription = "Correct:\(resCorrect), Incorrect:\(resIncorrect), Repeat:\(resRepeat)"
             
+            
         }
     }
     

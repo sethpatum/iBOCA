@@ -449,7 +449,7 @@ class SerialSevens: UIViewController {
             button9.isHidden = true
             nextInput.isHidden = true
         
-        
+        result.res
         
         
         // Do any additional setup after loading the view.
