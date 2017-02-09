@@ -130,15 +130,17 @@ class Demographics: UIViewController, MFMailComposeViewControllerDelegate, UITex
     }
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+    
         
         AgePicker.delegate = self
         GenderPicker.delegate = self
         EthnicityPicker.delegate = self
         EducationPicker.delegate = self
         RacePicker.delegate = self
-        
         
         
         name = ""
@@ -176,7 +178,9 @@ class Demographics: UIViewController, MFMailComposeViewControllerDelegate, UITex
         email.text = emailAddress
        
     }
-
+    
+    
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
        

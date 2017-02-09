@@ -17,6 +17,9 @@ var screenSize : CGRect?
 class MainViewController: UIViewController, MFMailComposeViewControllerDelegate{
     var mailSubject : String = "iBOCA Results"
     
+    
+    var segueToLanding = false // COmplete hack to get back to landing page.  The timer will keep issuing segue command if this variable is set. Deals with the asynchronous mail window (need to find a better way!)
+    
     @IBOutlet weak var ButtonOrientation: UIButton!
     @IBOutlet weak var ButtonSimpleMemory: UIButton!
     @IBOutlet weak var ButtonVisualAssociation: UIButton!
@@ -30,6 +33,9 @@ class MainViewController: UIViewController, MFMailComposeViewControllerDelegate{
     @IBOutlet weak var ButtonBackwardSpatialSpan: UIButton!
     @IBOutlet weak var ButtonNamingPictures: UIButton!
     @IBOutlet weak var ButtonSemanticListGeneration: UIButton!
+    
+    @IBOutlet weak var LabelSM: UILabel!
+    @IBOutlet weak var LabelVA: UILabel!
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         navigationItem.title = nil
@@ -45,8 +51,7 @@ class MainViewController: UIViewController, MFMailComposeViewControllerDelegate{
             picker.setSubject(mailSubject)
             picker.setMessageBody(body!, isHTML: true)
             picker.setToRecipients([emailAddress])
-            //           MainViewController(picker, animated: true, completion: nil)
-            present(picker, animated: true)
+             present(picker, animated: true)
         }
         resultsArray.doneWithPatient()
         self.performSegue(withIdentifier: "BackToLanding", sender: self)
@@ -55,6 +60,7 @@ class MainViewController: UIViewController, MFMailComposeViewControllerDelegate{
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true)
+        segueToLanding = true
     }
     
     override func viewDidLoad() {
@@ -68,6 +74,8 @@ class MainViewController: UIViewController, MFMailComposeViewControllerDelegate{
             emailAddress = UserDefaults.standard.object(forKey: "emailAddress") as! String
         }
         
+        LabelSM.isHidden = true
+        LabelVA.isHidden = true
         
         updateButton(button: ButtonOrientation, status: Status[TestOrientation])
         updateButton(button: ButtonSimpleMemory, status: Status[TestSimpleMemory])
@@ -83,8 +91,10 @@ class MainViewController: UIViewController, MFMailComposeViewControllerDelegate{
         updateButton(button: ButtonNamingPictures, status: Status[TestNampingPictures])
         updateButton(button: ButtonSemanticListGeneration, status: Status[TestSemanticListGeneration])
         
+        segueToLanding = false
+        var timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(update(timer:)), userInfo: nil, repeats: true)
     }
-            
+    
     
     func updateButton(button: UIButton, status : TestStatus) {
         switch(status) {
@@ -102,6 +112,56 @@ class MainViewController: UIViewController, MFMailComposeViewControllerDelegate{
         }
         
     }
+    
+    func update(timer: Timer) {
+        if segueToLanding == true { // The HACK!
+            self.performSegue(withIdentifier: "BackToLanding", sender: self)
+        }
+        
+        if Status[TestSimpleMemory] == TestStatus.Running {
+            LabelSM.isHidden = false
+            LabelSM.text = getTimeDelay(startTime: startTimeSM)
+        
+        } else {
+            LabelSM.isHidden = true
+        }
+        
+        
+        if Status[TestVisualAssociation] == TestStatus.Running {
+            LabelVA.isHidden = false
+            LabelVA.text = getTimeDelay(startTime: startTimeVA)
+            
+        } else {
+            LabelVA.isHidden = true
+        }
+    }
+    
+    
+    
+    func getTimeDelay(startTime:TimeInterval) -> String {
+        
+        let currTime = NSDate.timeIntervalSinceReferenceDate
+        var diff: TimeInterval = currTime - startTime
+        
+        if diff > 15000 {  // Hack to prevent overflow at the begining
+            return ""
+        }
+        
+        let minutes = UInt8(diff / 60.0)
+        
+        diff -= (TimeInterval(minutes)*60.0)
+        
+        let seconds = UInt8(diff)
+        
+        diff = TimeInterval(seconds)
+        
+        let strMinutes = minutes > 9 ? String(minutes):"0"+String(minutes)
+        let strSeconds = seconds > 9 ? String(seconds):"0"+String(seconds)
+        
+       return "(\(strMinutes) : \(strSeconds))"
+        
+    }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
