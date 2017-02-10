@@ -29,7 +29,7 @@ class CatsAndDogsViewController: ViewController {
     var timePassed = Double()
     
     var startTime = TimeInterval()
-    var startTime2 = NSDate()
+    var startTime2 = Foundation.Date()
     
     @IBOutlet weak var resultLabel: UILabel!
     
@@ -435,8 +435,13 @@ class CatsAndDogsViewController: ViewController {
     }
     
     func donetest() {
-        
         ended = true
+        
+        
+        let result = Results()
+        result.name = self.title
+        result.startTime = startTime2 as Date
+        result.endTime = Foundation.Date()
         
         for k in 0 ..< buttonList.count {
             buttonList[k].removeFromSuperview()
@@ -457,14 +462,20 @@ class CatsAndDogsViewController: ViewController {
                 
             }
             
-            var result = ""
+            var resulttxt = ""
             
             for k in 0 ..< self.level {
-                result.append("\(self.correctDogs[k]) dogs correctly selected out of \(self.missedDogs[k]+self.correctDogs[k]) dogs; \(self.incorrectCats[k]) cats incorrectly selected out of \(self.incorrectCats[k]+self.missedCats[k]) cats; \(self.incorrectRandom[k]) empty places incorrectly selected. Time: \(self.times[k]) seconds\n")
+                let r = "\(self.correctDogs[k]) dogs correctly selected out of \(self.missedDogs[k]+self.correctDogs[k]) dogs; \(self.incorrectCats[k]) cats incorrectly selected out of \(self.incorrectCats[k]+self.missedCats[k]) cats; \(self.incorrectRandom[k]) empty places incorrectly selected. Time: \(self.times[k]) seconds\n"
+                resulttxt.append(r)
+                result.longDescription.add(r)
             }
             
-            print(result)
-            self.resultLabel.text = result
+            print(resulttxt)
+            self.resultLabel.text = resulttxt
+            
+            resultsArray.add(result)
+            
+            Status[TestCatsAndDogs] = TestStatus.Done
             
         }
     }
