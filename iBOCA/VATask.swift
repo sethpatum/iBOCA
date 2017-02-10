@@ -621,9 +621,17 @@ class VATask: UIViewController {
             
         }
         
+        
     }
     
     func done(){
+        let result = Results()
+        result.name = "VA Task"
+        result.startTime = StartTime
+        result.endTime = Foundation.Date()
+        
+        Status[TestVisualAssociation] = TestStatus.Done
+
         back.isEnabled = true
         start.isEnabled = true
         
@@ -635,33 +643,32 @@ class VATask: UIViewController {
         for k in 0 ..< mixedImages.count {
             
             if(recallErrors[k] == 0){
+                result.longDescription.add("Recalled \(mixedImages[k]) correctly in \(recallTimes[k]) seconds")
                 recallResult += "Recalled \(mixedImages[k]) correctly in \(recallTimes[k]) seconds\n"
             }
             if(recallErrors[k] == 1){
+                result.longDescription.add("Recalled \(mixedImages[k]) incorrectly in \(recallTimes[k]) seconds")
                 recallResult += "Recalled \(mixedImages[k]) incorrectly in \(recallTimes[k]) seconds\n"
             }
             if(recallErrors[k] == 2){
+                result.longDescription.add("Couldn't recall \(mixedImages[k]) in \(recallTimes[k]) seconds")
                 recallResult += "Couldn't recall \(mixedImages[k]) in \(recallTimes[k]) seconds\n"
             }
             
             
             if(recognizeErrors[k] == 0){
+                result.longDescription.add("Recognized \(mixedImages[k]) correctly in \(recognizeTimes[k]) seconds")
                 recognizeResult += "Recognized \(mixedImages[k]) correctly in \(recognizeTimes[k]) seconds\n"
             }
             if(recognizeErrors[k] == 1){
-                recognizeResult += "Recognized \(mixedImages[k]) incorrectly in \(recognizeTimes[k]) seconds\n"
+                result.longDescription.add("Recognized \(mixedImages[k]) incorrectly in \(recognizeTimes[k]) seconds ")
+                recognizeResult += "Recognized \(mixedImages[k]) incorrectly in \(recognizeTimes[k]) seconds"
             }
             
         }
         
         resultLabel.text = recallResult + recognizeResult
-        let result = Results()
-        result.name = "VA Task"
-        result.startTime = StartTime
-        result.endTime = Foundation.Date()
-        result.shortDescription = "Recalled: \(recallResult), Recognized: \(recognizeResult )"
         resultsArray.add(result)
-        Status[TestVisualAssociation] = TestStatus.Done
     }
     
     func delay(_ delay:Double, closure:()->()) {
