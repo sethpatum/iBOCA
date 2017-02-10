@@ -62,6 +62,22 @@ class ForwardDigitSpan: UIViewController {
     var numResponse : [String] = []
     var numOrder : [String] = []
     
+    @IBAction func BackButton(_ sender: Any) {
+        let result = Results()
+        result.name = "Forward Digit Span"
+        result.startTime = startTime
+        result.endTime = Foundation.Date()
+        
+        for r in numResponse {
+            result.longDescription.add(r)
+        }
+        
+        resultsArray.add(result)
+        Status[TestForwardDigitSpan] = TestStatus.Done
+        
+        let mainView = self.storyboard?.instantiateViewController(withIdentifier: "main")
+        self.present(mainView!, animated:true)
+    }
     
     @IBAction func tester(_ sender: AnyObject) {
         print (test)

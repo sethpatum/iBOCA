@@ -64,6 +64,26 @@ class BackwardDigitSpan: UIViewController {
     var numResponse : [String] = []
     var numOrder : [String] = []
     
+    var ResultsList: [String] = []
+    var count = 0
+    
+    @IBAction func BackButton(_ sender: Any) {
+      
+        let result = Results()
+        result.name = "Backward Digit Span"
+        result.startTime = startTime
+        result.endTime = Foundation.Date()
+        
+        for r in ResultsList {
+            result.longDescription.add(r)
+        }
+        
+        resultsArray.add(result)
+        Status[TestBackwardsDigitSpan] = TestStatus.Done
+        
+        let mainView = self.storyboard?.instantiateViewController(withIdentifier: "main")
+        self.present(mainView!, animated:true)
+    }
     
     @IBAction func tester(_ sender: AnyObject) {
         print (test)
@@ -382,8 +402,7 @@ class BackwardDigitSpan: UIViewController {
         button8.isEnabled = true
         button9.isEnabled = true
     }
-    var Results: [String] = []
-    var count = 0
+
     
     @IBAction func testDone(_ sender: AnyObject) {
         timer.invalidate()
@@ -391,53 +410,53 @@ class BackwardDigitSpan: UIViewController {
         countingLabel.text = String(counter)
         nums1 = ""
         CurrentNums.text = nums1
-        Results.append ("Backwards Digit Span:")
+        ResultsList.append ("Backwards Digit Span:")
         if (numResponse == numOrder){
             print("All values Correct")
-            Results.append(" All values Correct")
+            ResultsList.append(" All values Correct")
         }
         if(numResponse[0] != numOrder[0]){
             print(" for Number 1, Expected: " + numOrder[0] + " Got: " + numResponse[0])
-            Results.append(" for Number 1, Expected: " + numOrder[0] + " Got: " + numResponse[0])
+            ResultsList.append(" for Number 1, Expected: " + numOrder[0] + " Got: " + numResponse[0])
         }
         if(numResponse[1] != numOrder[1]){
             print(" for Number 2, Expected: " + numOrder[1] + " Got: " + numResponse[1])
-            Results.append(" for Number 2, Expected: " + numOrder[1] + " Got: " + numResponse[1])
+            ResultsList.append(" for Number 2, Expected: " + numOrder[1] + " Got: " + numResponse[1])
             count+=1
         }
         if(numResponse[2] != numOrder[2]){
             print(" for Number 3, Expected: " + numOrder[2] + " Got: " + numResponse[2])
-            Results.append(" for Number 3, Expected: " + numOrder[2] + " Got: " + numResponse[2])
+            ResultsList.append(" for Number 3, Expected: " + numOrder[2] + " Got: " + numResponse[2])
             count+=1
         }
         if(numResponse[3] != numOrder[3]){
             print(" for Number 5, Expected: " + numOrder[3] + " Got: " + numResponse[3])
-            Results.append(" for Number 4, Expected: " + numOrder[3] + " Got: " + numResponse[3])
+            ResultsList.append(" for Number 4, Expected: " + numOrder[3] + " Got: " + numResponse[3])
             count+=1
         }
         if (test >= 1){
             if(numResponse[4] != numOrder[4]){
                 print(" for Number 5, Expected: " + numOrder[4] + " Got: " + numResponse[4])
-                Results.append(" for Number 5, Expected: " + numOrder[4] + " Got: " + numResponse[4])
+                ResultsList.append(" for Number 5, Expected: " + numOrder[4] + " Got: " + numResponse[4])
                 count+=1
             }
         }
         if (test >= 2){
             if(numResponse[5] != numOrder[5]){
                 print(" for Number 6, Expected: " + numOrder[5] + " Got: " + numResponse[5])
-                Results.append(" for Number 6, Expected: " + numOrder[5] + " Got: " + numResponse[5])
+                ResultsList.append(" for Number 6, Expected: " + numOrder[5] + " Got: " + numResponse[5])
                 count+=1
             }
         }
         if (test >= 3){
             if(numResponse[6] != numOrder[6]){
                 print(" for Number 7, Expected: " + numOrder[6] + " Got: " + numResponse[6])
-                Results.append(" for Number 7, Expected: " + numOrder[6] + " Got: " + numResponse[6])
+                ResultsList.append(" for Number 7, Expected: " + numOrder[6] + " Got: " + numResponse[6])
                 count+=1
             }
             
         }
-        self.resultLabel.text = "\(Results)"
+        self.resultLabel.text = "\(ResultsList)"
         test += 1
         numResponse = []
         numOrder = []
