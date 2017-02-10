@@ -61,6 +61,9 @@ class ForwardDigitSpan: UIViewController {
     
     var numResponse : [String] = []
     var numOrder : [String] = []
+    var Resultsp1: [String] = []
+    var count = 0
+
     
     @IBAction func BackButton(_ sender: Any) {
         let result = Results()
@@ -68,7 +71,7 @@ class ForwardDigitSpan: UIViewController {
         result.startTime = startTime
         result.endTime = Foundation.Date()
         
-        for r in numResponse {
+        for r in Resultsp1 {
             result.longDescription.add(r)
         }
         
@@ -419,8 +422,6 @@ class ForwardDigitSpan: UIViewController {
 
     }
     
-    var Resultsp1: [String] = []
-    var count = 0
     
     @IBAction func testDone(_ sender: AnyObject) {
         timer.invalidate()

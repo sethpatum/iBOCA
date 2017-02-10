@@ -1386,7 +1386,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
-                                    <action selector="finishPressed:" destination="XYk-wu-CQY" eventType="touchUpInside" id="03J-Oy-Qas"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="1MG-jT-bnL"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -2137,7 +2137,7 @@
         <image name="seth1.jpg" width="960" height="960"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Bhp-ON-e9m"/>
+        <segue reference="1MG-jT-bnL"/>
         <segue reference="Ahl-wP-pho"/>
     </inferredMetricsTieBreakers>
 </document>
