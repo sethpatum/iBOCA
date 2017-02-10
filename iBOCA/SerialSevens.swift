@@ -12,6 +12,9 @@ class SerialSevens: UIViewController {
     var timer = Timer()
     var counter = 0
     var StartTime = Foundation.Date()
+    
+    var Records: [String] = []
+    var responseNum = 0
 
     func updateCounter() {
         counter += 1
@@ -48,6 +51,25 @@ class SerialSevens: UIViewController {
     
     @IBOutlet weak var countingLabel: UILabel!
     var expectedNum : [Int] = []
+    
+    
+    @IBAction func backButton(_ sender: Any) {
+        let result = Results()
+        result.name = "Serial Sevens"
+        result.startTime = startTime
+        result.endTime = Foundation.Date()
+        
+        for r in Records {
+            result.longDescription.add(r)
+        }
+        
+        resultsArray.add(result)
+        Status[TestSerialSevens] = TestStatus.Done
+        
+        let mainView = self.storyboard?.instantiateViewController(withIdentifier: "main")
+        self.present(mainView!, animated:true)
+    }
+    
     
     @IBAction func press100(_ sender: AnyObject) {
         expectedNums.text = "93, 86, 79, 72, 65"
@@ -384,8 +406,7 @@ class SerialSevens: UIViewController {
         button9.isEnabled = true
     }
     
-    var Records: [String] = []
-    var responseNum = 0
+   
     @IBAction func nextInput(_ sender: AnyObject) {
         let name = String(recordNum[0]) + String(recordNum[1])
         recordNum = []
@@ -422,15 +443,7 @@ class SerialSevens: UIViewController {
             timer.invalidate()
             countingLabel.isHidden = true
             timeLabel.isHidden = true
-        
-            let result = Results()
-            result.name = "Serial Sevens"
-            result.startTime = StartTime
-            result.endTime = Foundation.Date()
-            result.shortDescription = "\(Records)"
-            resultsArray.add(result)
-            Status[TestSerialSevens] = TestStatus.Done
-        }
+          }
         button0.isEnabled = true
         button1.isEnabled = true
         button2.isEnabled = true

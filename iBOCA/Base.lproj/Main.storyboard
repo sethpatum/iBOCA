@@ -27,7 +27,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="xnw-sd-1nm"/>
+                                    <action selector="backButton:" destination="ldB-3t-wMh" eventType="touchUpInside" id="T8C-Rl-Aqo"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ydc-3d-wua">
@@ -610,7 +610,7 @@
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="main" id="BYZ-38-t0r" customClass="MainViewController" customModule="iBOCA" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="MainView" storyboardIdentifier="main" id="BYZ-38-t0r" customClass="MainViewController" customModule="iBOCA" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -2147,6 +2147,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Ipq-nJ-yUj"/>
-        <segue reference="kTw-7t-VZN"/>
+        <segue reference="Ahl-wP-pho"/>
     </inferredMetricsTieBreakers>
 </document>

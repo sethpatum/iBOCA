@@ -80,7 +80,7 @@ class CatsAndDogsViewController: ViewController {
         times = [Double]()
         timePassed = Double()
         startTime = TimeInterval()
-        startTime2 = NSDate()
+        startTime2 = Foundation.Date()
         cats = 0 //# cats
         dogs = 1 //# dogs
         level = 0 //current level
@@ -439,7 +439,7 @@ class CatsAndDogsViewController: ViewController {
         
         
         let result = Results()
-        result.name = self.title
+        result.name = "Cats and Dogs"
         result.startTime = startTime2 as Date
         result.endTime = Foundation.Date()
         
@@ -734,7 +734,7 @@ class CatsAndDogsViewController: ViewController {
                 self.display()
             }
             if(start == true){
-                self.startTime2 = NSDate()
+                self.startTime2 = Foundation.Date()
             }
         }))
         
