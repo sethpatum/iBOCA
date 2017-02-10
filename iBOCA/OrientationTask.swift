@@ -81,6 +81,7 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         formatter.dateFormat = "y-MM-dd"
         Date = formatter.string(from: currentDate.date)
         
+        startTime = Foundation.Date()
     }
    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
