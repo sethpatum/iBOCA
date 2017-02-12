@@ -72,6 +72,14 @@ class AllResults  {
         e += "<p> <h3>scale</h3>\n"
         e += "<img src='data:image/png;base64,\(imageString)' width='\(scaleImage!.size.width)' height='\(scaleImage!.size.height)'><p>\n"
         
+        
+        var js : [String:Any] = [:]
+        for i in 0...numResults() - 1 {
+            let r = get(i)
+             js[r.name!] = r.toJson()
+        }
+        e += "\n" + String(describing: js)
+        
         return e
     }
     
