@@ -146,6 +146,8 @@ class BubblesA {
     
     var nextBubble = 0
     
+    var seqCount = 0
+    
     var segmenttimes:[(Int, String, Int)] = []
     var jsontimes : [String:Any] = [:]
     
@@ -175,6 +177,7 @@ class BubblesA {
         startTime = Foundation.Date()
         jsontimes.removeAll()
         segmenttimes.removeAll()
+        seqCount = 0
     }
     
     
@@ -211,7 +214,8 @@ class BubblesA {
         
         let currTime = Foundation.Date()
         segmenttimes.append((Int(timePassedTrailsA), "\(lastBubble)->\(currentBubble)", Int(1000*currTime.timeIntervalSince(startTime))))
-        jsontimes[String(Int(timePassedTrailsA))] = ["Start":lastBubble, "End":currentBubble, "Time (ms)":Int(1000*currTime.timeIntervalSince(startTime))]
+        jsontimes[String(seqCount)] = ["Start":lastBubble, "End":currentBubble, "Time (ms)":Int(1000*currTime.timeIntervalSince(startTime))]
+        seqCount += 1
         return true
         
     }

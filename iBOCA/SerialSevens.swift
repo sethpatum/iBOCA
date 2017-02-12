@@ -21,6 +21,11 @@ class SerialSevens: UIViewController {
         countingLabel.text = String(counter)
     }
     
+    var inputCount = 0
+    var testCount = 0
+    var resultTmpList : [String:Any] = [:]
+    var resultList : [String:Any] = [:]
+    
     
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var resetButton: UIButton!
@@ -51,6 +56,7 @@ class SerialSevens: UIViewController {
     
     @IBOutlet weak var countingLabel: UILabel!
     var expectedNum : [Int] = []
+    var testName = 0
     
     
     @IBAction func backButton(_ sender: Any) {
@@ -62,12 +68,30 @@ class SerialSevens: UIViewController {
         for r in Records {
             result.longDescription.add(r)
         }
-        
+        result.json["results"] = resultList
         resultsArray.add(result)
         Status[TestSerialSevens] = TestStatus.Done
         
         let mainView = self.storyboard?.instantiateViewController(withIdentifier: "main")
         self.present(mainView!, animated:true)
+    }
+    
+    
+    func processSelect() {
+        button0.isHidden = false
+        button1.isHidden = false
+        button2.isHidden = false
+        button3.isHidden = false
+        button4.isHidden = false
+        button5.isHidden = false
+        button6.isHidden = false
+        button7.isHidden = false
+        button8.isHidden = false
+        button9.isHidden = false
+        inputCount = 0
+        resultTmpList.removeAll()
+        StartTime = Foundation.Date()
+        timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(SerialSevens.updateCounter), userInfo: nil, repeats: true)
     }
     
     
@@ -78,11 +102,8 @@ class SerialSevens: UIViewController {
         start70.isHidden = true
         start60.isHidden = true
         start50.isHidden = true
-        button0.isHidden = false ; button1.isHidden = false ; button2.isHidden = false
-        button3.isHidden = false ; button4.isHidden = false ; button5.isHidden = false
-        button6.isHidden = false ; button7.isHidden = false ; button8.isHidden = false
-        button9.isHidden = false
-        timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(SerialSevens.updateCounter), userInfo: nil, repeats: true)
+        testName = 100
+        processSelect()
     }
     
     @IBAction func press90(_ sender: AnyObject) {
@@ -92,12 +113,8 @@ class SerialSevens: UIViewController {
         start70.isHidden = true
         start60.isHidden = true
         start50.isHidden = true
-        
-        button0.isHidden = false ; button1.isHidden = false ; button2.isHidden = false
-        button3.isHidden = false ; button4.isHidden = false ; button5.isHidden = false
-        button6.isHidden = false ; button7.isHidden = false ; button8.isHidden = false
-        button9.isHidden = false
-        timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(SerialSevens.updateCounter), userInfo: nil, repeats: true)
+        testName = 90
+        processSelect()
     }
     @IBAction func press80(_ sender: AnyObject) {
         expectedNums.text = "73, 66, 59, 52, 45"
@@ -106,12 +123,8 @@ class SerialSevens: UIViewController {
         start70.isHidden = true
         start60.isHidden = true
         start50.isHidden = true
-        
-        button0.isHidden = false ; button1.isHidden = false ; button2.isHidden = false
-        button3.isHidden = false ; button4.isHidden = false ; button5.isHidden = false
-        button6.isHidden = false ; button7.isHidden = false ; button8.isHidden = false
-        button9.isHidden = false
-        timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(SerialSevens.updateCounter), userInfo: nil, repeats: true)
+        testName = 80
+        processSelect()
     }
     @IBAction func press70(_ sender: AnyObject) {
        expectedNums.text = "63, 56, 49, 42, 35"
@@ -120,12 +133,8 @@ class SerialSevens: UIViewController {
         start100.isHidden = true
         start60.isHidden = true
         start50.isHidden = true
-        
-        button0.isHidden = false ; button1.isHidden = false ; button2.isHidden = false
-        button3.isHidden = false ; button4.isHidden = false ; button5.isHidden = false
-        button6.isHidden = false ; button7.isHidden = false ; button8.isHidden = false
-        button9.isHidden = false
-        timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(SerialSevens.updateCounter), userInfo: nil, repeats: true)
+        testName = 70
+        processSelect()
     }
     @IBAction func press60(_ sender: AnyObject) {
        expectedNums.text = "53, 46, 39, 32, 25"
@@ -134,12 +143,8 @@ class SerialSevens: UIViewController {
         start70.isHidden = true
         start100.isHidden = true
         start50.isHidden = true
-        
-        button0.isHidden = false ; button1.isHidden = false ; button2.isHidden = false
-        button3.isHidden = false ; button4.isHidden = false ; button5.isHidden = false
-        button6.isHidden = false ; button7.isHidden = false ; button8.isHidden = false
-        button9.isHidden = false
-        timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(SerialSevens.updateCounter), userInfo: nil, repeats: true)
+        testName = 60
+        processSelect()
     }
     @IBAction func press50(_ sender: AnyObject) {
        expectedNums.text = "43, 36, 29, 22, 15"
@@ -148,17 +153,14 @@ class SerialSevens: UIViewController {
         start70.isHidden = true
         start60.isHidden = true
         start100.isHidden = true
-        
-        button0.isHidden = false ; button1.isHidden = false ; button2.isHidden = false
-        button3.isHidden = false ; button4.isHidden = false ; button5.isHidden = false
-        button6.isHidden = false ; button7.isHidden = false ; button8.isHidden = false
-        button9.isHidden = false
-        timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(SerialSevens.updateCounter), userInfo: nil, repeats: true)
+        testName = 50
+        processSelect()
     }
+    
     var recordNum : [Int] = []
     var numb = ""
-    @IBAction func press0(_ sender: AnyObject) {
-        recordNum.append(0)
+    
+    func processPress() {
         print(recordNum)
         
         if (recordNum.count > 1 && recordNum.count < 3){
@@ -176,217 +178,51 @@ class SerialSevens: UIViewController {
             button9.isEnabled = false
         }
         else{
-             numb = String(recordNum[0])
+            numb = String(recordNum[0])
             nextInput.isHidden = true
         }
         currentNum.text = numb
+    }
+    
+    @IBAction func press0(_ sender: AnyObject) {
+        recordNum.append(0)
+        processPress()
     }
     @IBAction func press1(_ sender: AnyObject) {
         recordNum.append(1)
-        print(recordNum)
-        if (recordNum.count > 1 && recordNum.count < 3){
-             numb = String(recordNum[0]) + String(recordNum[1])
-            nextInput.isHidden = false
-            button0.isEnabled = false
-            button1.isEnabled = false
-            button2.isEnabled = false
-            button3.isEnabled = false
-            button4.isEnabled = false
-            button5.isEnabled = false
-            button6.isEnabled = false
-            button7.isEnabled = false
-            button8.isEnabled = false
-            button9.isEnabled = false
-        }
-        else{
-             numb = String(recordNum[0])
-            nextInput.isHidden = true
-        }
-        currentNum.text = numb
+        processPress()
     }
     @IBAction func press2(_ sender: AnyObject) {
         recordNum.append(2)
-        print(recordNum)
-        if (recordNum.count > 1 && recordNum.count < 3){
-            numb = String(recordNum[0]) + String(recordNum[1])
-            nextInput.isHidden = false
-            button0.isEnabled = false
-            button1.isEnabled = false
-            button2.isEnabled = false
-            button3.isEnabled = false
-            button4.isEnabled = false
-            button5.isEnabled = false
-            button6.isEnabled = false
-            button7.isEnabled = false
-            button8.isEnabled = false
-            button9.isEnabled = false
-        }
-        else{
-            numb = String(recordNum[0])
-            nextInput.isHidden = true
-        }
-        currentNum.text = numb
+        processPress()
     }
     @IBAction func press3(_ sender: AnyObject) {
         recordNum.append(3)
-        print(recordNum)
-        if (recordNum.count > 1 && recordNum.count < 3){
-            numb = String(recordNum[0]) + String(recordNum[1])
-            nextInput.isHidden = false
-            button0.isEnabled = false
-            button1.isEnabled = false
-            button2.isEnabled = false
-            button3.isEnabled = false
-            button4.isEnabled = false
-            button5.isEnabled = false
-            button6.isEnabled = false
-            button7.isEnabled = false
-            button8.isEnabled = false
-            button9.isEnabled = false
-        }
-        else{
-            numb = String(recordNum[0])
-            nextInput.isHidden = true
-        }
-        currentNum.text = numb
+        processPress()
     }
     @IBAction func press4(_ sender: AnyObject) {
         recordNum.append(4)
-        print(recordNum)
-        if (recordNum.count > 1 && recordNum.count < 3){
-            numb = String(recordNum[0]) + String(recordNum[1])
-            nextInput.isHidden = false
-            button0.isEnabled = false
-            button1.isEnabled = false
-            button2.isEnabled = false
-            button3.isEnabled = false
-            button4.isEnabled = false
-            button5.isEnabled = false
-            button6.isEnabled = false
-            button7.isEnabled = false
-            button8.isEnabled = false
-            button9.isEnabled = false
-        }
-        else{
-            numb = String(recordNum[0])
-            nextInput.isHidden = true
-        }
-        currentNum.text = numb
+        processPress()
     }
     @IBAction func press5(_ sender: AnyObject) {
         recordNum.append(5)
-        print(recordNum)
-        if (recordNum.count > 1 && recordNum.count < 3){
-            numb = String(recordNum[0]) + String(recordNum[1])
-            nextInput.isHidden = false
-            button0.isEnabled = false
-            button1.isEnabled = false
-            button2.isEnabled = false
-            button3.isEnabled = false
-            button4.isEnabled = false
-            button5.isEnabled = false
-            button6.isEnabled = false
-            button7.isEnabled = false
-            button8.isEnabled = false
-            button9.isEnabled = false
-        }
-        else{
-            numb = String(recordNum[0])
-            nextInput.isHidden = true
-        }
-        currentNum.text = numb
+        processPress()
     }
     @IBAction func press6(_ sender: AnyObject) {
         recordNum.append(6)
-        print(recordNum)
-        if (recordNum.count > 1 && recordNum.count < 3){
-            numb = String(recordNum[0]) + String(recordNum[1])
-            nextInput.isHidden = false
-            button0.isEnabled = false
-            button1.isEnabled = false
-            button2.isEnabled = false
-            button3.isEnabled = false
-            button4.isEnabled = false
-            button5.isEnabled = false
-            button6.isEnabled = false
-            button7.isEnabled = false
-            button8.isEnabled = false
-            button9.isEnabled = false
-        }
-        else{
-            numb = String(recordNum[0])
-            nextInput.isHidden = true
-        }
-        currentNum.text = numb
+        processPress()
     }
     @IBAction func press7(_ sender: AnyObject) {
         recordNum.append(7)
-        print(recordNum)
-        if (recordNum.count > 1 && recordNum.count < 3){
-            numb = String(recordNum[0]) + String(recordNum[1])
-            nextInput.isHidden = false
-            button0.isEnabled = false
-            button1.isEnabled = false
-            button2.isEnabled = false
-            button3.isEnabled = false
-            button4.isEnabled = false
-            button5.isEnabled = false
-            button6.isEnabled = false
-            button7.isEnabled = false
-            button8.isEnabled = false
-            button9.isEnabled = false
-        }
-        else{
-            numb = String(recordNum[0])
-            nextInput.isHidden = true
-        }
-        currentNum.text = numb
+        processPress()
     }
     @IBAction func press8(_ sender: AnyObject) {
         recordNum.append(8)
-        print(recordNum)
-        if (recordNum.count > 1 && recordNum.count < 3){
-            numb = String(recordNum[0]) + String(recordNum[1])
-            nextInput.isHidden = false
-            button0.isEnabled = false
-            button1.isEnabled = false
-            button2.isEnabled = false
-            button3.isEnabled = false
-            button4.isEnabled = false
-            button5.isEnabled = false
-            button6.isEnabled = false
-            button7.isEnabled = false
-            button8.isEnabled = false
-            button9.isEnabled = false
-        }
-        else{
-            numb = String(recordNum[0])
-            nextInput.isHidden = true
-        }
-        currentNum.text = numb
+        processPress()
     }
     @IBAction func press9(_ sender: AnyObject) {
         recordNum.append(9)
-        print(recordNum)
-        if (recordNum.count > 1 && recordNum.count < 3){
-            numb = String(recordNum[0]) + String(recordNum[1])
-            nextInput.isHidden = false
-            button0.isEnabled = false
-            button1.isEnabled = false
-            button2.isEnabled = false
-            button3.isEnabled = false
-            button4.isEnabled = false
-            button5.isEnabled = false
-            button6.isEnabled = false
-            button7.isEnabled = false
-            button8.isEnabled = false
-            button9.isEnabled = false
-        }
-        else{
-            numb = String(recordNum[0])
-            nextInput.isHidden = true
-        }
-        currentNum.text = numb
+        processPress()
     }
     
     @IBAction func ResetButton(_ sender: AnyObject) {
@@ -421,6 +257,10 @@ class SerialSevens: UIViewController {
         timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(SerialSevens.updateCounter), userInfo: nil, repeats: true)
         nextInput.isHidden = true
         responseNum += 1
+        
+        let currTime = Foundation.Date()
+        resultTmpList[String(describing: inputCount += 1)] = ["Value":name, "Time (msec)":Int(currTime.timeIntervalSince(startTime)*1000)]
+
         if (responseNum >= 5){
             button0.isHidden = true
             button1.isHidden = true
@@ -443,6 +283,8 @@ class SerialSevens: UIViewController {
             timer.invalidate()
             countingLabel.isHidden = true
             timeLabel.isHidden = true
+            
+            resultList[String(describing: testCount += 1)] = ["Name":testName, "results":resultTmpList]
           }
         button0.isEnabled = true
         button1.isEnabled = true
@@ -454,6 +296,7 @@ class SerialSevens: UIViewController {
         button7.isEnabled = true
         button8.isEnabled = true
         button9.isEnabled = true
+        
     }
     
     override func viewDidLoad() {

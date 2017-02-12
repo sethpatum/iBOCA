@@ -422,6 +422,7 @@ class TapInOrderBackwardsViewController: UIViewController {
                 
                 self.currpressed = 0
                 self.numRepeats += 1
+                self.randomizeOrder()
                 self.drawSequenceRecursively(num: self.numplaces)
             }
             

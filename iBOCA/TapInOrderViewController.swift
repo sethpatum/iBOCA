@@ -464,6 +464,7 @@ class TapInOrderViewController: ViewController {
                 
                 self.currpressed = 0
                 self.numRepeats += 1
+                self.randomizeOrder()
                 self.drawSequenceRecursively(num: 0)
                 
             }
