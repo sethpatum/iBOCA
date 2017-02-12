@@ -17,6 +17,7 @@ class Results: NSObject {
     var shortDescription:String?
     var longDescription : NSMutableArray = NSMutableArray()
     var screenshot : [UIImage] = []
+    var json : [String:Any] = [:]
     
     var collapsed : Bool = true // for use by the View Controller
     
@@ -96,5 +97,13 @@ class Results: NSObject {
         }
         
 //    }
+    
+    
+    func toJson() -> [String:Any] {
+        let tlen = Int(endTime!.timeIntervalSince(startTime!))
+        let js : [String:Any] = ["Started At":startTime!, "Test length (sec)": tlen, "results":json]
+        
+        return js
+    }
    
 }
