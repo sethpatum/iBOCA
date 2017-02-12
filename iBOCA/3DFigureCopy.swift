@@ -14,7 +14,7 @@ class ThreeDFigureCopy: UIViewController {
     @IBOutlet weak var CorrectButton: UIButton!
     @IBOutlet weak var IncorrectButton: UIButton!
     
-    var imagelist = ["Circle2", "rhombus", "rectprism"]
+    var imagelist = ["Circle2", "rhombus", "rectprism", "SquareTriangle"]
     var curr = 0
     var resultImages : [UIImage] = []
     var resultCondition : [Bool] = []
