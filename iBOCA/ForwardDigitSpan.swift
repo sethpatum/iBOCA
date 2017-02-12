@@ -86,12 +86,29 @@ class ForwardDigitSpan: UIViewController {
     }
     
     @IBAction func tester(_ sender: AnyObject) {
+        var num0 = " "
+        var num1 = " "
+        var num2 = " "
+        var num3 = " "
+        var num4 = " "
+        var num5 = " "
+        var num6 = " "
+        var num7 = " "
         print (test)
         if(test >= 0 && test < 5){
-        let num0 = String(arc4random_uniform(9))
-        let num1 = String(arc4random_uniform(9))
-        let num2 = String(arc4random_uniform(9))
-        let num3 = String(arc4random_uniform(9))
+        var num0 = String(arc4random_uniform(9))
+        var num1 = String(arc4random_uniform(9))
+            while num1 == num0{
+            num1 = String(arc4random_uniform(9))
+            }
+        var num2 = String(arc4random_uniform(9))
+            while num2 == num1 {
+                num2 = String(arc4random_uniform(9))
+            }
+            num3 = String(arc4random_uniform(9))
+            while num3 == num2 {
+                num3 = String(arc4random_uniform(9))
+            }
             self.Label0.text = num0
             self.Label1.text = num1
             self.Label2.text = num2
@@ -99,24 +116,36 @@ class ForwardDigitSpan: UIViewController {
             numOrder += [num0, num1, num2, num3]
         }
         if(test >= 1 && test < 5){
-        let num4 = String(arc4random_uniform(9))
+        var num4 = String(arc4random_uniform(9))
+            while num4 == num3 {
+                num4 = String(arc4random_uniform(9))
+            }
             self.Label4.text = num4
             numOrder += [num4]
         }
         if(test >= 2 && test < 5){
-        let num5 = String(arc4random_uniform(9))
+        var num5 = String(arc4random_uniform(9))
+            while num5 == num4 {
+                num5 = String(arc4random_uniform(9))
+            }
              self.Label5.text = num5
              numOrder += [num5]
         }
         if(test >= 3 && test < 5){
-        let num6 = String(arc4random_uniform(9))
-             self.Label6.text = num6
+        var num6 = String(arc4random_uniform(9))
+            while num6 == num5 {
+                num6 = String(arc4random_uniform(9))
+            }
+            self.Label6.text = num6
              numOrder += [num6]
         }
         if(test >= 4 && test < 5){
-            let num6 = String(arc4random_uniform(9))
-            self.Label7.text = num6
-            numOrder += [num6]
+            var num7 = String(arc4random_uniform(9))
+            while num7 == num6 {
+                num7 = String(arc4random_uniform(9))
+            }
+            self.Label7.text = num7
+            numOrder += [num7]
         }
         if(test >= 5){
             self.Label0.text = ""
