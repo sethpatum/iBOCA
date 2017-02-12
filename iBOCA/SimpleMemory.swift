@@ -41,6 +41,10 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
     
     var recognizeErrors = [Int]()
     var recognizeTimes = [Double]()
+    var recallTimes = [Double]()
+    var recallIncorrectTimes = [Double]()
+    
+    var delayTime = Double()
     
     @IBOutlet weak var next1: UIButton!
     @IBOutlet weak var start: UIButton!
@@ -74,7 +78,6 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
     
     var recallIncorrect = Int()
     var recallPlus = UIButton()
-    var recallMinus = UIButton()
     var recallLabel = UILabel()
     
     var arrowButton1 = UIButton()
@@ -474,7 +477,7 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
                     
                     outputImage(name: imagesSM[testCount])
                     
-                    startTimeSM = NSDate.timeIntervalSinceReferenceDate
+//                    startTimeSM = NSDate.timeIntervalSinceReferenceDate
                     
                 }
                 
@@ -536,8 +539,13 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
     
     func resumeTask(){
         
-        timerSM.invalidate()
-        timerLabel.text = ""
+//        timerSM.invalidate()
+        
+        timerLabel.isHidden = true
+        
+        delayTime = findTime()
+        
+//        timerLabel.text = ""
         delayLabel.text = ""
         
         let recallAlert = UIAlertController(title: "Recall", message: "Name the items that were displayed earlier", preferredStyle: .alert)
@@ -553,11 +561,15 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
     func findTime()->Double{
         
         let currTime = NSDate.timeIntervalSinceReferenceDate
+        /*
         var diff: TimeInterval = currTime - startTimeSM
         let minutes = UInt8(diff / 60.0)
         diff -= (TimeInterval(minutes)*60.0)
         let seconds = Double(Int(diff*1000))/1000.0
         return seconds
+        */
+        let time = Double(Int((currTime - startTimeSM)*1000))/1000.0
+        return time
         
     }
     
@@ -602,25 +614,23 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
         }
         
         recallPlus = UIButton(type: UIButtonType.system)
-        recallPlus.frame = CGRect(x: 60, y: 650, width: 350, height: 70)
+        recallPlus.frame = CGRect(x: 312, y: 650, width: 400, height: 70)
         recallPlus.titleLabel!.font = UIFont.systemFont(ofSize: 50)
         recallPlus.setTitle("add incorrect", for: UIControlState.normal)
         recallPlus.tintColor = UIColor.blue
         recallPlus.addTarget(self, action: #selector(recallPlusTapped), for: UIControlEvents.touchUpInside)
         self.view.addSubview(recallPlus)
         
-        recallMinus = UIButton(type: UIButtonType.system)
-        recallMinus.frame = CGRect(x: 450, y: 650, width: 410, height: 70)
-        recallMinus.titleLabel!.font = UIFont.systemFont(ofSize: 50)
-        recallMinus.setTitle("subtract incorrect", for: UIControlState.normal)
-        recallMinus.tintColor = UIColor.blue
-        recallMinus.addTarget(self, action: #selector(recallMinusTapped), for: UIControlEvents.touchUpInside)
-        self.view.addSubview(recallMinus)
-        
-        recallLabel.frame = CGRect(x: 900, y: 650, width: 100, height: 70)
+        recallLabel.frame = CGRect(x: 820, y: 650, width: 100, height: 70)
         recallLabel.font = UIFont.systemFont(ofSize: 50)
         recallLabel.text = "0"
         self.view.addSubview(recallLabel)
+        
+        for k in 0...5{
+            recallTimes.append(-1)
+        }
+        
+        startTimeSM = NSDate.timeIntervalSinceReferenceDate
         
         print("here!!")
         
@@ -631,11 +641,7 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
         recallIncorrect += 1
         recallLabel.text = String(recallIncorrect)
         
-    }
-    func recallMinusTapped(sender: UIButton!){
-        
-        recallIncorrect -= 1
-        recallLabel.text = String(recallIncorrect)
+        recallIncorrectTimes.append(findTime())
         
     }
     
@@ -648,9 +654,15 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
                 
                 if(buttonTaps[i] == true){
                     buttonList[i].tintColor = UIColor.blue
+                    
+                    recallTimes[i] = findTime()
+                    
                 }
                 else{
                     buttonList[i].tintColor = UIColor.lightGray
+                    
+                    recallTimes[i] = -1
+                    
                 }
                 
                 /*
@@ -676,7 +688,6 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
         }
         buttonList = [UIButton]()
         
-        recallMinus.removeFromSuperview()
         recallPlus.removeFromSuperview()
         recallLabel.removeFromSuperview()
         
@@ -711,6 +722,8 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
         arrowButton2.isEnabled = true
         
         print("in recognize()")
+        
+        startTimeSM = NSDate.timeIntervalSinceReferenceDate
         
     }
     
@@ -786,16 +799,19 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
         
         afterBreakSM = false
         
+        var delayResult = ""
         var recallResult = ""
         var recognizeResult = ""
+        
+        delayResult = "Delay length of \(delayTime) seconds\n"
         
         for k in 0 ..< imagesSM.count {
             
             if(buttonTaps[k] == true) {
-                recallResult += "Recalled \(imagesSM[k]) correctly\n"
+                recallResult += "Recalled \(imagesSM[k]) correctly in \(recallTimes[k]) seconds\n"
             }
             if(buttonTaps[k] == false) {
-                recallResult += "Recalled \(imagesSM[k]) incorrectly\n"
+                recallResult += "Did not recall \(imagesSM[k])\n"
             }
             
             if(recognizeErrors[k] == 0){
@@ -812,9 +828,9 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
             resultsArray.add(result)
         }
         
-        recallResult += "\(recallIncorrect) item(s) incorrectly recalled"
+        recallResult += "\(recallIncorrect) item(s) incorrectly recalled at times \(recallIncorrectTimes)\n"
         
-        resultLabel.text = recallResult + recognizeResult
+        resultLabel.text = delayResult + recallResult + recognizeResult
         Status[TestSimpleMemory] = TestStatus.Done
         
         
