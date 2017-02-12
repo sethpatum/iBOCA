@@ -63,7 +63,7 @@ class BackwardDigitSpan: UIViewController {
     
     
     var numResponse : [String] = []
-    var numOrder = [[String : Any]]()
+    var numOrder : [String] = []
     
     var ResultsList: [String] = []
     var count = 0
@@ -97,27 +97,32 @@ class BackwardDigitSpan: UIViewController {
             self.Label1.text = num1
             self.Label2.text = num2
             self.Label3.text = num3
-            numOrder += [num3, num2, num1, num0]
+            numOrder.append(num3)
+            numOrder.append(num2)
+            numOrder.append(num1)
+            numOrder.append(num0)
         }
         if(test >= 1 && test < 5){
             let num4 = String(arc4random_uniform(9))
             self.Label4.text = num4
-            numOrder.insert([num4], at:0)
+            numOrder.insert(num4, at:0)
         }
         if(test >= 2 && test < 5){
-            let num5 = String(arc4random_uniform(9))
+            let x = (arc4random_uniform(9))
+            let num5 = String(x)
             self.Label5.text = num5
-            numOrder.insert([num5], at:0)
+            numOrder.insert(num5, at:0)
         }
         if(test >= 3 && test < 5){
-            let num6 = String(arc4random_uniform(9))
+            let x = (arc4random_uniform(9))
+            let num6 = String(x)
             self.Label6.text = num6
-            numOrder.insert([num6], at:0)
+            numOrder.insert(num6, at:0)
         }
         if(test >= 4 && test < 5){
             let num7 = String(arc4random_uniform(9))
             self.Label7.text = num7
-            numOrder.insert([num7], at:0)
+            numOrder.insert(num7, at:0)
         }
         if(test >= 5){
             self.Label0.text = ""
@@ -285,6 +290,18 @@ class BackwardDigitSpan: UIViewController {
         responses += 1
         if ( responses == (test + 4)){
             testDone.isHidden = false
+        }
+        if(responses >= (test + 4)){
+            button0.isEnabled = false
+            button1.isEnabled = false
+            button2.isEnabled = false
+            button3.isEnabled = false
+            button4.isEnabled = false
+            button5.isEnabled = false
+            button6.isEnabled = false
+            button7.isEnabled = false
+            button8.isEnabled = false
+            button9.isEnabled = false
         }
         else{
             testDone.isHidden = true
@@ -461,12 +478,13 @@ class BackwardDigitSpan: UIViewController {
                 ResultsList.append(" for Number 7, Expected: " + numOrder[6] + " Got: " + numResponse[6])
                 count+=1
             }
-            if (test >= 4){
-                if(numResponse[7] != numOrder[7]){
-                    print(" for Number 8, Expected: " + numOrder[7] + " Got: " + numResponse[7])
-                    ResultsList.append(" for Number 7, Expected: " + numOrder[7] + " Got: " + numResponse[7])
-                    count+=1
-                }
+        }
+        if (test >= 4){
+            if(numResponse[7] != numOrder[7]){
+                print(" for Number 8, Expected: " + numOrder[7] + " Got: " + numResponse[7])
+                ResultsList.append(" for Number 7, Expected: " + numOrder[7] + " Got: " + numResponse[7])
+                count+=1
+            }
         }
         self.resultLabel.text = "\(ResultsList)"
         test += 1
