@@ -13,13 +13,14 @@ class ThreeDFigureCopy: UIViewController {
     @IBOutlet weak var StartButton: UIButton!
     @IBOutlet weak var CorrectButton: UIButton!
     @IBOutlet weak var IncorrectButton: UIButton!
+    @IBOutlet weak var BackButton: UIButton!
     
     var imagelist = ["Circle2", "rhombus", "rectprism", "SquareTriangle"]
     var curr = 0
     var resultImages : [UIImage] = []
     var resultCondition : [Bool] = []
     var resultTime : [Double] = []
-    var startTime : Double = 0
+    var startTime  = Foundation.Date()
     var startTime2 = Foundation.Date()
     
     var drawing : ThreeDFigureDraw!
@@ -29,6 +30,7 @@ class ThreeDFigureCopy: UIViewController {
         super.viewDidLoad()
 
         StartButton.isEnabled = true
+        BackButton.isHidden = false
         CorrectButton.isEnabled = false
         IncorrectButton.isEnabled = false
         
@@ -53,6 +55,7 @@ class ThreeDFigureCopy: UIViewController {
             self.view.addSubview(imageView)
         } else {
             StartButton.isEnabled = true
+            BackButton.isHidden = false
             CorrectButton.isEnabled = false
             IncorrectButton.isEnabled = false
             
@@ -66,6 +69,11 @@ class ThreeDFigureCopy: UIViewController {
             for shot in resultImages {
                 result.screenshot.append(shot)
             }
+            
+            for (index, element) in resultCondition.enumerated() {
+                result.json[imagelist[index]] = ["correct":element, "drawing time (msec)":Int(1000*resultTime[index])]
+            }
+            
             resultsArray.add(result)
             Status[Test3DFigureCopy] = TestStatus.Done
         }
@@ -74,6 +82,7 @@ class ThreeDFigureCopy: UIViewController {
     @IBAction func StartAction(_ sender: UIButton) {
         curr = 0
         StartButton.isEnabled = false
+        BackButton.isHidden = true
         CorrectButton.isEnabled = true
         IncorrectButton.isEnabled = true
         
@@ -92,15 +101,15 @@ class ThreeDFigureCopy: UIViewController {
         drawing.layer.borderWidth = 2
         self.view.addSubview(drawing)
         
-        startTime = TimeInterval()
+        startTime = Foundation.Date()
         drawImage()
     }
     
     
     @IBAction func CorrectAction(_ sender: UIButton) {
         resultCondition.append(true)
-        resultTime.append(TimeInterval() - startTime)
-        startTime = TimeInterval()
+        resultTime.append(Foundation.Date().timeIntervalSince(startTime))
+        startTime = Foundation.Date()
         curr  = curr + 1
         drawImage()
     }
@@ -108,8 +117,8 @@ class ThreeDFigureCopy: UIViewController {
     
     @IBAction func IncorrectAction(_ sender: UIButton) {
         resultCondition.append(false)
-        resultTime.append(TimeInterval() - startTime)
-        startTime = TimeInterval()
+        resultTime.append(Foundation.Date().timeIntervalSince(startTime))
+        startTime = Foundation.Date()
         curr  = curr + 1
         drawImage()
     }

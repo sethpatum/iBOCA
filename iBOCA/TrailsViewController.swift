@@ -223,7 +223,7 @@ class TrailsAViewController: ViewController, UIPickerViewDelegate {
             
             // add to results
             let result = Results()
-            result.name = self.title
+            result.name = "Trails B Test"
             result.startTime = startTime2 as Date
             result.endTime = Foundation.Date()
             result.screenshot.append(image)
@@ -234,10 +234,13 @@ class TrailsAViewController: ViewController, UIPickerViewDelegate {
             let seconds = UInt8(num)
             num = TimeInterval(seconds)
             
+            result.longDescription.add(String(describing: self.title))
             result.longDescription.add("\(drawingView.incorrect) incorrect in \(minutes) minutes and \(seconds) second")
             result.longDescription.add("The of segments are \(drawingView.bubbles.segmenttimes)\n")
             result.longDescription.add("The incorrect segments are \(drawingView.incorrectlist)")
             
+            result.json["Path"] = drawingView.bubbles.jsontimes
+            result.json["Name"] = self.title
             resultsArray.add(result)
             
             Status[TestTrails] = TestStatus.Done

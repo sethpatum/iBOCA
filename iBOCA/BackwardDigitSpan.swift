@@ -34,6 +34,7 @@ class BackwardDigitSpan: UIViewController {
     
     @IBOutlet weak var resultLabel: UILabel!
     
+    @IBOutlet weak var resultLabel2: UILabel!
     @IBOutlet weak var Label0: UILabel!
     
     @IBOutlet weak var Label1: UILabel!
@@ -48,6 +49,7 @@ class BackwardDigitSpan: UIViewController {
     
     @IBOutlet weak var Label6: UILabel!
     
+    @IBOutlet weak var Label7: UILabel!
     
     @IBOutlet weak var button0: UIButton!
     @IBOutlet weak var button1: UIButton!
@@ -87,7 +89,7 @@ class BackwardDigitSpan: UIViewController {
     
     @IBAction func tester(_ sender: AnyObject) {
         print (test)
-        if(test >= 0 && test < 4){
+        if(test >= 0 && test < 5){
             let num0 = String(arc4random_uniform(9))
             let num1 = String(arc4random_uniform(9))
             let num2 = String(arc4random_uniform(9))
@@ -96,24 +98,34 @@ class BackwardDigitSpan: UIViewController {
             self.Label1.text = num1
             self.Label2.text = num2
             self.Label3.text = num3
-            numOrder += [num0, num1, num2, num3]
+            numOrder.append(num3)
+            numOrder.append(num2)
+            numOrder.append(num1)
+            numOrder.append(num0)
         }
-        if(test >= 1 && test < 4){
+        if(test >= 1 && test < 5){
             let num4 = String(arc4random_uniform(9))
             self.Label4.text = num4
-            numOrder += [num4]
+            numOrder.insert(num4, at:0)
         }
-        if(test >= 2 && test < 4){
-            let num5 = String(arc4random_uniform(9))
+        if(test >= 2 && test < 5){
+            let x = (arc4random_uniform(9))
+            let num5 = String(x)
             self.Label5.text = num5
-            numOrder += [num5]
+            numOrder.insert(num5, at:0)
         }
-        if(test >= 3 && test < 4){
-            let num6 = String(arc4random_uniform(9))
+        if(test >= 3 && test < 5){
+            let x = (arc4random_uniform(9))
+            let num6 = String(x)
             self.Label6.text = num6
-            numOrder += [num6]
+            numOrder.insert(num6, at:0)
         }
-        if(test >= 4){
+        if(test >= 4 && test < 5){
+            let num7 = String(arc4random_uniform(9))
+            self.Label7.text = num7
+            numOrder.insert(num7, at:0)
+        }
+        if(test >= 5){
             self.Label0.text = ""
             self.Label1.text = ""
             self.Label2.text = ""
@@ -121,10 +133,11 @@ class BackwardDigitSpan: UIViewController {
             self.Label4.text = ""
             self.Label5.text = ""
             self.Label6.text = ""
+            self.Label7.text = ""
         }
         print(numOrder)
         Randomize.isHidden = true
-        if(test < 4){
+        if(test < 5){
             button0.isHidden = false
             button1.isHidden = false
             button2.isHidden = false
@@ -279,6 +292,18 @@ class BackwardDigitSpan: UIViewController {
         if ( responses == (test + 4)){
             testDone.isHidden = false
         }
+        if(responses >= (test + 4)){
+            button0.isEnabled = false
+            button1.isEnabled = false
+            button2.isEnabled = false
+            button3.isEnabled = false
+            button4.isEnabled = false
+            button5.isEnabled = false
+            button6.isEnabled = false
+            button7.isEnabled = false
+            button8.isEnabled = false
+            button9.isEnabled = false
+        }
         else{
             testDone.isHidden = true
         }
@@ -408,62 +433,20 @@ class BackwardDigitSpan: UIViewController {
         timer.invalidate()
         counter = 0
         countingLabel.text = String(counter)
+        let orderNums = String(describing: numResponse)
+        let originalNums = String(describing: numOrder)
+        self.resultLabel.text = originalNums
+        self.resultLabel2.text = orderNums
         nums1 = ""
         CurrentNums.text = nums1
-        ResultsList.append ("Backwards Digit Span:")
-        if (numResponse == numOrder){
-            print("All values Correct")
-            ResultsList.append(" All values Correct")
-        }
-        if(numResponse[0] != numOrder[0]){
-            print(" for Number 1, Expected: " + numOrder[0] + " Got: " + numResponse[0])
-            ResultsList.append(" for Number 1, Expected: " + numOrder[0] + " Got: " + numResponse[0])
-        }
-        if(numResponse[1] != numOrder[1]){
-            print(" for Number 2, Expected: " + numOrder[1] + " Got: " + numResponse[1])
-            ResultsList.append(" for Number 2, Expected: " + numOrder[1] + " Got: " + numResponse[1])
-            count+=1
-        }
-        if(numResponse[2] != numOrder[2]){
-            print(" for Number 3, Expected: " + numOrder[2] + " Got: " + numResponse[2])
-            ResultsList.append(" for Number 3, Expected: " + numOrder[2] + " Got: " + numResponse[2])
-            count+=1
-        }
-        if(numResponse[3] != numOrder[3]){
-            print(" for Number 5, Expected: " + numOrder[3] + " Got: " + numResponse[3])
-            ResultsList.append(" for Number 4, Expected: " + numOrder[3] + " Got: " + numResponse[3])
-            count+=1
-        }
-        if (test >= 1){
-            if(numResponse[4] != numOrder[4]){
-                print(" for Number 5, Expected: " + numOrder[4] + " Got: " + numResponse[4])
-                ResultsList.append(" for Number 5, Expected: " + numOrder[4] + " Got: " + numResponse[4])
-                count+=1
-            }
-        }
-        if (test >= 2){
-            if(numResponse[5] != numOrder[5]){
-                print(" for Number 6, Expected: " + numOrder[5] + " Got: " + numResponse[5])
-                ResultsList.append(" for Number 6, Expected: " + numOrder[5] + " Got: " + numResponse[5])
-                count+=1
-            }
-        }
-        if (test >= 3){
-            if(numResponse[6] != numOrder[6]){
-                print(" for Number 7, Expected: " + numOrder[6] + " Got: " + numResponse[6])
-                ResultsList.append(" for Number 7, Expected: " + numOrder[6] + " Got: " + numResponse[6])
-                count+=1
-            }
-            
-        }
-        self.resultLabel.text = "\(ResultsList)"
+        ResultsList = (numOrder) + (numResponse)
         test += 1
         numResponse = []
         numOrder = []
         Randomize.isHidden = false
         responses = 0
         testDone.isHidden = true
-        if (test >= 4){
+        if (test >= 5){
             button0.isHidden = true
             button1.isHidden = true
             button2.isHidden = true

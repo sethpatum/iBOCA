@@ -32,6 +32,8 @@ class ForwardDigitSpan: UIViewController {
     
     @IBOutlet weak var resultLabel: UILabel!
     
+    @IBOutlet weak var resultLabel2: UILabel!
+    
     @IBOutlet weak var Label0: UILabel!
     
     @IBOutlet weak var Label1: UILabel!
@@ -46,6 +48,7 @@ class ForwardDigitSpan: UIViewController {
     
     @IBOutlet weak var Label6: UILabel!
     
+    @IBOutlet weak var Label7: UILabel!
     
     @IBOutlet weak var button0: UIButton!
     @IBOutlet weak var button1: UIButton!
@@ -84,7 +87,7 @@ class ForwardDigitSpan: UIViewController {
     
     @IBAction func tester(_ sender: AnyObject) {
         print (test)
-        if(test >= 0 && test < 4){
+        if(test >= 0 && test < 5){
         let num0 = String(arc4random_uniform(9))
         let num1 = String(arc4random_uniform(9))
         let num2 = String(arc4random_uniform(9))
@@ -95,22 +98,27 @@ class ForwardDigitSpan: UIViewController {
             self.Label3.text = num3
             numOrder += [num0, num1, num2, num3]
         }
-        if(test >= 1 && test < 4){
+        if(test >= 1 && test < 5){
         let num4 = String(arc4random_uniform(9))
             self.Label4.text = num4
             numOrder += [num4]
         }
-        if(test >= 2 && test < 4){
+        if(test >= 2 && test < 5){
         let num5 = String(arc4random_uniform(9))
              self.Label5.text = num5
              numOrder += [num5]
         }
-        if(test >= 3 && test < 4){
+        if(test >= 3 && test < 5){
         let num6 = String(arc4random_uniform(9))
              self.Label6.text = num6
              numOrder += [num6]
         }
-        if(test >= 4){
+        if(test >= 4 && test < 5){
+            let num6 = String(arc4random_uniform(9))
+            self.Label7.text = num6
+            numOrder += [num6]
+        }
+        if(test >= 5){
             self.Label0.text = ""
             self.Label1.text = ""
             self.Label2.text = ""
@@ -118,6 +126,7 @@ class ForwardDigitSpan: UIViewController {
             self.Label4.text = ""
             self.Label5.text = ""
             self.Label6.text = ""
+            self.Label7.text = ""
         }
         print(numOrder)
         Randomize.isHidden = true
@@ -142,8 +151,8 @@ class ForwardDigitSpan: UIViewController {
     
     //var nums : [String] = []
     var nums1 = ""
-    @IBAction func button0(_ sender: AnyObject) {
-        numResponse.append("0")
+    
+    func processButton() {
         print(numResponse)
         nums1 += numResponse[responses]
         CurrentNums.text = nums1
@@ -168,238 +177,47 @@ class ForwardDigitSpan: UIViewController {
         }
     }
     
+    
+    @IBAction func button0(_ sender: AnyObject) {
+        numResponse.append("0")
+        processButton()
+       }
+    
     @IBAction func button1(_ sender: AnyObject) {
-         numResponse.append("1")
-        print(numResponse)
-        nums1 += numResponse[responses]
-        CurrentNums.text = nums1
-        responses += 1
-        if ( responses == (test + 4)){
-            testDone.isHidden = false
-        }
-        if(responses >= (test + 4)){
-            button0.isEnabled = false
-            button1.isEnabled = false
-            button2.isEnabled = false
-            button3.isEnabled = false
-            button4.isEnabled = false
-            button5.isEnabled = false
-            button6.isEnabled = false
-            button7.isEnabled = false
-            button8.isEnabled = false
-            button9.isEnabled = false
-        }
-        else{
-            testDone.isHidden = true
-        }
+        numResponse.append("1")
+        processButton()
     }
     @IBAction func button2(_ sender: AnyObject) {
-         numResponse.append("2")
-        print(numResponse)
-        nums1 += numResponse[responses]
-        CurrentNums.text = nums1
-        responses += 1
-        if ( responses == (test + 4)){
-            testDone.isHidden = false
-        }
-        if(responses >= (test + 4)){
-            button0.isEnabled = false
-            button1.isEnabled = false
-            button2.isEnabled = false
-            button3.isEnabled = false
-            button4.isEnabled = false
-            button5.isEnabled = false
-            button6.isEnabled = false
-            button7.isEnabled = false
-            button8.isEnabled = false
-            button9.isEnabled = false
-        }
-        else{
-            testDone.isHidden = true
-        }
- 
+        numResponse.append("2")
+        processButton()
     }
     @IBAction func button3(_ sender: AnyObject) {
-         numResponse.append("3")
-        print(numResponse)
-        nums1 += numResponse[responses]
-        CurrentNums.text = nums1
-        responses += 1
-        if ( responses == (test + 4)){
-            testDone.isHidden = false
-        }
-        if(responses >= (test + 4)){
-            button0.isEnabled = false
-            button1.isEnabled = false
-            button2.isEnabled = false
-            button3.isEnabled = false
-            button4.isEnabled = false
-            button5.isEnabled = false
-            button6.isEnabled = false
-            button7.isEnabled = false
-            button8.isEnabled = false
-            button9.isEnabled = false
-        }
-        else{
-            testDone.isHidden = true
-        }
-
+        numResponse.append("3")
+        processButton()
     }
     @IBAction func button4(_ sender: AnyObject) {
-         numResponse.append("4")
-        print(numResponse)
-        nums1 += numResponse[responses]
-        CurrentNums.text = nums1
-        responses += 1
-        if ( responses == (test + 4)){
-            testDone.isHidden = false
-        }
-        if(responses >= (test + 4)){
-            button0.isEnabled = false
-            button1.isEnabled = false
-            button2.isEnabled = false
-            button3.isEnabled = false
-            button4.isEnabled = false
-            button5.isEnabled = false
-            button6.isEnabled = false
-            button7.isEnabled = false
-            button8.isEnabled = false
-            button9.isEnabled = false
-        }
-        else{
-            testDone.isHidden = true
-        }
- 
+        numResponse.append("4")
+        processButton()
     }
     @IBAction func button5(_ sender: AnyObject) {
-         numResponse.append("5")
-        print(numResponse)
-        nums1 += numResponse[responses]
-        CurrentNums.text = nums1
-        responses += 1
-        if ( responses == (test + 4)){
-            testDone.isHidden = false
-        }
-        if(responses >= (test + 4)){
-            button0.isEnabled = false
-            button1.isEnabled = false
-            button2.isEnabled = false
-            button3.isEnabled = false
-            button4.isEnabled = false
-            button5.isEnabled = false
-            button6.isEnabled = false
-            button7.isEnabled = false
-            button8.isEnabled = false
-            button9.isEnabled = false
-        }
-        else{
-            testDone.isHidden = true
-        }
-     
+        numResponse.append("5")
+        processButton()
     }
     @IBAction func button6(_ sender: AnyObject) {
-         numResponse.append("6")
-        print(numResponse)
-        nums1 += numResponse[responses]
-        CurrentNums.text = nums1
-        responses += 1
-        if ( responses == (test + 4)){
-            testDone.isHidden = false
-        }
-        if(responses >= (test + 4)){
-            button0.isEnabled = false
-            button1.isEnabled = false
-            button2.isEnabled = false
-            button3.isEnabled = false
-            button4.isEnabled = false
-            button5.isEnabled = false
-            button6.isEnabled = false
-            button7.isEnabled = false
-            button8.isEnabled = false
-            button9.isEnabled = false
-        }
-        else{
-            testDone.isHidden = true
-        }
-  
+        numResponse.append("6")
+        processButton()
     }
     @IBAction func button7(_ sender: AnyObject) {
-         numResponse.append("7")
-        print(numResponse)
-        nums1 += numResponse[responses]
-        CurrentNums.text = nums1
-        responses += 1
-        if ( responses == (test + 4)){
-            testDone.isHidden = false
-        }
-        if(responses >= (test + 4)){
-            button0.isEnabled = false
-            button1.isEnabled = false
-            button2.isEnabled = false
-            button3.isEnabled = false
-            button4.isEnabled = false
-            button5.isEnabled = false
-            button6.isEnabled = false
-            button7.isEnabled = false
-            button8.isEnabled = false
-            button9.isEnabled = false
-        }
-        else{
-            testDone.isHidden = true
-        }
-   
+        numResponse.append("7")
+        processButton()
     }
     @IBAction func button8(_ sender: AnyObject) {
-         numResponse.append("8")
-        print(numResponse)
-        nums1 += numResponse[responses]
-        CurrentNums.text = nums1
-        responses += 1
-        if ( responses == (test + 4)){
-            testDone.isHidden = false
-        }
-        if(responses >= (test + 4)){
-            button0.isEnabled = false
-            button1.isEnabled = false
-            button2.isEnabled = false
-            button3.isEnabled = false
-            button4.isEnabled = false
-            button5.isEnabled = false
-            button6.isEnabled = false
-            button7.isEnabled = false
-            button8.isEnabled = false
-            button9.isEnabled = false
-        }
-        else{
-            testDone.isHidden = true
-        }
-  
+        numResponse.append("8")
+        processButton()
     }
     @IBAction func button9(_ sender: AnyObject) {
-         numResponse.append("9")
-        print(numResponse)
-        nums1 += numResponse[responses]
-        CurrentNums.text = nums1
-        responses += 1
-        if (responses == (test + 4)){
-            testDone.isHidden = false
-        }
-        if(responses >= (test + 4)){
-            button0.isEnabled = false
-            button1.isEnabled = false
-            button2.isEnabled = false
-            button3.isEnabled = false
-            button4.isEnabled = false
-            button5.isEnabled = false
-            button6.isEnabled = false
-            button7.isEnabled = false
-            button8.isEnabled = false
-            button9.isEnabled = false
-        }
-        else{
-            testDone.isHidden = true
-        }
- 
+        numResponse.append("9")
+        processButton()
     }
     
     
@@ -427,62 +245,20 @@ class ForwardDigitSpan: UIViewController {
         timer.invalidate()
         counter = 0
         countingLabel.text = String(counter)
+        let orderNums = String(describing: numResponse)
+        let originalNums = String(describing: numOrder)
+        self.resultLabel.text = originalNums
+        self.resultLabel2.text = orderNums
         nums1 = ""
         CurrentNums.text = nums1
-        if (numResponse == numOrder){
-            print("All values Correct")
-            Resultsp1.append("All values Correct")
-        }
-        if(numResponse[0] != numOrder[0]){
-         print(" for Number 1, Expected: " + numOrder[0] + " Got: " + numResponse[0])
-            Resultsp1.append(" for Number 1, Expected: " + numOrder[0] + " Got: " + numResponse[0])
-        }
-        if(numResponse[1] != numOrder[1]){
-         print(" for Number 2, Expected: " + numOrder[1] + " Got: " + numResponse[1])
-            Resultsp1.append(" for Number 2, Expected: " + numOrder[1] + " Got: " + numResponse[1])
-            count+=1
-        }
-        if(numResponse[2] != numOrder[2]){
-          print(" for Number 3, Expected: " + numOrder[2] + " Got: " + numResponse[2])
-            Resultsp1.append(" for Number 3, Expected: " + numOrder[2] + " Got: " + numResponse[2])
-            count+=1
-        }
-        if(numResponse[3] != numOrder[3]){
-          print(" for Number 5, Expected: " + numOrder[3] + " Got: " + numResponse[3])
-            Resultsp1.append(" for Number 4, Expected: " + numOrder[3] + " Got: " + numResponse[3])
-            count+=1
-        }
-        if (test >= 1){
-            if(numResponse[4] != numOrder[4]){
-                print(" for Number 5, Expected: " + numOrder[4] + " Got: " + numResponse[4])
-                Resultsp1.append(" for Number 5, Expected: " + numOrder[4] + " Got: " + numResponse[4])
-                count+=1
-            }
-        }
-        if (test >= 2){
-            if(numResponse[5] != numOrder[5]){
-                print(" for Number 6, Expected: " + numOrder[5] + " Got: " + numResponse[5])
-                Resultsp1.append(" for Number 6, Expected: " + numOrder[5] + " Got: " + numResponse[5])
-                count+=1
-            }
-        }
-        if (test >= 3){
-            if(numResponse[6] != numOrder[6]){
-                print(" for Number 7, Expected: " + numOrder[6] + " Got: " + numResponse[6])
-                Resultsp1.append(" for Number 7, Expected: " + numOrder[6] + " Got: " + numResponse[6])
-                count+=1
-            }
-
-        }
-        
-        self.resultLabel.text = "\(Resultsp1)"
-         test += 1
+        Resultsp1 = (numOrder) + (numResponse)
+        test += 1
         numResponse = []
         numOrder = []
         Randomize.isHidden = false
         responses = 0
         testDone.isHidden = true
-        if (test >= 4){
+        if (test >= 5){
             button0.isHidden = true
             button1.isHidden = true
             button2.isHidden = true

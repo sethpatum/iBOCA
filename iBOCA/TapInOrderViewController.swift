@@ -37,6 +37,10 @@ class TapInOrderViewController: ViewController {
     @IBOutlet weak var backButton: UIButton!
     
     
+    var resultTmpList : [String:Any] = [:]
+    var levelStartTime = Foundation.Date()
+    var resultList : [String:Any] = [:]
+    
     
     //start from 1st button; reset all info
     
@@ -289,6 +293,8 @@ class TapInOrderViewController: ViewController {
             }
             result.longDescription.add("Forward spatial span: \(self.numplaces)")
             
+            result.json["Places"] = self.numplaces
+            result.json["Levels"] = self.resultList
             resultsArray.add(result)
             
             Status[TestForwardSpatialSpan] = TestStatus.Done
@@ -341,6 +347,8 @@ class TapInOrderViewController: ViewController {
             
             print("...enabling buttons...numplaces = \(self.numplaces+2)")
             self.enableButtons()
+            self.levelStartTime = Foundation.Date()
+            self.resultTmpList.removeAll()
         }
             
         else {
@@ -375,6 +383,9 @@ class TapInOrderViewController: ViewController {
     func selectionDone(n:Int, status:Bool) {
         
         disableButtons()
+        
+        resultList["\(numplaces)-\(numRepeats)"] = resultTmpList
+        resultTmpList.removeAll()
         
         print("selection done")
         
@@ -453,6 +464,7 @@ class TapInOrderViewController: ViewController {
                 
                 self.currpressed = 0
                 self.numRepeats += 1
+                self.randomizeOrder()
                 self.drawSequenceRecursively(num: 0)
                 
             }
@@ -543,6 +555,8 @@ class TapInOrderViewController: ViewController {
     func buttonAction(sender:UIButton!)
     {
         print("Button tapped")
+        let currTime = Foundation.Date()
+        resultTmpList[String(currpressed)] = Int(1000*currTime.timeIntervalSince(levelStartTime))
         
         //find which button user has tapped
         for i in 0...buttonList.count-1 {
