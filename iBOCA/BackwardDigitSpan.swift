@@ -48,6 +48,7 @@ class BackwardDigitSpan: UIViewController {
     
     @IBOutlet weak var Label6: UILabel!
     
+    @IBOutlet weak var Label7: UILabel!
     
     @IBOutlet weak var button0: UIButton!
     @IBOutlet weak var button1: UIButton!
@@ -62,7 +63,7 @@ class BackwardDigitSpan: UIViewController {
     
     
     var numResponse : [String] = []
-    var numOrder : [String] = []
+    var numOrder = [[String : Any]]()
     
     var ResultsList: [String] = []
     var count = 0
@@ -87,7 +88,7 @@ class BackwardDigitSpan: UIViewController {
     
     @IBAction func tester(_ sender: AnyObject) {
         print (test)
-        if(test >= 0 && test < 4){
+        if(test >= 0 && test < 5){
             let num0 = String(arc4random_uniform(9))
             let num1 = String(arc4random_uniform(9))
             let num2 = String(arc4random_uniform(9))
@@ -96,24 +97,29 @@ class BackwardDigitSpan: UIViewController {
             self.Label1.text = num1
             self.Label2.text = num2
             self.Label3.text = num3
-            numOrder += [num0, num1, num2, num3]
+            numOrder += [num3, num2, num1, num0]
         }
-        if(test >= 1 && test < 4){
+        if(test >= 1 && test < 5){
             let num4 = String(arc4random_uniform(9))
             self.Label4.text = num4
-            numOrder += [num4]
+            numOrder.insert([num4], at:0)
         }
-        if(test >= 2 && test < 4){
+        if(test >= 2 && test < 5){
             let num5 = String(arc4random_uniform(9))
             self.Label5.text = num5
-            numOrder += [num5]
+            numOrder.insert([num5], at:0)
         }
-        if(test >= 3 && test < 4){
+        if(test >= 3 && test < 5){
             let num6 = String(arc4random_uniform(9))
             self.Label6.text = num6
-            numOrder += [num6]
+            numOrder.insert([num6], at:0)
         }
-        if(test >= 4){
+        if(test >= 4 && test < 5){
+            let num7 = String(arc4random_uniform(9))
+            self.Label7.text = num7
+            numOrder.insert([num7], at:0)
+        }
+        if(test >= 5){
             self.Label0.text = ""
             self.Label1.text = ""
             self.Label2.text = ""
@@ -121,10 +127,11 @@ class BackwardDigitSpan: UIViewController {
             self.Label4.text = ""
             self.Label5.text = ""
             self.Label6.text = ""
+            self.Label7.text = ""
         }
         print(numOrder)
         Randomize.isHidden = true
-        if(test < 4){
+        if(test < 5){
             button0.isHidden = false
             button1.isHidden = false
             button2.isHidden = false
@@ -430,7 +437,7 @@ class BackwardDigitSpan: UIViewController {
             count+=1
         }
         if(numResponse[3] != numOrder[3]){
-            print(" for Number 5, Expected: " + numOrder[3] + " Got: " + numResponse[3])
+            print(" for Number 4, Expected: " + numOrder[3] + " Got: " + numResponse[3])
             ResultsList.append(" for Number 4, Expected: " + numOrder[3] + " Got: " + numResponse[3])
             count+=1
         }
@@ -454,7 +461,12 @@ class BackwardDigitSpan: UIViewController {
                 ResultsList.append(" for Number 7, Expected: " + numOrder[6] + " Got: " + numResponse[6])
                 count+=1
             }
-            
+            if (test >= 4){
+                if(numResponse[7] != numOrder[7]){
+                    print(" for Number 8, Expected: " + numOrder[7] + " Got: " + numResponse[7])
+                    ResultsList.append(" for Number 7, Expected: " + numOrder[7] + " Got: " + numResponse[7])
+                    count+=1
+                }
         }
         self.resultLabel.text = "\(ResultsList)"
         test += 1
@@ -463,7 +475,7 @@ class BackwardDigitSpan: UIViewController {
         Randomize.isHidden = false
         responses = 0
         testDone.isHidden = true
-        if (test >= 4){
+        if (test >= 5){
             button0.isHidden = true
             button1.isHidden = true
             button2.isHidden = true
