@@ -1671,6 +1671,13 @@
                                     <action selector="button0:" destination="7CJ-Qb-Bsb" eventType="touchUpInside" id="kZ3-XQ-xbP"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F8a-MK-nDQ">
+                                <rect key="frame" x="705" y="251" width="35" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="48"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -1684,6 +1691,7 @@
                         <outlet property="Label4" destination="Jcp-om-zt4" id="1Gr-f0-R9B"/>
                         <outlet property="Label5" destination="ZKx-ir-kJe" id="pJh-Xa-u0F"/>
                         <outlet property="Label6" destination="tRu-aE-AjM" id="cAT-gV-ucD"/>
+                        <outlet property="Label7" destination="F8a-MK-nDQ" id="747-Oz-aJT"/>
                         <outlet property="Randomize" destination="fhk-mx-slO" id="Wub-W4-1OZ"/>
                         <outlet property="button0" destination="kD3-SJ-HwG" id="gHn-IG-YYx"/>
                         <outlet property="button1" destination="lDI-T7-QYf" id="zxG-mp-Ld0"/>
@@ -2117,6 +2125,13 @@
                                     <action selector="button7:" destination="4Eb-es-DlO" eventType="touchUpInside" id="yUG-e9-aIv"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZTu-1b-LSQ">
+                                <rect key="frame" x="691" y="248" width="35" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="48"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -2129,6 +2144,7 @@
                         <outlet property="Label4" destination="RDV-fJ-BV3" id="N4o-SS-T3H"/>
                         <outlet property="Label5" destination="0iM-Pw-9X4" id="UMn-gL-Kt5"/>
                         <outlet property="Label6" destination="JjM-Zv-qAd" id="7bL-Zt-fYc"/>
+                        <outlet property="Label7" destination="ZTu-1b-LSQ" id="EB7-qg-Z5r"/>
                         <outlet property="Randomize" destination="AGr-nH-ggu" id="1yB-dk-qeq"/>
                         <outlet property="button0" destination="Cbv-8P-ahH" id="uZ5-XL-h2J"/>
                         <outlet property="button1" destination="Pkn-Bk-WLW" id="84I-YM-ZnT"/>
