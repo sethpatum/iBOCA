@@ -34,6 +34,7 @@ class BackwardDigitSpan: UIViewController {
     
     @IBOutlet weak var resultLabel: UILabel!
     
+    @IBOutlet weak var resultLabel2: UILabel!
     @IBOutlet weak var Label0: UILabel!
     
     @IBOutlet weak var Label1: UILabel!
@@ -87,12 +88,28 @@ class BackwardDigitSpan: UIViewController {
     }
     
     @IBAction func tester(_ sender: AnyObject) {
-        print (test)
+        var num0 = " "
+        var num1 = " "
+        var num2 = " "
+        var num3 = " "
+        var num4 = " "
+        var num5 = " "
+        var num6 = " "
+        var num7 = " "
         if(test >= 0 && test < 5){
-            let num0 = String(arc4random_uniform(9))
-            let num1 = String(arc4random_uniform(9))
-            let num2 = String(arc4random_uniform(9))
-            let num3 = String(arc4random_uniform(9))
+             num0 = String(arc4random_uniform(9))
+             num1 = String(arc4random_uniform(9))
+            while num1 == num0{
+                num1 = String(arc4random_uniform(9))
+            }
+             num2 = String(arc4random_uniform(9))
+            while num2 == num1 {
+                num2 = String(arc4random_uniform(9))
+            }
+             num3 = String(arc4random_uniform(9))
+            while num3 == num2 {
+                num3 = String(arc4random_uniform(9))
+            }
             self.Label0.text = num0
             self.Label1.text = num1
             self.Label2.text = num2
@@ -103,24 +120,34 @@ class BackwardDigitSpan: UIViewController {
             numOrder.append(num0)
         }
         if(test >= 1 && test < 5){
-            let num4 = String(arc4random_uniform(9))
+            num4 = String(arc4random_uniform(9))
+            while num4 == num3 {
+                num4 = String(arc4random_uniform(9))
+            }
             self.Label4.text = num4
             numOrder.insert(num4, at:0)
         }
         if(test >= 2 && test < 5){
-            let x = (arc4random_uniform(9))
-            let num5 = String(x)
+            num5 = String(arc4random_uniform(9))
+            while num5 == num4 {
+                num5 = String(arc4random_uniform(9))
+            }
             self.Label5.text = num5
             numOrder.insert(num5, at:0)
         }
         if(test >= 3 && test < 5){
-            let x = (arc4random_uniform(9))
-            let num6 = String(x)
+            num6 = String(arc4random_uniform(9))
+            while num6 == num5 {
+                num6 = String(arc4random_uniform(9))
+            }
             self.Label6.text = num6
             numOrder.insert(num6, at:0)
         }
         if(test >= 4 && test < 5){
-            let num7 = String(arc4random_uniform(9))
+            num7 = String(arc4random_uniform(9))
+            while num7 == num6 {
+                num7 = String(arc4random_uniform(9))
+            }
             self.Label7.text = num7
             numOrder.insert(num7, at:0)
         }
@@ -432,61 +459,13 @@ class BackwardDigitSpan: UIViewController {
         timer.invalidate()
         counter = 0
         countingLabel.text = String(counter)
+        let orderNums = String(describing: numResponse)
+        let originalNums = String(describing: numOrder)
+        self.resultLabel.text = originalNums
+        self.resultLabel2.text = orderNums
         nums1 = ""
         CurrentNums.text = nums1
-        ResultsList.append ("Backwards Digit Span:")
-        if (numResponse == numOrder){
-            print("All values Correct")
-            ResultsList.append(" All values Correct")
-        }
-        if(numResponse[0] != numOrder[0]){
-            print(" for Number 1, Expected: " + numOrder[0] + " Got: " + numResponse[0])
-            ResultsList.append(" for Number 1, Expected: " + numOrder[0] + " Got: " + numResponse[0])
-        }
-        if(numResponse[1] != numOrder[1]){
-            print(" for Number 2, Expected: " + numOrder[1] + " Got: " + numResponse[1])
-            ResultsList.append(" for Number 2, Expected: " + numOrder[1] + " Got: " + numResponse[1])
-            count+=1
-        }
-        if(numResponse[2] != numOrder[2]){
-            print(" for Number 3, Expected: " + numOrder[2] + " Got: " + numResponse[2])
-            ResultsList.append(" for Number 3, Expected: " + numOrder[2] + " Got: " + numResponse[2])
-            count+=1
-        }
-        if(numResponse[3] != numOrder[3]){
-            print(" for Number 4, Expected: " + numOrder[3] + " Got: " + numResponse[3])
-            ResultsList.append(" for Number 4, Expected: " + numOrder[3] + " Got: " + numResponse[3])
-            count+=1
-        }
-        if (test >= 1){
-            if(numResponse[4] != numOrder[4]){
-                print(" for Number 5, Expected: " + numOrder[4] + " Got: " + numResponse[4])
-                ResultsList.append(" for Number 5, Expected: " + numOrder[4] + " Got: " + numResponse[4])
-                count+=1
-            }
-        }
-        if (test >= 2){
-            if(numResponse[5] != numOrder[5]){
-                print(" for Number 6, Expected: " + numOrder[5] + " Got: " + numResponse[5])
-                ResultsList.append(" for Number 6, Expected: " + numOrder[5] + " Got: " + numResponse[5])
-                count+=1
-            }
-        }
-        if (test >= 3){
-            if(numResponse[6] != numOrder[6]){
-                print(" for Number 7, Expected: " + numOrder[6] + " Got: " + numResponse[6])
-                ResultsList.append(" for Number 7, Expected: " + numOrder[6] + " Got: " + numResponse[6])
-                count+=1
-            }
-        }
-        if (test >= 4){
-            if(numResponse[7] != numOrder[7]){
-                print(" for Number 8, Expected: " + numOrder[7] + " Got: " + numResponse[7])
-                ResultsList.append(" for Number 7, Expected: " + numOrder[7] + " Got: " + numResponse[7])
-                count+=1
-            }
-        }
-        self.resultLabel.text = "\(ResultsList)"
+        ResultsList = (numOrder) + (numResponse)
         test += 1
         numResponse = []
         numOrder = []

@@ -74,9 +74,10 @@ class AllResults  {
         
         
         var js : [String:Any] = [:]
-        for i in 0...numResults() - 1 {
+        for i in 0...numResults()-1 {
             let r = get(i)
-             js[r.name!] = r.toJson()
+            let tmpjs : [String:Any] = [r.name!:r.toJson()]
+             js[String(i)] = tmpjs
         }
         e += "\n" + String(describing: js)
         

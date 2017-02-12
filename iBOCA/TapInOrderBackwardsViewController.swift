@@ -35,6 +35,11 @@ class TapInOrderBackwardsViewController: UIViewController {
     
     @IBOutlet weak var resultsLabel: UILabel!
     
+    var resultTmpList : [String:Any] = [:]
+    var levelStartTime = Foundation.Date()
+    var resultList : [String:Any] = [:]
+    
+    
     //start from 1st button; reset all info
     
     @IBAction func Reset(_ sender: Any) {
@@ -244,6 +249,9 @@ class TapInOrderBackwardsViewController: UIViewController {
             }
             result.longDescription.add("Backward spatial span: \(self.numplaces)")
             
+            result.json["Places"] = self.numplaces
+            result.json["Levels"] = self.resultList
+
             resultsArray.add(result)
             
             Status[TestBackwardSpatialSpan] = TestStatus.Done
@@ -293,6 +301,8 @@ class TapInOrderBackwardsViewController: UIViewController {
         
         if num < 0 {
             self.enableButtons()
+            self.levelStartTime = Foundation.Date()
+            self.resultTmpList.removeAll()
         }
             
         else {
@@ -330,7 +340,12 @@ class TapInOrderBackwardsViewController: UIViewController {
         
         disableButtons()
         
+        resultList["\(numplaces)-\(numRepeats)"] = resultTmpList
+        resultTmpList.removeAll()
+        
+        
         print("selection done")
+    
         
         //false means user hit incorrect button
         if status == false {
@@ -407,6 +422,7 @@ class TapInOrderBackwardsViewController: UIViewController {
                 
                 self.currpressed = 0
                 self.numRepeats += 1
+                self.randomizeOrder()
                 self.drawSequenceRecursively(num: self.numplaces)
             }
             
@@ -465,6 +481,9 @@ class TapInOrderBackwardsViewController: UIViewController {
     func buttonAction(sender:UIButton!)
     {
         print("Button tapped")
+        let currTime = Foundation.Date()
+        resultTmpList[String(currpressed)] = Int(1000*currTime.timeIntervalSince(levelStartTime))
+
         
         //find which button user has tapped
         for i in 0...buttonList.count-1 {

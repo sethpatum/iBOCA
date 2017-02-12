@@ -17,6 +17,9 @@ class SemanticListGeneration: UIViewController, UIPickerViewDelegate {
     var resIncorrect = 0
     var resRepeat = 0
     
+    var resultStatus : [String] = []
+    var resultTime : [Date] = []
+    
     var startTime = Foundation.Date()
     
     @IBOutlet weak var CorrectButton: UIButton!
@@ -65,6 +68,10 @@ class SemanticListGeneration: UIViewController, UIPickerViewDelegate {
         TimerLabel.isHidden = false
         SelectLabel.isHidden = true
         
+        startTime = Foundation.Date()
+        resultStatus.removeAll()
+        resultTime.removeAll()
+        
         counter = 60
         myTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
         
@@ -79,16 +86,25 @@ class SemanticListGeneration: UIViewController, UIPickerViewDelegate {
     
     @IBAction func correctPressed(_ sender: Any) {
         resCorrect += 1
+        resultStatus.append("Correct")
+        let currTime = Foundation.Date()
+        resultTime.append(currTime)
         ResultLabel.text = "Correct:\(resCorrect), Incorrect:\(resIncorrect), Repeat:\(resRepeat)"
     }
     
     @IBAction func incorrectPressed(_ sender: Any) {
         resIncorrect += 1
+        resultStatus.append("Incorrect")
+        let currTime = Foundation.Date()
+        resultTime.append(currTime)
         ResultLabel.text = "Correct:\(resCorrect), Incorrect:\(resIncorrect), Repeat:\(resRepeat)"
     }
     
     @IBAction func repeatPressed(_ sender: Any) {
         resRepeat += 1
+        resultStatus.append("Repeat")
+        let currTime = Foundation.Date()
+        resultTime.append(currTime)
         ResultLabel.text = "Correct:\(resCorrect), Incorrect:\(resIncorrect), Repeat:\(resRepeat)"
     }
   
@@ -146,6 +162,12 @@ class SemanticListGeneration: UIViewController, UIPickerViewDelegate {
             result.startTime = startTime
             result.endTime = Foundation.Date()
             result.shortDescription = "Correct:\(resCorrect), Incorrect:\(resIncorrect), Repeat:\(resRepeat)"
+            var js : [String:Any] = [:]
+            for (index, element) in resultStatus.enumerated() {
+                let val = ["status":element, "drawing time (msec)":Int(1000*resultTime[index].timeIntervalSince(startTime))] as [String : Any]
+                js[String(index)] = val
+            }
+            result.json[Category!] = js
             resultsArray.add(result)
             Status[TestSemanticListGeneration] = TestStatus.Done
             
@@ -158,7 +180,7 @@ class SemanticListGeneration: UIViewController, UIPickerViewDelegate {
 
         // Dispose of any resources that can be recreated.
     }
-    
+
     
     
 

@@ -9,6 +9,9 @@ import UIKit
 
 class PicturesViewController: ViewController {
     
+    let namingImages:[String] = ["ring", "chimney", "clover", "ladle", "piano", "eyebrow", "shovel", "lighthouse", "goggles", "horseshoe", "corkscrew", "anvil", "yarn", "llama", "skeleton"]
+
+    
     var imageName = "House"
     var count = 0
     var corr = 0
@@ -17,6 +20,7 @@ class PicturesViewController: ViewController {
     
     var order = [Bool]()
     var startTime2 = NSDate()
+    var startTime = Foundation.Date()
     
     @IBOutlet weak var correctButton: UIButton!
     
@@ -41,6 +45,12 @@ class PicturesViewController: ViewController {
     var totalCount = Int()
     
     var wrongList = [String]()
+    
+    
+    var resultImage : [String] = []
+    var resultStatus : [String] = []
+    var resultTime : [Date] = []
+
     
 /*
     @IBAction func HelpButton(sender: AnyObject) {
@@ -68,6 +78,9 @@ class PicturesViewController: ViewController {
         count = 0
         corr = 0
         imageName = getImageName()
+        resultStatus.removeAll()
+        resultTime.removeAll()
+        resultImage.removeAll()
         
         imageView4 = UIImageView(frame:CGRect(x: 107.0, y: 171.0, width: 800.0, height: 600.0))
 /*
@@ -110,6 +123,11 @@ class PicturesViewController: ViewController {
         
         count += 1
         corr += 1
+        
+        resultImage.append(imageName)
+        resultStatus.append("Correct")
+        let currTime = Foundation.Date()
+        resultTime.append(currTime)
         
         if(count==totalCount){
             done()
@@ -170,6 +188,12 @@ class PicturesViewController: ViewController {
         
         count += 1
         wrongList.append(imageName)
+        
+        resultImage.append(imageName)
+        resultStatus.append("Incorrect")
+        let currTime = Foundation.Date()
+        resultTime.append(currTime)
+
         
         if(count==totalCount){
             done()
@@ -278,6 +302,15 @@ class PicturesViewController: ViewController {
         if wrongList.count > 0  {
             result.longDescription.add("The incorrect pictures were the \(wrongList)")
         }
+        
+        var js : [String:Any] = [:]
+        for (index, element) in resultStatus.enumerated() {
+            let val = ["image":resultImage[index], "status":element, "time (msec)":Int(1000*resultTime[index].timeIntervalSince(startTime))] as [String : Any]
+            js[String(index)] = val
+        }
+        result.json["Results"] = js
+
+        
         resultsArray.add(result)
         Status[TestNampingPictures] = TestStatus.Done
         
@@ -326,7 +359,6 @@ class PicturesViewController: ViewController {
         return UIInterfaceOrientationMask.Landscape
     }
  */
-    let namingImages:[String] = ["ring", "chimney", "clover", "ladle", "piano", "eyebrow", "shovel", "lighthouse", "goggles", "horseshoe", "corkscrew", "anvil", "yarn", "llama", "skeleton"]
 //    let namingImages2:[String] = ["A. Schwarzenegger", "B. Clinton", "B. Murray", "B. Obama", "E. Presley", "G. Bush", "G. Clooney", "H. Clinton", "J. Leno", "J. Travolta", "M. Monroe", "M. Obama", "MLK", "O. Winfrey", "R. Williams", "R. Williams"]
     
     func getImageName()->String{
