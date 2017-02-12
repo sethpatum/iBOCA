@@ -96,12 +96,12 @@ class ForwardDigitSpan: UIViewController {
         var num7 = " "
         print (test)
         if(test >= 0 && test < 5){
-        var num0 = String(arc4random_uniform(9))
-        var num1 = String(arc4random_uniform(9))
+         num0 = String(arc4random_uniform(9))
+         num1 = String(arc4random_uniform(9))
             while num1 == num0{
             num1 = String(arc4random_uniform(9))
             }
-        var num2 = String(arc4random_uniform(9))
+         num2 = String(arc4random_uniform(9))
             while num2 == num1 {
                 num2 = String(arc4random_uniform(9))
             }
@@ -116,7 +116,7 @@ class ForwardDigitSpan: UIViewController {
             numOrder += [num0, num1, num2, num3]
         }
         if(test >= 1 && test < 5){
-        var num4 = String(arc4random_uniform(9))
+         num4 = String(arc4random_uniform(9))
             while num4 == num3 {
                 num4 = String(arc4random_uniform(9))
             }
@@ -124,7 +124,7 @@ class ForwardDigitSpan: UIViewController {
             numOrder += [num4]
         }
         if(test >= 2 && test < 5){
-        var num5 = String(arc4random_uniform(9))
+         num5 = String(arc4random_uniform(9))
             while num5 == num4 {
                 num5 = String(arc4random_uniform(9))
             }
@@ -132,7 +132,7 @@ class ForwardDigitSpan: UIViewController {
              numOrder += [num5]
         }
         if(test >= 3 && test < 5){
-        var num6 = String(arc4random_uniform(9))
+         num6 = String(arc4random_uniform(9))
             while num6 == num5 {
                 num6 = String(arc4random_uniform(9))
             }
@@ -140,7 +140,7 @@ class ForwardDigitSpan: UIViewController {
              numOrder += [num6]
         }
         if(test >= 4 && test < 5){
-            var num7 = String(arc4random_uniform(9))
+         num7 = String(arc4random_uniform(9))
             while num7 == num6 {
                 num7 = String(arc4random_uniform(9))
             }
