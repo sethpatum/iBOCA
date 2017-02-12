@@ -23,7 +23,7 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
     
             //pickerview content set up(defines options)
     @IBOutlet weak var SeasonPicker: UIPickerView!
-    let seasonData = ["Spring", "Summer", "Fall", "Winter", "Do not know"]
+    let seasonData = ["Monday", "Tuesday", "Wednesday", "Thusday", "Friday", "Saturday", "Sunday", "Do not know"]
  
     @IBOutlet weak var StatePicker: UIPickerView!
     let stateData = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia","Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming", "Don't Know"]
@@ -134,6 +134,11 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         result.startTime = startTime
         result.endTime = Foundation.Date()
         result.shortDescription = "Season: \(Season), State: \(State), Town: \(Town), Date: \(Date), Address: \(Address)"
+        result.json["Day"] = Season!
+        result.json["State"] = State!
+        result.json["Town"] = Town!
+        result.json["Date"] = Date!
+        result.json["Address"] = Address!
         resultsArray.add(result)
         Status[TestOrientation] = TestStatus.Done
     }

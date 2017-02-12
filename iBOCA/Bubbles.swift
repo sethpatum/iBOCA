@@ -146,7 +146,10 @@ class BubblesA {
     
     var nextBubble = 0
     
-    var segmenttimes:[(Int, String)] = []
+    var segmenttimes:[(Int, String, Int)] = []
+    var jsontimes : [String:Any] = [:]
+    
+    var startTime = Foundation.Date()
     
     
     //Rotate (180 degrees) or mirror (on x or y) the point
@@ -169,6 +172,9 @@ class BubblesA {
     init() {
         bubblelist = TrailsTests[selectedTest].1
         bubblelist = bubblelist.map(transform)
+        startTime = Foundation.Date()
+        jsontimes.removeAll()
+        segmenttimes.removeAll()
     }
     
     
@@ -203,8 +209,9 @@ class BubblesA {
         lastBubble = currentBubble
         currentBubble = curr
         
-        segmenttimes.append((Int(timePassedTrailsA), "\(lastBubble)->\(currentBubble)"))
-        
+        let currTime = Foundation.Date()
+        segmenttimes.append((Int(timePassedTrailsA), "\(lastBubble)->\(currentBubble)", Int(1000*currTime.timeIntervalSince(startTime))))
+        jsontimes[String(Int(timePassedTrailsA))] = ["Start":lastBubble, "End":currentBubble, "Time (ms)":Int(1000*currTime.timeIntervalSince(startTime))]
         return true
         
     }

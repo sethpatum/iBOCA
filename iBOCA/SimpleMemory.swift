@@ -22,13 +22,22 @@ var incorrectImageSetSM = Int()
 var startTimeSM = TimeInterval()
 var timerSM = Timer()
 var StartTimer = Foundation.Date()
-class SimpleMemoryTask: UIViewController {
+class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
     
     @IBOutlet weak var timerLabel: UILabel!
     
     @IBOutlet weak var delayLabel: UILabel!
     
     @IBOutlet weak var resultLabel: UILabel!
+    
+    @IBOutlet weak var testPicker: UIPickerView!
+    var TestTypes : [String] = ["1", "2", "3", "4", "5", "6", "7", "8"]
+    
+    @IBOutlet weak var incorrectPicker: UIPickerView!
+    var IncorrectTypes: [String] = ["1", "2", "3", "4", "5", "6", "7", "8"]
+    
+    @IBOutlet weak var testPickerLabel: UILabel!
+    @IBOutlet weak var incorrectPickerLabel: UILabel!
     
     var recognizeErrors = [Int]()
     var recognizeTimes = [Double]()
@@ -55,11 +64,9 @@ class SimpleMemoryTask: UIViewController {
     
     var imageName1 = ""
     var image1 = UIImage()
-    var imageView1 = UIImageView()
     
     var imageName2 = ""
     var image2 = UIImage()
-    var imageView2 = UIImageView()
     
     var buttonList = [UIButton]()
     
@@ -75,37 +82,62 @@ class SimpleMemoryTask: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        testPicker.delegate = self
+        testPicker.transform = CGAffineTransform(scaleX: 0.8, y: 1.0)
+        
+        incorrectPicker.delegate = self
+        incorrectPicker.transform = CGAffineTransform(scaleX: 0.8, y: 1.0)
+        
         gesture = UIPanGestureRecognizer(target: self, action: #selector(wasDragged))
-        
-        let arrowpic = UIImage(named: "arrow") as UIImage?
-        
+
         arrowButton1 = UIButton(type: UIButtonType.custom) as UIButton
-        arrowButton1.frame = CGRect(x: 211, y: 670, width: 90, height: 90)
-        arrowButton1.setImage(arrowpic, for: .normal)
-        arrowButton1.addTarget(self, action: #selector(recognize1), for:.touchUpInside)
-        arrowButton1.isHidden = true
-        self.view.addSubview(arrowButton1)
         
         arrowButton2 = UIButton(type: UIButtonType.custom) as UIButton
-        arrowButton2.frame = CGRect(x: 723, y: 670, width: 90, height: 90)
-        arrowButton2.setImage(arrowpic, for: .normal)
-        arrowButton2.addTarget(self, action: #selector(recognize2), for:.touchUpInside)
-        arrowButton2.isHidden = true
-        self.view.addSubview(arrowButton2)
         
         next1.isHidden = true
         
         back.isEnabled = true
-//        start.isEnabled = true
+        
+        start.isHidden = false
         
         if(afterBreakSM == true){
             timerSM = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updateInDelay), userInfo: nil, repeats: true)
             delayLabel.text = "Recommended delay: 1 minute"
-            start.isHidden = false
+//            start.isHidden = false
+            testPicker.isHidden = true
+            incorrectPicker.isHidden = true
+            
+            testPickerLabel.isHidden = true
+            incorrectPickerLabel.isHidden = true
+            
+            start.removeTarget(self, action: #selector(startNewTask), for:.touchUpInside)
+            start.removeTarget(self, action: #selector(startDisplayAlert), for:.touchUpInside)
+            start.addTarget(self, action: #selector(startAlert), for:.touchUpInside)
         }
         else{
-            start.isHidden = true
-            startAlert()
+//            start.isHidden = true
+            
+            testPicker.reloadAllComponents()
+            incorrectPicker.reloadAllComponents()
+            
+            testPicker.selectRow(0, inComponent: 0, animated: true)
+            incorrectPicker.selectRow(0, inComponent: 0, animated: true)
+            
+            testPicker.isHidden = false
+            incorrectPicker.isHidden = false
+            
+            testPickerLabel.isHidden = false
+            incorrectPickerLabel.isHidden = false
+            
+            recognizeIncorrectSM = images0
+            imagesSM = images0
+            
+            start.isEnabled = false
+            
+            start.removeTarget(self, action: #selector(startNewTask), for:.touchUpInside)
+            start.removeTarget(self, action: #selector(startAlert), for:.touchUpInside)
+            start.addTarget(self, action: #selector(startDisplayAlert), for:.touchUpInside)
+//            startAlert()
         }
         
     }
@@ -120,13 +152,40 @@ class SimpleMemoryTask: UIViewController {
         startAlert.addAction(UIAlertAction(title: "Start New Task", style: .default, handler: { (action) -> Void in
             print("start new")
             Status[TestSimpleMemory] = TestStatus.Running
+//            self.startNewTask()
+            
+            recognizeIncorrectSM = self.images0
+            imagesSM = self.images0
+            
+            self.testPicker.reloadAllComponents()
+            self.incorrectPicker.reloadAllComponents()
+            
+            self.testPicker.selectRow(0, inComponent: 0, animated: true)
+            self.incorrectPicker.selectRow(0, inComponent: 0, animated: true)
+            
+            self.testPicker.isHidden = false
+            self.incorrectPicker.isHidden = false
+            
+            self.testPickerLabel.isHidden = false
+            self.incorrectPickerLabel.isHidden = false
+            
             self.startNewTask()
+            
             //action
         }))
         
         if(afterBreakSM == true){
             startAlert.addAction(UIAlertAction(title: "Resume Task", style: .default, handler: { (action) -> Void in
                 print("resume old")
+                
+                self.testPicker.isHidden = true
+                self.incorrectPicker.isHidden = true
+                
+                self.testPickerLabel.isHidden = true
+                self.incorrectPickerLabel.isHidden = true
+                
+                self.start.isHidden = true
+                
                 self.resumeTask()
                 //action
             }))
@@ -143,50 +202,10 @@ class SimpleMemoryTask: UIViewController {
         }
         
     }
-    
-    @IBAction func startButton(_ sender: Any) {
-        
-        start.isHidden = true
-        back.isEnabled = false
-        
-        next1.isHidden = true
-        
-        startAlert()
-        
-/*
-        let startAlert = UIAlertController(title: "Start", message: "Choose start option", preferredStyle: .alert)
-        
-        startAlert.addAction(UIAlertAction(title: "Start New Task", style: .default, handler: { (action) -> Void in
-            print("start new")
-            self.startNewTask()
-            //action
-        }))
-        
-        if(afterBreakSM == true){
-            startAlert.addAction(UIAlertAction(title: "Resume Task", style: .default, handler: { (action) -> Void in
-                print("resume old")
-                self.resumeTask()
-                //action
-            }))
-        }
-        
-        startAlert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) -> Void in
-            print("cancel")
-            self.back.isEnabled = true
-            //action
-        }))
-        
-        self.present(startAlert, animated: true, completion: nil)
- */
-        
-    }
-    
     func startNewTask(){
         
         timerSM.invalidate()
         
-        recognizeIncorrectSM = [String]()
-        imagesSM = [String]()
         buttonTaps = [Bool]()
         testCount = 0
         recognizeTimes = [Double]()
@@ -198,9 +217,27 @@ class SimpleMemoryTask: UIViewController {
         afterBreakSM = false
         
         
-        start.isHidden = true
+        start.isHidden = false
+        start.isEnabled = false
         
-        chooseImageSet()
+        start.removeTarget(self, action: #selector(startNewTask), for:.touchUpInside)
+        start.removeTarget(self, action: #selector(startAlert), for:.touchUpInside)
+        start.addTarget(self, action: #selector(startDisplayAlert), for:.touchUpInside)
+        
+        
+        
+    }
+    
+    func startDisplayAlert(){
+        
+        start.isHidden = true
+        testPicker.isHidden = true
+        incorrectPicker.isHidden = true
+        
+        testPickerLabel.isHidden = true
+        incorrectPickerLabel.isHidden = true
+        
+        back.isEnabled = false
         
         let newStartAlert = UIAlertController(title: "Display", message: "Name and try to remember these images", preferredStyle: .alert)
         newStartAlert.addAction(UIAlertAction(title: "Start", style: .default, handler: { (action) -> Void in
@@ -212,76 +249,118 @@ class SimpleMemoryTask: UIViewController {
         
     }
     
-    func chooseImageSet(){
-        
-        imageSetSM = Int(arc4random_uniform(8))
-        incorrectImageSetSM = imageSetSM
-        
-        while(imageSetSM == incorrectImageSetSM){
-            incorrectImageSetSM = Int(arc4random_uniform(8))
+    func numberOfComponentsInPickerView(_ pickerView : UIPickerView!) -> Int{
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
+        if pickerView == testPicker {
+            
+            return TestTypes.count
+        }
+        if pickerView == incorrectPicker {
+            
+            return IncorrectTypes.count
+        } else {
+            return 1
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if pickerView == testPicker {
+            
+            return TestTypes[row]
+        }
+        if pickerView == incorrectPicker {
+            
+            return IncorrectTypes[row]
+        } else {
+            return ""
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
+        print("2:", pickerView)
+        if pickerView == testPicker {
+            
+            if row == 0 {
+                imagesSM = images0
+            }
+            if row == 1 {
+                imagesSM = images1
+            }
+            if row == 2 {
+                imagesSM = images2
+            }
+            if row == 3 {
+                imagesSM = images3
+            }
+            if row == 4 {
+                imagesSM = images4
+            }
+            if row == 5 {
+                imagesSM = images5
+            }
+            if row == 6 {
+                imagesSM = images6
+            }
+            if row == 7 {
+                imagesSM = images7
+            }
+            
+            if(TestTypes[testPicker.selectedRow(inComponent: 0)] == IncorrectTypes[incorrectPicker.selectedRow(inComponent: 0)]){
+                start.isEnabled = false
+            }
+            else{
+                start.isEnabled = true
+            }
+
+        }
+        else if pickerView == incorrectPicker {
+            if row == 0 {
+                recognizeIncorrectSM = images0
+            }
+            if row == 1 {
+                recognizeIncorrectSM = images1
+            }
+            if row == 2 {
+                recognizeIncorrectSM = images2
+            }
+            if row == 3 {
+                recognizeIncorrectSM = images3
+            }
+            if row == 4 {
+                recognizeIncorrectSM = images4
+            }
+            if row == 5 {
+                recognizeIncorrectSM = images5
+            }
+            if row == 6 {
+                recognizeIncorrectSM = images6
+            }
+            if row == 7 {
+                recognizeIncorrectSM = images7
+            }
+            
+            if(TestTypes[testPicker.selectedRow(inComponent: 0)] == IncorrectTypes[incorrectPicker.selectedRow(inComponent: 0)]){
+                start.isEnabled = false
+            }
+            else{
+                start.isEnabled = true
+            }
+            
         }
         
-        if(imageSetSM == 0) {
-            imagesSM = images0
-        }
-        if(incorrectImageSetSM == 0){
-            recognizeIncorrectSM = images0
-        }
-        
-        if(imageSetSM == 1) {
-            imagesSM = images1
-        }
-        if(incorrectImageSetSM == 1){
-            recognizeIncorrectSM = images1
-        }
-        
-        if(imageSetSM == 2) {
-            imagesSM = images2
-        }
-        if(incorrectImageSetSM == 2){
-            recognizeIncorrectSM = images2
-        }
-        
-        if(imageSetSM == 3) {
-            imagesSM = images3
-        }
-        if(incorrectImageSetSM == 3){
-            recognizeIncorrectSM = images3
-        }
-        
-        if(imageSetSM == 4) {
-            imagesSM = images4
-        }
-        if(incorrectImageSetSM == 4){
-            recognizeIncorrectSM = images4
-        }
-        
-        if(imageSetSM == 5) {
-            imagesSM = images5
-        }
-        if(incorrectImageSetSM == 5){
-            recognizeIncorrectSM = images5
-        }
-        
-        if(imageSetSM == 6) {
-            imagesSM = images6
-        }
-        if(incorrectImageSetSM == 6){
-            recognizeIncorrectSM = images6
-        }
-        
-        if(imageSetSM == 7) {
-            imagesSM = images7
-        }
-        if(incorrectImageSetSM == 7){
-            recognizeIncorrectSM = images7
-        }
-        
+        print("imagesSM = \(imagesSM), recognizeIncorrectSM = \(recognizeIncorrectSM)")
     }
     
     func display(){
         
         testCount = 0
+        
+        print("testCount = \(testCount), imagesSM = \(imagesSM)")
+        print("imagesSM[testCount] = \(imagesSM[testCount])")
+        
         outputImage(name: imagesSM[testCount])
         
     }
@@ -316,8 +395,8 @@ class SimpleMemoryTask: UIViewController {
     
     func outputRecognizeImages(name1: String, name2: String){
         
-        imageView1.removeFromSuperview()
-        imageView2.removeFromSuperview()
+        arrowButton1.removeFromSuperview()
+        arrowButton2.removeFromSuperview()
         
         imageName1 = name1
         imageName2 = name2
@@ -349,16 +428,18 @@ class SimpleMemoryTask: UIViewController {
             y2 = (350.0*(image2.size.height)/(image2.size.width))
         }
         
-        imageView1 = UIImageView(frame: CGRect(x: (256.0-(x1/2)), y: (471.0-(y1/2)), width: x1, height: y1))
-        imageView2 = UIImageView(frame: CGRect(x: (768.0-(x2/2)), y: (471.0-(y2/2)), width: x2, height: y2))
+        arrowButton1.frame = CGRect(x: (256.0-(x1/2)), y: (471.0-(y1/2)), width: x1, height: y1)
+        arrowButton1.setImage(image1, for: .normal)
+        arrowButton1.addTarget(self, action: #selector(recognize1), for:.touchUpInside)
+        self.view.addSubview(arrowButton1)
         
-        imageView1.image = image1
-        imageView2.image = image2
-        
-        self.view.addSubview(imageView1)
-        self.view.addSubview(imageView2)
+        arrowButton2.frame = CGRect(x: (768.0-(x2/2)), y: (471.0-(y2/2)), width: x2, height: y2)
+        arrowButton2.setImage(image2, for: .normal)
+        arrowButton2.addTarget(self, action: #selector(recognize2), for:.touchUpInside)
+        self.view.addSubview(arrowButton2)
         
     }
+    
     
     func wasDragged(gesture: UIPanGestureRecognizer) {
         
@@ -412,6 +493,10 @@ class SimpleMemoryTask: UIViewController {
         delayLabel.text = "Recommended delay: 1 minute"
         
         afterBreakSM = true
+        
+        start.removeTarget(self, action: #selector(startNewTask), for:.touchUpInside)
+        start.removeTarget(self, action: #selector(startDisplayAlert), for:.touchUpInside)
+        start.addTarget(self, action: #selector(startAlert), for:.touchUpInside)
         
         back.isEnabled = true
         
@@ -560,11 +645,6 @@ class SimpleMemoryTask: UIViewController {
     
     func recognize(){
         
-//        next1.removeTarget(self, action: #selector(nextButtonRecall), for:.touchUpInside)
-//        next1.addTarget(self, action: #selector(nextButtonRecognize), for:.touchUpInside)
-//        next1.isHidden = false
-//        next1.isEnabled = true
-        
         testCount = 0
         
         randomizeRecognize()
@@ -589,7 +669,6 @@ class SimpleMemoryTask: UIViewController {
     @IBAction func recognize1(sender: AnyObject){
         arrowButton1.isEnabled = false
         arrowButton2.isEnabled = false
-//        next1.isEnabled = true
         
         if(orderRecognize[testCount] == 0){
             recognizeErrors.append(0)
@@ -608,7 +687,6 @@ class SimpleMemoryTask: UIViewController {
         
         arrowButton1.isEnabled = false
         arrowButton2.isEnabled = false
-//        next1.isEnabled = true
         
         if(orderRecognize[testCount] == 0){
             recognizeErrors.append(1)
@@ -631,10 +709,6 @@ class SimpleMemoryTask: UIViewController {
             
             arrowButton1.isHidden = true
             arrowButton2.isHidden = true
-//            next1.isHidden = true
-            
-            imageView1.removeFromSuperview()
-            imageView2.removeFromSuperview()
             
             done()
             
@@ -642,7 +716,6 @@ class SimpleMemoryTask: UIViewController {
             
         else{
             
-//            next1.isEnabled = false
             arrowButton1.isEnabled = true
             arrowButton2.isEnabled = true
             
@@ -662,7 +735,7 @@ class SimpleMemoryTask: UIViewController {
     func done(){
         
         back.isEnabled = true
-        start.isHidden = false
+        
         afterBreakSM = false
         
         var recallResult = ""
@@ -697,6 +770,13 @@ class SimpleMemoryTask: UIViewController {
         
         resultLabel.text = recallResult + recognizeResult
         Status[TestSimpleMemory] = TestStatus.Done
+        
+        
+        start.isHidden = false
+        start.isEnabled = true
+        start.removeTarget(self, action: #selector(startNewTask), for:.touchUpInside)
+        start.removeTarget(self, action: #selector(startDisplayAlert), for:.touchUpInside)
+        start.addTarget(self, action: #selector(startAlert), for:.touchUpInside)
         
     }
     
