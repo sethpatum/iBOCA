@@ -21,7 +21,6 @@ class SerialSevens: UIViewController {
         countingLabel.text = String(counter)
     }
     
-    var inputCount = 0
     var testCount = 0
     var resultTmpList : [String:Any] = [:]
     var resultList : [String:Any] = [:]
@@ -68,7 +67,7 @@ class SerialSevens: UIViewController {
         for r in Records {
             result.longDescription.add(r)
         }
-        result.json["results"] = resultList
+        result.json["tested"] = resultList
         resultsArray.add(result)
         Status[TestSerialSevens] = TestStatus.Done
         
@@ -88,7 +87,6 @@ class SerialSevens: UIViewController {
         button7.isHidden = false
         button8.isHidden = false
         button9.isHidden = false
-        inputCount = 0
         resultTmpList.removeAll()
         StartTime = Foundation.Date()
         timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(SerialSevens.updateCounter), userInfo: nil, repeats: true)
@@ -254,12 +252,14 @@ class SerialSevens: UIViewController {
         timer.invalidate()
         counter = 0
         countingLabel.text = String(counter)
+        
+        let currTime = Foundation.Date()
+        resultTmpList[String(responseNum)] = ["Value":name, "Time (msec)":Int(currTime.timeIntervalSince(startTime)*1000)]
+
         timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(SerialSevens.updateCounter), userInfo: nil, repeats: true)
         nextInput.isHidden = true
         responseNum += 1
         
-        let currTime = Foundation.Date()
-        resultTmpList[String(describing: inputCount += 1)] = ["Value":name, "Time (msec)":Int(currTime.timeIntervalSince(startTime)*1000)]
 
         if (responseNum >= 5){
             button0.isHidden = true
@@ -284,7 +284,7 @@ class SerialSevens: UIViewController {
             countingLabel.isHidden = true
             timeLabel.isHidden = true
             
-            resultList[String(describing: testCount += 1)] = ["Name":testName, "results":resultTmpList]
+            resultList[String(testName)] = resultTmpList
           }
         button0.isEnabled = true
         button1.isEnabled = true

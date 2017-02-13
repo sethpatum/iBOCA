@@ -68,6 +68,14 @@ class BackwardDigitSpan: UIViewController {
     
     var ResultsList: [String] = []
     var count = 0
+    var numNum : u_long = 0
+    
+    var resultTmpList : [String:Any] = [:]
+    var resultList : [String:Any] = [:]
+    
+    var startTime = Foundation.Date()
+    var startSetTime = Foundation.Date()
+
     
     @IBAction func BackButton(_ sender: Any) {
       
@@ -79,7 +87,7 @@ class BackwardDigitSpan: UIViewController {
         for r in ResultsList {
             result.longDescription.add(r)
         }
-        
+        result.json = resultList
         resultsArray.add(result)
         Status[TestBackwardsDigitSpan] = TestStatus.Done
         
@@ -176,6 +184,14 @@ class BackwardDigitSpan: UIViewController {
             button9.isHidden = false
             resetButton.isHidden = false
         }
+        
+        startSetTime = Foundation.Date()
+        resultTmpList.removeAll()
+        numNum = 0
+        for i in numOrder {
+            numNum = numNum*10 + u_long(i)!
+        }
+
          timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(BackwardDigitSpan.updateCounter), userInfo: nil, repeats: true)
     }
     
@@ -208,6 +224,8 @@ class BackwardDigitSpan: UIViewController {
         else{
             testDone.isHidden = true
         }
+        let currTime = Foundation.Date()
+        resultTmpList[String(responses)] = ["Value":numResponse.last!, "Time (ms)":Int(currTime.timeIntervalSince(startSetTime)*1000)]
       
     }
     
@@ -289,6 +307,7 @@ class BackwardDigitSpan: UIViewController {
         Randomize.isHidden = false
         responses = 0
         testDone.isHidden = true
+        resultList[String(test)] = ["Number":numNum, "Digits":resultTmpList]
         if (test >= 5){
             button0.isHidden = true
             button1.isHidden = true

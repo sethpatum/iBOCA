@@ -66,6 +66,14 @@ class ForwardDigitSpan: UIViewController {
     var numOrder : [String] = []
     var Resultsp1: [String] = []
     var count = 0
+    var numNum : u_long = 0
+    
+    var resultTmpList : [String:Any] = [:]
+    var resultList : [String:Any] = [:]
+    
+    var startTime = Foundation.Date()
+    var startSetTime = Foundation.Date()
+
 
     
     @IBAction func BackButton(_ sender: Any) {
@@ -77,7 +85,7 @@ class ForwardDigitSpan: UIViewController {
         for r in Resultsp1 {
             result.longDescription.add(r)
         }
-        
+        result.json = resultList
         resultsArray.add(result)
         Status[TestForwardDigitSpan] = TestStatus.Done
         
@@ -96,12 +104,12 @@ class ForwardDigitSpan: UIViewController {
         var num7 = " "
         print (test)
         if(test >= 0 && test < 5){
-         num0 = String(arc4random_uniform(9))
-         num1 = String(arc4random_uniform(9))
-            while num1 == num0{
+            num0 = String(arc4random_uniform(9))
             num1 = String(arc4random_uniform(9))
+            while num1 == num0{
+                num1 = String(arc4random_uniform(9))
             }
-         num2 = String(arc4random_uniform(9))
+            num2 = String(arc4random_uniform(9))
             while num2 == num1 {
                 num2 = String(arc4random_uniform(9))
             }
@@ -116,7 +124,7 @@ class ForwardDigitSpan: UIViewController {
             numOrder += [num0, num1, num2, num3]
         }
         if(test >= 1 && test < 5){
-         num4 = String(arc4random_uniform(9))
+            num4 = String(arc4random_uniform(9))
             while num4 == num3 {
                 num4 = String(arc4random_uniform(9))
             }
@@ -124,23 +132,23 @@ class ForwardDigitSpan: UIViewController {
             numOrder += [num4]
         }
         if(test >= 2 && test < 5){
-         num5 = String(arc4random_uniform(9))
+            num5 = String(arc4random_uniform(9))
             while num5 == num4 {
                 num5 = String(arc4random_uniform(9))
             }
-             self.Label5.text = num5
-             numOrder += [num5]
+            self.Label5.text = num5
+            numOrder += [num5]
         }
         if(test >= 3 && test < 5){
-         num6 = String(arc4random_uniform(9))
+            num6 = String(arc4random_uniform(9))
             while num6 == num5 {
                 num6 = String(arc4random_uniform(9))
             }
             self.Label6.text = num6
-             numOrder += [num6]
+            numOrder += [num6]
         }
         if(test >= 4 && test < 5){
-         num7 = String(arc4random_uniform(9))
+            num7 = String(arc4random_uniform(9))
             while num7 == num6 {
                 num7 = String(arc4random_uniform(9))
             }
@@ -160,19 +168,27 @@ class ForwardDigitSpan: UIViewController {
         print(numOrder)
         Randomize.isHidden = true
         if(test < 4){
-        button0.isHidden = false
-        button1.isHidden = false
-        button2.isHidden = false
-        button3.isHidden = false
-        button4.isHidden = false
-        button5.isHidden = false
-        button6.isHidden = false
-        button7.isHidden = false
-        button8.isHidden = false
-        button9.isHidden = false
-        resetButton.isHidden = false
+            button0.isHidden = false
+            button1.isHidden = false
+            button2.isHidden = false
+            button3.isHidden = false
+            button4.isHidden = false
+            button5.isHidden = false
+            button6.isHidden = false
+            button7.isHidden = false
+            button8.isHidden = false
+            button9.isHidden = false
+            resetButton.isHidden = false
         }
-         timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(ForwardDigitSpan.updateCounter), userInfo: nil, repeats: true)
+        
+        startSetTime = Foundation.Date()
+        resultTmpList.removeAll()
+        numNum = 0
+        for i in numOrder {
+            numNum = numNum*10 + u_long(i)!
+        }
+        
+        timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(ForwardDigitSpan.updateCounter), userInfo: nil, repeats: true)
     }
     
     
@@ -204,6 +220,8 @@ class ForwardDigitSpan: UIViewController {
         else{
             testDone.isHidden = true
         }
+        let currTime = Foundation.Date()
+        resultTmpList[String(responses)] = ["Value":numResponse.last!, "Time (ms)":Int(currTime.timeIntervalSince(startSetTime)*1000)]
     }
     
     
@@ -287,6 +305,7 @@ class ForwardDigitSpan: UIViewController {
         Randomize.isHidden = false
         responses = 0
         testDone.isHidden = true
+        resultList[String(test)] = ["Number":numNum, "Digits":resultTmpList]
         if (test >= 5){
             button0.isHidden = true
             button1.isHidden = true

@@ -100,8 +100,8 @@ class Results: NSObject {
     
     
     func toJson() -> [String:Any] {
-        let tlen = Int(endTime!.timeIntervalSince(startTime!))
-        let js : [String:Any] = ["Started At":startTime!, "Test length (sec)": tlen, "results":json]
+        let tlen = Int(endTime!.timeIntervalSince(startTime!)*1000)
+        let js : [String:Any] = ["Started At":startTime!, "Test length (msec)": tlen, "results":json]
         
         return js
     }

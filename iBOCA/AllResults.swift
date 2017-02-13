@@ -36,8 +36,30 @@ class AllResults  {
     
     // convert theresults to an e-mail
     func emailBody() -> String {
-        var e:String = ""
+        var e : String = ""
+        var jst : [String:String] = [:]
         
+        e += "<h4>Subject Code: \(name)</h4>\n"
+        jst["Subject Code"] = name
+        
+        e += "<h4>MR#:\(MR)</h4>\n"
+        jst["MR#"] = MR
+        
+        e += "<h4>Gender:\(Gender)</h4>\n"
+        jst["Gender"] = Gender
+
+        e += "<h4>Age:\(age)</h4>\n"
+        jst["Age"] = age
+        
+        e += "<h4>Education:\(Education)</h4>\n"
+        jst["Education"] = Education
+        
+        e += "<h4>Race:\(Race)</h4>\n"
+        jst["Race"] = Race
+
+        e += "<h4>Ethnicity:\(Ethnicity)</h4>\n<p>\n"
+        jst["Ethnicity"] = Ethnicity
+
         
         // Iterate over the results
         if(numResults() > 0) {
@@ -72,15 +94,13 @@ class AllResults  {
         e += "<p> <h3>scale</h3>\n"
         e += "<img src='data:image/png;base64,\(imageString)' width='\(scaleImage!.size.width)' height='\(scaleImage!.size.height)'><p>\n"
         
-        e += "\n"
+        e += "\n[" + String(describing: jst)
         for i in 0...numResults()-1 {
             let r = get(i)
-            if i > 0 {
-                e += ", "
-            }
+            e += ", <p>"
             e +=  "[\"" + r.name! + "\":" + sortedJson(dict: r.toJson()) + "]\n"
         }
-        e += "\n"
+        e += "\n<p>]\n"
         
         return e
     }
