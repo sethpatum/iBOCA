@@ -825,6 +825,7 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
             result.startTime = StartTimer
             result.endTime = Foundation.Date()
             result.shortDescription = "(\(recognizeResult) and \(recallResult))"
+            result.json = ["None":""]
             resultsArray.add(result)
         }
         

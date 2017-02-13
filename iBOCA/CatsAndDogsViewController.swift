@@ -473,6 +473,7 @@ class CatsAndDogsViewController: ViewController {
             print(resulttxt)
             self.resultLabel.text = resulttxt
             
+            result.json = ["None":""]
             resultsArray.add(result)
             
             Status[TestCatsAndDogs] = TestStatus.Done

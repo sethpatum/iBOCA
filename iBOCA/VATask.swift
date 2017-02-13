@@ -668,6 +668,7 @@ class VATask: UIViewController {
         }
         
         resultLabel.text = recallResult + recognizeResult
+        result.json = ["None":""]
         resultsArray.add(result)
     }
     
