@@ -72,16 +72,53 @@ class AllResults  {
         e += "<p> <h3>scale</h3>\n"
         e += "<img src='data:image/png;base64,\(imageString)' width='\(scaleImage!.size.width)' height='\(scaleImage!.size.height)'><p>\n"
         
-        
-        var js : [String:Any] = [:]
+        e += "\n"
         for i in 0...numResults()-1 {
             let r = get(i)
-            let tmpjs : [String:Any] = [r.name!:r.toJson()]
-             js[String(i)] = tmpjs
+            if i > 0 {
+                e += ", "
+            }
+            e +=  "[\"" + r.name! + "\":" + sortedJson(dict: r.toJson()) + "]\n"
         }
-        e += "\n" + String(describing: js)
+        e += "\n"
         
         return e
+    }
+    
+    // If a set of keys are Integers, sort them 
+    func sortedJson(dict : [String:Any]) -> String {
+        var ret = "["
+        var sorted = Array(dict).sorted(by: {$0.0 < $1.0})
+        let isint: Int? = Int(dict.keys.first!)
+        if isint != nil {
+            sorted = Array(dict).sorted(by: {Int($0.0)! < Int($1.0)!})
+        }
+        
+        var start = true
+        for (k,v) in sorted {
+            if start {
+                start = false
+            } else {
+                ret += ", "
+            }
+            
+            var kk : String = String(k)
+            if isint == nil {
+                kk = "\"" + String(k) + "\""
+            }
+            
+            if v is [String:Any] {
+                let vstr : String = kk + ":" + sortedJson(dict: v as! [String : Any])
+                ret.append(vstr)
+            } else if Int(String(describing: v)) == nil {
+                ret.append(kk + ":\"" + String(describing: v) + "\"")
+            }  else {
+                ret.append(kk + ":" + String(describing: v))
+            }
+        }
+        
+        ret += "]"
+        return ret
     }
     
     func returnEmailStringBase64EncodedImage(_ image:UIImage) -> String {

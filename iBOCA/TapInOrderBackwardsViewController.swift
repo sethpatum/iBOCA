@@ -340,7 +340,7 @@ class TapInOrderBackwardsViewController: UIViewController {
         
         disableButtons()
         
-        resultList["\(numplaces)-\(numRepeats)"] = resultTmpList
+        resultList[String(numplaces*100 + numRepeats)] = resultTmpList
         resultTmpList.removeAll()
         
         

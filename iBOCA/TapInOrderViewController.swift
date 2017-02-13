@@ -384,7 +384,7 @@ class TapInOrderViewController: ViewController {
         
         disableButtons()
         
-        resultList["\(numplaces)-\(numRepeats)"] = resultTmpList
+        resultList[String(numplaces*100+numRepeats)] = resultTmpList
         resultTmpList.removeAll()
         
         print("selection done")
