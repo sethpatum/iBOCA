@@ -20,6 +20,7 @@ class BackwardDigitSpan: UIViewController {
     }
     
     var test = 0
+    var errors = 0
     
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var currentInput: UILabel!
@@ -293,7 +294,6 @@ class BackwardDigitSpan: UIViewController {
     @IBAction func testDone(_ sender: AnyObject) {
         timer.invalidate()
         counter = 0
-        var errors = 0
         countingLabel.text = String(counter)
         let orderNums = String(describing: numResponse)
         let originalNums = String(describing: numOrder)
