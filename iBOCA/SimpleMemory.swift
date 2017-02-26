@@ -583,14 +583,7 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
     func findTime()->Double{
         
         let currTime = NSDate.timeIntervalSinceReferenceDate
-        /*
-        var diff: TimeInterval = currTime - startTimeSM
-        let minutes = UInt8(diff / 60.0)
-        diff -= (TimeInterval(minutes)*60.0)
-        let seconds = Double(Int(diff*1000))/1000.0
-        return seconds
-        */
-        let time = Double(Int((currTime - startTimeSM)*1000))/1000.0
+        let time = Double(Int((currTime - startTimeSM)*10))/10.0
         return time
         
     }

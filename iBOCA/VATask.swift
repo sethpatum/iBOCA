@@ -573,7 +573,7 @@ class VATask: UIViewController, UIPickerViewDelegate {
     func findTime()->Double{
         
         let currTime = NSDate.timeIntervalSinceReferenceDate
-        let time = Double(Int((currTime - startTimeVA)*1000))/1000.0
+        let time = Double(Int((currTime - startTimeVA)*10))/10.0
         return time
         
     }
