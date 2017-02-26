@@ -66,7 +66,11 @@ class AllResults  {
             for i in 0...numResults()-1 {
                 let r = get(i)
                 e += "<h2>\(i+1)) \(r.name!)</h2><p>\n"
-                
+        
+                if(r.primaryDescription != nil){
+                    e += "<h4>\(r.primaryDescription)</h4><p>\n"
+                }
+    
                 if(r.shortDescription != nil){
                     e += "\(r.shortDescription)<p>\n"
                 }
