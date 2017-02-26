@@ -311,7 +311,7 @@ class BackwardDigitSpan: UIViewController {
         Randomize.isHidden = false
         responses = 0
         testDone.isHidden = true
-        resultList[String(test)] = ["Number":numNum, "Digits":resultTmpList]
+        resultList[String(test)] = ["Number":numNum, "Digits":resultTmpList, "Errors":errors]
         if (test >= 5){
             button0.isHidden = true
             button1.isHidden = true
