@@ -286,7 +286,6 @@ class DrawingViewTrails: UIView {
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         //println("Touch moved")
         let touch = touches.first! as UITouch
-        
         if canDraw == true {
             currPath.addLine(to: touch.location(in: self))
             
@@ -319,7 +318,7 @@ class DrawingViewTrails: UIView {
                         p = UIBezierPath(cgPath: currPath.cgPath)
                         
                         errorPath.append(p)
-                        
+                        currPath.removeAllPoints()
                     }
                     
                     currPath.removeAllPoints()
