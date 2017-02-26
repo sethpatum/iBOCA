@@ -23,7 +23,7 @@ var imageSetVA = Int()
 var startTimeVA = TimeInterval()
 var timerVA = Timer()
 
-class VATask: UIViewController {
+class VATask: UIViewController, UIPickerViewDelegate {
     
     var recallErrors = [Int]()
     var recallTimes = [Double]()
@@ -36,15 +36,22 @@ class VATask: UIViewController {
     @IBOutlet weak var back: UIButton!
     @IBOutlet weak var start: UIButton!
     
-    @IBOutlet weak var next1: UIButton!
     
     @IBOutlet weak var resultLabel: UILabel!
     
     @IBOutlet weak var delayLabel: UILabel!
     
+    var delayTime = Double()
+    
     @IBOutlet weak var correct: UIButton!
     @IBOutlet weak var incorrect: UIButton!
     @IBOutlet weak var dk: UIButton!
+    
+    
+    @IBOutlet weak var testPicker: UIPickerView!
+    var TestTypes : [String] = ["1", "2", "3"]
+    
+    @IBOutlet weak var testPickerLabel: UILabel!
     
     
     var mixed0 = ["Backpack-Soccer", "Chair-Dog", "Dogbowl-Rope", "Mixer-Tennis", "Pot-Shoe"]
@@ -70,7 +77,8 @@ class VATask: UIViewController {
     var imageName = ""
     var image = UIImage()
     var imageView = UIImageView()
-    var gesture = UIPanGestureRecognizer()
+    var gestureHalf = UIPanGestureRecognizer()
+    var gestureDisplay = UIPanGestureRecognizer()
     
     var imageName1 = ""
     var image1 = UIImage()
@@ -95,30 +103,43 @@ class VATask: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         //navigationItem.title = "back"
         
-        gesture = UIPanGestureRecognizer(target: self, action: #selector(wasDragged))
+        testPicker.delegate = self
+        testPicker.transform = CGAffineTransform(scaleX: 0.8, y: 1.0)
+        
+        gestureHalf = UIPanGestureRecognizer(target: self, action: #selector(wasDraggedHalf))
+        
+        gestureDisplay = UIPanGestureRecognizer(target: self, action: #selector(wasDraggedDisplay))
         
         if(afterBreakVA == true){
             timerVA = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updateInDelay), userInfo: nil, repeats: true)
             delayLabel.text = "Recommended delay: 5 minutes"
+            
+            testPicker.isHidden = true
+            testPickerLabel.isHidden = true
+            
+            start.removeTarget(self, action: #selector(startNewTask), for:.touchUpInside)
+            start.removeTarget(self, action: #selector(startDisplayAlert), for:.touchUpInside)
+            start.addTarget(self, action: #selector(startAlert), for:.touchUpInside)
+        }
+            
+        else{
+            testPicker.reloadAllComponents()
+            testPicker.selectRow(0, inComponent: 0, animated: true)
+            testPicker.isHidden = false
+            testPickerLabel.isHidden = false
+            
+            imageSetVA = 0
+            mixedImages = mixed0
+            halfImages = half0
+            recognizeIncorrectVA = incorrect0
+            
+            start.removeTarget(self, action: #selector(startNewTask), for:.touchUpInside)
+            start.removeTarget(self, action: #selector(startAlert), for:.touchUpInside)
+            start.addTarget(self, action: #selector(startDisplayAlert), for:.touchUpInside)
+            
         }
         
         print(afterBreakVA)
-        
-        let arrowpic = UIImage(named: "arrow") as UIImage?
-        
-        arrowButton1 = UIButton(type: UIButtonType.custom) as UIButton
-        arrowButton1.frame = CGRect(x: 211, y: 670, width: 90, height: 90)
-        arrowButton1.setImage(arrowpic, for: .normal)
-        arrowButton1.addTarget(self, action: #selector(recognize1), for:.touchUpInside)
-        arrowButton1.isHidden = true
-        self.view.addSubview(arrowButton1)
-        
-        arrowButton2 = UIButton(type: UIButtonType.custom) as UIButton
-        arrowButton2.frame = CGRect(x: 723, y: 670, width: 90, height: 90)
-        arrowButton2.setImage(arrowpic, for: .normal)
-        arrowButton2.addTarget(self, action: #selector(recognize2), for:.touchUpInside)
-        arrowButton2.isHidden = true
-        self.view.addSubview(arrowButton2)
         
         back.isEnabled = true
         start.isEnabled = true
@@ -126,19 +147,31 @@ class VATask: UIViewController {
         correct.isHidden = true
         incorrect.isHidden = true
         dk.isHidden = true
-        next1.isHidden = true
         
     }
     
-    @IBAction func startButton(_ sender: Any) {
-        start.isEnabled = false
+    func startAlert() {
         back.isEnabled = false
         
-        let startAlert = UIAlertController(title: "Start", message: "Choose start option", preferredStyle: .alert)
+        let startAlert = UIAlertController(title: "Start", message: "Choose start option.", preferredStyle: .alert)
         
         startAlert.addAction(UIAlertAction(title: "Start New Task", style: .default, handler: { (action) -> Void in
             print("start new")
-            Status[TestVisualAssociation] = TestStatus.Running
+//            Status[TestVisualAssociation] = TestStatus.Running
+            
+            imageSetVA = 0
+            mixedImages = self.mixed0
+            halfImages = self.half0
+            recognizeIncorrectVA = self.incorrect0
+            
+            self.testPicker.reloadAllComponents()
+            
+            self.testPicker.selectRow(0, inComponent: 0, animated: true)
+            
+            self.testPicker.isHidden = false
+            
+            self.testPickerLabel.isHidden = false
+            
             self.startNewTask()
             //action
         }))
@@ -146,6 +179,13 @@ class VATask: UIViewController {
         if(afterBreakVA == true){
             startAlert.addAction(UIAlertAction(title: "Resume Task", style: .default, handler: { (action) -> Void in
                 print("resume old")
+                
+                self.testPicker.isHidden = true
+                
+                self.testPickerLabel.isHidden = true
+                
+                self.start.isHidden = true
+                
                 self.resumeTask()
                 //action
             }))
@@ -163,9 +203,8 @@ class VATask: UIViewController {
     
     func startNewTask(){
         
-        mixedImages = [String]()
-        halfImages = [String]()
-        recognizeIncorrectVA = [String]()
+        timerVA.invalidate()
+        
         recallErrors = [Int]()
         recallTimes = [Double]()
         recognizeErrors = [Int]()
@@ -177,46 +216,197 @@ class VATask: UIViewController {
         delayLabel.text = ""
         afterBreakVA = false
         
-        chooseImageSet()
         
         firstDisplay = true
         timerLabel.text = ""
         delayLabel.text = ""
         
-        let newStartAlert = UIAlertController(title: "Display", message: "Name and try to remember these images", preferredStyle: .alert)
+        testPicker.reloadAllComponents()
+        testPicker.selectRow(0, inComponent: 0, animated: true)
+        testPicker.isHidden = false
+        testPickerLabel.isHidden = false
+        
+        imageSetVA = 0
+        mixedImages = mixed0
+        halfImages = half0
+        recognizeIncorrectVA = incorrect0
+        
+        start.isHidden = false
+        start.isEnabled = true
+        
+        start.removeTarget(self, action: #selector(startNewTask), for:.touchUpInside)
+        start.removeTarget(self, action: #selector(startAlert), for:.touchUpInside)
+        start.addTarget(self, action: #selector(startDisplayAlert), for:.touchUpInside)
+        
+    }
+    
+    func startDisplayAlert() {
+        
+        Status[TestVisualAssociation] = TestStatus.Running
+        
+        start.isHidden = true
+        testPicker.isHidden = true
+        
+        testPickerLabel.isHidden = true
+        
+        back.isEnabled = false
+        
+        firstDisplay = true
+        
+        let newStartAlert = UIAlertController(title: "Display", message: "Ask patient to name and remember the two items in the photograph.", preferredStyle: .alert)
         newStartAlert.addAction(UIAlertAction(title: "Start", style: .default, handler: { (action) -> Void in
             print("start")
-            self.displayRecursively(0)
+            self.display()
             //action
         }))
         self.present(newStartAlert, animated: true, completion: nil)
+        
     }
     
-    func displayRecursively(_ num : Int){
-        
-        if(num < mixedImages.count){
-            self.outputImage(mixedImages[num])
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0){
-                self.displayRecursively(num+1)
-            }
+    func numberOfComponentsInPickerView(_ pickerView : UIPickerView!) -> Int{
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
+        if pickerView == testPicker {
+            
+            return TestTypes.count
         }
-        else{
-            if(firstDisplay == false){
-                beginDelay()
+        else {
+            return 1
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if pickerView == testPicker {
+            
+            return TestTypes[row]
+        }
+        else {
+            return ""
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
+        print("2:", pickerView)
+        if pickerView == testPicker {
+            
+            if row == 0 {
+                imageSetVA = 0
+                mixedImages = mixed0
+                halfImages = half0
+                recognizeIncorrectVA = incorrect0
             }
+            if row == 1 {
+                imageSetVA = 1
+                mixedImages = mixed1
+                halfImages = half1
+                recognizeIncorrectVA = incorrect1
+            }
+            if row == 2 {
+                imageSetVA = 2
+                mixedImages = mixed2
+                halfImages = half2
+                recognizeIncorrectVA = incorrect2
+            }
+            
+            start.isEnabled = true
+            
+        }
+        
+    }
+
+    
+    func display(){
+        
+        testCount = 0
+        
+        outputDisplayImage(mixedImages[testCount])
+        
+        
+    }
+    
+    func outputDisplayImage(_ name: String) {
+        
+        imageView.removeFromSuperview()
+        
+        imageName = name
+        
+        image = UIImage(named: imageName)!
+        
+        var x = CGFloat()
+        var y = CGFloat()
+        if 0.56*image.size.width < image.size.height {
+            y = 575.0
+            x = (575.0*(image.size.width)/(image.size.height))
+        }
+        else {
+            x = 575.0
+            y = (575.0*(image.size.height)/(image.size.width))
+        }
+        
+        imageView = UIImageView(frame:CGRect(x: (512.0-(x/2)), y: (471.0-(y/2)), width: x, height: y))
+        
+        imageView.image = image
+        
+        imageView.isUserInteractionEnabled = true
+        imageView.removeGestureRecognizer(gestureHalf)
+        imageView.addGestureRecognizer(gestureDisplay)
+        
+        self.view.addSubview(imageView)
+        
+    }
+    
+    func wasDraggedDisplay(_ gesture: UIPanGestureRecognizer) {
+        
+        let translation = gesture.translation(in: self.view)
+        
+        let img = gesture.view!
+        img.center = CGPoint(x: self.view.bounds.width / 2 + translation.x, y: 471.0)
+        
+        if gesture.state == UIGestureRecognizerState.ended {
+            if img.center.x < 200 {
+                
+                testCount += 1
+                if(testCount == mixedImages.count){
+                    
+                    imageView.removeFromSuperview()
+                    
+                    if(firstDisplay == false){
+                        imageView.removeGestureRecognizer(gestureDisplay)
+                        beginDelay()
+                    }
+                    else{
+                        
+                        firstDisplay = false
+                        
+                        let nextAlert = UIAlertController(title: "Display", message: "Ask patient to name and remember the two items in the photograph again.", preferredStyle: .alert)
+                        nextAlert.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (action) -> Void in
+                            print("continuing")
+                            self.display()
+                            //action
+                        }))
+                        present(nextAlert, animated: true, completion: nil)
+                    }
+                    
+                }
+                    
+                else{
+                    
+                    print("next pic!")
+                    img.center = CGPoint(x: 512.0, y: 471.0)
+                    
+                    outputDisplayImage(mixedImages[testCount])
+                    
+                }
+                
+            }
+                
             else{
                 
-                imageView.removeFromSuperview()
+                print("back to center!")
+                img.center = CGPoint(x: 512.0, y: 471.0)
                 
-                firstDisplay = false
-                
-                let nextAlert = UIAlertController(title: "Display", message: "Name and try to remember these images again", preferredStyle: .alert)
-                nextAlert.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (action) -> Void in
-                    print("continuing")
-                    self.displayRecursively(0)
-                    //action
-                }))
-                present(nextAlert, animated: true, completion: nil)
             }
             
         }
@@ -233,10 +423,15 @@ class VATask: UIViewController {
         
         back.isEnabled = true
         start.isEnabled = true
+        start.isHidden = false
+        
+        start.removeTarget(self, action: #selector(startNewTask), for:.touchUpInside)
+        start.removeTarget(self, action: #selector(startDisplayAlert), for:.touchUpInside)
+        start.addTarget(self, action: #selector(startAlert), for:.touchUpInside)
         
         timerVA = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updateInDelay), userInfo: nil, repeats: true)
         
-        startTimeVA = Foundation.Date.timeIntervalSinceReferenceDate
+        startTimeVA = NSDate.timeIntervalSinceReferenceDate
         
     }
     
@@ -295,84 +490,15 @@ class VATask: UIViewController {
         
     }
     
-    func outputRecognizeImages(_ name1: String, name2: String){
-        
-        imageView1.removeFromSuperview()
-        imageView2.removeFromSuperview()
-        
-        imageName1 = name1
-        imageName2 = name2
-        
-        image1 = UIImage(named: name1)!
-        image2 = UIImage(named: name2)!
-        
-        var x1 = CGFloat()
-        var x2 = CGFloat()
-        
-        var y1 = CGFloat()
-        var y2 = CGFloat()
-        
-        if 0.56*image1.size.width < image1.size.height {
-            y1 = 350.0
-            x1 = (350.0*(image1.size.width)/(image1.size.height))
-        }
-        else {
-            x1 = 350.0
-            y1 = (350.0*(image1.size.height)/(image1.size.width))
-        }
-        
-        if 0.56*image2.size.width < image2.size.height {
-            y2 = 350.0
-            x2 = (350.0*(image2.size.width)/(image2.size.height))
-        }
-        else {
-            x2 = 350.0
-            y2 = (350.0*(image2.size.height)/(image2.size.width))
-        }
-        
-        imageView1 = UIImageView(frame: CGRect(x: (256.0-(x1/2)), y: (471.0-(y1/2)), width: x1, height: y1))
-        imageView2 = UIImageView(frame: CGRect(x: (768.0-(x2/2)), y: (471.0-(y2/2)), width: x2, height: y2))
-        
-        imageView1.image = image1
-        imageView2.image = image2
-        
-        self.view.addSubview(imageView1)
-        
-        self.view.addSubview(imageView2)
-        
-    }
-    
-    func chooseImageSet(){
-        
-        imageSetVA = Int(arc4random_uniform(3))
-        
-        if (imageSetVA == 0) {
-            mixedImages = mixed0
-            halfImages = half0
-            recognizeIncorrectVA = incorrect0
-        }
-        
-        if (imageSetVA == 1) {
-            mixedImages = mixed1
-            halfImages = half1
-            recognizeIncorrectVA = incorrect1
-        }
-        
-        if (imageSetVA == 2) {
-            mixedImages = mixed2
-            halfImages = half2
-            recognizeIncorrectVA = incorrect2
-        }
-        
-    }
-    
-    
     func resumeTask(){
+        
+        delayTime = findTime()
+        
         timerVA.invalidate()
         timerLabel.text = ""
         delayLabel.text = ""
         
-        let recallAlert = UIAlertController(title: "Recall", message: "Which item is missing from the picture?", preferredStyle: .alert)
+        let recallAlert = UIAlertController(title: "Recall", message: "Ask patient to name which item is missing from the picture and record their answer.", preferredStyle: .alert)
         recallAlert.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (action) -> Void in
             print("recalling...")
             self.recall()
@@ -393,16 +519,11 @@ class VATask: UIViewController {
         incorrect.isEnabled = true
         dk.isEnabled = true
         
-        
-        
-        
         testCount = 0
         
         outputImage(halfImages[testCount])
         
-        //timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "updateInRecall:", userInfo: nil, repeats: true)
-        
-//        startTimeVA = NSDate.timeIntervalSinceReferenceDate
+        startTimeVA = NSDate.timeIntervalSinceReferenceDate
         
     }
     
@@ -415,7 +536,7 @@ class VATask: UIViewController {
         recallErrors.append(0)
         recallTimes.append(findTime())
         
-        imageView.addGestureRecognizer(gesture)
+        imageView.addGestureRecognizer(gestureHalf)
         imageView.isUserInteractionEnabled = true
         
     }
@@ -429,7 +550,7 @@ class VATask: UIViewController {
         recallErrors.append(1)
         recallTimes.append(findTime())
         
-        imageView.addGestureRecognizer(gesture)
+        imageView.addGestureRecognizer(gestureHalf)
         imageView.isUserInteractionEnabled = true
         
     }
@@ -444,23 +565,20 @@ class VATask: UIViewController {
         recallErrors.append(2)
         recallTimes.append(findTime())
         
-        imageView.addGestureRecognizer(gesture)
+        imageView.addGestureRecognizer(gestureHalf)
         imageView.isUserInteractionEnabled = true
         
     }
     
     func findTime()->Double{
         
-        let currTime = Foundation.Date.timeIntervalSinceReferenceDate
-        var diff: TimeInterval = currTime - startTimeVA
-        let minutes = UInt8(diff / 60.0)
-        diff -= (TimeInterval(minutes)*60.0)
-        let seconds = Double(Int(diff*1000))/1000.0
-        return seconds
+        let currTime = NSDate.timeIntervalSinceReferenceDate
+        let time = Double(Int((currTime - startTimeVA)*1000))/1000.0
+        return time
         
     }
     
-    func wasDragged(_ gesture: UIPanGestureRecognizer) {
+    func wasDraggedHalf(_ gesture: UIPanGestureRecognizer) {
         
         let translation = gesture.translation(in: self.view)
         
@@ -478,7 +596,7 @@ class VATask: UIViewController {
                     incorrect.isHidden = true
                     dk.isHidden = true
                     
-                    let recognizeAlert = UIAlertController(title: "Recognize", message: "Which picture have you previously seen?", preferredStyle: .alert)
+                    let recognizeAlert = UIAlertController(title: "Recognize", message: "Ask patient to choose the photograph they have seen before.", preferredStyle: .alert)
                     recognizeAlert.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (action) -> Void in
                         print("recognizing...")
                         self.recognize()
@@ -537,10 +655,54 @@ class VATask: UIViewController {
         arrowButton2.isHidden = false
         arrowButton2.isEnabled = true
         
-        next1.isHidden = false
-        next1.isEnabled = false
+        startTimeVA = NSDate.timeIntervalSinceReferenceDate
         
-        startTimeVA = Foundation.Date.timeIntervalSinceReferenceDate
+    }
+    
+    func outputRecognizeImages(_ name1: String, name2: String){
+        
+        arrowButton1.removeFromSuperview()
+        arrowButton2.removeFromSuperview()
+        
+        imageName1 = name1
+        imageName2 = name2
+        
+        image1 = UIImage(named: name1)!
+        image2 = UIImage(named: name2)!
+        
+        var x1 = CGFloat()
+        var x2 = CGFloat()
+        
+        var y1 = CGFloat()
+        var y2 = CGFloat()
+        
+        if 0.56*image1.size.width < image1.size.height {
+            y1 = 350.0
+            x1 = (350.0*(image1.size.width)/(image1.size.height))
+        }
+        else {
+            x1 = 350.0
+            y1 = (350.0*(image1.size.height)/(image1.size.width))
+        }
+        
+        if 0.56*image2.size.width < image2.size.height {
+            y2 = 350.0
+            x2 = (350.0*(image2.size.width)/(image2.size.height))
+        }
+        else {
+            x2 = 350.0
+            y2 = (350.0*(image2.size.height)/(image2.size.width))
+        }
+        
+        arrowButton1.frame = CGRect(x: (256.0-(x1/2)), y: (471.0-(y1/2)), width: x1, height: y1)
+        arrowButton1.setImage(image1, for: .normal)
+        arrowButton1.addTarget(self, action: #selector(recognize1), for:.touchUpInside)
+        self.view.addSubview(arrowButton1)
+        
+        arrowButton2.frame = CGRect(x: (768.0-(x2/2)), y: (471.0-(y2/2)), width: x2, height: y2)
+        arrowButton2.setImage(image2, for: .normal)
+        arrowButton2.addTarget(self, action: #selector(recognize2), for:.touchUpInside)
+        self.view.addSubview(arrowButton2)
         
     }
     
@@ -558,7 +720,6 @@ class VATask: UIViewController {
         
         arrowButton1.isEnabled = false
         arrowButton2.isEnabled = false
-        next1.isEnabled = true
         
         if(orderRecognize[testCount] == 0){
             recognizeErrors.append(0)
@@ -568,6 +729,8 @@ class VATask: UIViewController {
             recognizeErrors.append(1)
             recognizeTimes.append(findTime())
         }
+        
+        recognizeNext()
         
     }
     
@@ -575,7 +738,6 @@ class VATask: UIViewController {
         
         arrowButton1.isEnabled = false
         arrowButton2.isEnabled = false
-        next1.isEnabled = true
         
         if(orderRecognize[testCount] == 0){
             recognizeErrors.append(1)
@@ -586,10 +748,12 @@ class VATask: UIViewController {
             recognizeTimes.append(findTime())
         }
         
+        recognizeNext()
+        
     }
     
     
-    @IBAction func recognizeNext(_ sender: Any) {
+    func recognizeNext() {
         
         testCount += 1
         
@@ -597,10 +761,6 @@ class VATask: UIViewController {
             
             arrowButton1.isHidden = true
             arrowButton2.isHidden = true
-            next1.isHidden = true
-            
-            imageView1.removeFromSuperview()
-            imageView2.removeFromSuperview()
             
             done()
             
@@ -608,7 +768,6 @@ class VATask: UIViewController {
             
         else{
             
-            next1.isEnabled = false
             arrowButton1.isEnabled = true
             arrowButton2.isEnabled = true
             
@@ -639,6 +798,12 @@ class VATask: UIViewController {
         
         var recallResult = ""
         var recognizeResult = ""
+        var delayResult = ""
+        var imageSetResult = ""
+        
+        imageSetResult = "Image set = \(imageSetVA+1)\n"
+        
+        delayResult = "Delay length of \(delayTime) seconds\n"
         
         for k in 0 ..< mixedImages.count {
             
@@ -662,14 +827,21 @@ class VATask: UIViewController {
             }
             if(recognizeErrors[k] == 1){
                 result.longDescription.add("Recognized \(mixedImages[k]) incorrectly in \(recognizeTimes[k]) seconds ")
-                recognizeResult += "Recognized \(mixedImages[k]) incorrectly in \(recognizeTimes[k]) seconds"
+                recognizeResult += "Recognized \(mixedImages[k]) incorrectly in \(recognizeTimes[k]) seconds\n"
             }
             
         }
         
-        resultLabel.text = recallResult + recognizeResult
+        resultLabel.text = imageSetResult + delayResult + recallResult + recognizeResult
         result.json = ["None":""]
         resultsArray.add(result)
+        
+        start.isHidden = false
+        start.isEnabled = true
+        start.removeTarget(self, action: #selector(startNewTask), for:.touchUpInside)
+        start.removeTarget(self, action: #selector(startDisplayAlert), for:.touchUpInside)
+        start.addTarget(self, action: #selector(startAlert), for:.touchUpInside)
+        
     }
     
     func delay(_ delay:Double, closure:()->()) {

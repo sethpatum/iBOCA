@@ -137,6 +137,8 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
             testPickerLabel.isHidden = false
             incorrectPickerLabel.isHidden = false
             
+            imageSetSM = 0
+            incorrectImageSetSM = 0
             recognizeIncorrectSM = images0
             imagesSM = images0
             
@@ -155,15 +157,17 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
         back.isEnabled = false
         next1.isHidden = true
         
-        let startAlert = UIAlertController(title: "Start", message: "Choose start option", preferredStyle: .alert)
+        let startAlert = UIAlertController(title: "Start", message: "Choose start option.", preferredStyle: .alert)
         
         startAlert.addAction(UIAlertAction(title: "Start New Task", style: .default, handler: { (action) -> Void in
             print("start new")
-            Status[TestSimpleMemory] = TestStatus.Running
+//            Status[TestSimpleMemory] = TestStatus.Running
 //            self.startNewTask()
             
             recognizeIncorrectSM = self.images0
             imagesSM = self.images0
+            imageSetSM = 0
+            incorrectImageSetSM = 0
             
             self.testPicker.reloadAllComponents()
             self.incorrectPicker.reloadAllComponents()
@@ -238,6 +242,8 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
     
     func startDisplayAlert(){
         
+        Status[TestSimpleMemory] = TestStatus.Running
+        
         start.isHidden = true
         testPicker.isHidden = true
         incorrectPicker.isHidden = true
@@ -247,7 +253,7 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
         
         back.isEnabled = false
         
-        let newStartAlert = UIAlertController(title: "Display", message: "Name and try to remember these images", preferredStyle: .alert)
+        let newStartAlert = UIAlertController(title: "Display", message: "Ask patient to name and remember these images.", preferredStyle: .alert)
         newStartAlert.addAction(UIAlertAction(title: "Start", style: .default, handler: { (action) -> Void in
             print("start")
             self.display()
@@ -293,27 +299,35 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
             
             if row == 0 {
                 imagesSM = images0
+                imageSetSM = 0
             }
             if row == 1 {
                 imagesSM = images1
+                imageSetSM = 1
             }
             if row == 2 {
                 imagesSM = images2
+                imageSetSM = 2
             }
             if row == 3 {
                 imagesSM = images3
+                imageSetSM = 3
             }
             if row == 4 {
                 imagesSM = images4
+                imageSetSM = 4
             }
             if row == 5 {
                 imagesSM = images5
+                imageSetSM = 5
             }
             if row == 6 {
                 imagesSM = images6
+                imageSetSM = 6
             }
             if row == 7 {
                 imagesSM = images7
+                imageSetSM = 7
             }
             
             if(TestTypes[testPicker.selectedRow(inComponent: 0)] == IncorrectTypes[incorrectPicker.selectedRow(inComponent: 0)]){
@@ -327,27 +341,35 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
         else if pickerView == incorrectPicker {
             if row == 0 {
                 recognizeIncorrectSM = images0
+                incorrectImageSetSM = 0
             }
             if row == 1 {
                 recognizeIncorrectSM = images1
+                incorrectImageSetSM = 1
             }
             if row == 2 {
                 recognizeIncorrectSM = images2
+                incorrectImageSetSM = 2
             }
             if row == 3 {
                 recognizeIncorrectSM = images3
+                incorrectImageSetSM = 3
             }
             if row == 4 {
                 recognizeIncorrectSM = images4
+                incorrectImageSetSM = 4
             }
             if row == 5 {
                 recognizeIncorrectSM = images5
+                incorrectImageSetSM = 5
             }
             if row == 6 {
                 recognizeIncorrectSM = images6
+                incorrectImageSetSM = 6
             }
             if row == 7 {
                 recognizeIncorrectSM = images7
+                incorrectImageSetSM = 7
             }
             
             if(TestTypes[testPicker.selectedRow(inComponent: 0)] == IncorrectTypes[incorrectPicker.selectedRow(inComponent: 0)]){
@@ -548,7 +570,7 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
 //        timerLabel.text = ""
         delayLabel.text = ""
         
-        let recallAlert = UIAlertController(title: "Recall", message: "Name the items that were displayed earlier", preferredStyle: .alert)
+        let recallAlert = UIAlertController(title: "Recall", message: "Ask patients to name the items that were displayed earlier. Record their answers.", preferredStyle: .alert)
         recallAlert.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (action) -> Void in
             print("recalling...")
             self.recall()
@@ -691,7 +713,7 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
         recallPlus.removeFromSuperview()
         recallLabel.removeFromSuperview()
         
-        let recognizeAlert = UIAlertController(title: "Recognize", message: "Choose the item you have seen before", preferredStyle: .alert)
+        let recognizeAlert = UIAlertController(title: "Recognize", message: "Asl patient to choose the item they have seen before.", preferredStyle: .alert)
         recognizeAlert.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (action) -> Void in
             print("recognizing...")
             self.recognize()
@@ -799,10 +821,12 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
         
         afterBreakSM = false
         
+        var imageSetResult = ""
         var delayResult = ""
         var recallResult = ""
         var recognizeResult = ""
         
+        imageSetResult = "Correct image set = \(imageSetSM), incorrect image set = \(incorrectImageSetSM)\n"
         delayResult = "Delay length of \(delayTime) seconds\n"
         
         for k in 0 ..< imagesSM.count {
@@ -831,7 +855,7 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
         
         recallResult += "\(recallIncorrect) item(s) incorrectly recalled at times \(recallIncorrectTimes)\n"
         
-        resultLabel.text = delayResult + recallResult + recognizeResult
+        resultLabel.text = imageSetResult + delayResult + recallResult + recognizeResult
         Status[TestSimpleMemory] = TestStatus.Done
         
         
