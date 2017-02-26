@@ -293,11 +293,15 @@ class BackwardDigitSpan: UIViewController {
     @IBAction func testDone(_ sender: AnyObject) {
         timer.invalidate()
         counter = 0
+        var errors = 0
         countingLabel.text = String(counter)
         let orderNums = String(describing: numResponse)
         let originalNums = String(describing: numOrder)
         self.resultLabel.text = originalNums
         self.resultLabel2.text = orderNums
+        if orderNums != originalNums{
+            errors += 1
+        }
         nums1 = ""
         CurrentNums.text = nums1
         ResultsList = (numOrder) + (numResponse)
