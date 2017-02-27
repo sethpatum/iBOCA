@@ -36,6 +36,9 @@ class BackwardDigitSpan: UIViewController {
     @IBOutlet weak var resultLabel: UILabel!
     
     @IBOutlet weak var resultLabel2: UILabel!
+    
+    @IBOutlet weak var errorLabel: UILabel!
+    
     @IBOutlet weak var Label0: UILabel!
     
     @IBOutlet weak var Label1: UILabel!
@@ -170,7 +173,6 @@ class BackwardDigitSpan: UIViewController {
             self.Label6.text = ""
             self.Label7.text = ""
         }
-        print(numOrder)
         Randomize.isHidden = true
         if(test < 5){
             button0.isHidden = false
@@ -203,7 +205,6 @@ class BackwardDigitSpan: UIViewController {
     
     
     func processButton() {
-        print(numResponse)
         nums1 += numResponse[responses]
         CurrentNums.text = nums1
         responses += 1
@@ -302,6 +303,7 @@ class BackwardDigitSpan: UIViewController {
         if orderNums != originalNums{
             errors += 1
         }
+        self.errorLabel.text = String(errors)
         nums1 = ""
         CurrentNums.text = nums1
         ResultsList = (numOrder) + (numResponse)
