@@ -31,6 +31,7 @@ class VATask: UIViewController, UIPickerViewDelegate {
     var recognizeErrors = [Int]()
     var recognizeTimes = [Double]()
     
+    var resultList : [String:Any] = [:]
     
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var back: UIButton!
@@ -785,7 +786,7 @@ class VATask: UIViewController, UIPickerViewDelegate {
     
     func done(){
         let result = Results()
-        result.name = "VA Task"
+        result.name = "Visual Association"
         result.startTime = StartTime
         result.endTime = Foundation.Date()
         
@@ -833,8 +834,39 @@ class VATask: UIViewController, UIPickerViewDelegate {
         }
         
         resultLabel.text = imageSetResult + delayResult + recallResult + recognizeResult
-        result.json = ["None":""]
+        
+        
+        resultList["ImageSet"] = imageSetVA
+        resultList["DelayTime"] = delayTime
+        
+        var tmpResultList : [String:Any] = [:]
+        for i in 0...recognizeErrors.count {
+            var res = "Correct"
+            if recognizeErrors[i] == 1 {
+                res = "Incorrect"
+            }
+            tmpResultList[mixedImages[i]] = ["Condition":res, "Time":recognizeTimes[i]]
+        }
+        resultList["Recognize"] = tmpResultList
+        
+        var tmpResultList2 : [String:Any] = [:]
+        for i in 0...recallErrors.count {
+            var res = "Correct"
+            if recallErrors[i] == 1 {
+                res = "Incorrect"
+            }
+            if recallErrors[i] == 2 {
+                res = "Couldn'tRecall"
+            }
+            tmpResultList2[mixedImages[i]] = ["Condition":res, "Time":recallTimes[i]]
+        }
+        resultList["Recall"] = tmpResultList2
+        
+        
+        result.json = resultList
         resultsArray.add(result)
+        
+        resultList = [:]
         
         start.isHidden = false
         start.isEnabled = true

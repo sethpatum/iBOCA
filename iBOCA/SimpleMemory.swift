@@ -39,6 +39,7 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
     @IBOutlet weak var testPickerLabel: UILabel!
     @IBOutlet weak var incorrectPickerLabel: UILabel!
     
+    var resultList : [String:Any] = [:]
     var recognizeErrors = [Int]()
     var recognizeTimes = [Double]()
     var recallTimes = [Double]()
@@ -837,6 +838,8 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
             if(recognizeErrors[k] == 1){
                 recognizeResult += "Recognized \(imagesSM[k]) incorrectly in \(recognizeTimes[k]) seconds\n"
             }
+            
+            /*
             let result = Results()
             result.name = "Simple Memory"
             result.startTime = StartTimer
@@ -844,13 +847,61 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
             result.shortDescription = "(\(recognizeResult) and \(recallResult))"
             result.json = ["None":""]
             resultsArray.add(result)
+ */
         }
         
         recallResult += "\(recallIncorrect) item(s) incorrectly recalled at times \(recallIncorrectTimes)\n"
         
         resultLabel.text = imageSetResult + delayResult + recallResult + recognizeResult
-        Status[TestSimpleMemory] = TestStatus.Done
         
+        let result = Results()
+        result.name = "Simple Memory"
+        result.startTime = StartTimer
+        result.endTime = Foundation.Date()
+        result.shortDescription = imageSetResult + delayResult + recallResult + recognizeResult
+        
+        resultList["CorrectImageSet"] = imageSetSM
+        resultList["IncorrectImageSet"] = incorrectImageSetSM
+        resultList["DelayTime"] = delayTime
+        
+        var tmpResultList : [String:Any] = [:]
+        
+        for i in 0...recognizeErrors.count {
+            var res = "Correct"
+            if recognizeErrors[i] == 1 {
+                res = "Incorrect"
+            }
+            tmpResultList[imagesSM[i]] = ["Condition":res, "Time":recognizeTimes[i]]
+        }
+        resultList["Recognize"] = tmpResultList
+        
+        if recallIncorrect > 0{
+            var tmpResultList0 : [String:Any] = [:]
+            for i in 0...recallIncorrect {
+                tmpResultList0["Time\(i)"] = recallIncorrectTimes[i]
+            }
+            
+            resultList["IncorrectRecognize"] = tmpResultList0
+        }
+        
+        
+        var tmpResultList1 : [String:Any] = [:]
+        
+        for i in 0...buttonTaps.count {
+            var res = "Correct"
+            if buttonTaps[i] == false {
+                res = "Incorrect"
+            }
+            tmpResultList1[imagesSM[i]] = ["Condition":res, "Time":recognizeTimes[i]]
+        }
+        resultList["Recall"] = tmpResultList1
+        
+        result.json = resultList
+        resultsArray.add(result)
+        
+        resultList = [:]
+        
+        Status[TestSimpleMemory] = TestStatus.Done
         
         start.isHidden = false
         start.isEnabled = true
