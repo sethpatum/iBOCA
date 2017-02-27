@@ -10,6 +10,7 @@ import UIKit
 
 class ForwardDigitSpan: UIViewController {
      var test = 0
+     var errors = 0
     
     @IBOutlet weak var countingLabel: UILabel!
     var timer = Timer()
@@ -102,7 +103,6 @@ class ForwardDigitSpan: UIViewController {
         var num5 = " "
         var num6 = " "
         var num7 = " "
-        print (test)
         if(test >= 0 && test < 5){
             num0 = String(arc4random_uniform(9))
             num1 = String(arc4random_uniform(9))
@@ -165,7 +165,6 @@ class ForwardDigitSpan: UIViewController {
             self.Label6.text = ""
             self.Label7.text = ""
         }
-        print(numOrder)
         Randomize.isHidden = true
         if(test < 4){
             button0.isHidden = false
@@ -198,7 +197,6 @@ class ForwardDigitSpan: UIViewController {
     var nums1 = ""
     
     func processButton() {
-        print(numResponse)
         nums1 += numResponse[responses]
         CurrentNums.text = nums1
         responses += 1
@@ -291,7 +289,6 @@ class ForwardDigitSpan: UIViewController {
     @IBAction func testDone(_ sender: AnyObject) {
         timer.invalidate()
         counter = 0
-        var errors = 0
         countingLabel.text = String(counter)
         let orderNums = String(describing: numResponse)
         let originalNums = String(describing: numOrder)
@@ -309,7 +306,7 @@ class ForwardDigitSpan: UIViewController {
         Randomize.isHidden = false
         responses = 0
         testDone.isHidden = true
-        resultList[String(test)] = ["Number":numNum, "Digits":resultTmpList]
+         resultList[String(test)] = ["Number":numNum, "Digits":resultTmpList, "Errors":errors, "Max Digit Span": test+4]
         if (test >= 5){
             button0.isHidden = true
             button1.isHidden = true

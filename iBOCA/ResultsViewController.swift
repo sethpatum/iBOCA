@@ -10,7 +10,6 @@ import UIKit
 
 class ResultsViewController: UIViewController {
     
-    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
