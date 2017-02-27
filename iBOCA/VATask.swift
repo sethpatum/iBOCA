@@ -840,7 +840,7 @@ class VATask: UIViewController, UIPickerViewDelegate {
         resultList["DelayTime"] = delayTime
         
         var tmpResultList : [String:Any] = [:]
-        for i in 0...recognizeErrors.count {
+        for i in 0...recognizeErrors.count-1 {
             var res = "Correct"
             if recognizeErrors[i] == 1 {
                 res = "Incorrect"
@@ -850,7 +850,7 @@ class VATask: UIViewController, UIPickerViewDelegate {
         resultList["Recognize"] = tmpResultList
         
         var tmpResultList2 : [String:Any] = [:]
-        for i in 0...recallErrors.count {
+        for i in 0...recallErrors.count-1 {
             var res = "Correct"
             if recallErrors[i] == 1 {
                 res = "Incorrect"
