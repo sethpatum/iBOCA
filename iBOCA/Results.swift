@@ -15,6 +15,7 @@ class Results: NSObject {
     var startTime:Foundation.Date?
     var endTime:Foundation.Date?
     var shortDescription:String?
+    var primaryDescription:String?
     var longDescription : NSMutableArray = NSMutableArray()
     var screenshot : [UIImage] = []
     var json : [String:Any] = [:]
