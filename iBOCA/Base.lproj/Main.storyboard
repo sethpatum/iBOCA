@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RmL-Z6-Ri2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RmL-Z6-Ri2">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -1749,6 +1749,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Errors:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2qR-R3-QGV">
+                                <rect key="frame" x="223" y="669" width="83" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F1V-93-gRv">
+                                <rect key="frame" x="345" y="675" width="408" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -1775,6 +1789,7 @@
                         <outlet property="button8" destination="Yxe-pH-890" id="obj-MM-z8S"/>
                         <outlet property="button9" destination="vI7-Io-koM" id="MAV-Cc-vfJ"/>
                         <outlet property="countingLabel" destination="VLD-TR-P1S" id="Upt-ZO-dQB"/>
+                        <outlet property="errorsLabel" destination="F1V-93-gRv" id="YSO-Qh-IR9"/>
                         <outlet property="instruct1" destination="jzW-AP-HNg" id="w88-iu-n9D"/>
                         <outlet property="instruct2" destination="fli-6f-82n" id="WQF-vS-WLT"/>
                         <outlet property="resetButton" destination="4W9-hi-sHb" id="bXf-xC-MuD"/>
@@ -2225,6 +2240,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Errors:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UO5-VP-KOg">
+                                <rect key="frame" x="192" y="654" width="83" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="siI-yy-5IZ">
+                                <rect key="frame" x="317" y="654" width="408" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -2251,6 +2280,7 @@
                         <outlet property="button9" destination="6Fj-od-XyT" id="suO-ZZ-DPu"/>
                         <outlet property="countingLabel" destination="8uu-bZ-PJz" id="Ayi-AB-5BW"/>
                         <outlet property="currentInput" destination="1IT-y6-WT6" id="7FZ-Ms-IaY"/>
+                        <outlet property="errorLabel" destination="siI-yy-5IZ" id="Tr7-Kt-TzW"/>
                         <outlet property="instruct1" destination="BGO-zh-Tlb" id="4ug-35-j9g"/>
                         <outlet property="instruct2" destination="tra-2c-Zzj" id="hG2-kE-5fX"/>
                         <outlet property="resetButton" destination="fuh-Xd-NJ3" id="im5-p4-zdt"/>

@@ -35,6 +35,7 @@ class ForwardDigitSpan: UIViewController {
     
     @IBOutlet weak var resultLabel2: UILabel!
     
+    @IBOutlet weak var errorsLabel: UILabel!
     @IBOutlet weak var Label0: UILabel!
     
     @IBOutlet weak var Label1: UILabel!
@@ -297,6 +298,7 @@ class ForwardDigitSpan: UIViewController {
         if orderNums != originalNums{
             errors += 1
         }
+        self.errorsLabel.text = String(errors)
         nums1 = ""
         CurrentNums.text = nums1
         Resultsp1 = (numOrder) + (numResponse)
