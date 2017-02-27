@@ -48,7 +48,7 @@ class ThreeDFigureCopy: UIViewController {
         resultImages.append(img)
 
         if curr < imagelist.count {
-            let imageView = UIImageView(frame:CGRect(x: 200, y: 80, width: 500, height: 300))
+            let imageView = UIImageView(frame:CGRect(x: 8, y: 250, width: 500, height: 300))
             let image = UIImage(named: imagelist[curr])
             imageView.image = image
             imageView.layer.borderWidth = 2
@@ -96,7 +96,7 @@ class ThreeDFigureCopy: UIViewController {
         }
        
 
-        let drawingFrame = CGRect(x: 200, y: 430, width: 500, height: 300)
+        let drawingFrame = CGRect(x: 516, y: 250, width: 500, height: 300)
         drawing = ThreeDFigureDraw(frame: drawingFrame)
         drawing.layer.borderWidth = 2
         self.view.addSubview(drawing)
