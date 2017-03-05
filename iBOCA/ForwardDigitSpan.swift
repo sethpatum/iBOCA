@@ -298,11 +298,13 @@ class ForwardDigitSpan: UIViewController {
         if orderNums != originalNums{
             errors += 1
         }
+        if orderNums == originalNums{
+            test += 1
+        }
         self.errorsLabel.text = String(errors)
         nums1 = ""
         CurrentNums.text = nums1
         Resultsp1 = (numOrder) + (numResponse)
-        test += 1
         numResponse = []
         numOrder = []
         Randomize.isHidden = false
