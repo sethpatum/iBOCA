@@ -133,7 +133,7 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         result.name = "Orientation"
         result.startTime = startTime
         result.endTime = Foundation.Date()
-        result.shortDescription = "Season: \(Season), State: \(State), Town: \(Town), Date: \(Date), Address: \(Address)"
+        result.shortDescription = "Season: \(Season!), State: \(State!), Town: \(Town!), Date: \(Date!), Address: \(Address!)"
         result.json["Day"] = Season!
         result.json["State"] = State!
         result.json["Town"] = Town!

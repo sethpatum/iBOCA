@@ -15,7 +15,7 @@ class ThreeDFigureCopy: UIViewController {
     @IBOutlet weak var IncorrectButton: UIButton!
     @IBOutlet weak var BackButton: UIButton!
     
-    var imagelist = ["Circle2", "rhombus", "rectprism", "SquareTriangle"]
+    var imagelist = ["Circle2", "rhombus", "SquareTriangle", "rectprism"]
     var curr = 0
     var resultImages : [UIImage] = []
     var resultCondition : [Bool] = []
@@ -76,6 +76,9 @@ class ThreeDFigureCopy: UIViewController {
             
             resultsArray.add(result)
             Status[Test3DFigureCopy] = TestStatus.Done
+            resultCondition.removeAll()
+            resultImages.removeAll()
+            resultTime.removeAll()
         }
     }
     
