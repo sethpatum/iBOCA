@@ -127,9 +127,12 @@ class AllResults  {
     func sortedJson(dict : [String:Any]) -> String {
         var ret = "["
         var sorted = Array(dict).sorted(by: {$0.0 < $1.0})
-        let isint: Int? = Int(dict.keys.first!)
-        if isint != nil {
-            sorted = Array(dict).sorted(by: {Int($0.0)! < Int($1.0)!})
+        var isint: Int? = nil
+        if dict.count > 0 {
+            isint = Int(dict.keys.first!)
+            if isint != nil {
+                sorted = Array(dict).sorted(by: {Int($0.0)! < Int($1.0)!})
+            }
         }
         
         var start = true

@@ -36,10 +36,6 @@ class PicturesViewController: ViewController {
     
     
     var imageView = UIImageView()
-    var imageView1 = UIImageView()
-    var imageView2 = UIImageView()
-    var imageView3 = UIImageView()
-    var imageView4 = UIImageView()
     
     
     var totalCount = Int()
@@ -50,19 +46,7 @@ class PicturesViewController: ViewController {
     var resultImage : [String] = []
     var resultStatus : [String] = []
     var resultTime : [Date] = []
-
     
-/*
-    @IBAction func HelpButton(sender: AnyObject) {
-        if(selectedTest == "Naming Pictures") {
-            let vc = storyboard!.instantiateViewController(withIdentifier: "Naming Pictures Help") as UIViewController
-            navigationController?.pushViewController(vc, animated:true)
-        } else {
-            let vc = storyboard!.instantiateViewController(withIdentifier: "Famous Faces Help") as UIViewController
-            navigationController?.pushViewController(vc, animated:true)
-        }
-    }
- */
     
     
     @IBAction func reset(_ sender: Any) {
@@ -82,24 +66,14 @@ class PicturesViewController: ViewController {
         resultTime.removeAll()
         resultImage.removeAll()
         
-        imageView4 = UIImageView(frame:CGRect(x: 107.0, y: 171.0, width: 800.0, height: 600.0))
-/*
-        if(selectedTest == "Famous Faces") {
-            imageView4 = UIImageView(frame:CGRect(x: 207.0, y: 171.0, width: 600.0, height: 600.0))
-        }
-*/
         let image4 = UIImage(named: imageName)
-        imageView4.image = image4
-        self.view.addSubview(imageView4)
+        fixDimensions(image: image4!)
+        imageView.image = image4
+        
         correctButton.isEnabled = true
         incorrectButton.isEnabled = true
         
-//        if selectedTest == "Naming Pictures" {
-            placeLabel.text = "\(count+1)/\(namingImages.count)"
-//        }
-//        else {
-//            placeLabel.text = "\(count+1)/\(namingImages2.count)"
-//        }
+        placeLabel.text = "\(count+1)/\(namingImages.count)"
         
     }
     
@@ -137,33 +111,18 @@ class PicturesViewController: ViewController {
             
             imageName = getImageName()
             
-            imageView1 = UIImageView(frame:CGRect(x: 107.0, y: 171.0, width: 800.0, height: 600.0))
-            
-/*
-            if(selectedTest == "Famous Faces") {
-                imageView1 = UIImageView(frame:CGRect(x: 207.0, y: 171.0, width: 600.0, height: 600.0))
-            }
-*/
-            
             let image1 = UIImage(named: imageName)
-            imageView1.image = image1
-            self.view.addSubview(imageView1)
+            
+            fixDimensions(image: image1!)
+            
+            imageView.image = image1
             
             order.append(true)
             
-//            if selectedTest == "Naming Pictures" {
-                if count != namingImages.count {
-                    placeLabel.text = "\(count+1)/\(namingImages.count)"
-                }
-//            }
-/*
-            else {
-                if count != namingImages2.count {
-                    placeLabel.text = "\(count+1)/\(namingImages2.count)"
-                }
+
+            if count != namingImages.count {
+                placeLabel.text = "\(count+1)/\(namingImages.count)"
             }
- */
-            
         }
         
     }
@@ -201,30 +160,16 @@ class PicturesViewController: ViewController {
             
         else{
             imageName = getImageName()
-            imageView2 = UIImageView(frame:CGRect(x: 107.0, y: 171.0, width: 800.0, height: 600.0))
-/*
-            if(selectedTest == "Famous Faces") {
-                imageView2 = UIImageView(frame:CGRect(x: 207.0, y: 171.0, width: 600.0, height: 600.0))
-            }
-*/
+            
             let image2 = UIImage(named: imageName)
-            imageView2.image = image2
-            self.view.addSubview(imageView2)
+            fixDimensions(image: image2!)
+            imageView.image = image2
             
             order.append(false)
             
-//            if selectedTest == "Naming Pictures" {
-                if count != namingImages.count-1 {
-                    placeLabel.text = "\(count+1)/\(namingImages.count)"
-                }
-//            }
-/*
-            else {
-                if count != namingImages2.count-1 {
-                    placeLabel.text = "\(count+1)/\(namingImages2.count)"
-                }
+            if count != namingImages.count-1 {
+                placeLabel.text = "\(count+1)/\(namingImages.count)"
             }
- */
             
         }
         
@@ -257,22 +202,11 @@ class PicturesViewController: ViewController {
         
         imageName = getImageName()
         
-        imageView3 = UIImageView(frame:CGRect(x: 107.0, y: 171.0, width: 800.0, height: 600.0))
-/*
-        if(selectedTest == "Famous Faces") {
-            imageView3 = UIImageView(frame:CGRect(x: 207.0, y: 171.0, width: 600.0, height: 600.0))
-        }
-*/
         let image3 = UIImage(named: imageName)
-        imageView3.image = image3
-        self.view.addSubview(imageView3)
+        fixDimensions(image: image3!)
+        imageView.image = image3
         
-//        if selectedTest == "Naming Pictures" {
-            placeLabel.text = "\(count+1)/\(namingImages.count)"
-//        }
-//        else {
-//            placeLabel.text = "\(count+1)/\(namingImages2.count)"
-//        }
+        placeLabel.text = "\(count+1)/\(namingImages.count)"
         
     }
     
@@ -287,10 +221,6 @@ class PicturesViewController: ViewController {
         homeButton.isEnabled = true
         
         imageView.removeFromSuperview()
-        imageView1.removeFromSuperview()
-        imageView2.removeFromSuperview()
-        imageView3.removeFromSuperview()
-        imageView4.removeFromSuperview()
         
         placeLabel.text = ""
         
@@ -314,13 +244,11 @@ class PicturesViewController: ViewController {
         resultsArray.add(result)
         Status[TestNampingPictures] = TestStatus.Done
         
-//        if resultsDisplayOn == true {
-            var str:String = "\(corr) correct out of \(count)"
-            if wrongList.count > 0 {
-                str += "\nThe incorrect pictures were the \(wrongList)"
-            }
-            self.resultsLabel.text = str
-//        }
+        var str:String = "\(corr) correct out of \(count)"
+        if wrongList.count > 0 {
+            str += "\nThe incorrect pictures were the \(wrongList)"
+        }
+        self.resultsLabel.text = str
         
     }
     
@@ -335,9 +263,12 @@ class PicturesViewController: ViewController {
         corr = 0
         imageName = getImageName()
         
-        imageView = UIImageView(frame:CGRect(x: 107.0, y: 171.0, width: 800.0, height: 600.0))
-        
         let image = UIImage(named: imageName)
+        
+        imageView = UIImageView()
+        
+        fixDimensions(image: image!)
+        
         imageView.image = image
         self.view.addSubview(imageView)
         
@@ -349,27 +280,28 @@ class PicturesViewController: ViewController {
         
     }
     
-/*
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.Landscape
-    }
- */
-//    let namingImages2:[String] = ["A. Schwarzenegger", "B. Clinton", "B. Murray", "B. Obama", "E. Presley", "G. Bush", "G. Clooney", "H. Clinton", "J. Leno", "J. Travolta", "M. Monroe", "M. Obama", "MLK", "O. Winfrey", "R. Williams", "R. Williams"]
-    
     func getImageName()->String{
         
-//        if(selectedTest == "Naming Pictures") {
-            print(count)
+        print(count)
             
-            return namingImages[count]
-//        } else {
-//            return namingImages2[count]
-//        }
+        return namingImages[count]
+        
+    }
+    
+    func fixDimensions(image:UIImage){
+        
+        var x = CGFloat()
+        var y = CGFloat()
+        if 0.56*image.size.width < image.size.height {
+            y = 575.0
+            x = (575.0*(image.size.width)/(image.size.height))
+        }
+        else {
+            x = 575.0
+            y = (575.0*(image.size.height)/(image.size.width))
+        }
+        
+        imageView.frame = CGRect(x: (512.0-(x/2)), y: (471.0-(y/2)), width: x, height: y)
         
     }
     
