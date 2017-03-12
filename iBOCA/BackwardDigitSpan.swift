@@ -108,7 +108,7 @@ class BackwardDigitSpan: UIViewController {
         var num5 = " "
         var num6 = " "
         var num7 = " "
-        if(test >= 0 && test < 5){
+        if(test >= 0 && test < 6){
              num0 = String(arc4random_uniform(9))
              num1 = String(arc4random_uniform(9))
             while num1 == num0{
@@ -118,20 +118,23 @@ class BackwardDigitSpan: UIViewController {
             while num2 == num1 {
                 num2 = String(arc4random_uniform(9))
             }
-             num3 = String(arc4random_uniform(9))
-            while num3 == num2 {
-                num3 = String(arc4random_uniform(9))
-            }
             self.Label0.text = num0
             self.Label1.text = num1
             self.Label2.text = num2
-            self.Label3.text = num3
-            numOrder.append(num3)
             numOrder.append(num2)
             numOrder.append(num1)
             numOrder.append(num0)
         }
-        if(test >= 1 && test < 5){
+        if(test >= 1 && test < 6){
+            num3 = String(arc4random_uniform(9))
+            while num3 == num2 {
+                num3 = String(arc4random_uniform(9))
+            }
+            self.Label3.text = num3
+            numOrder.insert(num3, at:0)
+        }
+
+        if(test >= 2 && test < 6){
             num4 = String(arc4random_uniform(9))
             while num4 == num3 {
                 num4 = String(arc4random_uniform(9))
@@ -139,7 +142,7 @@ class BackwardDigitSpan: UIViewController {
             self.Label4.text = num4
             numOrder.insert(num4, at:0)
         }
-        if(test >= 2 && test < 5){
+        if(test >= 3 && test < 6){
             num5 = String(arc4random_uniform(9))
             while num5 == num4 {
                 num5 = String(arc4random_uniform(9))
@@ -147,7 +150,7 @@ class BackwardDigitSpan: UIViewController {
             self.Label5.text = num5
             numOrder.insert(num5, at:0)
         }
-        if(test >= 3 && test < 5){
+        if(test >= 4 && test < 6){
             num6 = String(arc4random_uniform(9))
             while num6 == num5 {
                 num6 = String(arc4random_uniform(9))
@@ -155,7 +158,7 @@ class BackwardDigitSpan: UIViewController {
             self.Label6.text = num6
             numOrder.insert(num6, at:0)
         }
-        if(test >= 4 && test < 5){
+        if(test >= 5 && test < 6){
             num7 = String(arc4random_uniform(9))
             while num7 == num6 {
                 num7 = String(arc4random_uniform(9))
@@ -163,7 +166,7 @@ class BackwardDigitSpan: UIViewController {
             self.Label7.text = num7
             numOrder.insert(num7, at:0)
         }
-        if(test >= 5){
+        if(test >= 6){
             self.Label0.text = ""
             self.Label1.text = ""
             self.Label2.text = ""
@@ -208,10 +211,10 @@ class BackwardDigitSpan: UIViewController {
         nums1 += numResponse[responses]
         CurrentNums.text = nums1
         responses += 1
-        if ( responses == (test + 4)){
+        if ( responses == (test + 3)){
             testDone.isHidden = false
         }
-        if(responses >= (test + 4)){
+        if(responses >= (test + 3)){
             button0.isEnabled = false
             button1.isEnabled = false
             button2.isEnabled = false
@@ -306,6 +309,7 @@ class BackwardDigitSpan: UIViewController {
         if orderNums == originalNums{
             test += 1
         }
+        print(test)
         self.errorLabel.text = String(errors)
         nums1 = ""
         CurrentNums.text = nums1
@@ -315,8 +319,8 @@ class BackwardDigitSpan: UIViewController {
         Randomize.isHidden = false
         responses = 0
         testDone.isHidden = true
-        resultList[String(test)] = ["Number":numNum, "Digits":resultTmpList, "Errors":errors, "Max Digit Span": test+4]
-        if (test >= 5){
+        resultList[String(test)] = ["Number":numNum, "Digits":resultTmpList, "Errors":errors, "Max Digit Span": test+3]
+        if (test >= 6){
             button0.isHidden = true
             button1.isHidden = true
             button2.isHidden = true
