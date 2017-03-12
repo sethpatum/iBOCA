@@ -50,7 +50,7 @@ class VATask: UIViewController, UIPickerViewDelegate {
     
     
     @IBOutlet weak var testPicker: UIPickerView!
-    var TestTypes : [String] = ["1", "2", "3"]
+    var TestTypes : [String] = ["1", "2", "3", "4", "5"]
     
     @IBOutlet weak var testPickerLabel: UILabel!
     
@@ -68,6 +68,15 @@ class VATask: UIViewController, UIPickerViewDelegate {
     var mixed2 = ["Birdcage-Car", "Dog-Hat", "Horn-Duck", "Plant-Rabbit", "Teapot-Flower"]
     var half2 = ["Birdcage", "Dog", "Horn", "Plant", "Teapot"]
     var incorrect2 = ["Birdcage-Other", "Dog-Other", "Horn-Other", "Plant-Other", "Teapot-Other"]
+    
+    var mixed3 = ["Basket-Hanger", "FireExt-Scarf", "Grater-Lightbulb", "Pocketknife-Umbrella", "Sled-Dog"]
+    var half3 = ["Basket", "FireExt", "Grater", "Pocketknife", "Sled"]
+    var incorrect3 = ["Basket-Other", "FireExt-Other", "Grater-Other", "Pocketknife-Other", "Sled-Other"]
+    
+    var mixed4 = ["Candle-Sunglasses", "Firewood-Net", "Microwave-Eggbeater", "Shell-Watch", "Surge-Forks"]
+    var half4 = ["Candle", "Firewood", "Microwave", "Shell", "Surge"]
+    var incorrect4 = ["Candle-Other", "Firewood-Other", "Microwave-Other", "Shell-Other", "Surge-Other"]
+    
         //["red", "yellow", "blue", "black"]
     /*
     var mixed3 = ["CarDog", "HornDuck", "PlantRabbit", "ToasterWrench"]
@@ -309,6 +318,20 @@ class VATask: UIViewController, UIPickerViewDelegate {
                 mixedImages = mixed2
                 halfImages = half2
                 recognizeIncorrectVA = incorrect2
+            }
+            
+            if row == 3 {
+                imageSetVA = 3
+                mixedImages = mixed3
+                halfImages = half3
+                recognizeIncorrectVA = incorrect3
+            }
+            
+            if row == 4 {
+                imageSetVA = 4
+                mixedImages = mixed4
+                halfImages = half4
+                recognizeIncorrectVA = incorrect4
             }
             
             start.isEnabled = true
