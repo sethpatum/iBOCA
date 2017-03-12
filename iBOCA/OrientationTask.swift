@@ -14,8 +14,8 @@ var firstTimeThrough = true
 var Season : String?
 var State : String?
 var Town : String?
-var Address : String?
 var Date : String?
+var Time : String?
 
 var startTime = Foundation.Date()
 
@@ -43,8 +43,15 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
     @IBOutlet weak var TownPicker: UIPickerView!
     let townData = ["Correct", "Incorrect"]
     
-    @IBOutlet weak var AddressPicker: UIPickerView!
-    let addressData = ["Correct", "Incorrect"]
+
+    @IBOutlet weak var currentTime: UIDatePicker!
+
+    @IBAction func updateTime(_ sender: AnyObject) {
+        let d:UIDatePicker = sender as! UIDatePicker
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:MM"
+        Date = formatter.string(from: d.date)
+    }
     
    
    
@@ -55,31 +62,19 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         SeasonPicker.delegate = self
         StatePicker.delegate = self
         TownPicker.delegate = self
-        AddressPicker.delegate = self
         
-       /* // load the defaults from presistant memory
-        emailOn = !NSUserDefaults.standardUserDefaults().boolForKey("emailOff")
-        resultsDisplayOn = !NSUserDefaults.standardUserDefaults().boolForKey("resultsDisplayOff")
-        announceOn = NSUserDefaults.standardUserDefaults().boolForKey("announceOn")
-        cloudOn = !NSUserDefaults.standardUserDefaults().boolForKey("cloudOff")
-        testmodeOn = NSUserDefaults.standardUserDefaults().boolForKey("testmodeOn")
-        
-        uniqueName = UIDevice.currentDevice().identifierForVendor!.UUIDString
-        ipadName = UIDevice.currentDevice().name
-        
-        if(NSUserDefaults.standardUserDefaults().objectForKey("emailAddress") != nil) {
-            emailAddress = NSUserDefaults.standardUserDefaults().objectForKey("emailAddress") as! String
-        }
-        */
         
         Town = townData[TownPicker.selectedRow(inComponent: 0)]
-        Address = addressData[AddressPicker.selectedRow(inComponent: 0)]
         State = stateData[StatePicker.selectedRow(inComponent: 0)]
         Season = seasonData[SeasonPicker.selectedRow(inComponent: 0)]
         
         let formatter = DateFormatter()
         formatter.dateFormat = "y-MM-dd"
         Date = formatter.string(from: currentDate.date)
+        
+        let formatter1 = DateFormatter()
+        formatter1.dateFormat = "HH:MM"
+        Time = formatter.string(from: currentDate.date)
         
         startTime = Foundation.Date()
     }
@@ -121,24 +116,16 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
     }
 
     @IBAction func DoneButton(_ sender: AnyObject) {
-       /* var Results: [String] = [];
-        Results.append(Season!)
-        Results.append(State!)
-        Results.append(Town!)
-        Results.append(Date!)
-        Results.append(Address!)
-        print(Results)
-        */
         let result = Results()
         result.name = "Orientation"
         result.startTime = startTime
         result.endTime = Foundation.Date()
-        result.shortDescription = "Season: \(Season!), State: \(State!), Town: \(Town!), Date: \(Date!), Address: \(Address!)"
+        result.shortDescription = "Season: \(Season!), State: \(State!), Town: \(Town!), Date: \(Date!)"
         result.json["Day"] = Season!
         result.json["State"] = State!
         result.json["Town"] = Town!
         result.json["Date"] = Date!
-        result.json["Address"] = Address!
+        result.json["Time"] = Time!
         resultsArray.add(result)
         Status[TestOrientation] = TestStatus.Done
     }
@@ -159,9 +146,6 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         else if pickerView == TownPicker {
             return townData.count
         }
-        else if pickerView == AddressPicker {
-            return addressData.count
-        }
         return 1
     }
             ////sets the final variables to selected row of the pickerview's text
@@ -180,10 +164,6 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
             return townData[row]
         }
  
-        else if pickerView == AddressPicker {
-            Address = addressData[row]
-            return addressData[row]
-        }
         return ""
     }
         //sets final variables to the selected row
@@ -197,9 +177,6 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         }
         else if pickerView == TownPicker {
             Town = townData[row]
-        }
-        else if pickerView == AddressPicker {
-            Address = addressData[row]
         }
     }
   
