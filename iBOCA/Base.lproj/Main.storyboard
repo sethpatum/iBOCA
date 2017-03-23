@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RmL-Z6-Ri2">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RmL-Z6-Ri2">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -1944,7 +1944,7 @@
                                 </connections>
                             </datePicker>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HXQ-cz-LoD">
-                                <rect key="frame" x="421" y="517" width="183" height="71"/>
+                                <rect key="frame" x="421" y="501" width="183" height="103"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </pickerView>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G5g-Wp-9Q3">
@@ -1961,14 +1961,14 @@
                                     <segue destination="BYZ-38-t0r" kind="show" id="dL7-Sq-hiA"/>
                                 </connections>
                             </button>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="GWX-fk-Jj2">
-                                <rect key="frame" x="284" y="596" width="457" height="162"/>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Oj7-GR-ZMQ">
+                                <rect key="frame" x="0.0" y="593" width="1024" height="160"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <date key="date" timeIntervalSinceReferenceDate="511051958.83087099">
-                                    <!--2017-03-12 22:52:38 +0000-->
+                                <date key="date" timeIntervalSinceReferenceDate="512000447.01440799">
+                                    <!--2017-03-23 22:20:47 +0000-->
                                 </date>
                                 <connections>
-                                    <action selector="updateTime:" destination="5Cz-GR-ydt" eventType="valueChanged" id="dWi-WJ-wmh"/>
+                                    <action selector="updateTime:" destination="5Cz-GR-ydt" eventType="valueChanged" id="dwy-8l-fq2"/>
                                 </connections>
                             </datePicker>
                         </subviews>
@@ -1979,8 +1979,7 @@
                         <outlet property="StatePicker" destination="G5g-Wp-9Q3" id="23F-Fw-NvP"/>
                         <outlet property="TownPicker" destination="HXQ-cz-LoD" id="GpB-eg-vKL"/>
                         <outlet property="currentDate" destination="slc-lJ-ird" id="YYa-GY-vpc"/>
-                        <outlet property="currentTime" destination="GWX-fk-Jj2" id="OP3-7S-Y4w"/>
-                        <outlet property="updateTime" destination="GWX-fk-Jj2" id="Rfl-o8-qXp"/>
+                        <outlet property="currentTime" destination="Oj7-GR-ZMQ" id="tML-Sw-NtW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NUE-cG-5MM" userLabel="First Responder" sceneMemberID="firstResponder"/>
