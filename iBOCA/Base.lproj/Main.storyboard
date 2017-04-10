@@ -1971,15 +1971,6 @@
                                     <action selector="updateTime:" destination="5Cz-GR-ydt" eventType="valueChanged" id="dwy-8l-fq2"/>
                                 </connections>
                             </datePicker>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ukp-Ds-fga">
-                                <rect key="frame" x="717" y="91" width="124" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="Don't Know"/>
-                                <connections>
-                                    <action selector="DontKnowDate:" destination="5Cz-GR-ydt" eventType="touchUpInside" id="uTm-wX-953"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5mu-xW-DsC">
                                 <rect key="frame" x="717" y="253" width="124" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2014,6 +2005,15 @@
                                 <state key="normal" title="Don't Know"/>
                                 <connections>
                                     <action selector="DontKnowTime:" destination="5Cz-GR-ydt" eventType="touchUpInside" id="VTR-M6-v6S"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ukp-Ds-fga">
+                                <rect key="frame" x="717" y="105" width="124" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="Don't Know"/>
+                                <connections>
+                                    <action selector="DontKnowDate:" destination="5Cz-GR-ydt" eventType="touchUpInside" id="uTm-wX-953"/>
                                 </connections>
                             </button>
                         </subviews>
