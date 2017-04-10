@@ -11,7 +11,7 @@ import MessageUI
 
 var firstTimeThrough = true
                     //declare variables to be defined by pickerviews
-var Season : String?
+var Week : String?
 var State : String?
 var Town : String?
 var Date : String?
@@ -22,8 +22,9 @@ var startTime = Foundation.Date()
 class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UITextFieldDelegate, UITextViewDelegate,UIPickerViewDelegate  {
     
             //pickerview content set up(defines options)
-    @IBOutlet weak var SeasonPicker: UIPickerView!
-    let seasonData = ["Monday", "Tuesday", "Wednesday", "Thusday", "Friday", "Saturday", "Sunday", "Do not know"]
+
+    @IBOutlet weak var WeekPicker: UIPickerView!
+    let weekData = ["Monday", "Tuesday", "Wednesday", "Thusday", "Friday", "Saturday", "Sunday", "Do not know"]
  
     @IBOutlet weak var StatePicker: UIPickerView!
     let stateData = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia","Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming", "Don't Know"]
@@ -55,19 +56,51 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
     }
     
    
+    @IBAction func DontKnowDate(_ sender: Any) {
+        Date = "Dont Know"
+        currentDate.isUserInteractionEnabled = false
+        currentDate.alpha = 0.5
+    }
    
+
+    @IBAction func DontKnowWeek(_ sender: Any) {
+        Week = "Dont Know"
+        WeekPicker.isUserInteractionEnabled = false
+        WeekPicker.alpha = 0.5
+    }
+    
+    
+    @IBAction func DontKnowState(_ sender: Any) {
+        State = "Dont Know"
+        StatePicker.isUserInteractionEnabled = false
+        StatePicker.alpha = 0.5
+    }
+    
+    
+    @IBAction func DontKnowTown(_ sender: Any) {
+        Town = "Dont Know"
+        TownPicker.isUserInteractionEnabled = false
+        TownPicker.alpha = 0.5
+    }
+    
+    @IBAction func DontKnowTime(_ sender: Any) {
+        Time = "Dont Know"
+        currentTime.isUserInteractionEnabled = false
+        currentTime.alpha = 0.5
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
                                 //declare pickerviews
-        SeasonPicker.delegate = self
+        WeekPicker.delegate = self
         StatePicker.delegate = self
         TownPicker.delegate = self
         
         
         Town = townData[TownPicker.selectedRow(inComponent: 0)]
         State = stateData[StatePicker.selectedRow(inComponent: 0)]
-        Season = seasonData[SeasonPicker.selectedRow(inComponent: 0)]
+        Week = weekData[WeekPicker.selectedRow(inComponent: 0)]
         
         let formatter = DateFormatter()
         formatter.dateFormat = "y-MM-dd"
@@ -76,6 +109,18 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         let formatter1 = DateFormatter()
         formatter1.dateFormat = "HH:MM"
         Time = formatter.string(from: currentDate.date)
+        
+        
+        currentDate.isUserInteractionEnabled = true
+        currentTime.isUserInteractionEnabled = true
+        WeekPicker.isUserInteractionEnabled = true
+        StatePicker.isUserInteractionEnabled = true
+        TownPicker.isUserInteractionEnabled = true
+        currentDate.alpha = 1.0
+        currentTime.alpha = 1.0
+        WeekPicker.alpha = 1.0
+        StatePicker.alpha = 1.0
+        TownPicker.alpha = 1.0
         
         startTime = Foundation.Date()
     }
@@ -121,8 +166,8 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         result.name = "Orientation"
         result.startTime = startTime
         result.endTime = Foundation.Date()
-        result.shortDescription = "Season: \(Season!), State: \(State!), Town: \(Town!), Date: \(Date!)"
-        result.json["Day"] = Season!
+        result.shortDescription = "Week: \(Week!), State: \(State!), Town: \(Town!), Date: \(Date!), Time: \(Time!)"
+        result.json["Week"] = Week!
         result.json["State"] = State!
         result.json["Town"] = Town!
         result.json["Date"] = Date!
@@ -138,8 +183,8 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         //returns length of pickerview contents
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
         print("0:", pickerView)
-        if pickerView == SeasonPicker {
-            return seasonData.count
+        if pickerView == WeekPicker {
+            return weekData.count
         }
         else if pickerView == StatePicker {
             return stateData.count
@@ -152,9 +197,9 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
             ////sets the final variables to selected row of the pickerview's text
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         print("1:",pickerView)
-        if pickerView == SeasonPicker {
-            Season = seasonData[row]
-            return seasonData[row]
+        if pickerView == WeekPicker {
+            Week = weekData[row]
+            return weekData[row]
         }
         else if pickerView == StatePicker {
             State = stateData[row]
@@ -170,8 +215,8 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         //sets final variables to the selected row
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
         print("2:", pickerView)
-        if pickerView == SeasonPicker {
-            Season = seasonData[row]
+        if pickerView == WeekPicker {
+            Week = weekData[row]
         }
         else if pickerView == StatePicker {
             State = stateData[row]
