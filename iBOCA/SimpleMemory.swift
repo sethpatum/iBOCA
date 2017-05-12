@@ -105,7 +105,7 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
         
         next1.isHidden = true
         
-        back.isEnabled = true
+        //back.isEnabled = true
         
         start.isHidden = false
         
@@ -155,7 +155,7 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
     
     func startAlert(){
         
-        back.isEnabled = false
+        //back.isEnabled = false
         next1.isHidden = true
         
         let startAlert = UIAlertController(title: "Start", message: "Choose start option.", preferredStyle: .alert)
@@ -206,7 +206,7 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
         
         startAlert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) -> Void in
             print("cancel")
-            self.back.isEnabled = true
+            //self.back.isEnabled = true
             //action
         }))
         
@@ -252,7 +252,7 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
         testPickerLabel.isHidden = true
         incorrectPickerLabel.isHidden = true
         
-        back.isEnabled = false
+        //back.isEnabled = false
         
         let newStartAlert = UIAlertController(title: "Display", message: "Ask patient to name and remember these images.", preferredStyle: .alert)
         newStartAlert.addAction(UIAlertAction(title: "Start", style: .default, handler: { (action) -> Void in
@@ -529,7 +529,7 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
         start.removeTarget(self, action: #selector(startDisplayAlert), for:.touchUpInside)
         start.addTarget(self, action: #selector(startAlert), for:.touchUpInside)
         
-        back.isEnabled = true
+        //back.isEnabled = true
         
         start.isHidden = false
         
@@ -811,7 +811,7 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
     
     func done(){
         
-        back.isEnabled = true
+        //back.isEnabled = true
         
         afterBreakSM = false
         

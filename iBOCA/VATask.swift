@@ -142,7 +142,7 @@ class VATask: UIViewController, UIPickerViewDelegate {
         
         print(afterBreakVA)
         
-        back.isEnabled = true
+        //back.isEnabled = true
         start.isEnabled = true
         
         correct.isHidden = true
@@ -152,7 +152,7 @@ class VATask: UIViewController, UIPickerViewDelegate {
     }
     
     func startAlert() {
-        back.isEnabled = false
+        //back.isEnabled = false
         
         let startAlert = UIAlertController(title: "Start", message: "Choose start option.", preferredStyle: .alert)
         
@@ -194,7 +194,7 @@ class VATask: UIViewController, UIPickerViewDelegate {
         
         startAlert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) -> Void in
             print("cancel")
-            self.back.isEnabled = true
+            //self.back.isEnabled = true
             //action
         }))
         
@@ -250,7 +250,7 @@ class VATask: UIViewController, UIPickerViewDelegate {
         
         testPickerLabel.isHidden = true
         
-        back.isEnabled = false
+        //back.isEnabled = false
         
         firstDisplay = true
         
@@ -422,7 +422,7 @@ class VATask: UIViewController, UIPickerViewDelegate {
         
         afterBreakVA = true
         
-        back.isEnabled = true
+        //back.isEnabled = true
         start.isEnabled = true
         start.isHidden = false
         
@@ -792,7 +792,7 @@ class VATask: UIViewController, UIPickerViewDelegate {
         
         Status[TestVisualAssociation] = TestStatus.Done
 
-        back.isEnabled = true
+        //back.isEnabled = true
         start.isEnabled = true
         
         afterBreakVA = false
