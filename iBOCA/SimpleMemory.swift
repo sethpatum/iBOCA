@@ -820,7 +820,7 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
         var recallResult = ""
         var recognizeResult = ""
         
-        imageSetResult = "Correct image set = \(imageSetSM), incorrect image set = \(incorrectImageSetSM)\n"
+        imageSetResult = imageSetResult + delayResult + recallResult + recognizeResult
         delayResult = "Delay length of \(delayTime) seconds\n"
         
         for k in 0 ..< imagesSM.count {
@@ -866,7 +866,7 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
         
         var tmpResultList : [String:Any] = [:]
         
-        for i in 0...recognizeErrors.count {
+        for i in 0...recognizeErrors.count - 1 {
             var res = "Correct"
             if recognizeErrors[i] == 1 {
                 res = "Incorrect"
@@ -877,7 +877,7 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
         
         if recallIncorrect > 0{
             var tmpResultList0 : [String:Any] = [:]
-            for i in 0...recallIncorrect {
+            for i in 0...recallIncorrect - 1 {
                 tmpResultList0["Time\(i)"] = recallIncorrectTimes[i]
             }
             
@@ -887,7 +887,7 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
         
         var tmpResultList1 : [String:Any] = [:]
         
-        for i in 0...buttonTaps.count {
+        for i in 0...buttonTaps.count - 1 {
             var res = "Correct"
             if buttonTaps[i] == false {
                 res = "Incorrect"

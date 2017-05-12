@@ -39,26 +39,40 @@ class AllResults  {
         var e : String = ""
         var jst : [String:String] = [:]
         
-        e += "<h4>Subject Code: \(name)</h4>\n"
-        jst["Subject Code"] = name
+        if(name != nil) {
+            e += "<h4>Subject Code: \(name!)</h4>\n"
+            jst["Subject Code"] = name!
+        }
         
-        e += "<h4>MR#:\(MR)</h4>\n"
-        jst["MR#"] = MR
+        if(MR != nil) {
+            e += "<h4>MR#:\(MR!)</h4>\n"
+            jst["MR#"] = MR!
+        }
         
-        e += "<h4>Gender:\(Gender)</h4>\n"
-        jst["Gender"] = Gender
+        if(Gender != nil) {
+            e += "<h4>Gender:\(Gender!)</h4>\n"
+            jst["Gender"] = Gender!
+        }
 
-        e += "<h4>Age:\(age)</h4>\n"
-        jst["Age"] = age
+        if(age != nil) {
+            e += "<h4>Age:\(age!)</h4>\n"
+            jst["Age"] = age!
+        }
         
-        e += "<h4>Education:\(Education)</h4>\n"
-        jst["Education"] = Education
+        if(Education != nil) {
+            e += "<h4>Education:\(Education!)</h4>\n"
+            jst["Education"] = Education!
+        }
         
-        e += "<h4>Race:\(Race)</h4>\n"
-        jst["Race"] = Race
+        if(Race != nil) {
+            e += "<h4>Race:\(Race!)</h4>\n"
+            jst["Race"] = Race!
+        }
 
-        e += "<h4>Ethnicity:\(Ethnicity)</h4>\n<p>\n"
-        jst["Ethnicity"] = Ethnicity
+        if(Ethnicity != nil) {
+            e += "<h4>Ethnicity:\(Ethnicity!)</h4>\n<p>\n"
+            jst["Ethnicity"] = Ethnicity!
+        }
 
         
         // Iterate over the results
@@ -113,9 +127,12 @@ class AllResults  {
     func sortedJson(dict : [String:Any]) -> String {
         var ret = "["
         var sorted = Array(dict).sorted(by: {$0.0 < $1.0})
-        let isint: Int? = Int(dict.keys.first!)
-        if isint != nil {
-            sorted = Array(dict).sorted(by: {Int($0.0)! < Int($1.0)!})
+        var isint: Int? = nil
+        if dict.count > 0 {
+            isint = Int(dict.keys.first!)
+            if isint != nil {
+                sorted = Array(dict).sorted(by: {Int($0.0)! < Int($1.0)!})
+            }
         }
         
         var start = true

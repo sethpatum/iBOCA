@@ -32,6 +32,7 @@ class SerialSevens: UIViewController {
     @IBOutlet weak var recordedNums: UILabel!
     @IBOutlet weak var currentNum: UILabel!
     
+    @IBOutlet weak var Errors: UILabel!
     @IBOutlet weak var start100: UIButton!
     @IBOutlet weak var start90: UIButton!
     @IBOutlet weak var start80: UIButton!
@@ -54,9 +55,8 @@ class SerialSevens: UIViewController {
     
     
     @IBOutlet weak var countingLabel: UILabel!
-    var expectedNum : [Int] = []
     var testName = 0
-    
+    var  correctNumb = 0
     
     @IBAction func backButton(_ sender: Any) {
         let result = Results()
@@ -94,7 +94,8 @@ class SerialSevens: UIViewController {
     
     
     @IBAction func press100(_ sender: AnyObject) {
-        expectedNums.text = "93, 86, 79, 72, 65"
+        correctNumb = 93
+        expectedNums.text = String(correctNumb)
         start90.isHidden = true
         start80.isHidden = true
         start70.isHidden = true
@@ -105,7 +106,8 @@ class SerialSevens: UIViewController {
     }
     
     @IBAction func press90(_ sender: AnyObject) {
-        expectedNums.text = "83, 76, 69, 62, 55"
+        correctNumb = 83
+        expectedNums.text = String(correctNumb)
         start100.isHidden = true
         start80.isHidden = true
         start70.isHidden = true
@@ -115,7 +117,8 @@ class SerialSevens: UIViewController {
         processSelect()
     }
     @IBAction func press80(_ sender: AnyObject) {
-        expectedNums.text = "73, 66, 59, 52, 45"
+        correctNumb = 73
+        expectedNums.text = String(correctNumb)
         start100.isHidden = true
         start90.isHidden = true
         start70.isHidden = true
@@ -125,7 +128,8 @@ class SerialSevens: UIViewController {
         processSelect()
     }
     @IBAction func press70(_ sender: AnyObject) {
-       expectedNums.text = "63, 56, 49, 42, 35"
+        correctNumb = 63
+        expectedNums.text = String(correctNumb)
         start90.isHidden = true
         start80.isHidden = true
         start100.isHidden = true
@@ -135,7 +139,8 @@ class SerialSevens: UIViewController {
         processSelect()
     }
     @IBAction func press60(_ sender: AnyObject) {
-       expectedNums.text = "53, 46, 39, 32, 25"
+        correctNumb = 53
+        expectedNums.text = String(correctNumb)
         start90.isHidden = true
         start80.isHidden = true
         start70.isHidden = true
@@ -145,7 +150,8 @@ class SerialSevens: UIViewController {
         processSelect()
     }
     @IBAction func press50(_ sender: AnyObject) {
-       expectedNums.text = "43, 36, 29, 22, 15"
+        correctNumb = 43
+        expectedNums.text = String(correctNumb)
         start90.isHidden = true
         start80.isHidden = true
         start70.isHidden = true
@@ -160,7 +166,6 @@ class SerialSevens: UIViewController {
     
     func processPress() {
         print(recordNum)
-        
         if (recordNum.count > 1 && recordNum.count < 3){
             numb = String(recordNum[0]) + String(recordNum[1])
             nextInput.isHidden = false
@@ -240,9 +245,20 @@ class SerialSevens: UIViewController {
         button9.isEnabled = true
     }
     
-   
+   var numErrors = 0
     @IBAction func nextInput(_ sender: AnyObject) {
         let name = String(recordNum[0]) + String(recordNum[1])
+        var num = Int(name)
+        if num != correctNumb{
+            numErrors += 1
+            Errors.text = String(numErrors)
+            correctNumb = num! - 7
+            expectedNums.text = String(correctNumb)
+        }
+        if num == correctNumb{
+        correctNumb = correctNumb - 7
+            expectedNums.text = String(correctNumb)
+        }
         recordNum = []
         currentNum.text = ""
         Records.append(name)
