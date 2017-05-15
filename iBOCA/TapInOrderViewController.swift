@@ -48,7 +48,7 @@ class TapInOrderViewController: ViewController {
         
         print("in reset")
         
-        backButton.isEnabled = false
+        //backButton.isEnabled = false
         startButton.isEnabled = false
         endButton.isEnabled = true
         resetButton.isEnabled = true
@@ -198,7 +198,7 @@ class TapInOrderViewController: ViewController {
         
         endButton.isEnabled = false
         resetButton.isEnabled = false
-        backButton.isEnabled = true
+        //backButton.isEnabled = true
         
         
         randomizeBoard()
@@ -213,12 +213,12 @@ class TapInOrderViewController: ViewController {
 //delay(1.5){}
         ended = false
         
-        self.navigationItem.setHidesBackButton(true, animated:true)
+        //self.navigationItem.setHidesBackButton(true, animated:true)
         
         startButton.isEnabled = false
         endButton.isEnabled = true
         resetButton.isEnabled = true
-        backButton.isEnabled = false
+        //backButton.isEnabled = false
         
         numplaces = 0
         numRepeats = 0
@@ -252,11 +252,11 @@ class TapInOrderViewController: ViewController {
     }
     
     @IBAction func EndTest(_ sender: Any) {
-        self.navigationItem.setHidesBackButton(false, animated:true)
+        //self.navigationItem.setHidesBackButton(false, animated:true)
         startButton.isEnabled = false
         endButton.isEnabled = false
         resetButton.isEnabled = true
-        backButton.isEnabled = true
+        //backButton.isEnabled = true
         donetest()
         
     }
@@ -268,7 +268,7 @@ class TapInOrderViewController: ViewController {
         startButton.isEnabled = false
         endButton.isEnabled = false
         resetButton.isEnabled = true
-        backButton.isEnabled = true
+        //backButton.isEnabled = true
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
 //            self.navigationItem.setHidesBackButton(false, animated:true)

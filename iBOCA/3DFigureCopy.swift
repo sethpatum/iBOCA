@@ -30,7 +30,7 @@ class ThreeDFigureCopy: UIViewController {
         super.viewDidLoad()
 
         StartButton.isEnabled = true
-        BackButton.isHidden = false
+        //BackButton.isHidden = false
         CorrectButton.isEnabled = false
         IncorrectButton.isEnabled = false
         
@@ -55,7 +55,7 @@ class ThreeDFigureCopy: UIViewController {
             self.view.addSubview(imageView)
         } else {
             StartButton.isEnabled = true
-            BackButton.isHidden = false
+            //BackButton.isHidden = false
             CorrectButton.isEnabled = false
             IncorrectButton.isEnabled = false
             
@@ -85,7 +85,7 @@ class ThreeDFigureCopy: UIViewController {
     @IBAction func StartAction(_ sender: UIButton) {
         curr = 0
         StartButton.isEnabled = false
-        BackButton.isHidden = true
+        //BackButton.isHidden = true
         CorrectButton.isEnabled = true
         IncorrectButton.isEnabled = true
         
