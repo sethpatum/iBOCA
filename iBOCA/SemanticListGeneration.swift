@@ -43,7 +43,7 @@ class SemanticListGeneration: UIViewController, UIPickerViewDelegate {
         Category = CategoryData[CategoryPicker.selectedRow(inComponent: 0)]
 
         StartButton.isHidden = false
-        BackButton.isHidden = false
+        //BackButton.isHidden = false
         IncorrectButton.isHidden = true
         CorrectButton.isHidden = true
         RepeatButton.isHidden = true
@@ -60,7 +60,7 @@ class SemanticListGeneration: UIViewController, UIPickerViewDelegate {
         print(Category ?? "none")
         
         self.StartButton.isHidden = true
-        BackButton.isHidden = true
+        //BackButton.isHidden = true
         IncorrectButton.isHidden = false
         CorrectButton.isHidden = false
         RepeatButton.isHidden = false
@@ -149,7 +149,7 @@ class SemanticListGeneration: UIViewController, UIPickerViewDelegate {
             print("Done timer")
             
             StartButton.isHidden = false
-            BackButton.isHidden = false
+            //BackButton.isHidden = false
             IncorrectButton.isHidden = true
             CorrectButton.isHidden = true
             RepeatButton.isHidden = true
