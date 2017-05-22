@@ -814,6 +814,7 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
         //back.isEnabled = true
         
         afterBreakSM = false
+        var numErrors = 0
         
         var imageSetResult = ""
         var delayResult = ""
@@ -830,6 +831,7 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
             }
             if(buttonTaps[k] == false) {
                 recallResult += "Did not recall \(imagesSM[k])\n"
+                numErrors += 1
             }
             
             if(recognizeErrors[k] == 0){
@@ -837,6 +839,7 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
             }
             if(recognizeErrors[k] == 1){
                 recognizeResult += "Recognized \(imagesSM[k]) incorrectly in \(recognizeTimes[k]) seconds\n"
+                numErrors += 1
             }
             
             /*
@@ -859,6 +862,7 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
         result.startTime = StartTimer
         result.endTime = Foundation.Date()
         result.shortDescription = imageSetResult + delayResult + recallResult + recognizeResult
+        result.numErrors = numErrors
         
         resultList["CorrectImageSet"] = imageSetSM
         resultList["IncorrectImageSet"] = incorrectImageSetSM

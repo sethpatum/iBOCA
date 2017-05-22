@@ -168,6 +168,7 @@ class SemanticListGeneration: UIViewController, UIPickerViewDelegate {
                 js[String(index)] = val
             }
             result.json[Category!] = js
+            result.numErrors = resIncorrect + resRepeat
             resultsArray.add(result)
             Status[TestSemanticListGeneration] = TestStatus.Done
             

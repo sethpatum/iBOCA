@@ -232,6 +232,7 @@ class PicturesViewController: ViewController {
         if wrongList.count > 0  {
             result.longDescription.add("The incorrect pictures were the \(wrongList)")
         }
+        result.numErrors = wrongList.count
         
         var js : [String:Any] = [:]
         for (index, element) in resultStatus.enumerated() {

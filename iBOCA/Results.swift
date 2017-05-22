@@ -17,6 +17,7 @@ class Results: NSObject {
     var shortDescription:String?
     var primaryDescription:String?
     var longDescription : NSMutableArray = NSMutableArray()
+    var numErrors : Int = 0
     var screenshot : [UIImage] = []
     var json : [String:Any] = [:]
     

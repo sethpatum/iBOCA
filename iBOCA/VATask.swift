@@ -829,6 +829,8 @@ class VATask: UIViewController, UIPickerViewDelegate {
         
         delayResult = "Delay length of \(delayTime) seconds\n"
         
+        result.numErrors = 0
+        
         for k in 0 ..< mixedImages.count {
             
             if(recallErrors[k] == 0){
@@ -838,10 +840,12 @@ class VATask: UIViewController, UIPickerViewDelegate {
             if(recallErrors[k] == 1){
                 result.longDescription.add("Recalled \(mixedImages[k]) incorrectly in \(recallTimes[k]) seconds")
                 recallResult += "Recalled \(mixedImages[k]) incorrectly in \(recallTimes[k]) seconds\n"
+                result.numErrors += 1
             }
             if(recallErrors[k] == 2){
                 result.longDescription.add("Couldn't recall \(mixedImages[k]) in \(recallTimes[k]) seconds")
                 recallResult += "Couldn't recall \(mixedImages[k]) in \(recallTimes[k]) seconds\n"
+                result.numErrors += 1
             }
             
             
@@ -852,6 +856,7 @@ class VATask: UIViewController, UIPickerViewDelegate {
             if(recognizeErrors[k] == 1){
                 result.longDescription.add("Recognized \(mixedImages[k]) incorrectly in \(recognizeTimes[k]) seconds ")
                 recognizeResult += "Recognized \(mixedImages[k]) incorrectly in \(recognizeTimes[k]) seconds\n"
+                result.numErrors += 1
             }
             
         }

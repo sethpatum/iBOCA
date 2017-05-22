@@ -70,8 +70,12 @@ class ThreeDFigureCopy: UIViewController {
                 result.screenshot.append(shot)
             }
             
+            result.numErrors = 0
             for (index, element) in resultCondition.enumerated() {
                 result.json[imagelist[index]] = ["correct":element, "drawing time (msec)":Int(1000*resultTime[index])]
+                if element == false {
+                    result.numErrors += 1
+                }
             }
             
             resultsArray.add(result)

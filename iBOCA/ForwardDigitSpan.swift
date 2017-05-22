@@ -83,6 +83,7 @@ class ForwardDigitSpan: UIViewController {
         result.name = "Forward Digit Span"
         result.startTime = startTime
         result.endTime = Foundation.Date()
+        result.numErrors = errors
         
         for r in Resultsp1 {
             result.longDescription.add(r)

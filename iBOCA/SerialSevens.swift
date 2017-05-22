@@ -25,6 +25,7 @@ class SerialSevens: UIViewController {
     var resultTmpList : [String:Any] = [:]
     var resultList : [String:Any] = [:]
     
+    var numErrors = 0
     
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var resetButton: UIButton!
@@ -63,6 +64,7 @@ class SerialSevens: UIViewController {
         result.name = "Serial Sevens"
         result.startTime = startTime
         result.endTime = Foundation.Date()
+        result.numErrors = numErrors
         
         for r in Records {
             result.longDescription.add(r)
@@ -245,7 +247,7 @@ class SerialSevens: UIViewController {
         button9.isEnabled = true
     }
     
-   var numErrors = 0
+
     @IBAction func nextInput(_ sender: AnyObject) {
         let name = String(recordNum[0]) + String(recordNum[1])
         var num = Int(name)

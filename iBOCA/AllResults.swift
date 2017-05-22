@@ -73,7 +73,31 @@ class AllResults  {
             e += "<h4>Ethnicity:\(Ethnicity!)</h4>\n<p>\n"
             jst["Ethnicity"] = Ethnicity!
         }
+        
+          if(numResults() > 0) {
+            e += "<p>\n"
+            e += "<table>"
+            
 
+            for i in 0...numResults()-1 {
+                let r = get(i)
+                e += "<tr>\n <td>\(r.name!)</td>"
+                if r.numErrors > 0 {
+                    e += "<td> \(r.numErrors) </td>"
+                } else {
+                    e += "<td> </td>"
+                }
+                let elapsedTime = r.endTime!.timeIntervalSince(r.startTime! as Date)
+                let duration = Int(elapsedTime)
+                e += "<td>\(duration)</td>"
+
+                e += "</tr>\n"
+
+            }
+            e += "<\table>"
+            e += "<p>\n"
+        }
+        
         
         // Iterate over the results
         if(numResults() > 0) {

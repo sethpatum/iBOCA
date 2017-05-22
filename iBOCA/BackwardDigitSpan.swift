@@ -87,6 +87,7 @@ class BackwardDigitSpan: UIViewController {
         result.name = "Backward Digit Span"
         result.startTime = startTime
         result.endTime = Foundation.Date()
+        result.numErrors = errors
         
         for r in ResultsList {
             result.longDescription.add(r)
