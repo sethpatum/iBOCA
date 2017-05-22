@@ -44,14 +44,14 @@ class MainViewController: UIViewController, MFMailComposeViewControllerDelegate{
     @IBAction func sendEmail(_ sender: Any) {
         var body:String?
         
-        if(emailOn && MFMailComposeViewController.canSendMail() && resultsArray.numResults() > 0) {
+        if(emailOn && MFMailComposeViewController.canSendMail()  && resultsArray.numResults() > 0) {
             body = resultsArray.emailBody()
             let picker = MFMailComposeViewController()
             picker.mailComposeDelegate = self
             picker.setSubject(mailSubject)
             picker.setMessageBody(body!, isHTML: true)
             picker.setToRecipients([emailAddress])
-             present(picker, animated: true)
+            present(picker, animated: true)
         }
         resultsArray.doneWithPatient()
         self.performSegue(withIdentifier: "BackToLanding", sender: self)

@@ -39,6 +39,15 @@ class AllResults  {
         var e : String = ""
         var jst : [String:String] = [:]
         
+        e += "<head>\n"
+        e += "<style>\n"
+        e += "table { font-family: arial, sans-serif; border-collapse: collapse; }\n"
+        e += "td, th { border: 1px solid #dddddd; text-align: left; padding: 8px; }\n"
+        e += "tr:nth-child(even) { background-color: #dddddd; }\n"
+        e += "</style>\n"
+        e += "</head>\n"
+        e += "<body>\n"
+        
         if(name != nil) {
             e += "<h4>Subject Code: \(name!)</h4>\n"
             jst["Subject Code"] = name!
@@ -76,7 +85,9 @@ class AllResults  {
         
           if(numResults() > 0) {
             e += "<p>\n"
-            e += "<table>"
+             e += "<h2>Summary of Results</h2>\n<p>\n"
+            e += "<table>\n"
+            e += "<tr> <th>Test</th> <th>Errors</th> <th>Time(seconds)</th> </tr>\n"
             
 
             for i in 0...numResults()-1 {
@@ -85,7 +96,7 @@ class AllResults  {
                 if r.numErrors > 0 {
                     e += "<td> \(r.numErrors) </td>"
                 } else {
-                    e += "<td> </td>"
+                    e += "<td> No errors </td>"
                 }
                 let elapsedTime = r.endTime!.timeIntervalSince(r.startTime! as Date)
                 let duration = Int(elapsedTime)
@@ -94,7 +105,7 @@ class AllResults  {
                 e += "</tr>\n"
 
             }
-            e += "<\table>"
+            e += "</table>"
             e += "<p>\n"
         }
         
@@ -143,6 +154,8 @@ class AllResults  {
             e +=  "[\"" + r.name! + "\":" + sortedJson(dict: r.toJson()) + "]\n"
         }
         e += "\n<p>]\n"
+        
+        e += "</body>\n"
         
         return e
     }
