@@ -41,6 +41,7 @@
 		F261D4EA1E3E33F00039A545 /* Bubbles.swift in Sources */ = {isa = PBXBuildFile; fileRef = F261D4E91E3E33F00039A545 /* Bubbles.swift */; };
 		F27728A61E33C91A004F8A6E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27728A51E33C91A004F8A6E /* MainViewController.swift */; };
 		F27AEA941EEC6E7B00AFB3D1 /* DigitBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27AEA931EEC6E7B00AFB3D1 /* DigitBase.swift */; };
+		F27AEAA61EEC948600AFB3D1 /* DigitSpanForward.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27AEAA51EEC948600AFB3D1 /* DigitSpanForward.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,7 @@
 		F261D4E91E3E33F00039A545 /* Bubbles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bubbles.swift; sourceTree = "<group>"; };
 		F27728A51E33C91A004F8A6E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F27AEA931EEC6E7B00AFB3D1 /* DigitBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DigitBase.swift; sourceTree = "<group>"; };
+		F27AEAA51EEC948600AFB3D1 /* DigitSpanForward.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DigitSpanForward.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				F27AEA931EEC6E7B00AFB3D1 /* DigitBase.swift */,
+				F27AEAA51EEC948600AFB3D1 /* DigitSpanForward.swift */,
 			);
 			name = DigitTests;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				1B6567401D7DE07B00C92FA3 /* SemanticListGeneration.swift in Sources */,
 				43343D461E3E66BC001779AC /* TapInOrderBackwardsViewController.swift in Sources */,
 				1B53650E1D7491CF0088B5D2 /* 3DFigureCopy.swift in Sources */,
+				F27AEAA61EEC948600AFB3D1 /* DigitSpanForward.swift in Sources */,
 				1BC2DFF11D4F821F0020D430 /* ViewController.swift in Sources */,
 				E272DF021D74957F002F8295 /* Demographics.swift in Sources */,
 				4386775C1E33D551000309F2 /* SimpleMemory.swift in Sources */,
