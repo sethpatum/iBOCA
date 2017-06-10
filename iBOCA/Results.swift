@@ -34,11 +34,14 @@ class Results: NSObject {
     func header() -> String {
         let elapsedTime = endTime!.timeIntervalSince(startTime! as Date)
         let duration = Int(elapsedTime)
-        if shortDescription == nil {
-            return name! + " (" + String(duration) + " secs): "
-        } else {
-            return name! + " (" + String(duration) + " secs): " + shortDescription!
+        var res = name! + " (" + String(duration) + " secs): "
+        if numErrors > 0 {
+            res = res + "\(numErrors) Errors "
         }
+        if shortDescription != nil {
+            res = res + shortDescription!
+        }
+        return res
     }
     
     

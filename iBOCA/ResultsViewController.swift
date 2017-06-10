@@ -31,7 +31,7 @@ class ResultsViewController: UIViewController {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         if section == 0 {
-            
+            //return resultsArray.numResults()
         } else if section <= resultsArray.numResults() {
             let res:Results = resultsArray.get(section-1)
             if(res.collapsed == false)
@@ -48,7 +48,6 @@ class ResultsViewController: UIViewController {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        
         return 50
     }
     
@@ -71,8 +70,7 @@ class ResultsViewController: UIViewController {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
-            let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 40))
-            return headerView
+            return UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 40))
         } else if section <= resultsArray.numResults() {
             let res:Results = resultsArray.get(section-1)
             
