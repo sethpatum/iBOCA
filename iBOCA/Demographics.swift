@@ -9,6 +9,10 @@
 import UIKit
 import MessageUI
 import AVFoundation
+
+
+var testStartTime = Foundation.Date()
+
 var name : String?
 var age : String?
 var MR : String?
@@ -49,7 +53,7 @@ var Status  = [TestStatus](repeating: TestStatus.NotStarted, count: 14)
 
 func makeAgeData() -> [String] {
     var str:[String] = []
-    for i in 1...120 {
+    for i in 10...120 {
         str.append(String(i))
     }
     return str
@@ -142,9 +146,10 @@ class Demographics: UIViewController, MFMailComposeViewControllerDelegate, UITex
         EducationPicker.delegate = self
         RacePicker.delegate = self
         
-        
+    
         name = ""
         MR = ""
+        AgePicker.selectRow(40, inComponent: 0, animated: false)
         age = ageData[AgePicker.selectedRow(inComponent: 0)]
         Gender = genderData[GenderPicker.selectedRow(inComponent: 0)]
         Ethnicity = ethnicData[EthnicityPicker.selectedRow(inComponent: 0)]
@@ -176,7 +181,8 @@ class Demographics: UIViewController, MFMailComposeViewControllerDelegate, UITex
         email.isEnabled = emailOn
         emailOnOff.isOn = emailOn
         email.text = emailAddress
-       
+        
+        testStartTime = Foundation.Date()
     }
     
     

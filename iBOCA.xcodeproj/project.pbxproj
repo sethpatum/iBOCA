@@ -40,6 +40,7 @@
 		F261D4E81E3E33D00039A545 /* DrawingViewTrails.swift in Sources */ = {isa = PBXBuildFile; fileRef = F261D4E71E3E33D00039A545 /* DrawingViewTrails.swift */; };
 		F261D4EA1E3E33F00039A545 /* Bubbles.swift in Sources */ = {isa = PBXBuildFile; fileRef = F261D4E91E3E33F00039A545 /* Bubbles.swift */; };
 		F27728A61E33C91A004F8A6E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27728A51E33C91A004F8A6E /* MainViewController.swift */; };
+		F27AEA941EEC6E7B00AFB3D1 /* DigitBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27AEA931EEC6E7B00AFB3D1 /* DigitBase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		F261D4E71E3E33D00039A545 /* DrawingViewTrails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingViewTrails.swift; sourceTree = "<group>"; };
 		F261D4E91E3E33F00039A545 /* Bubbles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bubbles.swift; sourceTree = "<group>"; };
 		F27728A51E33C91A004F8A6E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		F27AEA931EEC6E7B00AFB3D1 /* DigitBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DigitBase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 		1BC2DFED1D4F821F0020D430 /* iBOCA */ = {
 			isa = PBXGroup;
 			children = (
+				F27AEA921EEC6E4200AFB3D1 /* DigitTests */,
 				E2037F1B1E47E7F000EE13EB /* Pictures */,
 				F261D4E41E3E33620039A545 /* Trails */,
 				1BC2DFEE1D4F821F0020D430 /* AppDelegate.swift */,
@@ -226,6 +229,14 @@
 				F261D4E91E3E33F00039A545 /* Bubbles.swift */,
 			);
 			name = Trails;
+			sourceTree = "<group>";
+		};
+		F27AEA921EEC6E4200AFB3D1 /* DigitTests */ = {
+			isa = PBXGroup;
+			children = (
+				F27AEA931EEC6E7B00AFB3D1 /* DigitBase.swift */,
+			);
+			name = DigitTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -387,6 +398,7 @@
 				43343D481E3E66D5001779AC /* PicturesViewController.swift in Sources */,
 				1B49EEF31DAC3B6600931E8C /* 3DFigureDraw.swift in Sources */,
 				F27728A61E33C91A004F8A6E /* MainViewController.swift in Sources */,
+				F27AEA941EEC6E7B00AFB3D1 /* DigitBase.swift in Sources */,
 				43960F4C1E3C0758006FDC7B /* CatsAndDogsViewController.swift in Sources */,
 				F24E6E701E1BC2C300E29995 /* ScaleView.swift in Sources */,
 				1BC2DFEF1D4F821F0020D430 /* AppDelegate.swift in Sources */,

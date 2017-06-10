@@ -11,15 +11,17 @@ import MessageUI
 
 var firstTimeThrough = true
                     //declare variables to be defined by pickerviews
-var Week : String?
-var State : String?
-var Town : String?
-var Date : String?
-var Time : String?
-
 var startTime = Foundation.Date()
 
+
 class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UITextFieldDelegate, UITextViewDelegate,UIPickerViewDelegate  {
+    
+    var Week : String?
+    var State : String?
+    var Town : String?
+    var Date : String?
+    var Time : String?
+    
     
             //pickerview content set up(defines options)
 
@@ -102,13 +104,18 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         State = stateData[StatePicker.selectedRow(inComponent: 0)]
         Week = weekData[WeekPicker.selectedRow(inComponent: 0)]
         
+      
+        
         let formatter = DateFormatter()
         formatter.dateFormat = "y-MM-dd"
+        currentDate.setDate(formatter.date(from:"2017/01/01")!,  animated: false)
         Date = formatter.string(from: currentDate.date)
         
-        let formatter1 = DateFormatter()
-        formatter1.dateFormat = "HH:MM"
-        Time = formatter.string(from: currentDate.date)
+      
+        formatter.dateFormat = "yyyy/MM/dd HH:mm"
+        currentTime.setDate(formatter.date(from:"2017/01/01 12:00")!,  animated: false)
+        formatter.dateFormat = "HH:MM"
+        Time = formatter.string(from: currentTime.date)
         
         
         currentDate.isUserInteractionEnabled = true
@@ -148,8 +155,6 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        
-        
         body = textView.text
         
         if text == "\n" {
@@ -177,7 +182,7 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         result.json["Correct-Date"] = formatter.string(from: startTime)
         formatter.dateFormat = "HH:MM"
         result.json["Correct-Time"] = formatter.string(from: startTime)
-        formatter.dateFormat = "W"
+        formatter.dateFormat = "EEEE"
         result.json["Correct-Week"] = formatter.string(from: startTime)
 
         resultsArray.add(result)

@@ -30,6 +30,7 @@ class AllResults  {
     
     // Remove all the results
     func doneWithPatient() {
+        print(toJson())
         results.removeAllObjects()
     }
     
@@ -37,7 +38,6 @@ class AllResults  {
     // convert theresults to an e-mail
     func emailBody() -> String {
         var e : String = ""
-        var jst : [String:String] = [:]
         
         e += "<head>\n"
         e += "<style>\n"
@@ -50,37 +50,30 @@ class AllResults  {
         
         if(name != nil) {
             e += "<h4>Subject Code: \(name!)</h4>\n"
-            jst["Subject Code"] = name!
         }
         
         if(MR != nil) {
             e += "<h4>MR#:\(MR!)</h4>\n"
-            jst["MR#"] = MR!
         }
         
         if(Gender != nil) {
             e += "<h4>Gender:\(Gender!)</h4>\n"
-            jst["Gender"] = Gender!
         }
 
         if(age != nil) {
             e += "<h4>Age:\(age!)</h4>\n"
-            jst["Age"] = age!
         }
         
         if(Education != nil) {
             e += "<h4>Education:\(Education!)</h4>\n"
-            jst["Education"] = Education!
         }
         
         if(Race != nil) {
             e += "<h4>Race:\(Race!)</h4>\n"
-            jst["Race"] = Race!
         }
 
         if(Ethnicity != nil) {
             e += "<h4>Ethnicity:\(Ethnicity!)</h4>\n<p>\n"
-            jst["Ethnicity"] = Ethnicity!
         }
         
           if(numResults() > 0) {
@@ -147,22 +140,79 @@ class AllResults  {
         e += "<p> <h3>scale</h3>\n"
         e += "<img src='data:image/png;base64,\(imageString)' width='\(scaleImage!.size.width)' height='\(scaleImage!.size.height)'><p>\n"
         
-        e += "\n[" + String(describing: jst)
-        for i in 0...numResults()-1 {
-            let r = get(i)
-            e += ", <p>"
-            e +=  "[\"" + r.name! + "\":" + sortedJson(dict: r.toJson()) + "]\n"
-        }
-        e += "\n<p>]\n"
-        
+        e += "\n<p>\n" + toJson() + "\n<p>\n"
         e += "</body>\n"
         
         return e
     }
     
+    
+    func toJson() -> String {
+        var e : String = ""
+        var jst : [String:String] = [:]
+        
+        if(name != nil) {
+            jst["Subject Code"] = name!
+        }
+        
+        if(MR != nil) {
+            jst["MR#"] = MR!
+        }
+        
+        if(Gender != nil) {
+            jst["Gender"] = Gender!
+        }
+        
+        if(age != nil) {
+            jst["Age"] = age!
+        }
+        
+        if(Education != nil) {
+            jst["Education"] = Education!
+        }
+        
+        if(Race != nil) {
+            jst["Race"] = Race!
+        }
+        
+        if(Ethnicity != nil) {
+            jst["Ethnicity"] = Ethnicity!
+        }
+        
+        var tst : [String:String] = [:]
+        tst["Device Name"] = UIDevice.current.name
+        tst["Device ID"] = UIDevice.current.identifierForVendor?.uuidString
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "y-MM-dd HH:MM"
+        tst["Test Start Time"] = formatter.string(from: testStartTime)
+  
+        let elapsedTime = (Int)(Foundation.Date().timeIntervalSince(testStartTime))
+        tst["Test Duration"] = "\((Int)(elapsedTime/3600)):\((Int)(elapsedTime/60)%60):\(elapsedTime%60)"
+        
+        tst["iBOCA version"] = (Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "0") + " (Build " +  (Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "0") + ")"
+
+        e += "{ \"Setup\":" + sortedJson(dict: tst) + ", "
+        e += "{ \"Demographics\":" + sortedJson(dict: jst)
+        
+        if numResults() > 0 {
+            e += ", \"Tests\":["
+            for i in 0...numResults()-1 {
+                let r = get(i)
+                if i > 0 {
+                    e += ", "
+                }
+                e +=  "{\"" + r.name! + "\":" + sortedJson(dict: r.toJson()) + "}\n"
+            }
+            e += "]"
+        }
+        e += "}"
+        return e;
+    }
+    
     // If a set of keys are Integers, sort them 
     func sortedJson(dict : [String:Any]) -> String {
-        var ret = "["
+        var ret = "{"
         var sorted = Array(dict).sorted(by: {$0.0 < $1.0})
         var isint: Int? = nil
         if dict.count > 0 {
@@ -195,7 +245,7 @@ class AllResults  {
             }
         }
         
-        ret += "]"
+        ret += "}"
         return ret
     }
     
