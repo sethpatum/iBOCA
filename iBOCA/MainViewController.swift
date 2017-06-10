@@ -137,12 +137,6 @@ class MainViewController: UIViewController, MFMailComposeViewControllerDelegate{
     }
     
     
-    @IBAction func TestingButton(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "DigitBase", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "DigitSpanForward")
-        self.present(controller, animated: true, completion: nil)
-    }
-    
     func getTimeDelay(startTime:TimeInterval) -> String {
         
         let currTime = NSDate.timeIntervalSinceReferenceDate

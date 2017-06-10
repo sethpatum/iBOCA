@@ -11,6 +11,7 @@ import Foundation
 import UIKit
 
 class DigitBase: UIViewController {
+    var base:DigitBaseClass? = nil  // Cannot do a subclass, so using composition
 
     @IBOutlet weak var StartButton: UIButton!
     @IBOutlet weak var ContinueButton: UIButton!
@@ -40,6 +41,9 @@ class DigitBase: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        base = DigitSpanForward()
+        base!.base = self
         
         NumKeys.append(Button_1)
         NumKeys.append(Button_2)
@@ -146,6 +150,33 @@ class DigitBase: UIViewController {
     
     
     func DoInitialize() {
+        base!.DoInitialize()
+    }
+    
+    func DoStart() {
+        base!.DoStart()
+    }
+    
+    func DoEnterDone() {
+        base!.DoEnterDone()
+    }
+    
+    func DoEnd() {
+        base!.DoEnd()
+    }
+    
+    func DoContinue() {
+        base!.DoContinue()
+    }
+    
+}
+
+
+// A hacky superclass that implementations can subclass as subclassing DigitBase don't work (cannot  initialize supervlasses within the sotrybaord)
+class DigitBaseClass {
+    var base:DigitBase = DigitBase()
+    
+    func DoInitialize() {
     }
     
     func DoStart() {
@@ -159,5 +190,4 @@ class DigitBase: UIViewController {
     
     func DoContinue() {
     }
-    
 }
