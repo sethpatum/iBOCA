@@ -172,6 +172,14 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         result.json["Town"] = Town!
         result.json["Date"] = Date!
         result.json["Time"] = Time!
+        let formatter = DateFormatter()
+        formatter.dateFormat = "y-MM-dd"
+        result.json["Correct-Date"] = formatter.string(from: startTime)
+        formatter.dateFormat = "HH:MM"
+        result.json["Correct-Time"] = formatter.string(from: startTime)
+        formatter.dateFormat = "W"
+        result.json["Correct-Week"] = formatter.string(from: startTime)
+
         resultsArray.add(result)
         Status[TestOrientation] = TestStatus.Done
     }

@@ -53,9 +53,9 @@ class Results: NSObject {
         if i < longDescription.count {
              return 60
         }
- /*       if i == longDescription.count && screenshot != nil {
-            return 500
-        } */
+        if i >= longDescription.count {
+            return Int(screenshot[i-longDescription.count].size.height) + 10
+        }
         return 0
     }
     
@@ -67,13 +67,12 @@ class Results: NSObject {
             cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
             cell.textLabel?.numberOfLines = 0
         }
-  /*      if i == longDescription.count && screenshot != nil {
-            cell.imageView?.image = screenshot
+       if i >= longDescription.count {
+            cell.imageView?.image = screenshot[i-longDescription.count]
             cell.textLabel?.text = nil
         } else {
             cell.imageView?.image = nil
-        } */
-        
+        }
     }
     
     func TakeScreeshot() {
