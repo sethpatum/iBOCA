@@ -14,10 +14,24 @@ class DigitSpanForward:DigitBaseClass {
     var level = 0
     var genval:String = ""
     var preDisplay = true
+    var redo = 0
+    let MAX_REDO = 2
+    let MAX_LEVEL = 6
+    
+    var genStrings:[String] = []
+    var gotStrings:[String] = []
+    var gotLevels:[Int] = []
+    var gotDuration:[Int] = []
+    var totErrors = 0
+    var currRound = 0
+    
+    var resultList : [String:Any] = [:]
+
     
     override func DoInitialize() {
-        base.InfoLabel.text = "Press start to begin Forard Digit Span test"
+        base.InfoLabel.text = "Press start to begin \(TestName())"
         level  = 0
+        redo = 0
         base.disableKeypad()
     }
     
@@ -25,6 +39,17 @@ class DigitSpanForward:DigitBaseClass {
         base.InfoLabel.text = "Press Continue to get the first set of numbers"
         base.ContinueButton.isHidden = false
         preDisplay = true
+        level = 0
+        redo = 0
+        
+        startTime = Foundation.Date()
+        genStrings = []
+        gotStrings = []
+        gotLevels  = []
+        gotDuration = []
+        totErrors = 0
+        currRound = 0
+        resultList = [:]
     }
     
     override func DoContinue() {
@@ -48,26 +73,94 @@ class DigitSpanForward:DigitBaseClass {
             base.DisplayStringShowContinue(val: genval)
         } else {
             base.value = ""
-            base.NumberLabel.text = base.value
+            base.NumberLabel.text = ""
+            levelStartTime = Foundation.Date()
+            gotKeys = [:]
             base.enableKeypad()
         }
     }
     
     override func DoEnterDone() {
         base.disableKeypad()
-        level = level + 1
-        preDisplay = true
-        base.ContinueButton.isHidden = false
-        base.InfoLabel.text = "Press continue to get the next set of numbers"
+        
+        genStrings.append(genval)
+        gotStrings.append(base.value)
+        gotLevels.append(level+1)
+        let levelEndTime = Foundation.Date()
+        let elapsedTime = (Int)(levelEndTime.timeIntervalSince(levelStartTime))
+        gotDuration.append(elapsedTime)
+        
+        var tempList:[String:Any] = [:]
+        tempList["Generated"] = genval
+        tempList["Entered"] = base.value
+        tempList["ElapsedTime"] = elapsedTime
+        tempList["Keystrokes"] = gotKeys
+        
+        resultList[String(currRound)] = tempList
+        
+        currRound += 1
+        
+        
+        let pgenval = ProcesString(val: genval)
+        if base.value == pgenval {
+            base.InfoLabel.text = "Correct! Press continue to get the next set of numbers"
+            level += 1
+            if level >= MAX_LEVEL {
+                base.InfoLabel.text = "Correct!, test done"
+                EndTest()
+            } else {
+                redo = 0
+                preDisplay = true
+                base.ContinueButton.isHidden = false
+            }
+        } else {
+            redo += 1
+            totErrors += 1
+            if redo >= MAX_REDO {
+               base.InfoLabel.text = "Too many incorrect answers, test ending"
+                EndTest()
+            } else {
+                base.InfoLabel.text = "Incorrect, Press continue to repeat with new numbers"
+                preDisplay = true
+                base.ContinueButton.isHidden = false
+            }
+        }
     }
     
     override func DoEnd() {
-        base.disableKeypad()
-        base.value = ""
-        base.NumberLabel.text = base.value
-        level = 0
         base.InfoLabel.text = "Test ended"
+        EndTest()
+    }
     
+    func EndTest() {
+        let endTime = Foundation.Date()
+        
+        let result = Results()
+        result.name = TestName()
+        result.startTime = startTime
+        result.endTime = endTime
+        
+        result.shortDescription = "\(level) level with \(totErrors) errors"
+        
+        for (i, l) in gotLevels.enumerated() {
+            result.longDescription.add("\(l): \(genStrings[i])-->\(gotStrings[i])  \(gotDuration[i]) seconds")
+        }
+        
+        result.json["Details"] = resultList
+        result.json["Levels"] = level
+        result.json["Errors"] = totErrors
+        
+        resultsArray.add(result)
+        
+        base.EndTest()
+    }
+    
+    func ProcesString(val: String) -> String {
+        return val
+    }
+    
+    func TestName() -> String {
+        return "Forward Digit Span Test"
     }
 }
 

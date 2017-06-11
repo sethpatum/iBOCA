@@ -193,7 +193,7 @@ class AllResults  {
         tst["iBOCA version"] = (Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "0") + " (Build " +  (Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "0") + ")"
 
         e += "{ \"Setup\":" + sortedJson(dict: tst) + ", "
-        e += "{ \"Demographics\":" + sortedJson(dict: jst)
+        e += "\"Demographics\":" + sortedJson(dict: jst)
         
         if numResults() > 0 {
             e += ", \"Tests\":["
@@ -214,10 +214,10 @@ class AllResults  {
     func sortedJson(dict : [String:Any]) -> String {
         var ret = "{"
         var sorted = Array(dict).sorted(by: {$0.0 < $1.0})
-        var isint: Int? = nil
+        var isint: Bool = false
         if dict.count > 0 {
-            isint = Int(dict.keys.first!)
-            if isint != nil {
+            isint = dict.keys.first!.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil
+            if isint {
                 sorted = Array(dict).sorted(by: {Int($0.0)! < Int($1.0)!})
             }
         }
@@ -230,18 +230,15 @@ class AllResults  {
                 ret += ", "
             }
             
-            var kk : String = String(k)
-            if isint == nil {
-                kk = "\"" + String(k) + "\""
-            }
-            
+            let kk : String = "\"" + String(k) + "\""
+
             if v is [String:Any] {
                 let vstr : String = kk + ":" + sortedJson(dict: v as! [String : Any])
                 ret.append(vstr)
-            } else if Int(String(describing: v)) == nil {
-                ret.append(kk + ":\"" + String(describing: v) + "\"")
-            }  else {
+            } else if v is Int {
                 ret.append(kk + ":" + String(describing: v))
+            } else {
+                ret.append(kk + ":\"" + String(describing: v) + "\"")
             }
         }
         

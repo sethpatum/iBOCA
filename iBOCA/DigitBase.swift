@@ -38,7 +38,6 @@ class DigitBase: UIViewController {
     
     var value:String = ""
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -71,10 +70,8 @@ class DigitBase: UIViewController {
         EndButton.isHidden = true
         BackButton.isHidden = false
         
-        
-        DoInitialize()
+        base!.DoInitialize()
     }
-    
     
     func enableKeypad() {
         for key in NumKeys {
@@ -96,19 +93,25 @@ class DigitBase: UIViewController {
         }
     }
     
-    
     @IBAction func KeyPadKeyPressed(_ sender: UIButton) {
         value = value + sender.currentTitle!
         NumberLabel.text = value
+        let elapsedTime = (Int)(100*Foundation.Date().timeIntervalSince(base!.levelStartTime))
+        base!.gotKeys[(String)(elapsedTime)] = sender.currentTitle!
     }
     
     @IBAction func DoneKeyPressed(_ sender: UIButton) {
-        DoEnterDone()
+        let elapsedTime = (Int)(100*Foundation.Date().timeIntervalSince(base!.levelStartTime))
+        base!.gotKeys[(String)(elapsedTime)] = "done"
+
+        base!.DoEnterDone()
     }
     
     @IBAction func DeleteKeyPressed(_ sender: UIButton) {
         value = String(value.characters.dropLast())
         NumberLabel.text = value
+        let elapsedTime = (Int)(100*Foundation.Date().timeIntervalSince(base!.levelStartTime))
+        base!.gotKeys[(String)(elapsedTime)] = "del"
     }
     
     
@@ -117,20 +120,27 @@ class DigitBase: UIViewController {
         ContinueButton.isHidden = true
         EndButton.isHidden = false
         BackButton.isHidden = true
-        DoStart()
+        base!.DoStart()
     }
  
     @IBAction func ContinuePressed(_ sender: UIButton) {
-        DoContinue()
+        base!.DoContinue()
     }
     
     @IBAction func EndPressed(_ sender: UIButton) {
+        base!.DoEnd()
+    }
+    
+    // This may be call more than when EndPressed, DoEnd may be call within the subclass, which should call this
+    func EndTest() {
+        value = ""
+        NumberLabel.text = ""
+
+        disableKeypad()
         StartButton.isHidden = false
         ContinueButton.isHidden = true
         EndButton.isHidden = true
         BackButton.isHidden = false
-        DoEnd()
-
     }
     
     func DisplayStringShowContinue(val:String) {
@@ -149,27 +159,6 @@ class DigitBase: UIViewController {
         }
     }
     
-    
-    func DoInitialize() {
-        base!.DoInitialize()
-    }
-    
-    func DoStart() {
-        base!.DoStart()
-    }
-    
-    func DoEnterDone() {
-        base!.DoEnterDone()
-    }
-    
-    func DoEnd() {
-        base!.DoEnd()
-    }
-    
-    func DoContinue() {
-        base!.DoContinue()
-    }
-    
 }
 
 
@@ -177,18 +166,19 @@ class DigitBase: UIViewController {
 class DigitBaseClass {
     var base:DigitBase = DigitBase()
     
-    func DoInitialize() {
-    }
+    var startTime = Foundation.Date()
+    var levelStartTime = Foundation.Date()
     
-    func DoStart() {
-    }
+    var gotKeys : [String:String] = [:]
+
     
-    func DoEnterDone() {
-    }
+    func DoInitialize() {  }
     
-    func DoEnd() {
-    }
+    func DoStart()      {  }
     
-    func DoContinue() {
-    }
+    func DoEnterDone()  {  }
+    
+    func DoEnd()        {  }
+    
+    func DoContinue()   {  }
 }
