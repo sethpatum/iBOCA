@@ -745,9 +745,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Cats and Dogs"/>
-                                <connections>
-                                    <segue destination="kzf-ng-R8q" kind="show" id="DD9-Uh-bPW"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="144-5O-YWO">
                                 <rect key="frame" x="100" y="398" width="332" height="63"/>
@@ -825,13 +822,22 @@
                                     <segue destination="mFE-dR-SxI" kind="show" id="mXl-NW-Ww1"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AKJ-ex-fQi">
-                                <rect key="frame" x="603" y="649" width="320" height="67"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nOc-f8-JO1">
+                                <rect key="frame" x="423" y="538" width="135" height="67"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="New Forward Digit Span"/>
+                                <state key="normal" title="New BDS"/>
                                 <connections>
-                                    <segue destination="oxe-aZ-ydg" kind="show" id="Ges-mF-PUS"/>
+                                    <segue destination="oxe-aZ-ydg" kind="show" identifier="BackwardDigitSpan" id="jXy-KL-eph"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AKJ-ex-fQi">
+                                <rect key="frame" x="423" y="467" width="135" height="67"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="New FDS"/>
+                                <connections>
+                                    <segue destination="oxe-aZ-ydg" kind="show" identifier="ForwardDigitSpan" id="Ges-mF-PUS"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -859,7 +865,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4327.1484375" y="1837.5"/>
+            <point key="canvasLocation" x="-4327.734375" y="1837.5"/>
         </scene>
         <!--Tap In Order View Controller-->
         <scene sceneID="6pb-xV-nzR">
@@ -2693,5 +2699,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="Ahl-wP-pho"/>
         <segue reference="HD1-tR-rkD"/>
+        <segue reference="jXy-KL-eph"/>
     </inferredMetricsTieBreakers>
 </document>

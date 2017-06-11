@@ -1,8 +1,8 @@
 //
-//  DigitSpanForward.swift
+//  DigitSpanBackward.swift
 //  iBOCA
 //
-//  Created by saman on 6/10/17.
+//  Created by saman on 6/11/17.
 //  Copyright © 2017 sunspot. All rights reserved.
 //
 
@@ -10,14 +10,14 @@ import Foundation
 
 import UIKit
 
-class DigitSpanForward:DigitBothDirection {
+class DigitSpanBackward:DigitBothDirection {
     
     override func ProcesString(val: String) -> String {
-        return val
+        return String(val.characters.reversed())
     }
     
     override func TestName() -> String {
-        return "Forward Digit Span Test"
+        return "Backward Digit Span Test"
     }
 }
 

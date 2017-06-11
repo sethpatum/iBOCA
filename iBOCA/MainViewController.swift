@@ -12,7 +12,7 @@ import UIKit
 import MessageUI
 var screenSize : CGRect?
 
-
+var testName:String?
 
 class MainViewController: UIViewController, MFMailComposeViewControllerDelegate{
     var mailSubject : String = "iBOCA Results"
@@ -39,7 +39,9 @@ class MainViewController: UIViewController, MFMailComposeViewControllerDelegate{
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         navigationItem.title = nil
+        testName = segue.identifier
     }
+    
     
     @IBAction func sendEmail(_ sender: Any) {
         var body:String?
@@ -161,7 +163,6 @@ class MainViewController: UIViewController, MFMailComposeViewControllerDelegate{
         
     }
 
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

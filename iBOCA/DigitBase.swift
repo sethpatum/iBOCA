@@ -41,7 +41,13 @@ class DigitBase: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        base = DigitSpanForward()
+        if testName == "ForwardDigitSpan" {
+            base = DigitSpanForward()
+        } else if testName == "BackwardDigitSpan" {
+            base = DigitSpanBackward()
+        } else {
+            assert(true, "Error, got here with wrong name")
+        }
         base!.base = self
         
         NumKeys.append(Button_1)
@@ -96,12 +102,12 @@ class DigitBase: UIViewController {
     @IBAction func KeyPadKeyPressed(_ sender: UIButton) {
         value = value + sender.currentTitle!
         NumberLabel.text = value
-        let elapsedTime = (Int)(100*Foundation.Date().timeIntervalSince(base!.levelStartTime))
+        let elapsedTime = (Int)(1000*Foundation.Date().timeIntervalSince(base!.levelStartTime))
         base!.gotKeys[(String)(elapsedTime)] = sender.currentTitle!
     }
     
     @IBAction func DoneKeyPressed(_ sender: UIButton) {
-        let elapsedTime = (Int)(100*Foundation.Date().timeIntervalSince(base!.levelStartTime))
+        let elapsedTime = (Int)(1000*Foundation.Date().timeIntervalSince(base!.levelStartTime))
         base!.gotKeys[(String)(elapsedTime)] = "done"
 
         base!.DoEnterDone()
@@ -110,7 +116,7 @@ class DigitBase: UIViewController {
     @IBAction func DeleteKeyPressed(_ sender: UIButton) {
         value = String(value.characters.dropLast())
         NumberLabel.text = value
-        let elapsedTime = (Int)(100*Foundation.Date().timeIntervalSince(base!.levelStartTime))
+        let elapsedTime = (Int)(1000*Foundation.Date().timeIntervalSince(base!.levelStartTime))
         base!.gotKeys[(String)(elapsedTime)] = "del"
     }
     
