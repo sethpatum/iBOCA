@@ -10,6 +10,7 @@ import Foundation
 
 import UIKit
 
+// Inherited by both Forward and Backward digit span. They overrite two methods and done!
 class DigitBothDirection:DigitBaseClass {
     var level = 0
     var genval:String = ""
