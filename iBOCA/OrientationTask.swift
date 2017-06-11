@@ -10,7 +10,7 @@ import UIKit
 import MessageUI
 
 var firstTimeThrough = true
-                    //declare variables to be defined by pickerviews
+//declare variables to be defined by pickerviews
 var startTime = Foundation.Date()
 
 
@@ -25,14 +25,14 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
     var DateOK : Bool = false
     
     
-            //pickerview content set up(defines options)
-
+    //pickerview content set up(defines options)
+    
     @IBOutlet weak var WeekPicker: UIPickerView!
     let weekData = ["Monday", "Tuesday", "Wednesday", "Thusday", "Friday", "Saturday", "Sunday", "Do not know"]
- 
+    
     @IBOutlet weak var StatePicker: UIPickerView!
     let stateData = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia","Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming", "Don't Know"]
-   
+    
     
     @IBOutlet weak var currentDate: UIDatePicker!
     
@@ -53,30 +53,25 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
     @IBOutlet weak var TownPicker: UIPickerView!
     let townData = ["Correct", "Incorrect"]
     
-
+    
     @IBOutlet weak var currentTime: UIDatePicker!
-
+    
     @IBAction func updateTime(_ sender: Any) {
         let d:UIDatePicker = sender as! UIDatePicker
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
         Time = formatter.string(from: d.date)
-        let t1 = Calendar.current.component(.hour, from: startTime)*60 + Calendar.current.component(.minute, from: startTime)
-        let t2 = Calendar.current.component(.hour, from: d.date)*60 + Calendar.current.component(.minute, from: d.date)
-        if abs(t1 - t2) < 15*60 {
-            TimeOK = true
-        }
+        TimeOK = TimeDiffOK(date1: startTime, date2: d.date)
     }
     
-   
     @IBAction func DontKnowDate(_ sender: Any) {
         Date = "Dont Know"
         currentDate.isUserInteractionEnabled = false
         currentDate.alpha = 0.5
         DateOK = false
     }
-   
-
+    
+    
     @IBAction func DontKnowWeek(_ sender: Any) {
         Week = "Dont Know"
         WeekPicker.isUserInteractionEnabled = false
@@ -107,7 +102,7 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                                //declare pickerviews
+        //declare pickerviews
         WeekPicker.delegate = self
         StatePicker.delegate = self
         TownPicker.delegate = self
@@ -117,7 +112,7 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         State = stateData[StatePicker.selectedRow(inComponent: 0)]
         Week = weekData[WeekPicker.selectedRow(inComponent: 0)]
         
-      
+        
         
         let formatter = DateFormatter()
         formatter.dateFormat = "y-MM-dd"
@@ -125,7 +120,7 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         Date = formatter.string(from: currentDate.date)
         DateOK = false
         
-      
+        
         formatter.dateFormat = "yyyy/MM/dd HH:mm"
         currentTime.setDate(formatter.date(from:"2017/01/01 12:00")!,  animated: false)
         formatter.dateFormat = "HH:MM"
@@ -146,13 +141,13 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         
         startTime = Foundation.Date()
     }
-   
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-                // Get the new view controller using segue.destinationViewController.
+        // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
     
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -180,7 +175,7 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         
         return true
     }
-
+    
     @IBAction func DoneButton(_ sender: AnyObject) {
         let result = Results()
         result.name = "Orientation"
@@ -222,17 +217,18 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         if TimeOK == false {
             result.shortDescription = result.shortDescription! + " Time: \(Time!)(\(rightTime)) "
         }
-
         
         resultsArray.add(result)
         Status[TestOrientation] = TestStatus.Done
     }
+    
     //pickerview setup and whatnot
     
     func numberOfComponentsInPickerView(_ pickerView : UIPickerView!) -> Int{
         return 1
     }
-        //returns length of pickerview contents
+    
+    //returns length of pickerview contents
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
         print("0:", pickerView)
         if pickerView == WeekPicker {
@@ -246,7 +242,8 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         }
         return 1
     }
-            ////sets the final variables to selected row of the pickerview's text
+    
+    ////sets the final variables to selected row of the pickerview's text
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         print("1:",pickerView)
         if pickerView == WeekPicker {
@@ -261,10 +258,11 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
             Town = townData[row]
             return townData[row]
         }
- 
+        
         return ""
     }
-        //sets final variables to the selected row
+    
+    //sets final variables to the selected row
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
         print("2:", pickerView)
         if pickerView == WeekPicker {
@@ -277,14 +275,27 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
             Town = townData[row]
         }
     }
-  
+    
+    func TimeDiffOK(date1: Date, date2: Date) -> Bool {
+        var h1 = Calendar.current.component(.hour, from: date1)
+        var h2 = Calendar.current.component(.hour, from: date2)
+        let m1 = Calendar.current.component(.minute, from: date1)
+        let m2 = Calendar.current.component(.minute, from: date2)
+        
+        // Deal with noon and 1PM
+        if h1 == 12 && h2 == 1 {
+            h2 = 13
+        }
+        if h1 == 1 && h2 == 12 {
+            h1 = 13
+        }
+        return abs(h1*60 + m1 - h2*60 - m2) < 15*60
+    }
+
+
     /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
   */
-    
- 
-    
-    
 }
