@@ -134,16 +134,17 @@ class DigitBase: UIViewController {
     }
     
     func DisplayStringShowContinue(val:String) {
-        if val.characters.count == 0 {
-            ContinueButton.isHidden = false
-            InfoLabel.text = "Press Continue to Start Entering the Sequence"
-        } else if self.BackButton.isHidden == true {
-             DispatchQueue.main.asyncAfter(deadline: .now() + 0.9){
-                print(val)
-                let c = val.characters.first!
-                self.value = self.value + String(describing: c)
-                self.NumberLabel.text = self.value
-                self.DisplayStringShowContinue(val: String(val.characters.dropFirst(1)))
+        if BackButton.isHidden == true {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
+                if val.characters.count == 0 {
+                    self.ContinueButton.isHidden = false
+                    self.InfoLabel.text = "Press Continue to Start Entering the Sequence"
+                } else {
+                    let c = val.characters.first!
+                    self.value = self.value + String(describing: c)
+                    self.NumberLabel.text = self.value
+                    self.DisplayStringShowContinue(val: String(val.characters.dropFirst(1)))
+                }
             }
         }
     }
