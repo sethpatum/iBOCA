@@ -21,6 +21,8 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
     var Town : String?
     var Date : String?
     var Time : String?
+    var TimeOK : Bool = false
+    var DateOK : Bool = false
     
     
             //pickerview content set up(defines options)
@@ -42,6 +44,10 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         let formatter = DateFormatter()
         formatter.dateFormat = "y-MM-dd"
         Date = formatter.string(from: d.date)
+        let v = startTime.timeIntervalSince(d.date)
+        if abs(v) < 60*60*24 {
+            DateOK = true
+        }
     }
     
     @IBOutlet weak var TownPicker: UIPickerView!
@@ -55,6 +61,11 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
         Time = formatter.string(from: d.date)
+        let t1 = Calendar.current.component(.hour, from: startTime)*60 + Calendar.current.component(.minute, from: startTime)
+        let t2 = Calendar.current.component(.hour, from: d.date)*60 + Calendar.current.component(.minute, from: d.date)
+        if abs(t1 - t2) < 15*60 {
+            TimeOK = true
+        }
     }
     
    
@@ -62,6 +73,7 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         Date = "Dont Know"
         currentDate.isUserInteractionEnabled = false
         currentDate.alpha = 0.5
+        DateOK = false
     }
    
 
@@ -89,6 +101,7 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         Time = "Dont Know"
         currentTime.isUserInteractionEnabled = false
         currentTime.alpha = 0.5
+        TimeOK = false
     }
     
     
@@ -110,12 +123,14 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         formatter.dateFormat = "y-MM-dd"
         currentDate.setDate(formatter.date(from:"2017/01/01")!,  animated: false)
         Date = formatter.string(from: currentDate.date)
+        DateOK = false
         
       
         formatter.dateFormat = "yyyy/MM/dd HH:mm"
         currentTime.setDate(formatter.date(from:"2017/01/01 12:00")!,  animated: false)
         formatter.dateFormat = "HH:MM"
         Time = formatter.string(from: currentTime.date)
+        TimeOK = false
         
         
         currentDate.isUserInteractionEnabled = true
@@ -171,20 +186,44 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         result.name = "Orientation"
         result.startTime = startTime
         result.endTime = Foundation.Date()
-        result.shortDescription = "Week: \(Week!), State: \(State!), Town: \(Town!), Date: \(Date!), Time: \(Time!)"
+        
         result.json["Week"] = Week!
         result.json["State"] = State!
         result.json["Town"] = Town!
         result.json["Date"] = Date!
         result.json["Time"] = Time!
+        
         let formatter = DateFormatter()
         formatter.dateFormat = "y-MM-dd"
-        result.json["Correct-Date"] = formatter.string(from: startTime)
+        let rightDate = formatter.string(from: startTime)
+        result.json["Tested-Date"] = rightDate
         formatter.dateFormat = "HH:MM"
-        result.json["Correct-Time"] = formatter.string(from: startTime)
+        let rightTime = formatter.string(from: startTime)
+        result.json["Tested-Time"] = rightTime
         formatter.dateFormat = "EEEE"
-        result.json["Correct-Week"] = formatter.string(from: startTime)
+        let rightWeek = formatter.string(from: startTime)
+        result.json["Tested-Week"] = rightWeek
+        let WeekOK = rightWeek == Week!
+        
+        result.json["Correct-Time"] = TimeOK
+        result.json["Correct-Date"] = DateOK
+        result.json["Correct-Week"] = WeekOK
+        
+        result.shortDescription = "State: \(State!) "
+        if Town! != "Correct" {
+            result.shortDescription = result.shortDescription! + "Town: \(Town!) "
+        }
+        if WeekOK == false {
+            result.shortDescription = result.shortDescription! + " Week: \(Week!)(\(rightWeek)) "
+        }
+        if DateOK == false {
+            result.shortDescription = result.shortDescription! + " Date: \(Date!)(\(rightDate)) "
+        }
+        if TimeOK == false {
+            result.shortDescription = result.shortDescription! + " Time: \(Time!)(\(rightTime)) "
+        }
 
+        
         resultsArray.add(result)
         Status[TestOrientation] = TestStatus.Done
     }

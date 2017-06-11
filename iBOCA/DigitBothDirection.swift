@@ -144,7 +144,7 @@ class DigitBothDirection:DigitBaseClass {
         result.shortDescription = "\(level) level with \(totErrors) errors"
         
         for (i, l) in gotLevels.enumerated() {
-            result.longDescription.add("\(l): \(genStrings[i])-->\(gotStrings[i])  \(gotDuration[i]) seconds")
+            result.longDescription.add("\(l): \(genStrings[i])-->\(gotStrings[i])  \(gotDuration[i]) msec")
         }
         
         result.json["Details"] = resultList

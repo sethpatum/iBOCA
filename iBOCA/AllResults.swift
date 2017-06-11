@@ -80,7 +80,7 @@ class AllResults  {
             e += "<p>\n"
              e += "<h2>Summary of Results</h2>\n<p>\n"
             e += "<table>\n"
-            e += "<tr> <th>Test</th> <th>Errors</th> <th>Time(seconds)</th> </tr>\n"
+            e += "<tr> <th>Test</th> <th>Errors</th> <th>Time(seconds)</th> <th>Description</th></tr>\n"
             
 
             for i in 0...numResults()-1 {
@@ -92,8 +92,11 @@ class AllResults  {
                     e += "<td> No errors </td>"
                 }
                 let elapsedTime = r.endTime!.timeIntervalSince(r.startTime! as Date)
-                let duration = Int(elapsedTime)
+                let duration = ((Double)((Int(1000*elapsedTime))))/1000.0
                 e += "<td>\(duration)</td>"
+                if r.shortDescription != nil {
+                    e += "<td>\(r.shortDescription!)</td>"
+                }
 
                 e += "</tr>\n"
 
