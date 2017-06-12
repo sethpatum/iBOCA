@@ -71,10 +71,6 @@ class DigitBase: UIViewController {
         NumberLabel.text = ""
         KeypadLabel.text = ""
         
-        // let attributedString = NSMutableAttributedString(string: NumberLabel.text!)
-        // attributedString.addAttribute(NSKernAttributeName, value: CGFloat(2.0), range: NSRange(location: 0, length: attributedString.length))
-        // NumberLabel.attributedText = attributedString
-        
         StartButton.isHidden = false
         EndButton.isHidden = true
         BackButton.isHidden = false
