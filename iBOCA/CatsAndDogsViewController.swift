@@ -531,7 +531,9 @@ class CatsAndDogsViewController: ViewController {
         next()
         
     }
-    
+    //               0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24
+    let levelcats = [0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5]
+    let leveldogs = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4]
     //user completed sequence; reset repeats, increase numplaces so 1 more button lights up
     func next(){
         
@@ -550,114 +552,8 @@ class CatsAndDogsViewController: ViewController {
         }
             
         else {
-            
-            if(level == 0){
-//                alert(info: "Tap all the dogs.", display: true)
-                cats = 0
-                dogs = 1
-            }
-            if(level == 1){
-                cats = 0
-                dogs = 2
-            }
-            if(level == 2){
-                cats = 0
-                dogs = 3
-            }
-            if(level == 3){
-                cats = 0
-                dogs = 4
-            }
-            if(level == 4){
-                cats = 0
-                dogs = 5
-            }
-            
-            if(level == 5){
-//                alert(info: "Tap all the dogs.\nDo NOT tap the cats", display: true)
-                cats = 2
-                dogs = 1
-            }
-            if(level == 6){
-                cats = 2
-                dogs = 2
-            }
-            if(level == 7){
-                cats = 2
-                dogs = 3
-            }
-            if(level == 8){
-                cats = 2
-                dogs = 4
-            }
-            if(level == 9){
-                cats = 2
-                dogs = 5
-            }
-            
-            if(level == 10){
-                cats = 4
-                dogs = 1
-            }
-            if(level == 11){
-                cats = 4
-                dogs = 2
-            }
-            if(level == 12){
-                cats = 4
-                dogs = 3
-            }
-            if(level == 13){
-                cats = 4
-                dogs = 4
-            }
-            if(level == 14){
-                cats = 4
-                dogs = 5
-            }
-            
-            if(level == 15){
-//                alert(info: "Tap all the cats.\nDo NOT tap the dogs", display: true)
-                dogs = 2
-                cats = 1
-            }
-            if(level == 16){
-                dogs = 2
-                cats = 2
-            }
-            if(level == 17){
-                dogs = 2
-                cats = 3
-            }
-            if(level == 18){
-                dogs = 2
-                cats = 4
-            }
-            if(level == 19){
-                dogs = 2
-                cats = 5
-            }
-            
-            if(level == 20){
-                dogs = 4
-                cats = 1
-            }
-            if(level == 21){
-                dogs = 4
-                cats = 2
-            }
-            if(level == 22){
-                dogs = 4
-                cats = 3
-            }
-            if(level == 23){
-                dogs = 4
-                cats = 4
-            }
-            if(level == 24){
-                dogs = 4
-                cats = 5
-            }
+            cats = levelcats[level]
+            dogs = leveldogs[level]
             
             randomizeOrder()
             print("order randomized; cats = \(cats), dogs = \(dogs)")
