@@ -9,12 +9,12 @@
 import Foundation
 
 import UIKit
+import AVFoundation
 
 class DigitBase: UIViewController {
     var base:DigitBaseClass? = nil  // Cannot do a subclass, so using composition
 
     @IBOutlet weak var StartButton: UIButton!
-    @IBOutlet weak var ContinueButton: UIButton!
     @IBOutlet weak var EndButton: UIButton!
     @IBOutlet weak var BackButton: UIButton!
     
@@ -34,9 +34,12 @@ class DigitBase: UIViewController {
     var NumKeys:[UIButton] = []
     
     @IBOutlet weak var NumberLabel: UILabel!
+    @IBOutlet weak var KeypadLabel: UILabel!
     @IBOutlet weak var InfoLabel: UILabel!
     
     var value:String = ""
+    
+    let speechSynthesizer = AVSpeechSynthesizer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,14 +68,14 @@ class DigitBase: UIViewController {
         
         value = ""
         InfoLabel.text = ""
-        NumberLabel.text = value
+        NumberLabel.text = ""
+        KeypadLabel.text = ""
         
         // let attributedString = NSMutableAttributedString(string: NumberLabel.text!)
         // attributedString.addAttribute(NSKernAttributeName, value: CGFloat(2.0), range: NSRange(location: 0, length: attributedString.length))
         // NumberLabel.attributedText = attributedString
         
         StartButton.isHidden = false
-        ContinueButton.isHidden = true
         EndButton.isHidden = true
         BackButton.isHidden = false
         
@@ -101,7 +104,7 @@ class DigitBase: UIViewController {
     
     @IBAction func KeyPadKeyPressed(_ sender: UIButton) {
         value = value + sender.currentTitle!
-        NumberLabel.text = value
+        KeypadLabel.text = value
         let elapsedTime = (Int)(1000*Foundation.Date().timeIntervalSince(base!.levelStartTime))
         base!.gotKeys[(String)(elapsedTime)] = sender.currentTitle!
     }
@@ -115,7 +118,7 @@ class DigitBase: UIViewController {
     
     @IBAction func DeleteKeyPressed(_ sender: UIButton) {
         value = String(value.characters.dropLast())
-        NumberLabel.text = value
+        KeypadLabel.text = value
         let elapsedTime = (Int)(1000*Foundation.Date().timeIntervalSince(base!.levelStartTime))
         base!.gotKeys[(String)(elapsedTime)] = "del"
     }
@@ -123,14 +126,9 @@ class DigitBase: UIViewController {
     
     @IBAction func StartPressed(_ sender: UIButton) {
         StartButton.isHidden = true
-        ContinueButton.isHidden = true
         EndButton.isHidden = false
         BackButton.isHidden = true
         base!.DoStart()
-    }
- 
-    @IBAction func ContinuePressed(_ sender: UIButton) {
-        base!.DoContinue()
     }
     
     @IBAction func EndPressed(_ sender: UIButton) {
@@ -141,24 +139,33 @@ class DigitBase: UIViewController {
     func EndTest() {
         value = ""
         NumberLabel.text = ""
+        KeypadLabel.text = ""
 
         disableKeypad()
         StartButton.isHidden = false
-        ContinueButton.isHidden = true
         EndButton.isHidden = true
         BackButton.isHidden = false
     }
     
     func DisplayStringShowContinue(val:String) {
         if BackButton.isHidden == true {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                 if val.characters.count == 0 {
-                    self.ContinueButton.isHidden = false
-                    self.InfoLabel.text = "Press Continue to Start Entering the Sequence"
+                    //self.ContinueButton.isHidden = false
+                    self.InfoLabel.text = "Start entering the number sequence given by patient, followed by done"
+                    self.value = ""
+                    self.KeypadLabel.text = ""
+                    self.base!.levelStartTime = Foundation.Date()
+                    self.base!.gotKeys = [:]
+                    self.enableKeypad()
                 } else {
-                    let c = val.characters.first!
-                    self.value = self.value + String(describing: c)
+                    let c = String(val.characters.first!)
+                    self.value = self.value + c
                     self.NumberLabel.text = self.value
+                    
+                    let utterence = AVSpeechUtterance(string: c)
+                    self.speechSynthesizer.speak(utterence)
+                    
                     self.DisplayStringShowContinue(val: String(val.characters.dropFirst(1)))
                 }
             }
@@ -185,6 +192,4 @@ class DigitBaseClass {
     func DoEnterDone()  {  }
     
     func DoEnd()        {  }
-    
-    func DoContinue()   {  }
 }

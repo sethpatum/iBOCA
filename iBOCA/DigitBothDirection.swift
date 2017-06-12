@@ -9,15 +9,14 @@
 import Foundation
 
 import UIKit
+import AVFoundation
 
 // Inherited by both Forward and Backward digit span. They overrite two methods and done!
 class DigitBothDirection:DigitBaseClass {
     var level = 0
     var genval:String = ""
-    var preDisplay = true
     var redo = 0
     let MAX_REDO = 2
-    let MAX_LEVEL = 6
     
     var genStrings:[String] = []
     var gotStrings:[String] = []
@@ -28,19 +27,16 @@ class DigitBothDirection:DigitBaseClass {
     
     var resultList : [String:Any] = [:]
     
-    
     override func DoInitialize() {
-        base.InfoLabel.text = "Press start to begin \(TestName())"
-        level  = 0
+        base.InfoLabel.text = "Press start to begin \(TestName()) and tell the patiant the first set of numbers"
+        level  = LevelStart() - 1
         redo = 0
         base.disableKeypad()
     }
     
     override func DoStart() {
-        base.InfoLabel.text = "Press Continue to get the first set of numbers"
-        base.ContinueButton.isHidden = false
-        preDisplay = true
-        level = 0
+        base.InfoLabel.text = "Tell the patiant the numbers, followed by intering his/her response"
+        level = LevelStart() - 1
         redo = 0
         
         startTime = Foundation.Date()
@@ -51,34 +47,21 @@ class DigitBothDirection:DigitBaseClass {
         totErrors = 0
         currRound = 0
         resultList = [:]
+        StartDisplay()
     }
     
-    override func DoContinue() {
-        base.ContinueButton.isHidden = true
-        if preDisplay {
-            base.InfoLabel.text = "Tell the numbers to the patient"
-            genval = ""
-            base.value = ""
-            base.NumberLabel.text = base.value
-            for i in 0...level {
-                var num:String = String(arc4random_uniform(9))
-                // Check if the previous character is the same
-                if genval.characters.count > 0 {
-                    while(String(genval.characters.last!) == num) {
-                        num = String(arc4random_uniform(9))
-                    }
-                }
-                genval = genval + num
-            }
-            preDisplay = false
-            base.DisplayStringShowContinue(val: genval)
-        } else {
-            base.value = ""
-            base.NumberLabel.text = ""
-            levelStartTime = Foundation.Date()
-            gotKeys = [:]
-            base.enableKeypad()
+    func StartDisplay() {
+        genval = ""
+        base.value = ""
+        base.NumberLabel.text = ""
+        base.KeypadLabel.text = ""
+        var candidate = [0, 1, 2, 4, 5, 6, 7, 8, 9]
+        for i in 0...level {
+            let pos = (Int)(arc4random_uniform(UInt32(candidate.count)))
+            genval = genval + String(candidate[pos])
+            candidate.remove(at: pos)
         }
+        base.DisplayStringShowContinue(val: genval)
     }
     
     override func DoEnterDone() {
@@ -104,15 +87,14 @@ class DigitBothDirection:DigitBaseClass {
         
         let pgenval = ProcesString(val: genval)
         if base.value == pgenval {
-            base.InfoLabel.text = "Correct! Press continue to get the next set of numbers"
+            base.InfoLabel.text = "Correct! Tell the next set of numbers"
             level += 1
-            if level >= MAX_LEVEL {
+            if level >= LevelEnd() {
                 base.InfoLabel.text = "Correct!, test done"
                 EndTest()
             } else {
                 redo = 0
-                preDisplay = true
-                base.ContinueButton.isHidden = false
+                StartDisplay()
             }
         } else {
             redo += 1
@@ -121,9 +103,8 @@ class DigitBothDirection:DigitBaseClass {
                 base.InfoLabel.text = "Too many incorrect answers, test ending"
                 EndTest()
             } else {
-                base.InfoLabel.text = "Incorrect, Press continue to repeat with new numbers"
-                preDisplay = true
-                base.ContinueButton.isHidden = false
+                base.InfoLabel.text = "Incorrect, Repeat with new numbers"
+                StartDisplay()
             }
         }
     }
@@ -162,6 +143,14 @@ class DigitBothDirection:DigitBaseClass {
     
     func TestName() -> String {
         return "Forward Digit Span Test"
+    }
+    
+    func LevelStart() -> Int {
+        return 0
+    }
+    
+    func LevelEnd() -> Int {
+        return 6
     }
 }
 

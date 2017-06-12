@@ -677,24 +677,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iGI-yg-K8B">
-                                <rect key="frame" x="100" y="540" width="332" height="63"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Backwards Digit Span"/>
-                                <connections>
-                                    <segue destination="4Eb-es-DlO" kind="show" id="ej2-qd-NaH"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Apg-tP-eG1">
-                                <rect key="frame" x="100" y="469" width="332" height="63"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Forwards Digit Span"/>
-                                <connections>
-                                    <segue destination="7CJ-Qb-Bsb" kind="show" id="57M-1q-OyW"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="20k-0w-xV2">
                                 <rect key="frame" x="592" y="297" width="340" height="63"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -822,22 +804,22 @@
                                     <segue destination="mFE-dR-SxI" kind="show" id="mXl-NW-Ww1"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nOc-f8-JO1">
-                                <rect key="frame" x="423" y="538" width="135" height="67"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="New BDS"/>
-                                <connections>
-                                    <segue destination="oxe-aZ-ydg" kind="show" identifier="BackwardDigitSpan" id="jXy-KL-eph"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AKJ-ex-fQi">
-                                <rect key="frame" x="423" y="467" width="135" height="67"/>
+                                <rect key="frame" x="141" y="469" width="252" height="67"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="New FDS"/>
+                                <state key="normal" title="Forward Digit Span"/>
                                 <connections>
                                     <segue destination="oxe-aZ-ydg" kind="show" identifier="ForwardDigitSpan" id="Ges-mF-PUS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nOc-f8-JO1">
+                                <rect key="frame" x="129" y="544" width="276" height="67"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Backward Digit Span"/>
+                                <connections>
+                                    <segue destination="oxe-aZ-ydg" kind="show" identifier="BackwardDigitSpan" id="jXy-KL-eph"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -847,10 +829,10 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="Button3DFigureCopy" destination="wVm-Sl-bFV" id="mit-NS-NTk"/>
-                        <outlet property="ButtonBackwardDigitSpan" destination="iGI-yg-K8B" id="cLX-6k-xkU"/>
+                        <outlet property="ButtonBackwardDigitSpan" destination="nOc-f8-JO1" id="mO3-IG-YQy"/>
                         <outlet property="ButtonBackwardSpatialSpan" destination="XZh-ak-pPY" id="gbD-Gc-tO7"/>
                         <outlet property="ButtonCatsAndDogs" destination="pTk-PH-Jfg" id="1ym-uA-vsz"/>
-                        <outlet property="ButtonForwardDigitSpan" destination="Apg-tP-eG1" id="jyn-hx-1Z5"/>
+                        <outlet property="ButtonForwardDigitSpan" destination="AKJ-ex-fQi" id="RIR-kU-Nj5"/>
                         <outlet property="ButtonForwardSpatialSpan" destination="BND-a5-1RQ" id="Dui-uy-O7n"/>
                         <outlet property="ButtonNamingPictures" destination="s0w-I5-XUL" id="z7Q-1E-POs"/>
                         <outlet property="ButtonOrientation" destination="0ed-7V-lnU" id="UAf-cc-MGk"/>
@@ -2599,28 +2581,26 @@
                                     <action selector="DeleteKeyPressed:" destination="oxe-aZ-ydg" eventType="touchUpInside" id="D6M-6m-dFL"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAb-BA-yfp">
-                                <rect key="frame" x="433" y="89.5" width="118" height="57.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAb-BA-yfp">
+                                <rect key="frame" x="73" y="90" width="337" height="58"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="48"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="juc-yo-rBg">
-                                <rect key="frame" x="93" y="161" width="317" height="235"/>
+                                <rect key="frame" x="86" y="202" width="317" height="235"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elg-v0-x8z">
-                                <rect key="frame" x="155" y="55" width="121" height="48"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oGY-Px-lQc">
+                                <rect key="frame" x="433" y="90" width="494" height="58"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Continue"/>
-                                <connections>
-                                    <action selector="ContinuePressed:" destination="oxe-aZ-ydg" eventType="touchUpInside" id="TtP-Nn-nuA"/>
-                                </connections>
-                            </button>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="48"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -2632,6 +2612,7 @@
                             <constraint firstItem="YU8-sM-77O" firstAttribute="leading" secondItem="lx4-fR-S98" secondAttribute="trailing" constant="37" id="9oX-jQ-Hwv"/>
                             <constraint firstItem="Ri7-ld-9Ox" firstAttribute="centerY" secondItem="Ehx-RZ-Aa9" secondAttribute="centerY" id="As0-8g-kAt"/>
                             <constraint firstItem="pnW-5O-RbQ" firstAttribute="leading" secondItem="TvU-Pb-ShG" secondAttribute="trailing" constant="37" id="AwW-Uz-Pna"/>
+                            <constraint firstItem="bAb-BA-yfp" firstAttribute="leading" secondItem="SBH-Rd-YmK" secondAttribute="leadingMargin" constant="53" id="B5X-SU-MbU"/>
                             <constraint firstItem="lx4-fR-S98" firstAttribute="centerX" secondItem="Ehx-RZ-Aa9" secondAttribute="centerX" id="BKd-JP-Q59"/>
                             <constraint firstItem="0Ef-UF-5xw" firstAttribute="centerX" secondItem="bV3-6w-I82" secondAttribute="centerX" id="CdR-wO-MXB"/>
                             <constraint firstItem="zPk-QR-AMS" firstAttribute="centerX" secondItem="fjj-MU-S8U" secondAttribute="centerX" id="LQV-xc-ZFj"/>
@@ -2653,7 +2634,6 @@
                             <constraint firstItem="YU8-sM-77O" firstAttribute="centerX" secondItem="Ri7-ld-9Ox" secondAttribute="centerX" id="oCS-9b-1yS"/>
                             <constraint firstItem="TvU-Pb-ShG" firstAttribute="centerX" secondItem="fvR-RS-4Qo" secondAttribute="centerX" id="oTB-u5-gbM"/>
                             <constraint firstItem="lx4-fR-S98" firstAttribute="top" secondItem="Ehx-RZ-Aa9" secondAttribute="bottom" constant="37" id="qiC-cg-tZm"/>
-                            <constraint firstItem="bV3-6w-I82" firstAttribute="leading" secondItem="bAb-BA-yfp" secondAttribute="leading" id="sRg-t8-KMc"/>
                             <constraint firstItem="YU8-sM-77O" firstAttribute="centerY" secondItem="lx4-fR-S98" secondAttribute="centerY" id="u5M-l2-9eo"/>
                             <constraint firstItem="3LK-eg-yPh" firstAttribute="top" secondItem="bAb-BA-yfp" secondAttribute="bottom" constant="33" id="uQC-DZ-EGD"/>
                             <constraint firstItem="fvR-RS-4Qo" firstAttribute="leading" secondItem="bV3-6w-I82" secondAttribute="trailing" constant="37" id="udF-DU-eu1"/>
@@ -2677,9 +2657,9 @@
                         <outlet property="Button_9" destination="fjj-MU-S8U" id="FOi-d0-DXV"/>
                         <outlet property="Button_delete" destination="zPk-QR-AMS" id="55v-vU-ZNc"/>
                         <outlet property="Button_done" destination="lx4-fR-S98" id="f35-Ar-E9l"/>
-                        <outlet property="ContinueButton" destination="elg-v0-x8z" id="4uL-8r-4sv"/>
-                        <outlet property="EndButton" destination="SuD-jx-hFj" id="fqn-lr-bJC"/>
+                        <outlet property="EndButton" destination="SuD-jx-hFj" id="cmQ-kc-mOV"/>
                         <outlet property="InfoLabel" destination="juc-yo-rBg" id="XG9-j5-KLc"/>
+                        <outlet property="KeypadLabel" destination="oGY-Px-lQc" id="LSK-H4-prg"/>
                         <outlet property="NumberLabel" destination="bAb-BA-yfp" id="ech-Lr-0D5"/>
                         <outlet property="StartButton" destination="b3x-5B-tt3" id="SGC-c7-nTI"/>
                     </connections>

@@ -182,27 +182,27 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         result.startTime = startTime
         result.endTime = Foundation.Date()
         
-        result.json["Week"] = Week!
-        result.json["State"] = State!
-        result.json["Town"] = Town!
-        result.json["Date"] = Date!
-        result.json["Time"] = Time!
+        result.json["Week Given"] = Week!
+        result.json["State Given"] = State!
+        result.json["Town Given"] = Town!
+        result.json["Date Given"] = Date!
+        result.json["Time Given"] = Time!
         
         let formatter = DateFormatter()
         formatter.dateFormat = "y-MM-dd"
         let rightDate = formatter.string(from: startTime)
-        result.json["Tested-Date"] = rightDate
+        result.json["Date Tested"] = rightDate
         formatter.dateFormat = "HH:MM"
         let rightTime = formatter.string(from: startTime)
-        result.json["Tested-Time"] = rightTime
+        result.json["Time Tested"] = rightTime
         formatter.dateFormat = "EEEE"
         let rightWeek = formatter.string(from: startTime)
-        result.json["Tested-Week"] = rightWeek
+        result.json["Week Tested"] = rightWeek
         let WeekOK = rightWeek == Week!
         
-        result.json["Correct-Time"] = TimeOK
-        result.json["Correct-Date"] = DateOK
-        result.json["Correct-Week"] = WeekOK
+        result.json["Time Correct"] = TimeOK
+        result.json["Date Correct"] = DateOK
+        result.json["Week Correct"] = WeekOK
         
         result.shortDescription = "State: \(State!) "
         if Town! != "Correct" {

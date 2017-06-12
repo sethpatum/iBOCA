@@ -19,5 +19,13 @@ class DigitSpanBackward:DigitBothDirection {
     override func TestName() -> String {
         return "Backward Digit Span Test"
     }
+    
+    override func LevelStart() -> Int {
+        return 3
+    }
+    
+    override func LevelEnd() -> Int {
+        return 8
+    }
 }
 

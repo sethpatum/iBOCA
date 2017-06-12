@@ -19,5 +19,13 @@ class DigitSpanForward:DigitBothDirection {
     override func TestName() -> String {
         return "Forward Digit Span Test"
     }
+    
+    override func LevelStart() -> Int {
+        return 4
+    }
+    
+    override func LevelEnd() -> Int {
+        return 9
+    }
 }
 
