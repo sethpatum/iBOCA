@@ -47,6 +47,8 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         let v = startTime.timeIntervalSince(d.date)
         if abs(v) < 60*60*24 {
             DateOK = true
+        } else {
+            DateOK = false
         }
     }
     
@@ -107,27 +109,44 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         StatePicker.delegate = self
         TownPicker.delegate = self
         
+        State = stateData[StatePicker.selectedRow(inComponent: 0)]
+        // If a correct state name has been saved, use it
+        if(UserDefaults.standard.object(forKey: "OrientationState") != nil) {
+            let os = UserDefaults.standard.object(forKey: "OrientationState") as! String
+            let v = stateData.index(of: os)
+            if (v != nil) {
+                State  = os
+                StatePicker.selectRow(v!, inComponent: 0, animated: false)
+            }
+        }
         
         Town = townData[TownPicker.selectedRow(inComponent: 0)]
-        State = stateData[StatePicker.selectedRow(inComponent: 0)]
-        Week = weekData[WeekPicker.selectedRow(inComponent: 0)]
         
-        
-        
+        // Get the current date
         let formatter = DateFormatter()
         formatter.dateFormat = "y-MM-dd"
-        currentDate.setDate(formatter.date(from:"2017/01/01")!,  animated: false)
+        currentDate.setDate(Foundation.Date(),  animated: false)
         Date = formatter.string(from: currentDate.date)
-        DateOK = false
+        DateOK = true
         
         
+        // Get the current time
         formatter.dateFormat = "yyyy/MM/dd HH:mm"
-        currentTime.setDate(formatter.date(from:"2017/01/01 12:00")!,  animated: false)
+        currentTime.setDate(Foundation.Date(),  animated: false)
         formatter.dateFormat = "HH:MM"
         Time = formatter.string(from: currentTime.date)
-        TimeOK = false
+        TimeOK = true
         
-        
+        // Get the current week
+        Week = weekData[WeekPicker.selectedRow(inComponent: 0)]
+        formatter.dateFormat = "EEEE"
+        let wk = formatter.string(from: Foundation.Date())
+        let v = weekData.index(of: wk)
+        if (v != nil) {
+            Week  = wk
+            WeekPicker.selectRow(v!, inComponent: 0, animated: false)
+        }
+
         currentDate.isUserInteractionEnabled = true
         currentTime.isUserInteractionEnabled = true
         WeekPicker.isUserInteractionEnabled = true
@@ -220,6 +239,9 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         
         resultsArray.add(result)
         Status[TestOrientation] = TestStatus.Done
+        
+        UserDefaults.standard.set(State, forKey:"OrientationState")
+        UserDefaults.standard.synchronize()
     }
     
     //pickerview setup and whatnot
