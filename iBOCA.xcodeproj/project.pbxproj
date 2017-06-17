@@ -33,6 +33,7 @@
 		E2B9F8001DD144A70035FE0B /* VATask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B9F7FF1DD144A70035FE0B /* VATask.swift */; };
 		E2C906EB1D54DA1B00C0824E /* SerialSevens.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C906EA1D54DA1B00C0824E /* SerialSevens.swift */; };
 		F23951351EEE1ACF004B09E5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F23951341EEE1ACF004B09E5 /* AVFoundation.framework */; };
+		F23951371EF4B2DE004B09E5 /* DigitSerialSeven.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23951361EF4B2DE004B09E5 /* DigitSerialSeven.swift */; };
 		F24E6E6D1E1BC2C300E29995 /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24E6E691E1BC2C300E29995 /* Results.swift */; };
 		F24E6E6E1E1BC2C300E29995 /* AllResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24E6E6A1E1BC2C300E29995 /* AllResults.swift */; };
 		F24E6E6F1E1BC2C300E29995 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24E6E6B1E1BC2C300E29995 /* ResultsViewController.swift */; };
@@ -97,6 +98,7 @@
 		E2B9F7FF1DD144A70035FE0B /* VATask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VATask.swift; sourceTree = "<group>"; };
 		E2C906EA1D54DA1B00C0824E /* SerialSevens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerialSevens.swift; sourceTree = "<group>"; };
 		F23951341EEE1ACF004B09E5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		F23951361EF4B2DE004B09E5 /* DigitSerialSeven.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DigitSerialSeven.swift; sourceTree = "<group>"; };
 		F24E6E691E1BC2C300E29995 /* Results.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
 		F24E6E6A1E1BC2C300E29995 /* AllResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllResults.swift; sourceTree = "<group>"; };
 		F24E6E6B1E1BC2C300E29995 /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				F27AEA931EEC6E7B00AFB3D1 /* DigitBase.swift */,
+				F23951361EF4B2DE004B09E5 /* DigitSerialSeven.swift */,
 				F27AEAA71EED7A5F00AFB3D1 /* DigitBothDirection.swift */,
 				F27AEAA51EEC948600AFB3D1 /* DigitSpanForward.swift */,
 				F27AEAAB1EED7AEF00AFB3D1 /* DigitSpanBackward.swift */,
@@ -426,6 +429,7 @@
 				43960F4C1E3C0758006FDC7B /* CatsAndDogsViewController.swift in Sources */,
 				F24E6E701E1BC2C300E29995 /* ScaleView.swift in Sources */,
 				1BC2DFEF1D4F821F0020D430 /* AppDelegate.swift in Sources */,
+				F23951371EF4B2DE004B09E5 /* DigitSerialSeven.swift in Sources */,
 				F261D4E61E3E339F0039A545 /* TrailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

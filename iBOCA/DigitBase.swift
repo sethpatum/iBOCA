@@ -44,14 +44,18 @@ class DigitBase: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Dispatch according to incoming
         if testName == "ForwardDigitSpan" {
             base = DigitSpanForward()
         } else if testName == "BackwardDigitSpan" {
             base = DigitSpanBackward()
+        } else if testName == "SerialSeven" {
+            base = DigitSerialSeven()
         } else {
             assert(true, "Error, got here with wrong name")
         }
         base!.base = self
+        
         
         NumKeys.append(Button_1)
         NumKeys.append(Button_2)
@@ -173,6 +177,9 @@ class DigitBase: UIViewController {
 
 // A hacky superclass that implementations can subclass as subclassing DigitBase don't work (cannot  initialize supervlasses within the sotrybaord)
 class DigitBaseClass {
+    var testName = ""
+    var testStatus = -1
+    
     var base:DigitBase = DigitBase()
     
     var startTime = Foundation.Date()

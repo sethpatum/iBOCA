@@ -16,8 +16,9 @@ class DigitSpanForward:DigitBothDirection {
         return val
     }
     
-    override func TestName() -> String {
-        return "Forward Digit Span Test"
+    override func TestInitialize() {
+        testName =  "Forward Digit Span Test"
+        testStatus = TestForwardDigitSpan
     }
     
     override func LevelStart() -> Int {

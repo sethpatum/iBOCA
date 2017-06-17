@@ -24,11 +24,12 @@ class DigitBothDirection:DigitBaseClass {
     var gotDuration:[Int] = []
     var totErrors = 0
     var currRound = 0
-    
+        
     var resultList : [String:Any] = [:]
     
     override func DoInitialize() {
-        base.InfoLabel.text = "Press start to begin \(TestName()) and tell the patiant the first set of numbers"
+        TestInitialize()
+        base.InfoLabel.text = "Press start to begin \(testName) and tell the patiant the first set of numbers"
         level  = LevelStart() - 1
         redo = 0
         base.disableKeypad()
@@ -111,6 +112,7 @@ class DigitBothDirection:DigitBaseClass {
     
     override func DoEnd() {
         base.InfoLabel.text = "Test ended"
+        Status[testStatus] = TestStatus.Done
         EndTest()
     }
     
@@ -118,7 +120,7 @@ class DigitBothDirection:DigitBaseClass {
         let endTime = Foundation.Date()
         
         let result = Results()
-        result.name = TestName()
+        result.name = testName
         result.startTime = startTime
         result.endTime = endTime
         
@@ -137,12 +139,13 @@ class DigitBothDirection:DigitBaseClass {
         base.EndTest()
     }
     
-    func ProcesString(val: String) -> String {
-        return val
+    // Mainly redefined in the subclass
+    func TestInitialize() {
+        
     }
     
-    func TestName() -> String {
-        return "Forward Digit Span Test"
+    func ProcesString(val: String) -> String {
+        return val
     }
     
     func LevelStart() -> Int {

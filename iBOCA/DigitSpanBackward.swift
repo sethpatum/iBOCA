@@ -16,8 +16,9 @@ class DigitSpanBackward:DigitBothDirection {
         return String(val.characters.reversed())
     }
     
-    override func TestName() -> String {
-        return "Backward Digit Span Test"
+    override func TestInitialize() {
+        testName =  "Backward Digit Span Test"
+        testStatus = TestBackwardsDigitSpan
     }
     
     override func LevelStart() -> Int {
