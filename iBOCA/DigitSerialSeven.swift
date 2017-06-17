@@ -88,11 +88,14 @@ class DigitSerialSeven:DigitBaseClass {
             base.KeypadLabel.text = ""
             base.value = ""
             
-            if num == lastNum - 7 {
-                totErrors += 1
+            if num == lastNum - 7 && num == startNum - 7*level {
                 base.InfoLabel.text = "Correct: Ask patiant for previous number minus 7, Enter it"
+            } else  if num == lastNum - 7 {
+                totErrors += 1
+                base.InfoLabel.text = "Incorrect sequence #: Ask patiant for previous number minus 7, Enter it"
             } else {
-                base.InfoLabel.text = "Incorrect: End the test or ask patiant for previous number minus 7 and enter it"
+                totErrors += 1
+                base.InfoLabel.text = "Incorrect subtraction: End the test or ask patiant for previous number minus 7 and enter it"
             }
             
             enteredNumber.append(num)
@@ -136,11 +139,11 @@ class DigitSerialSeven:DigitBaseClass {
             sttime = gotTime[i]
             res["time (msec)"] = elapsedTime
             resultList[i] = res
-            result.longDescription.add("\(i): \(enteredNumber[i])-->\(expectedNumber[i]), \(sequenceNumber[i])  \(elapsedTime) msec")
+            result.longDescription.add("\(i): \(enteredNumber[i]) --> Subtract 7: \(expectedNumber[i]), Sequence 7: \(sequenceNumber[i])  (\(elapsedTime) msec)")
         }
         result.json["Results"] = resultList
         
-        result.shortDescription = "\(level) level with \(totErrors) errors"
+        result.shortDescription = "\(startNum)->\(enteredNumber) sequence with \(totErrors) errors"
         
         resultsArray.add(result)
         Status[testStatus] = TestStatus.Done

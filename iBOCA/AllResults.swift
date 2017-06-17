@@ -238,6 +238,14 @@ class AllResults  {
             if v is [String:Any] {
                 let vstr : String = kk + ":" + sortedJson(dict: v as! [String : Any])
                 ret.append(vstr)
+            } else  if v is [Int:Any] {
+                let vv = v as! [Int:Any]
+                var out:[String:Any] = [:]
+                for k in vv.keys {
+                    out[String(k)] = vv[k]
+                }
+                let vstr : String = kk + ":" + sortedJson(dict: out)
+                ret.append(vstr)
             } else if v is Int {
                 ret.append(kk + ":" + String(describing: v))
             } else {
