@@ -822,6 +822,13 @@
                                     <segue destination="oxe-aZ-ydg" kind="show" identifier="SerialSeven" id="G9E-xp-Whb"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Patiant ID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZ6-Ae-DEs">
+                                <rect key="frame" x="429" y="167" width="166" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -843,11 +850,12 @@
                         <outlet property="ButtonVisualAssociation" destination="2DB-z8-IDB" id="pGz-jC-OIz"/>
                         <outlet property="LabelSM" destination="LE9-Nm-3Tw" id="cQa-Iu-8er"/>
                         <outlet property="LabelVA" destination="4Wv-7u-b6J" id="BFb-xX-BV3"/>
+                        <outlet property="PatiantID" destination="fZ6-Ae-DEs" id="tBs-EL-sdw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4327.734375" y="1837.5"/>
+            <point key="canvasLocation" x="-4328.90625" y="1837.5"/>
         </scene>
         <!--Tap In Order View Controller-->
         <scene sceneID="6pb-xV-nzR">
@@ -1087,10 +1095,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Boston Cognitive Services, Inc." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8cG-gr-pE7">
-                                <rect key="frame" x="36" y="615" width="468" height="48"/>
+                                <rect key="frame" x="36" y="615" width="528" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="32"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.65426974826388884" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="30"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.038764105902777776" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -1114,21 +1122,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yws-ZT-SJu">
-                                <rect key="frame" x="259" y="629" width="507" height="98"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                <state key="normal" title="Acknowledgements"/>
-                                <connections>
-                                    <segue destination="crm-7O-3rs" kind="show" id="vvj-hT-lCK"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="iBoca logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="b3O-WQ-2Bx">
                                 <rect key="frame" x="166" y="70" width="693" height="272"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hkA-Bz-fX3">
-                                <rect key="frame" x="284" y="376" width="457" height="64"/>
+                                <rect key="frame" x="386" y="400" width="253" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="48"/>
                                 <state key="normal" title="Go to Tests"/>
@@ -1137,12 +1136,21 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lT2-9Y-5Dc">
-                                <rect key="frame" x="430" y="501" width="165" height="85"/>
+                                <rect key="frame" x="461" y="530" width="102" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
                                 <state key="normal" title="Setup"/>
                                 <connections>
                                     <segue destination="uIz-3z-MW0" kind="show" id="lm0-et-AEL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yws-ZT-SJu">
+                                <rect key="frame" x="370" y="682" width="285" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <state key="normal" title="Acknowledgements"/>
+                                <connections>
+                                    <segue destination="crm-7O-3rs" kind="show" id="vvj-hT-lCK"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1256,8 +1264,8 @@
                                     <action selector="patiantIDEdited:" destination="uIz-3z-MW0" eventType="editingDidEnd" id="bHQ-mN-xhE"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Initials" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XKX-0D-676">
-                                <rect key="frame" x="849" y="502.5" width="56.5" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Initials" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XKX-0D-676">
+                                <rect key="frame" x="849" y="503" width="109" height="24"/>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.88031684027777779" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1306,6 +1314,7 @@
                         <outlet property="adminName" destination="t7J-3P-S9X" id="nRg-0C-e7N"/>
                         <outlet property="atBIDMCOnOff" destination="00M-sT-NB3" id="CdS-7u-tch"/>
                         <outlet property="email" destination="HHK-GF-sPt" id="a6w-bT-lQf"/>
+                        <outlet property="emailLabel" destination="JHw-5f-zda" id="Yu6-dk-ER6"/>
                         <outlet property="emailOnOff" destination="Bth-VQ-NFx" id="CGG-qV-HH7"/>
                         <outlet property="patiantID" destination="DyP-wG-qya" id="TE0-5s-1HD"/>
                         <outlet property="transmitOnOff" destination="Lpx-sn-b5u" id="WD5-Qs-kg9"/>
@@ -2825,7 +2834,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Ipq-nJ-yUj"/>
-        <segue reference="eep-iX-tUz"/>
+        <segue reference="Ahl-wP-pho"/>
         <segue reference="G9E-xp-Whb"/>
     </inferredMetricsTieBreakers>
 </document>

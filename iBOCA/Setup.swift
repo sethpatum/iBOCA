@@ -15,7 +15,8 @@ let PID = PatiantID()
 var transmitOn : Bool = false
 var atBIDMCOn  : Bool = false
 var emailOn    : Bool = false
-var emailAddress     : String = ""
+var emailAddress       : String = ""
+var serverEmailAddress : String = "saman@mit.edu"
 
 class Setup: UIViewController {
 
@@ -23,6 +24,7 @@ class Setup: UIViewController {
     @IBOutlet weak var atBIDMCOnOff:  UISwitch!
     @IBOutlet weak var emailOnOff:    UISwitch!
     @IBOutlet weak var email:         UITextField!
+    @IBOutlet weak var emailLabel:    UILabel!
     @IBOutlet weak var adminName:     UITextField!
     @IBOutlet weak var adminInitials: UILabel!
     @IBOutlet weak var patiantID:     UITextField!
@@ -30,7 +32,7 @@ class Setup: UIViewController {
     
     @IBAction func transmitOnOff(_ sender: UISwitch) {
         transmitOn = transmitOnOff.isOn
-        UserDefaults.standard.set(transmitOn, forKey: "Tranmit")
+        UserDefaults.standard.set(transmitOn, forKey: "Transmit")
         UserDefaults.standard.synchronize()
     }
     
@@ -45,6 +47,7 @@ class Setup: UIViewController {
     @IBAction func emailOnOff(_ sender: Any) {
         emailOn = emailOnOff.isOn
         email.isEnabled = emailOn
+        emailLabel.isEnabled = emailOn
         UserDefaults.standard.set(emailOn, forKey: "emailOn")
         UserDefaults.standard.synchronize()
     }
@@ -86,12 +89,16 @@ class Setup: UIViewController {
             emailAddress = UserDefaults.standard.object(forKey: "emailAddress") as! String
         }
         email.isEnabled = emailOn
+        emailLabel.isEnabled = emailOn
         emailOnOff.isOn = emailOn
         email.text = emailAddress
     
         patiantID.text = PID.getID()
         adminName.text = PID.getName()
         adminInitials.text = PID.getInitials()
+        
+        // Need to figure out how to transmit!
+        transmitOnOff.isEnabled = false
   
     }
     

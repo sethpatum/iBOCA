@@ -8,6 +8,7 @@
 
 import UIKit
 import MessageUI
+import Security
 
 class AllResults  {
     
@@ -266,6 +267,11 @@ class AllResults  {
         
         ret += "}"
         return ret
+    }
+    
+    func encryptString(str : String) ->  String {
+        
+        return str
     }
     
     func returnEmailStringBase64EncodedImage(_ image:UIImage) -> String {
