@@ -48,13 +48,20 @@ class AllResults  {
         e += "</head>\n"
         e += "<body>\n"
         
+        e += "<h4>Patiant ID : \(PID.getID())</h4>\n"
+        e += "<h4>Tester : \(PID.getName())</h4>\n"
+        if atBIDMCOn {
+            e += "<h4>Done at BIDMC </h4>\n"
+        }
+        if transmitOn {
+            e += "<h4>Results recorded to server</h4>\n"
+        }
+        
         if(name != nil) {
             e += "<h4>Subject Code: \(name!)</h4>\n"
         }
         
-        if(MR != nil) {
-            e += "<h4>MR#:\(MR!)</h4>\n"
-        }
+
         
         if(Gender != nil) {
             e += "<h4>Gender:\(Gender!)</h4>\n"
@@ -154,14 +161,18 @@ class AllResults  {
         var e : String = ""
         var jst : [String:String] = [:]
         
+        jst["Patiant ID #"] = PID.getID()
+        jst["Tester Name"] = PID.getName()
+        jst["Done at BIDMC"] = String(atBIDMCOn)
+        
+        if(emailOn) {
+            jst["Emailed to"] = emailAddress
+        }
+        
         if(name != nil) {
             jst["Subject Code"] = name!
         }
-        
-        if(MR != nil) {
-            jst["MR#"] = MR!
-        }
-        
+
         if(Gender != nil) {
             jst["Gender"] = Gender!
         }
