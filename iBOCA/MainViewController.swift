@@ -15,7 +15,7 @@ var screenSize : CGRect?
 var testName:String?
 
 class MainViewController: UIViewController, MFMailComposeViewControllerDelegate{
-    var mailSubject : String = "iBOCA Results"
+    var mailSubject : String = "iBOCA Results of "
     
     
     var segueToLanding = false // COmplete hack to get back to landing page.  The timer will keep issuing segue command if this variable is set. Deals with the asynchronous mail window (need to find a better way!)
@@ -45,31 +45,63 @@ class MainViewController: UIViewController, MFMailComposeViewControllerDelegate{
         testName = segue.identifier
     }
     
+    var doSecondEmail = false
     
     @IBAction func sendEmail(_ sender: Any) {
         var body:String?
         
-        if(emailOn && MFMailComposeViewController.canSendMail()  && resultsArray.numResults() > 0) {
-            body = resultsArray.emailBody()
-            let picker = MFMailComposeViewController()
-            picker.mailComposeDelegate = self
-            picker.setSubject(mailSubject)
-            picker.setMessageBody(body!, isHTML: true)
-            picker.setToRecipients([emailAddress])
-            let data = encryptString(str: resultsArray.toJson())
-            picker.addAttachmentData(data, mimeType: "text/plain", fileName: "Encrypted-JSON")
-            present(picker, animated: true)
+        if(MFMailComposeViewController.canSendMail()  && resultsArray.numResults() > 0) {
+            if(emailOn) {
+                // send the e-mail
+                body = resultsArray.emailBody()
+                sendEmail(body: body!, address: [emailAddress])
+                if(transmitOn) {
+                    // queue the 2nd e-mail to server
+                    doSecondEmail = true
+                }
+            } else if(transmitOn) {
+                // email to server
+                sendEmail(body: "", address: [serverEmailAddress])
+            } else {
+                // nothing to send
+                resultsArray.doneWithPatient()
+                segueToLanding = true
+            }
+        } else {
+            // nothing to send
+            resultsArray.doneWithPatient()
+            segueToLanding = true
         }
-        
-        resultsArray.doneWithPatient()
-        PID.incID()
-        self.performSegue(withIdentifier: "BackToLanding", sender: self)
     }
     
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+  
         controller.dismiss(animated: true)
-        segueToLanding = true
+        
+        if doSecondEmail {
+            doSecondEmail = false
+            // TransmitOn is why we are here
+            if(emailOn && MFMailComposeViewController.canSendMail()  && resultsArray.numResults() > 0) {
+                sendEmail(body: "", address: [serverEmailAddress])
+            }
+        } else {
+            // all e-mail sent
+            resultsArray.doneWithPatient()
+            PID.incID()
+            segueToLanding = true
+        }
+    }
+    
+    func sendEmail(body: String, address: [String]) {
+        let picker = MFMailComposeViewController()
+        picker.mailComposeDelegate = self
+        picker.setSubject(mailSubject + PID.getID())
+        picker.setMessageBody(body, isHTML: true)
+        picker.setToRecipients(address)
+        let data = encryptString(str: resultsArray.toJson())
+        picker.addAttachmentData(data, mimeType: "text/plain", fileName: "Encrypted-JSON")
+        present(picker, animated: true)
     }
     
     override func viewDidLoad() {
@@ -78,7 +110,7 @@ class MainViewController: UIViewController, MFMailComposeViewControllerDelegate{
         
         screenSize = UIScreen.main.bounds
         
-        emailOn = !UserDefaults.standard.bool(forKey: "emailOff")
+        emailOn = UserDefaults.standard.bool(forKey: "emailOn")
         if(UserDefaults.standard.object(forKey: "emailAddress") != nil) {
             emailAddress = UserDefaults.standard.object(forKey: "emailAddress") as! String
         }

@@ -96,10 +96,6 @@ class Setup: UIViewController {
         patiantID.text = PID.getID()
         adminName.text = PID.getName()
         adminInitials.text = PID.getInitials()
-        
-        // Need to figure out how to transmit!
-        transmitOnOff.isEnabled = false
-  
     }
     
     
