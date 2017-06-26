@@ -56,6 +56,8 @@ class MainViewController: UIViewController, MFMailComposeViewControllerDelegate{
             picker.setSubject(mailSubject)
             picker.setMessageBody(body!, isHTML: true)
             picker.setToRecipients([emailAddress])
+            let data = encryptString(str: resultsArray.toJson())
+            picker.addAttachmentData(data, mimeType: "text/plain", fileName: "Encrypted-JSON")
             present(picker, animated: true)
         }
         

@@ -8,9 +8,16 @@
 
 import Foundation
 import Security
+import CryptoSwift
 
-func encryptString(str : String) ->  String {
+func encryptString(str : String) -> Data {
     
-    return str
+    do {
+        let aes = try AES(key: "passwordpassword", iv: "drowssapdrowssap") // aes128
+        let ciphertext = try aes.encrypt(Array(str.utf8))
+        return Data(bytes: ciphertext)
+    } catch { }
+    return Data()
 }
 
+ 
