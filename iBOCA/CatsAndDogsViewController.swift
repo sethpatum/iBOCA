@@ -411,7 +411,7 @@ class CatsAndDogsViewController: ViewController {
             })
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.1){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.6){
             for index in 0 ..< self.order.count {
                 UIView.animate(withDuration: 0.8, animations:{
 //                    self.buttonList[index].frame = CGRect(x: self.buttonList[index].frame.origin.x + 110, y: self.buttonList[index].frame.origin.y, width: self.buttonList[index].frame.size.width, height: self.buttonList[index].frame.size.height)
@@ -452,8 +452,8 @@ class CatsAndDogsViewController: ViewController {
             
             if(i <= dogs - 1) {
                 
-                let image = UIImage(named: "dog")!
-                let imageView = UIImageView(frame:CGRect(x: x, y: y, width: 100.0*(image.size.width)/(image.size.height), height: 100.0))
+                let image = UIImage(named: "newDog")!
+                let imageView = UIImageView(frame:CGRect(x: (x + (100-(100.0*(image.size.width)/(image.size.height)))/2), y: y, width: 100.0*(image.size.width)/(image.size.height), height: 100.0))
                 imageView.image = image
                 self.view.addSubview(imageView)
                 imageList.append(imageView)
@@ -463,8 +463,8 @@ class CatsAndDogsViewController: ViewController {
             else {
                 if(i <= cats + dogs - 1) {
                     
-                    let image = UIImage(named: "cat1")!
-                    let imageView = UIImageView(frame:CGRect(x: x, y: y, width: 100.0*(image.size.width)/(image.size.height), height: 100.0))
+                    let image = UIImage(named: "newCat")!
+                    let imageView = UIImageView(frame:CGRect(x: (x + (100-(100.0*(image.size.width)/(image.size.height)))/2), y: y, width: 100.0*(image.size.width)/(image.size.height), height: 100.0))
                     imageView.image = image
                     self.view.addSubview(imageView)
                     imageList.append(imageView)
@@ -662,8 +662,8 @@ class CatsAndDogsViewController: ViewController {
                 
                 if(i <= dogs - 1) {
                     
-                    let image = UIImage(named: "dog")!
-                    let imageView = UIImageView(frame:CGRect(x: x, y: y, width: 100.0*(image.size.width)/(image.size.height), height: 100.0))
+                    let image = UIImage(named: "newDog")!
+                    let imageView = UIImageView(frame:CGRect(x: (x + (100-(100.0*(image.size.width)/(image.size.height)))/2), y: y, width: 100.0*(image.size.width)/(image.size.height), height: 100.0))
                     imageView.image = image
                     self.view.addSubview(imageView)
                     imageList.append(imageView)
@@ -675,8 +675,8 @@ class CatsAndDogsViewController: ViewController {
                 else {
                     if(i <= cats + dogs - 1) {
                         
-                        let image = UIImage(named: "cat1")!
-                        let imageView = UIImageView(frame:CGRect(x: x, y: y, width: 100.0*(image.size.width)/(image.size.height), height: 100.0))
+                        let image = UIImage(named: "newCat")!
+                        let imageView = UIImageView(frame:CGRect(x: (x + (100-(100.0*(image.size.width)/(image.size.height)))/2), y: y, width: 100.0*(image.size.width)/(image.size.height), height: 100.0))
                         imageView.image = image
                         self.view.addSubview(imageView)
                         imageList.append(imageView)
