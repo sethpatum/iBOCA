@@ -269,10 +269,6 @@ class AllResults  {
         return ret
     }
     
-    func encryptString(str : String) ->  String {
-        
-        return str
-    }
     
     func returnEmailStringBase64EncodedImage(_ image:UIImage) -> String {
         //BUGBUG: Fix this!!

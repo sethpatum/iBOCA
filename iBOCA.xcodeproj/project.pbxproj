@@ -32,6 +32,7 @@
 		E29AF0401D51134A00C4AF79 /* ForwardDigitSpan.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29AF03F1D51134A00C4AF79 /* ForwardDigitSpan.swift */; };
 		E2B9F8001DD144A70035FE0B /* VATask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B9F7FF1DD144A70035FE0B /* VATask.swift */; };
 		E2C906EB1D54DA1B00C0824E /* SerialSevens.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C906EA1D54DA1B00C0824E /* SerialSevens.swift */; };
+		F2229C7D1F01AC39000F2CBA /* crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2229C7C1F01AC39000F2CBA /* crypto.swift */; };
 		F23951351EEE1ACF004B09E5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F23951341EEE1ACF004B09E5 /* AVFoundation.framework */; };
 		F23951371EF4B2DE004B09E5 /* DigitSerialSeven.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23951361EF4B2DE004B09E5 /* DigitSerialSeven.swift */; };
 		F23951391EFFD660004B09E5 /* Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23951381EFFD660004B09E5 /* Setup.swift */; };
@@ -99,6 +100,7 @@
 		E29AF03F1D51134A00C4AF79 /* ForwardDigitSpan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForwardDigitSpan.swift; sourceTree = "<group>"; };
 		E2B9F7FF1DD144A70035FE0B /* VATask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VATask.swift; sourceTree = "<group>"; };
 		E2C906EA1D54DA1B00C0824E /* SerialSevens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerialSevens.swift; sourceTree = "<group>"; };
+		F2229C7C1F01AC39000F2CBA /* crypto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = crypto.swift; sourceTree = "<group>"; };
 		F23951341EEE1ACF004B09E5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		F23951361EF4B2DE004B09E5 /* DigitSerialSeven.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DigitSerialSeven.swift; sourceTree = "<group>"; };
 		F23951381EFFD660004B09E5 /* Setup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setup.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				1BC2DFF51D4F821F0020D430 /* Assets.xcassets */,
 				E27BA37E1D523B8400619C07 /* BackwardDigitSpan.swift */,
 				43960F4B1E3C0758006FDC7B /* CatsAndDogsViewController.swift */,
+				F2229C7C1F01AC39000F2CBA /* crypto.swift */,
 				E272DF011D74957F002F8295 /* Demographics.swift */,
 				F27AEA921EEC6E4200AFB3D1 /* DigitTests */,
 				E29AF03F1D51134A00C4AF79 /* ForwardDigitSpan.swift */,
@@ -181,19 +184,19 @@
 				1BC2DFF21D4F821F0020D430 /* Main.storyboard */,
 				F27728A51E33C91A004F8A6E /* MainViewController.swift */,
 				E2901DCE1D4F8C3700080F82 /* OrientationTask.swift */,
+				F239513A1EFFE6A1004B09E5 /* PatiantID.swift */,
 				E2037F1B1E47E7F000EE13EB /* Pictures */,
 				43343D471E3E66D5001779AC /* PicturesViewController.swift */,
 				F24E6E711E1BC2D800E29995 /* Results */,
 				1B65673F1D7DE07B00C92FA3 /* SemanticListGeneration.swift */,
 				E2C906EA1D54DA1B00C0824E /* SerialSevens.swift */,
+				F23951381EFFD660004B09E5 /* Setup.swift */,
 				4386775B1E33D551000309F2 /* SimpleMemory.swift */,
 				43343D451E3E66BC001779AC /* TapInOrderBackwardsViewController.swift */,
 				43343D431E3E66A3001779AC /* TapInOrderViewController.swift */,
 				F261D4E41E3E33620039A545 /* Trails */,
 				E2B9F7FF1DD144A70035FE0B /* VATask.swift */,
 				1BC2DFF01D4F821F0020D430 /* ViewController.swift */,
-				F23951381EFFD660004B09E5 /* Setup.swift */,
-				F239513A1EFFE6A1004B09E5 /* PatiantID.swift */,
 			);
 			path = iBOCA;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 				43343D461E3E66BC001779AC /* TapInOrderBackwardsViewController.swift in Sources */,
 				1B53650E1D7491CF0088B5D2 /* 3DFigureCopy.swift in Sources */,
 				F27AEAA61EEC948600AFB3D1 /* DigitSpanForward.swift in Sources */,
+				F2229C7D1F01AC39000F2CBA /* crypto.swift in Sources */,
 				1BC2DFF11D4F821F0020D430 /* ViewController.swift in Sources */,
 				E272DF021D74957F002F8295 /* Demographics.swift in Sources */,
 				4386775C1E33D551000309F2 /* SimpleMemory.swift in Sources */,
