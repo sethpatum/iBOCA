@@ -68,6 +68,20 @@
 			remoteGlobalIDString = 1BC2DFEA1D4F821F0020D430;
 			remoteInfo = iBOCA;
 		};
+		F21C1FFA1F01B95D00523D85 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F21C1FF21F01B95D00523D85 /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 754BE45519693E190098E6F3;
+			remoteInfo = CryptoSwift;
+		};
+		F21C1FFC1F01B95D00523D85 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F21C1FF21F01B95D00523D85 /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 754BE46019693E190098E6F3;
+			remoteInfo = Tests;
+		};
 		F2229C871F01AFDF000F2CBA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F2229C821F01AFDF000F2CBA /* CryptoSwift.xcodeproj */;
@@ -151,6 +165,7 @@
 		E29AF03F1D51134A00C4AF79 /* ForwardDigitSpan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForwardDigitSpan.swift; sourceTree = "<group>"; };
 		E2B9F7FF1DD144A70035FE0B /* VATask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VATask.swift; sourceTree = "<group>"; };
 		E2C906EA1D54DA1B00C0824E /* SerialSevens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerialSevens.swift; sourceTree = "<group>"; };
+		F21C1FF21F01B95D00523D85 /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = CryptoSwift/CryptoSwift.xcodeproj; sourceTree = "<group>"; };
 		F2229C7C1F01AC39000F2CBA /* crypto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = crypto.swift; sourceTree = "<group>"; };
 		F2229C7E1F01AF35000F2CBA /* CryptoSwift */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CryptoSwift; sourceTree = "<group>"; };
 		F2229C801F01AF50000F2CBA /* CryptoSwift */ = {isa = PBXFileReference; lastKnownFileType = folder; name = CryptoSwift; path = CryptoSwift/Sources/CryptoSwift; sourceTree = "<group>"; };
@@ -204,6 +219,7 @@
 		1BC2DFE21D4F821F0020D430 = {
 			isa = PBXGroup;
 			children = (
+				F21C1FF21F01B95D00523D85 /* CryptoSwift.xcodeproj */,
 				1BC2DFED1D4F821F0020D430 /* iBOCA */,
 				1BC2E0021D4F821F0020D430 /* iBOCATests */,
 				1BC2E00D1D4F821F0020D430 /* iBOCAUITests */,
@@ -286,6 +302,15 @@
 			);
 			name = Pictures;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		F21C1FF31F01B95D00523D85 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F21C1FFB1F01B95D00523D85 /* CryptoSwift.framework */,
+				F21C1FFD1F01B95D00523D85 /* Tests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		F2229C831F01AFDF000F2CBA /* Products */ = {
@@ -455,6 +480,10 @@
 					ProductGroup = F2229C9E1F01B049000F2CBA /* Products */;
 					ProjectRef = F2229C9D1F01B049000F2CBA /* CryptoSwift.xcodeproj */;
 				},
+				{
+					ProductGroup = F21C1FF31F01B95D00523D85 /* Products */;
+					ProjectRef = F21C1FF21F01B95D00523D85 /* CryptoSwift.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -466,6 +495,20 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		F21C1FFB1F01B95D00523D85 /* CryptoSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CryptoSwift.framework;
+			remoteRef = F21C1FFA1F01B95D00523D85 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F21C1FFD1F01B95D00523D85 /* Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = Tests.xctest;
+			remoteRef = F21C1FFC1F01B95D00523D85 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		F2229C881F01AFDF000F2CBA /* CryptoSwift.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
