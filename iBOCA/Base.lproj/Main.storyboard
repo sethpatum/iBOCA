@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RmL-Z6-Ri2">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RmL-Z6-Ri2">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment version="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -466,13 +466,17 @@
                                     <action selector="Reset:" destination="kzf-ng-R8q" eventType="touchUpInside" id="Gdg-k9-HOy"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rb1-16-qUN">
-                                <rect key="frame" x="406" y="66" width="213" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AOo-CZ-mqH">
+                                <rect key="frame" x="719" y="76" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Usz-az-Yp0">
+                                <rect key="frame" x="428" y="68" width="283" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                <state key="normal" title="Done Tapping"/>
+                                <state key="normal" title="Sequence Selected"/>
                                 <connections>
-                                    <action selector="selectionDone:" destination="kzf-ng-R8q" eventType="touchUpInside" id="hRk-D6-Jcj"/>
+                                    <action selector="sequenceSelected:" destination="kzf-ng-R8q" eventType="touchUpInside" id="6Of-yo-uyl"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -484,12 +488,12 @@
                         <outlet property="resetButton" destination="JC5-hU-DsF" id="9OB-hT-wzj"/>
                         <outlet property="resultLabel" destination="Wzl-ke-4rO" id="5M4-fZ-ddv"/>
                         <outlet property="resultsLabel" destination="Wzl-ke-4rO" id="GJ4-cr-4Tu"/>
-                        <outlet property="selectionDoneButton" destination="Rb1-16-qUN" id="9Ma-0d-wQE"/>
+                        <outlet property="sequenceSelectionButton" destination="Usz-az-Yp0" id="bcU-VD-xU5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b43-W2-YEC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3001.171875" y="4869.53125"/>
+            <point key="canvasLocation" x="-3001.171875" y="4947.65625"/>
         </scene>
         <!--Tap In Order Backwards View Controller-->
         <scene sceneID="dBI-Cj-uEw">
@@ -718,6 +722,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Cats and Dogs"/>
+                                <connections>
+                                    <segue destination="kzf-ng-R8q" kind="show" id="8Lr-4L-mv2"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="144-5O-YWO">
                                 <rect key="frame" x="100" y="398" width="332" height="63"/>
@@ -2677,7 +2684,7 @@
         <image name="seth1.jpg" width="960" height="960"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="HD1-tR-rkD"/>
+        <segue reference="AER-wR-ZtZ"/>
         <segue reference="G9E-xp-Whb"/>
         <segue reference="Ahl-wP-pho"/>
     </inferredMetricsTieBreakers>

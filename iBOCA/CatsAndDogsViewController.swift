@@ -9,6 +9,7 @@
 import UIKit
 
 import Darwin
+import Foundation
 
 class CatsAndDogsViewController: ViewController {
     
@@ -26,15 +27,24 @@ class CatsAndDogsViewController: ViewController {
     var incorrectRandom = [Int]()
     var times = [Double]()
     
+    var dogList = [Int]()
+    var catList = [Int]()
+    var break1 = Int()
+    var break2 = Int()
+    
     var timePassed = Double()
+    
+    var timeOfTap = Double()
+    
+    @IBOutlet weak var sequenceSelectionButton: UIButton!
     
     var startTime = TimeInterval()
     var startTime2 = Foundation.Date()
     
     @IBOutlet weak var resultLabel: UILabel!
     
-    var cats = 0 //# cats
-    var dogs = 1 //# dogs
+    var cats = Int() //# cats
+    var dogs = Int() //# dogs
     var level = 0 //current level
     var repetition = 0
     
@@ -47,8 +57,6 @@ class CatsAndDogsViewController: ViewController {
     @IBOutlet weak var endButton: UIButton!
     
     @IBOutlet weak var resetButton: UIButton!
-    
-    @IBOutlet weak var selectionDoneButton: UIButton!
     
     @IBOutlet weak var resultsLabel: UILabel!
     
@@ -68,6 +76,8 @@ class CatsAndDogsViewController: ViewController {
             }
         }
         
+        dogList = [Int]()
+        catList = [Int]()
         buttonList = [UIButton]()
         imageList = [UIImageView]()
         order = [Int]()
@@ -81,43 +91,149 @@ class CatsAndDogsViewController: ViewController {
         timePassed = Double()
         startTime = TimeInterval()
         startTime2 = Foundation.Date()
-        cats = 0 //# cats
-        dogs = 1 //# dogs
         level = 0 //current level
         repetition = 0
         ended = false
 //        startButton.isEnabled = false
         endButton.isEnabled = false
         resetButton.isEnabled = false
-        selectionDoneButton.isEnabled = false
         backButton.isEnabled = true
+        timeOfTap = -1.0
+        
+        setSequence()
         
 //        StartTest(resetButton)
-        startAlert()
+//        startAlert()
         
-        /*
-        cats = 0
-        dogs = 1
-        level = 0
-        
-        self.resultsLabel.text = ""
-        
-        randomizeOrder()
-        
-        for (index, _) in self.order.enumerated() {
-            self.buttonList[index].backgroundColor = UIColor.blue
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5){
-            
-            self.display()
-            self.startTime2 = NSDate()
-        }
- */
         
     }
     
+    var label1 = UILabel()
+    var label2 = UILabel()
+    var label3 = UILabel()
+    var field1 = UITextField()
+    var field2 = UITextField()
+    var field3 = UITextField()
+    
+    
+    func setSequence(){
+        
+        
+        label1 = UILabel(frame: CGRect(x: 50, y: 200, width: 350, height: 100))
+        label1.textAlignment = .left
+        label1.numberOfLines = 2
+        label1.text = "Dogs Alone:\n(Format: #dogs1,#dogs2,#dogs3...))"
+        self.view.addSubview(label1)
+        
+        label2 = UILabel(frame: CGRect(x: 50, y: 350, width: 350, height: 100))
+        label2.textAlignment = .left
+        label2.numberOfLines = 2
+        label2.text = "Dogs with Cat Distractors:\n(Format: (#dogs1,#cats1),(#dogs2,#cats2)...)"
+        self.view.addSubview(label2)
+        
+        label3 = UILabel(frame: CGRect(x: 50, y: 500, width: 350, height: 100))
+        label3.textAlignment = .left
+        label3.numberOfLines = 2
+        label3.text = "Cats with Dog Distractors:\n(Format: (#dogs1,#cats1),(#dogs2,#cats2)...)"
+        self.view.addSubview(label3)
+        
+        
+        field1 = UITextField(frame: CGRect(x: 450, y: 200, width: 510, height: 100))
+        field1.text = "2,3,4"
+        field1.borderStyle = UITextBorderStyle.roundedRect
+        field1.keyboardType = UIKeyboardType.numbersAndPunctuation
+        field1.isEnabled = true
+        self.view.addSubview(field1)
+        
+        field2 = UITextField(frame: CGRect(x: 450, y: 350, width: 510, height: 100))
+        field2.text = "(2,2),(3,2),(4,2),(2,4),(3,4),(4,4)"
+        field2.borderStyle = UITextBorderStyle.roundedRect
+        field2.keyboardType = UIKeyboardType.numbersAndPunctuation
+        field2.isEnabled = true
+        self.view.addSubview(field2)
+        
+        field3 = UITextField(frame: CGRect(x: 450, y: 500, width: 510, height: 100))
+        field3.text = "(2,2),(2,3),(2,4),(4,2),(4,3),(4,4)"
+        field3.borderStyle = UITextBorderStyle.roundedRect
+        field3.keyboardType = UIKeyboardType.numbersAndPunctuation
+        field3.isEnabled = true
+        self.view.addSubview(field3)
+        
+        sequenceSelectionButton.isHidden = false
+        sequenceSelectionButton.isEnabled = true
+        
+    }
+    
+    
+    @IBAction func sequenceSelected(_ sender: Any) {
+        
+        let dogsAlone = field1.text
+        var dogsCats1 = field2.text
+        var dogsCats2 = field3.text
+        
+        dogsCats1?.remove(at: (dogsCats1?.index(before: (dogsCats1?.endIndex)!))!)
+        dogsCats1?.remove(at: (dogsCats1?.startIndex)!)
+        
+        dogsCats2?.remove(at: (dogsCats2?.index(before: (dogsCats2?.endIndex)!))!)
+        dogsCats2?.remove(at: (dogsCats2?.startIndex)!)
+        
+        label1.isHidden = true
+        label2.isHidden = true
+        label3.isHidden = true
+        field1.isHidden = true
+        field1.isEnabled = false
+        field2.isHidden = true
+        field2.isEnabled = false
+        field3.isHidden = true
+        field3.isEnabled = false
+        sequenceSelectionButton.isHidden = true
+        
+        let dogsAloneArr = dogsAlone?.components(separatedBy: ",")
+        
+//        print(dogsAloneArr)
+        
+        for i in 0...(dogsAloneArr?.count)!-1 {
+            dogList.append(Int((dogsAloneArr?[i])!)!)
+            catList.append(0)
+        }
+        
+//        let separators = CharacterSet(charactersIn: "),(")
+        
+        let dogsCats1Arr = dogsCats1?.components(separatedBy: String("),("))
+        
+//        print(dogsCats1Arr)
+        
+        for i in 0...(dogsCats1Arr?.count)!-1 {
+            let split1 = dogsCats1Arr?[i].components(separatedBy: ",")
+            dogList.append(Int((split1?[0])!)!)
+            catList.append(Int((split1?[1])!)!)
+        }
+        
+        let dogsCats2Arr = dogsCats2?.components(separatedBy: String("),("))
+        
+//        print(dogsCats2Arr)
+        
+        for i in 0...(dogsCats2Arr?.count)!-1 {
+            let split2 = dogsCats2Arr?[i].components(separatedBy: ",")
+            dogList.append(Int((split2?[0])!)!)
+            catList.append(Int((split2?[1])!)!)
+        }
+        
+        break1 = (dogsAloneArr?.count)!
+        break2 = break1 + (dogsCats1Arr?.count)!
+        
+        cats = catList[0]
+        dogs = dogList[0]
+        
+        startAlert()
+        
+    }
+    
+    
+    
     func findTime()->Double{
+        
+        timeOfTap = NSDate.timeIntervalSinceReferenceDate
         
         let currTime = NSDate.timeIntervalSinceReferenceDate
         var diff: TimeInterval = currTime - startTime
@@ -237,56 +353,15 @@ class CatsAndDogsViewController: ViewController {
 //        startButton.isEnabled = true
         endButton.isEnabled = false
         resetButton.isEnabled = false
-        selectionDoneButton.isEnabled = false
         backButton.isEnabled = true
         print("here")
-        startAlert()
         print("getting here")
         
-        /*
-        endButton.isEnabled = false
-        resetButton.isEnabled = false
+        timeOfTap = -1.0
         
-        randomizeBoard()
+        setSequence()
         
-        randomizeOrder()
-        
-        for i in 0 ..< order.count {
-            let(a,b) = places[order[i]]
-            
-            let x : CGFloat = CGFloat(a)
-            let y : CGFloat = CGFloat(b)
-            
-            if(i <= dogs - 1) {
-                
-                let image = UIImage(named: "dog")!
-                let imageView = UIImageView(frame:CGRect(x: x, y: y, width: 100.0*(image.size.width)/(image.size.height), height: 100.0))
-                imageView.image = image
-                self.view.addSubview(imageView)
-                imageList.append(imageView)
-                
-            }
-                
-            else {
-                if(i <= cats + dogs - 1) {
-                    
-                    let image = UIImage(named: "cat1")!
-                    let imageView = UIImageView(frame:CGRect(x: x, y: y, width: 100.0*(image.size.width)/(image.size.height), height: 100.0))
-                    imageView.image = image
-                    self.view.addSubview(imageView)
-                    imageList.append(imageView)
-                    
-                }
-            }
-            
-            let button = UIButton(type: UIButtonType.system)
-            buttonList.append(button)
-            button.frame = CGRect(x: x, y: y, width: 100, height: 100)
-            button.backgroundColor = UIColor.blue
-            self.view.addSubview(button)
-            
-        }
- */
+//        startAlert()
         
     }
     
@@ -294,7 +369,7 @@ class CatsAndDogsViewController: ViewController {
         
         print("getting to start alert")
         
-        let alert = UIAlertController(title: "Start", message: "Follow instructions to tap cats and dogs behind the boxes.\nTap \"Done Tapping\" for next round.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Start", message: "Follow instructions to tap cats and dogs behind the boxes.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Start", style: .default, handler: { (action) -> Void in
             self.StartTest()
         }))
@@ -308,26 +383,39 @@ class CatsAndDogsViewController: ViewController {
     }
     
     func update(timer: Timer) {
+        
+        if(timeOfTap != -1.0){
+            
+            let currTime = NSDate.timeIntervalSinceReferenceDate
+            let diff = currTime - timeOfTap
+            
+            if(diff >= 1.5){
+                timeOfTap = -1.0
+                selectionDone()
+            }
+            
+        }
+        
     }
     
     func display(){
         print("Displaying...")
         
-        selectionDoneButton.isEnabled = false
         endButton.isEnabled = false
         resetButton.isEnabled = false
         
         for index in 0 ..< order.count {
-            UIView.animate(withDuration: 0.6, animations:{
-                self.buttonList[index].frame = CGRect(x: self.buttonList[index].frame.origin.x - 110, y: self.buttonList[index].frame.origin.y, width: self.buttonList[index].frame.size.width, height: self.buttonList[index].frame.size.height)
+            UIView.animate(withDuration: 0.8, animations:{
+//                self.buttonList[index].frame = CGRect(x: self.buttonList[index].frame.origin.x - 110, y: self.buttonList[index].frame.origin.y, width: self.buttonList[index].frame.size.width, height: self.buttonList[index].frame.size.height)
+                self.buttonList[index].alpha = 0.0
             })
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.1){
             for index in 0 ..< self.order.count {
-                UIView.animate(withDuration: 0.6, animations:{
-                    self.buttonList[index].frame = CGRect(x: self.buttonList[index].frame.origin.x + 110, y: self.buttonList[index].frame.origin.y, width: self.buttonList[index].frame.size.width, height:
-                        self.buttonList[index].frame.size.height)
+                UIView.animate(withDuration: 0.8, animations:{
+//                    self.buttonList[index].frame = CGRect(x: self.buttonList[index].frame.origin.x + 110, y: self.buttonList[index].frame.origin.y, width: self.buttonList[index].frame.size.width, height: self.buttonList[index].frame.size.height)
+                    self.buttonList[index].alpha = 1.0
                 })
             }
             /*
@@ -338,7 +426,6 @@ class CatsAndDogsViewController: ViewController {
  */
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.7){
-            self.selectionDoneButton.isEnabled = true
             self.endButton.isEnabled = true
             self.resetButton.isEnabled = true
             self.enableButtons()
@@ -351,7 +438,6 @@ class CatsAndDogsViewController: ViewController {
         
         endButton.isEnabled = false
         resetButton.isEnabled = false
-        selectionDoneButton.isEnabled = false
 //        startButton.isEnabled = false
         backButton.isEnabled = false
         
@@ -404,8 +490,8 @@ class CatsAndDogsViewController: ViewController {
         self.navigationItem.setHidesBackButton(true, animated:true)
         
         level = 0
-        cats = 0
-        dogs = 1
+        cats = catList[0]
+        dogs = dogList[0]
         
         
         alert(info: "Tap all the dogs", display: true, start: true)
@@ -423,7 +509,6 @@ class CatsAndDogsViewController: ViewController {
         self.navigationItem.setHidesBackButton(false, animated:true)
 //        startButton.isEnabled = false
         endButton.isEnabled = false
-        selectionDoneButton.isEnabled = false
         resetButton.isEnabled = true
         backButton.isEnabled = true
         donetest()
@@ -468,7 +553,7 @@ class CatsAndDogsViewController: ViewController {
             for k in 0 ..< self.level {
                 
                 var r = ""
-                if k < 15 {
+                if k < self.break2 {
                     r = "\(self.correctDogs[k]) dogs correctly selected out of \(self.missedDogs[k]+self.correctDogs[k]) dogs; \(self.incorrectCats[k]) cats incorrectly selected out of \(self.incorrectCats[k]+self.missedCats[k]) cats; \(self.incorrectRandom[k]) empty places incorrectly selected. Time: \(self.times[k]) seconds\n"
                     result.numErrors += self.missedDogs[k] + self.incorrectCats[k] + self.incorrectRandom[k]
                 }
@@ -493,7 +578,8 @@ class CatsAndDogsViewController: ViewController {
     }
     
     
-    @IBAction func selectionDone(_ sender: Any) {
+//    @IBAction func selectionDone(_ sender: Any) {
+    func selectionDone(){
         
         disableButtons()
         
@@ -533,8 +619,8 @@ class CatsAndDogsViewController: ViewController {
     
     
     //  level        0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24
-    let levelcats = [0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5]
-    let leveldogs = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4]
+//    let levelcats = [0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5]
+//    let leveldogs = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4]
     
     //user completed sequence; reset repeats, increase numplaces so 1 more button lights up
     func next(){
@@ -543,7 +629,7 @@ class CatsAndDogsViewController: ViewController {
         
         print("next; level = \(level)")
         
-        if (level == 25){
+        if (level == catList.count){
             if(repetition<0) {
                 level = 0
                 repetition += 1
@@ -554,8 +640,8 @@ class CatsAndDogsViewController: ViewController {
         }
             
         else {
-            cats = levelcats[level]
-            dogs = leveldogs[level]
+            cats = catList[level]
+            dogs = dogList[level]
             
             randomizeOrder()
             print("order randomized; cats = \(cats), dogs = \(dogs)")
@@ -612,16 +698,16 @@ class CatsAndDogsViewController: ViewController {
             }
             
             if(level == 0){
-                alert(info: "Tap all the dogs.\nPress \"Done Tapping\" to continue.", display: true, start: true)
+                alert(info: "Tap all the dogs.", display: true, start: true)
             }
-            if(level == 5){
-                alert(info: "Tap all the dogs.\nDo NOT tap the cats.\nPress \"Done Tapping\" to continue.", display: true, start: false)
+            if(level == break1){
+                alert(info: "Tap all the dogs.\nDo NOT tap the cats.", display: true, start: false)
             }
-            if(level == 15){
-                alert(info: "Tap all the cats.\nDo NOT tap the dogs.\nPress \"Done Tapping\" to continue.", display: true, start: false)
+            if(level == break2){
+                alert(info: "Tap all the cats.\nDo NOT tap the dogs.", display: true, start: false)
             }
             
-            if(level != 0 && level != 5 && level != 15){
+            if(level != 0 && level != break1 && level != break2){
                 display()
             }
             
