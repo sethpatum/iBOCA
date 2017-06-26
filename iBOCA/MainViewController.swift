@@ -37,6 +37,9 @@ class MainViewController: UIViewController, MFMailComposeViewControllerDelegate{
     @IBOutlet weak var LabelSM: UILabel!
     @IBOutlet weak var LabelVA: UILabel!
     
+    @IBOutlet weak var PatiantID: UILabel!
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         navigationItem.title = nil
         testName = segue.identifier
@@ -55,7 +58,9 @@ class MainViewController: UIViewController, MFMailComposeViewControllerDelegate{
             picker.setToRecipients([emailAddress])
             present(picker, animated: true)
         }
+        
         resultsArray.doneWithPatient()
+        PID.incID()
         self.performSegue(withIdentifier: "BackToLanding", sender: self)
     }
     
@@ -78,6 +83,7 @@ class MainViewController: UIViewController, MFMailComposeViewControllerDelegate{
         
         LabelSM.isHidden = true
         LabelVA.isHidden = true
+        PatiantID.text = PID.getID()
         
         updateButton(button: ButtonOrientation, status: Status[TestOrientation])
         updateButton(button: ButtonSimpleMemory, status: Status[TestSimpleMemory])

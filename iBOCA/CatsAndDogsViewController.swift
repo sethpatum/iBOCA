@@ -435,7 +435,6 @@ class CatsAndDogsViewController: ViewController {
     }
     
     func StartTest() {
-        
         endButton.isEnabled = false
         resetButton.isEnabled = false
 //        startButton.isEnabled = false

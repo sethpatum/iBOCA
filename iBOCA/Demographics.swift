@@ -15,18 +15,11 @@ var testStartTime = Foundation.Date()
 
 var name : String?
 var age : String?
-var MR : String?
 var Gender : String?
 var Education : String?
 var Race : String?
 var Ethnicity : String?
 var Results1: [String] = []
-
-//added:
-var emailOn  : Bool = false
-var emailAddress : String = ""
-
-
 
 
 let TestOrientation = 1
@@ -85,35 +78,19 @@ class Demographics: UIViewController, MFMailComposeViewControllerDelegate, UITex
     @IBOutlet weak var MRLabel: UILabel!
     @IBOutlet weak var MRField: UITextField!
     
-//added:
-    @IBOutlet weak var emailOnOff: UISwitch!
-    @IBOutlet weak var email: UITextField!
+
     
     @IBAction func updateName(_ sender: AnyObject) {
         name = nameField.text
     }
     
     @IBAction func updateMR(_ sender: AnyObject) {
-        MR = MRField.text
+        PID.changeID(proposed: MRField.text!)
+        MRField.text = PID.getID()
     }
     
-//added:
-    @IBAction func emailOnOff(_ sender: Any) {
-        emailOn = emailOnOff.isOn
-        
-        email.isEnabled = emailOn
-        UserDefaults.standard.set(!emailOn, forKey: "emailOff")
-        UserDefaults.standard.synchronize()
-        
-    }
-    
-//added:
-    @IBAction func emailChanged(_ sender: Any) {
-        emailAddress = email.text!
-        UserDefaults.standard.set(emailAddress, forKey:"emailAddress")
-        UserDefaults.standard.synchronize()
-    }
-    
+
+   /*
     
     @IBOutlet weak var done: UIButton!
     
@@ -131,14 +108,12 @@ class Demographics: UIViewController, MFMailComposeViewControllerDelegate, UITex
         
         self.present(alert, animated: true, completion: nil)
         
-    }
+    } */
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-    
         
         AgePicker.delegate = self
         GenderPicker.delegate = self
@@ -146,15 +121,14 @@ class Demographics: UIViewController, MFMailComposeViewControllerDelegate, UITex
         EducationPicker.delegate = self
         RacePicker.delegate = self
         
-    
         name = ""
-        MR = ""
         AgePicker.selectRow(40, inComponent: 0, animated: false)
         age = ageData[AgePicker.selectedRow(inComponent: 0)]
         Gender = genderData[GenderPicker.selectedRow(inComponent: 0)]
         Ethnicity = ethnicData[EthnicityPicker.selectedRow(inComponent: 0)]
         Education = educationData[EducationPicker.selectedRow(inComponent: 0)]
         Race = raceData[RacePicker.selectedRow(inComponent: 0)]
+        MRField.text = PID.getID()
         
         Status[TestOrientation] = TestStatus.NotStarted
         Status[TestSimpleMemory] = TestStatus.NotStarted
@@ -169,19 +143,7 @@ class Demographics: UIViewController, MFMailComposeViewControllerDelegate, UITex
         Status[TestBackwardSpatialSpan] = TestStatus.NotStarted
         Status[TestNampingPictures] = TestStatus.NotStarted
         Status[TestSemanticListGeneration] = TestStatus.NotStarted
-        
-        
-//added:
-        emailOn = !UserDefaults.standard.bool(forKey: "emailOff")
-        
-        if(UserDefaults.standard.object(forKey: "emailAddress") != nil) {
-            emailAddress = UserDefaults.standard.object(forKey: "emailAddress") as! String
-        }
-        
-        email.isEnabled = emailOn
-        emailOnOff.isOn = emailOn
-        email.text = emailAddress
-        
+         
         testStartTime = Foundation.Date()
     }
     
@@ -287,7 +249,7 @@ class Demographics: UIViewController, MFMailComposeViewControllerDelegate, UITex
 
     @IBAction func TestDone(_ sender: AnyObject) {
     Results1.append(name!)
-    Results1.append(MR!)
+    Results1.append(PID.getID())
     Results1.append(Gender!)
     Results1.append(Ethnicity!)
     Results1.append(Education!)
