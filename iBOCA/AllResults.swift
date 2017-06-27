@@ -58,30 +58,30 @@ class AllResults  {
             e += "<h4>Results recorded to server</h4>\n"
         }
         
-        if(name != nil) {
-            e += "<h4>Subject Code: \(name!)</h4>\n"
-        }
-        
-
-        
-        if(Gender != nil) {
-            e += "<h4>Gender:\(Gender!)</h4>\n"
-        }
-
-        if(age != nil) {
-            e += "<h4>Age:\(age!)</h4>\n"
-        }
-        
-        if(Education != nil) {
-            e += "<h4>Education:\(Education!)</h4>\n"
-        }
-        
-        if(Race != nil) {
-            e += "<h4>Race:\(Race!)</h4>\n"
-        }
-
-        if(Ethnicity != nil) {
-            e += "<h4>Ethnicity:\(Ethnicity!)</h4>\n<p>\n"
+        if !atBIDMCOn {
+            if(name != nil) {
+                e += "<h4>Subject Code: \(name!)</h4>\n"
+            }
+            
+            if(Gender != nil) {
+                e += "<h4>Gender:\(Gender!)</h4>\n"
+            }
+            
+            if(age != nil) {
+                e += "<h4>Age:\(age!)</h4>\n"
+            }
+            
+            if(Education != nil) {
+                e += "<h4>Education:\(Education!)</h4>\n"
+            }
+            
+            if(Race != nil) {
+                e += "<h4>Race:\(Race!)</h4>\n"
+            }
+            
+            if(Ethnicity != nil) {
+                e += "<h4>Ethnicity:\(Ethnicity!)</h4>\n<p>\n"
+            }
         }
         
           if(numResults() > 0) {
@@ -170,28 +170,30 @@ class AllResults  {
             jst["Emailed to"] = emailAddress
         }
         
-        if(name != nil) {
-            jst["Subject Code"] = name!
-        }
-
-        if(Gender != nil) {
-            jst["Gender"] = Gender!
-        }
-        
-        if(age != nil) {
-            jst["Age"] = age!
-        }
-        
-        if(Education != nil) {
-            jst["Education"] = Education!
-        }
-        
-        if(Race != nil) {
-            jst["Race"] = Race!
-        }
-        
-        if(Ethnicity != nil) {
-            jst["Ethnicity"] = Ethnicity!
+        if !atBIDMCOn {
+            if(name != nil) {
+                jst["Subject Code"] = name!
+            }
+            
+            if(Gender != nil) {
+                jst["Gender"] = Gender!
+            }
+            
+            if(age != nil) {
+                jst["Age"] = age!
+            }
+            
+            if(Education != nil) {
+                jst["Education"] = Education!
+            }
+            
+            if(Race != nil) {
+                jst["Race"] = Race!
+            }
+            
+            if(Ethnicity != nil) {
+                jst["Ethnicity"] = Ethnicity!
+            }
         }
         
         var tst : [String:String] = [:]

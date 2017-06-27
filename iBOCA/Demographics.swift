@@ -35,13 +35,14 @@ let TestForwardSpatialSpan = 10
 let TestBackwardSpatialSpan = 11
 let TestNampingPictures = 12
 let TestSemanticListGeneration = 13
+let TestMOCAandGDTResults = 14
 
 
 enum TestStatus {
     case NotStarted, Running, Done
 }
 
-var Status  = [TestStatus](repeating: TestStatus.NotStarted, count: 14)
+var Status  = [TestStatus](repeating: TestStatus.NotStarted, count: 15)
 
 
 func makeAgeData() -> [String] {

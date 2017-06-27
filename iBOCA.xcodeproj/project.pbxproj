@@ -51,6 +51,8 @@
 		F27AEAA61EEC948600AFB3D1 /* DigitSpanForward.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27AEAA51EEC948600AFB3D1 /* DigitSpanForward.swift */; };
 		F27AEAA81EED7A5F00AFB3D1 /* DigitBothDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27AEAA71EED7A5F00AFB3D1 /* DigitBothDirection.swift */; };
 		F27AEAAC1EED7AEF00AFB3D1 /* DigitSpanBackward.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27AEAAB1EED7AEF00AFB3D1 /* DigitSpanBackward.swift */; };
+		F2A0F1281F02626D00A92B1F /* LandingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A0F1271F02626D00A92B1F /* LandingPage.swift */; };
+		F2A0F12F1F02682500A92B1F /* MOCAandGDT.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A0F12E1F02682500A92B1F /* MOCAandGDT.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -187,6 +189,8 @@
 		F27AEAA51EEC948600AFB3D1 /* DigitSpanForward.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DigitSpanForward.swift; sourceTree = "<group>"; };
 		F27AEAA71EED7A5F00AFB3D1 /* DigitBothDirection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DigitBothDirection.swift; sourceTree = "<group>"; };
 		F27AEAAB1EED7AEF00AFB3D1 /* DigitSpanBackward.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DigitSpanBackward.swift; sourceTree = "<group>"; };
+		F2A0F1271F02626D00A92B1F /* LandingPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LandingPage.swift; path = ../LandingPage.swift; sourceTree = "<group>"; };
+		F2A0F12E1F02682500A92B1F /* MOCAandGDT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOCAandGDT.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,7 +245,6 @@
 		1BC2DFED1D4F821F0020D430 /* iBOCA */ = {
 			isa = PBXGroup;
 			children = (
-				F2229C9D1F01B049000F2CBA /* CryptoSwift.xcodeproj */,
 				1B53650D1D7491CF0088B5D2 /* 3DFigureCopy.swift */,
 				1B49EEF21DAC3B6600931E8C /* 3DFigureDraw.swift */,
 				1BC2DFEE1D4F821F0020D430 /* AppDelegate.swift */,
@@ -249,13 +252,16 @@
 				E27BA37E1D523B8400619C07 /* BackwardDigitSpan.swift */,
 				43960F4B1E3C0758006FDC7B /* CatsAndDogsViewController.swift */,
 				F2229C7C1F01AC39000F2CBA /* crypto.swift */,
+				F2229C9D1F01B049000F2CBA /* CryptoSwift.xcodeproj */,
 				E272DF011D74957F002F8295 /* Demographics.swift */,
 				F27AEA921EEC6E4200AFB3D1 /* DigitTests */,
 				E29AF03F1D51134A00C4AF79 /* ForwardDigitSpan.swift */,
 				1BC2DFFA1D4F821F0020D430 /* Info.plist */,
+				F2A0F1271F02626D00A92B1F /* LandingPage.swift */,
 				1BC2DFF71D4F821F0020D430 /* LaunchScreen.storyboard */,
 				1BC2DFF21D4F821F0020D430 /* Main.storyboard */,
 				F27728A51E33C91A004F8A6E /* MainViewController.swift */,
+				F2A0F12E1F02682500A92B1F /* MOCAandGDT.swift */,
 				E2901DCE1D4F8C3700080F82 /* OrientationTask.swift */,
 				F239513A1EFFE6A1004B09E5 /* PatiantID.swift */,
 				E2037F1B1E47E7F000EE13EB /* Pictures */,
@@ -592,6 +598,7 @@
 				F23951391EFFD660004B09E5 /* Setup.swift in Sources */,
 				F24E6E6E1E1BC2C300E29995 /* AllResults.swift in Sources */,
 				F261D4E81E3E33D00039A545 /* DrawingViewTrails.swift in Sources */,
+				F2A0F12F1F02682500A92B1F /* MOCAandGDT.swift in Sources */,
 				E2C906EB1D54DA1B00C0824E /* SerialSevens.swift in Sources */,
 				E2901DCF1D4F8C3700080F82 /* OrientationTask.swift in Sources */,
 				F261D4EA1E3E33F00039A545 /* Bubbles.swift in Sources */,
@@ -604,6 +611,7 @@
 				F27AEA941EEC6E7B00AFB3D1 /* DigitBase.swift in Sources */,
 				43960F4C1E3C0758006FDC7B /* CatsAndDogsViewController.swift in Sources */,
 				F24E6E701E1BC2C300E29995 /* ScaleView.swift in Sources */,
+				F2A0F1281F02626D00A92B1F /* LandingPage.swift in Sources */,
 				1BC2DFEF1D4F821F0020D430 /* AppDelegate.swift in Sources */,
 				F23951371EF4B2DE004B09E5 /* DigitSerialSeven.swift in Sources */,
 				F261D4E61E3E339F0039A545 /* TrailsViewController.swift in Sources */,

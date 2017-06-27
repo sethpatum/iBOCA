@@ -33,6 +33,7 @@ class MainViewController: UIViewController, MFMailComposeViewControllerDelegate{
     @IBOutlet weak var ButtonBackwardSpatialSpan: UIButton!
     @IBOutlet weak var ButtonNamingPictures: UIButton!
     @IBOutlet weak var ButtonSemanticListGeneration: UIButton!
+    @IBOutlet weak var ButtonMOCAandGDT: UIButton!
     
     @IBOutlet weak var LabelSM: UILabel!
     @IBOutlet weak var LabelVA: UILabel!
@@ -82,9 +83,7 @@ class MainViewController: UIViewController, MFMailComposeViewControllerDelegate{
         if doSecondEmail {
             doSecondEmail = false
             // TransmitOn is why we are here
-            if(emailOn && MFMailComposeViewController.canSendMail()  && resultsArray.numResults() > 0) {
-                sendEmail(body: "", address: [serverEmailAddress])
-            }
+            sendEmail(body: "", address: [serverEmailAddress])
         } else {
             // all e-mail sent
             resultsArray.doneWithPatient()
@@ -100,7 +99,7 @@ class MainViewController: UIViewController, MFMailComposeViewControllerDelegate{
         picker.setMessageBody(body, isHTML: true)
         picker.setToRecipients(address)
         let data = encryptString(str: resultsArray.toJson())
-        picker.addAttachmentData(data, mimeType: "text/plain", fileName: "Encrypted-JSON")
+        picker.addAttachmentData(data, mimeType: "application/aes", fileName: "Encrypted-JSON.aes")
         present(picker, animated: true)
     }
     
@@ -114,6 +113,7 @@ class MainViewController: UIViewController, MFMailComposeViewControllerDelegate{
         if(UserDefaults.standard.object(forKey: "emailAddress") != nil) {
             emailAddress = UserDefaults.standard.object(forKey: "emailAddress") as! String
         }
+        transmitOn = UserDefaults.standard.bool(forKey: "Transmit")
         
         LabelSM.isHidden = true
         LabelVA.isHidden = true
@@ -132,6 +132,13 @@ class MainViewController: UIViewController, MFMailComposeViewControllerDelegate{
         updateButton(button: ButtonBackwardSpatialSpan, status: Status[TestBackwardSpatialSpan])
         updateButton(button: ButtonNamingPictures, status: Status[TestNampingPictures])
         updateButton(button: ButtonSemanticListGeneration, status: Status[TestSemanticListGeneration])
+        updateButton(button: ButtonMOCAandGDT, status: Status[TestMOCAandGDTResults])
+        
+        if atBIDMCOn {
+            ButtonMOCAandGDT.isHidden = true
+        } else {
+            ButtonMOCAandGDT.isHidden = false
+        }
         
         segueToLanding = false
         var timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(update(timer:)), userInfo: nil, repeats: true)
