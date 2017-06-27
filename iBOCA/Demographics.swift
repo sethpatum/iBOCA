@@ -20,29 +20,9 @@ var Education : String?
 var Race : String?
 var Ethnicity : String?
 var Results1: [String] = []
+var Comments : String = ""
 
 
-let TestOrientation = 1
-let TestSimpleMemory = 2
-let TestVisualAssociation = 3
-let TestTrails = 4
-let TestForwardDigitSpan = 5
-let TestBackwardsDigitSpan = 6
-let TestCatsAndDogs = 7
-let Test3DFigureCopy = 8
-let TestSerialSevens = 9
-let TestForwardSpatialSpan = 10
-let TestBackwardSpatialSpan = 11
-let TestNampingPictures = 12
-let TestSemanticListGeneration = 13
-let TestMOCAandGDTResults = 14
-
-
-enum TestStatus {
-    case NotStarted, Running, Done
-}
-
-var Status  = [TestStatus](repeating: TestStatus.NotStarted, count: 15)
 
 
 func makeAgeData() -> [String] {
@@ -80,6 +60,7 @@ class Demographics: UIViewController, MFMailComposeViewControllerDelegate, UITex
     @IBOutlet weak var MRField: UITextField!
     
 
+    @IBOutlet weak var CommentEntry: UITextView!
     
     @IBAction func updateName(_ sender: AnyObject) {
         name = nameField.text
@@ -131,19 +112,8 @@ class Demographics: UIViewController, MFMailComposeViewControllerDelegate, UITex
         Race = raceData[RacePicker.selectedRow(inComponent: 0)]
         MRField.text = PID.getID()
         
-        Status[TestOrientation] = TestStatus.NotStarted
-        Status[TestSimpleMemory] = TestStatus.NotStarted
-        Status[TestVisualAssociation] = TestStatus.NotStarted
-        Status[TestTrails] = TestStatus.NotStarted
-        Status[TestForwardDigitSpan] = TestStatus.NotStarted
-        Status[TestBackwardsDigitSpan] = TestStatus.NotStarted
-        Status[TestCatsAndDogs] = TestStatus.NotStarted
-        Status[Test3DFigureCopy] = TestStatus.NotStarted
-        Status[TestSerialSevens] = TestStatus.NotStarted
-        Status[TestForwardSpatialSpan] = TestStatus.NotStarted
-        Status[TestBackwardSpatialSpan] = TestStatus.NotStarted
-        Status[TestNampingPictures] = TestStatus.NotStarted
-        Status[TestSemanticListGeneration] = TestStatus.NotStarted
+        CommentEntry.text = ""
+        Comments = ""
          
         testStartTime = Foundation.Date()
     }
@@ -246,6 +216,12 @@ class Demographics: UIViewController, MFMailComposeViewControllerDelegate, UITex
         
         // 4. Present the alert.
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        Comments = CommentEntry.text
     }
 
     @IBAction func TestDone(_ sender: AnyObject) {

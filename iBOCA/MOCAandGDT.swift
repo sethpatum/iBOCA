@@ -30,6 +30,8 @@ class MOCAandGDT: UIViewController, UIPickerViewDelegate  {
     
     @IBOutlet weak var GDTscore: UIPickerView!
     
+    @IBOutlet weak var Comments: UITextView!
+    
     var buttonlist : [UIPickerView] = []
     let buttonval  = [5, 3, 2, 1, 3, 2, 1, 2, 5, 6]
     var buttonresults : [Int]  = [Int](repeating: 0, count: 10)
@@ -57,6 +59,8 @@ class MOCAandGDT: UIViewController, UIPickerViewDelegate  {
         GDTscore.delegate = self
         
         MOCAtotal.text = "0"
+        
+        Comments.text = ""
     }
     
     
@@ -124,6 +128,7 @@ class MOCAandGDT: UIViewController, UIPickerViewDelegate  {
         result.json["MOCA Orientation"] = buttonresults[9]
         result.json["MOCA TOTAL"] = MOCAtotal.text
         result.json["GDT Score"] = GDTresults
+        result.json["Comments"] = Comments.text
         
         result.shortDescription = "MOCA=\(MOCAtotal.text!) GDT=\(GDTresults)"
         

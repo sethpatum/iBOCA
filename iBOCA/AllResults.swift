@@ -82,6 +82,10 @@ class AllResults  {
             if(Ethnicity != nil) {
                 e += "<h4>Ethnicity:\(Ethnicity!)</h4>\n<p>\n"
             }
+            
+            if(Comments != "") {
+                e += "<h4>Tester Comments:\(Comments)</h4>\n<p>\n"
+            }
         }
         
           if(numResults() > 0) {
@@ -193,6 +197,10 @@ class AllResults  {
             
             if(Ethnicity != nil) {
                 jst["Ethnicity"] = Ethnicity!
+            }
+            
+            if(Comments != "") {
+                jst["Comments"] = Comments
             }
         }
         

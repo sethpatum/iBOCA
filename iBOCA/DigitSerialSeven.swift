@@ -36,10 +36,10 @@ class DigitSerialSeven:DigitBaseClass {
         level = -1
         
         for (i, val) in [50, 60, 70, 80, 90, 100].enumerated() {
-            let button  = UIButton(frame: CGRect(x: 200+100*i, y: 150, width: 100, height: 40))
+            let button  = UIButton(frame: CGRect(x: 150+125*i, y: 150, width: 100, height: 50))
             button.setTitle(String(val), for: .normal)
             button.setTitleColor(UIColor.blue, for: .normal)
-            button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 36.0)
+            button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 42.0)
             button.addTarget(self, action: #selector(DigitSerialSeven.StartNumberButtonTapped), for: .touchDown)
             button.isHidden = true
             buttons.append(button)
@@ -48,7 +48,7 @@ class DigitSerialSeven:DigitBaseClass {
     }
     
     override func DoStart() {
-        base.InfoLabel.text = "Enter the starting number. Tell the patiant that number and instructions"
+        base.InfoLabel.text = "Select the starting number. Tell the patiant that number and instructions"
         level = -1
         startTime = Foundation.Date()
         
