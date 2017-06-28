@@ -22,6 +22,7 @@ class TapInOrderViewController: ViewController {
     var currpressed = 0 //order of button that is about to be pressed
     var numRepeats = 0 //how many times user messed up on the same numplaces, calling repeat()
     var numErrors = 0
+    var forwardNotBackward = true
     
     var startTime2 = NSDate()
     
@@ -208,7 +209,11 @@ class TapInOrderViewController: ViewController {
  */
         statusLabel.text = "Obsurve the pattern"
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
-            self.drawSequenceRecursively(num: 0)
+            if self.forwardNotBackward {
+                self.drawSequenceRecursively(num: 0)
+            } else {
+                self.drawSequenceRecursively(num: self.numplaces)
+            }
             self.startTime2 = NSDate()
             self.currpressed = 0
         }
@@ -248,7 +253,13 @@ class TapInOrderViewController: ViewController {
 //            self.resetButton.isEnabled = false
             
             let result = Results()
-            result.name = "Forward Spatial Span"
+            
+            if self.forwardNotBackward {
+                result.name = "Forward Spatial Span"
+            } else {
+                result.name = "Backward Spatial Span"
+            }
+            
 //some weird result stuff going on here (as date) if there are errors....
             result.startTime = self.startTime2 as Date
             result.endTime = NSDate() as Date
@@ -258,7 +269,7 @@ class TapInOrderViewController: ViewController {
             }
             
             self.statusLabel.text = "Spatial span: \(self.numplaces)"
-            result.longDescription.add("Forward spatial span: \(self.numplaces)")
+            result.longDescription.add("Spatial span: \(self.numplaces)")
             
             result.json["Places"] = self.numplaces
             result.json["Levels"] = self.resultList
@@ -277,7 +288,8 @@ class TapInOrderViewController: ViewController {
     
 
     func drawSequenceRecursively(num:Int){
-        if num > numplaces {
+        if (forwardNotBackward && num > numplaces) ||
+           (!forwardNotBackward && num < 0){
             DispatchQueue.main.asyncAfter(deadline: .now() + 1){
                 self.statusLabel.text = "Tap in the order of the pattern obsurved"
                 print("...enabling buttons...numplaces = \(self.numplaces+2)")
@@ -298,8 +310,12 @@ class TapInOrderViewController: ViewController {
                                 self.buttonList[num].backgroundColor = UIColor.red
                                 print("Drawing \(self.index)")
                                 
-                                let num2 = num+1
-                                
+                                var num2 : Int = num
+                                if self.forwardNotBackward {
+                                    num2 += 1
+                                } else {
+                                    num2 -= 1
+                                }
                                 self.drawSequenceRecursively(num: num2)
                             }
                         }
