@@ -212,16 +212,13 @@ class BubblesA {
         lastBubble = currentBubble
         currentBubble = curr
         
-        let currTime = Foundation.Date()
-        segmenttimes.append((Int(timePassedTrailsA), "\(lastBubble)->\(currentBubble)", Int(1000*currTime.timeIntervalSince(startTime))))
-        jsontimes[String(seqCount)] = ["Start":lastBubble, "End":currentBubble, "Time (ms)":Int(1000*currTime.timeIntervalSince(startTime))]
         seqCount += 1
         return true
         
     }
     
     func inCorrectBubble()->Bool{
-        
+        let currTime = Foundation.Date()
         // the path has to start with the previous end of selection and go to the one higher than that
         if (currentBubble == nextBubble) && (lastBubble == nextBubble - 1){
             
@@ -234,21 +231,27 @@ class BubblesA {
                 displayImgTrailsA = true
             }
             
+            segmenttimes.append((Int(timePassedTrailsA), "\(lastBubble)->\(currentBubble):OK ", Int(1000*currTime.timeIntervalSince(startTime))))
+            jsontimes[String(seqCount-1)] = ["Start":lastBubble, "End":currentBubble, "Correct":true, "Time (ms)":Int(1000*currTime.timeIntervalSince(startTime))]
+            
             timedConnectionsA.append(timePassedTrailsA)
             return true
             
         }
         
         if currentBubble == nextBubble-1 {
-            
+            segmenttimes.append((Int(timePassedTrailsA), "\(lastBubble)->\(currentBubble):OK ", Int(1000*currTime.timeIntervalSince(startTime))))
+            jsontimes[String(seqCount-1)] = ["Start":lastBubble, "End":currentBubble, "Correct":true, "Time (ms)":Int(1000*currTime.timeIntervalSince(startTime))]
+
             return true
             
         }
         
+        segmenttimes.append((Int(timePassedTrailsA), "\(lastBubble)->\(currentBubble):OK ", Int(1000*currTime.timeIntervalSince(startTime))))
+        jsontimes[String(seqCount-1)] = ["Start":lastBubble, "End":currentBubble, "Correct":false, "Time (ms)":Int(1000*currTime.timeIntervalSince(startTime))]
+        
         currentBubble = lastBubble
-        
         return false
-        
     }
     
     

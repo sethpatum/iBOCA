@@ -824,22 +824,30 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
         imageSetResult = imageSetResult + delayResult + recallResult + recognizeResult
         delayResult = "Delay length of \(delayTime) seconds\n"
         
+        var correctRecall = 0
+        var incorrectRecall = 0
+        var correctRecognize = 0
+        var incorrectRecognize = 0
         for k in 0 ..< imagesSM.count {
             
             if(buttonTaps[k] == true) {
                 recallResult += "Recalled \(imagesSM[k]) correctly in \(recallTimes[k]) seconds\n"
+                correctRecall += 1
             }
             if(buttonTaps[k] == false) {
                 recallResult += "Did not recall \(imagesSM[k])\n"
                 numErrors += 1
+                incorrectRecall += 1
             }
             
             if(recognizeErrors[k] == 0){
                 recognizeResult += "Recognized \(imagesSM[k]) correctly in \(recognizeTimes[k]) seconds\n"
+                correctRecognize += 1
             }
             if(recognizeErrors[k] == 1){
                 recognizeResult += "Recognized \(imagesSM[k]) incorrectly in \(recognizeTimes[k]) seconds\n"
                 numErrors += 1
+                incorrectRecognize += 1
             }
             
             /*
@@ -861,12 +869,18 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
         result.name = "Simple Memory"
         result.startTime = StartTimer
         result.endTime = Foundation.Date()
-        result.shortDescription = imageSetResult + delayResult + recallResult + recognizeResult
+        result.shortDescription = "Recall \(correctRecall) correct, \(incorrectRecall) incorrect.  Recognie \(correctRecognize) correct, \(incorrectRecognize) incorrect. Sets correct:\(imageSetSM), incorrect:\(incorrectImageSetSM)"
         result.numErrors = numErrors
         
         resultList["CorrectImageSet"] = imageSetSM
         resultList["IncorrectImageSet"] = incorrectImageSetSM
         resultList["DelayTime"] = delayTime
+        
+        resultList["Recall Correct"] =  correctRecall
+        resultList["Recall Incorrect"] =  incorrectRecall
+        resultList["Recognize Correct"] =   correctRecognize
+        resultList["Recognize Incorrect"] =   incorrectRecognize
+
         
         var tmpResultList : [String:Any] = [:]
         
@@ -898,6 +912,7 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
             }
             tmpResultList1[imagesSM[i]] = ["Condition":res, "Time":recognizeTimes[i]]
         }
+
         resultList["Recall"] = tmpResultList1
         
         result.json = resultList

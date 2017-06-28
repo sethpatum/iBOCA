@@ -29,8 +29,7 @@ class TrailsAViewController: ViewController, UIPickerViewDelegate {
     @IBOutlet weak var timerLabel: UILabel!
     
     @IBOutlet weak var startButton: UIButton!
-    @IBOutlet weak var endButton: UIButton!
-    @IBOutlet weak var doneButton: UIButton!
+
     
     @IBOutlet weak var testPicker: UIPickerView!
     var TestTypes : [String] = []
@@ -55,8 +54,6 @@ class TrailsAViewController: ViewController, UIPickerViewDelegate {
         testPicker.delegate = self
         testPicker.transform = CGAffineTransform(scaleX: 0.8, y: 1.0)
         selectedTest = testPicker.selectedRow(inComponent: 0)
-        endButton.isHidden = true
-        doneButton.isHidden = false
         startButton.isHidden = false
         testPicker.isHidden = false
         timerLabel.text = ""
@@ -64,18 +61,13 @@ class TrailsAViewController: ViewController, UIPickerViewDelegate {
         
         
         self.title = TestTypes[selectedTest]
-        
-        endButton.isEnabled = false
-        
     }
     
     
     func startTest() {
         startButton.isEnabled = false
         testPicker.isHidden = true
-        endButton.isEnabled = true
-        endButton.isHidden = false
-        doneButton.isHidden = true
+
         self.navigationItem.setHidesBackButton(true, animated:true)
         
         if drawingView !== nil {
@@ -114,13 +106,10 @@ class TrailsAViewController: ViewController, UIPickerViewDelegate {
         bubbleColor = UIColor.red
     }
     
-    @IBAction func StopButton(sender: AnyObject) {
-        startButton.isEnabled = true
-        testPicker.isHidden = false
-        endButton.isHidden = true
-        doneButton.isHidden = false
-        
-        stopTrailsA = true
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
         done()
     }
     
@@ -242,6 +231,7 @@ class TrailsAViewController: ViewController, UIPickerViewDelegate {
             
             result.json["Path"] = drawingView.bubbles.jsontimes
             result.json["Name"] = self.title
+            result.json["Errors"] = drawingView.incorrect
             resultsArray.add(result)
             
             Status[TestTrails] = TestStatus.Done
@@ -253,8 +243,6 @@ class TrailsAViewController: ViewController, UIPickerViewDelegate {
         
         startButton.isEnabled = true
         testPicker.isHidden = false
-        endButton.isHidden = true
-        doneButton.isHidden = false
         
         bubbleColor = UIColor(red:0.6, green:0.0, blue:0.0, alpha:1.0)
         
