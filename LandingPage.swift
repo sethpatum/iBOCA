@@ -51,6 +51,7 @@ class LandingPage: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+   
         
         Status[TestOrientation] = TestStatus.NotStarted
         Status[TestSimpleMemory] = TestStatus.NotStarted
@@ -65,6 +66,7 @@ class LandingPage: UIViewController {
         Status[TestBackwardSpatialSpan] = TestStatus.NotStarted
         Status[TestNampingPictures] = TestStatus.NotStarted
         Status[TestSemanticListGeneration] = TestStatus.NotStarted
+        Status[TestMOCAandGDTResults] = TestStatus.NotStarted
  
     }
     

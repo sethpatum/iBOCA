@@ -98,8 +98,10 @@ class MainViewController: UIViewController, MFMailComposeViewControllerDelegate{
         picker.setSubject(mailSubject + PID.getID())
         picker.setMessageBody(body, isHTML: true)
         picker.setToRecipients(address)
+        
         let data = encryptString(str: resultsArray.toJson())
-        picker.addAttachmentData(data, mimeType: "application/aes", fileName: "Encrypted-JSON.aes")
+        picker.addAttachmentData(data, mimeType: "application/aes", fileName: "Encrypted-JSON-\(PID.getID()).aes")
+        
         present(picker, animated: true)
     }
     

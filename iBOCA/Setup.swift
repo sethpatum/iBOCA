@@ -16,7 +16,7 @@ var transmitOn : Bool = false
 var atBIDMCOn  : Bool = false
 var emailOn    : Bool = false
 var emailAddress       : String = ""
-var serverEmailAddress : String = "saman@mit.edu"
+var serverEmailAddress : String = "datacollect@bostoncognitive.org"
 
 class Setup: UIViewController {
 
