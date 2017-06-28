@@ -23,7 +23,7 @@ var imageSetVA = Int()
 var startTimeVA = TimeInterval()
 var timerVA = Timer()
 
-class VATask: UIViewController, UIPickerViewDelegate {
+class VATask: ViewController, UIPickerViewDelegate {
     
     var recallErrors = [Int]()
     var recallTimes = [Double]()

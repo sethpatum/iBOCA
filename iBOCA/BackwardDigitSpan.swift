@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BackwardDigitSpan: UIViewController {
+class BackwardDigitSpan: ViewController {
     
     @IBOutlet weak var countingLabel: UILabel!
     

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ThreeDFigureCopy: UIViewController {
+class ThreeDFigureCopy: ViewController {
 
     @IBOutlet weak var StartButton: UIButton!
     @IBOutlet weak var CorrectButton: UIButton!

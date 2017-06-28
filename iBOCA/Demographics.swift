@@ -33,7 +33,7 @@ func makeAgeData() -> [String] {
     return str
 }
 
-class Demographics: UIViewController, MFMailComposeViewControllerDelegate, UITextFieldDelegate, UITextViewDelegate,UIPickerViewDelegate {
+class Demographics: ViewController, MFMailComposeViewControllerDelegate, UITextFieldDelegate, UITextViewDelegate,UIPickerViewDelegate {
     
     @IBOutlet weak var GenderPicker: UIPickerView!
     let genderData = ["Male", "Female", "Other", "Prefer Not To Say"]

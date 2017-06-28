@@ -10,7 +10,7 @@
 import UIKit
 import Darwin
 
-class TapInOrderBackwardsViewController: UIViewController {
+class TapInOrderBackwardsViewController: ViewController {
     
     
     var buttonList = [UIButton]()

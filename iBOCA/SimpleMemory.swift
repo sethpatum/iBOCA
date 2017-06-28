@@ -22,7 +22,7 @@ var incorrectImageSetSM = Int()
 var startTimeSM = TimeInterval()
 var timerSM = Timer()
 var StartTimer = Foundation.Date()
-class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
+class SimpleMemoryTask: ViewController, UIPickerViewDelegate {
     
     @IBOutlet weak var timerLabel: UILabel!
     

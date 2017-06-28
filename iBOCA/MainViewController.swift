@@ -14,7 +14,7 @@ var screenSize : CGRect?
 
 var testName:String?
 
-class MainViewController: UIViewController, MFMailComposeViewControllerDelegate{
+class MainViewController: ViewController, MFMailComposeViewControllerDelegate{
     var mailSubject : String = "iBOCA Results of "
     
     

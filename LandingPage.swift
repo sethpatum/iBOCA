@@ -32,7 +32,7 @@ enum TestStatus {
 var Status  = [TestStatus](repeating: TestStatus.NotStarted, count: 15)
 
 
-class LandingPage: UIViewController {
+class LandingPage: ViewController {
     
     @IBOutlet weak var GotoTests: UIButton!
     

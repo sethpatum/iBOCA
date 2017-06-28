@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ForwardDigitSpan: UIViewController {
+class ForwardDigitSpan: ViewController {
      var test = 0
      var errors = 0
     

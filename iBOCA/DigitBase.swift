@@ -11,7 +11,7 @@ import Foundation
 import UIKit
 import AVFoundation
 
-class DigitBase: UIViewController {
+class DigitBase: ViewController {
     var base:DigitBaseClass? = nil  // Cannot do a subclass, so using composition
 
     @IBOutlet weak var StartButton: UIButton!

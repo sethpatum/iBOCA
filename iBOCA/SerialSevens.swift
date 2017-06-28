@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SerialSevens: UIViewController {
+class SerialSevens: ViewController {
     var timer = Timer()
     var counter = 0
     var StartTime = Foundation.Date()

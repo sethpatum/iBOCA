@@ -18,7 +18,7 @@ var emailOn    : Bool = false
 var emailAddress       : String = ""
 var serverEmailAddress : String = "datacollect@bostoncognitive.org"
 
-class Setup: UIViewController {
+class Setup: ViewController {
 
     @IBOutlet weak var transmitOnOff: UISwitch!
     @IBOutlet weak var atBIDMCOnOff:  UISwitch!
