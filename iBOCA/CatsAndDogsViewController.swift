@@ -15,6 +15,7 @@ class CatsAndDogsViewController: ViewController {
     
     var buttonList = [UIButton]()
     var imageList = [UIImageView]()
+    var boxList = [UIImageView]()
     var places:[(Int,Int)] = [(150, 250), (450, 300), (350, 500), (600, 450), (800, 200), (700, 650), (850, 550), (250, 350), (150, 600), (300, 650)]
     //SHORTER LIST FOR TESTING: var places:[(Int,Int)] = [(100, 200), (450, 250), (350, 450), (600, 400)]
     var order = [Int]() //randomized order of buttons
@@ -75,11 +76,18 @@ class CatsAndDogsViewController: ViewController {
                 imageList[j].removeFromSuperview()
             }
         }
+        if(boxList != nil){
+            for j in 0 ..< boxList.count {
+                boxList[j].removeFromSuperview()
+            }
+        }
+        
         
         dogList = [Int]()
         catList = [Int]()
         buttonList = [UIButton]()
         imageList = [UIImageView]()
+        boxList = [UIImageView]()
         order = [Int]()
         pressed = [Int]()
         correctDogs = [Int]()
@@ -453,7 +461,7 @@ class CatsAndDogsViewController: ViewController {
             if(i <= dogs - 1) {
                 
                 let image = UIImage(named: "newDog")!
-                let imageView = UIImageView(frame:CGRect(x: (x + (100-(100.0*(image.size.width)/(image.size.height)))/2), y: y, width: 100.0*(image.size.width)/(image.size.height), height: 100.0))
+                let imageView = UIImageView(frame:CGRect(x: (x + 5 + (100-(100.0*(image.size.width)/(image.size.height)))/2), y: y + 5, width: 90.0*(image.size.width)/(image.size.height), height: 90.0))
                 imageView.image = image
                 self.view.addSubview(imageView)
                 imageList.append(imageView)
@@ -464,13 +472,21 @@ class CatsAndDogsViewController: ViewController {
                 if(i <= cats + dogs - 1) {
                     
                     let image = UIImage(named: "newCat")!
-                    let imageView = UIImageView(frame:CGRect(x: (x + (100-(100.0*(image.size.width)/(image.size.height)))/2), y: y, width: 100.0*(image.size.width)/(image.size.height), height: 100.0))
+                    let imageView = UIImageView(frame:CGRect(x: (x + 5 + (100-(100.0*(image.size.width)/(image.size.height)))/2), y: y + 5, width: 90.0*(image.size.width)/(image.size.height), height: 90.0))
                     imageView.image = image
                     self.view.addSubview(imageView)
                     imageList.append(imageView)
                     
                 }
             }
+            
+         
+            let box = UIImageView(frame: CGRect(x: x, y: y, width: 100, height: 100))
+            boxList.append(box)
+            box.layer.borderColor = UIColor.blue.cgColor
+            box.layer.borderWidth = 2
+            self.view.addSubview(box)
+            
             
             let button = UIButton(type: UIButtonType.system)
             buttonList.append(button)
@@ -532,6 +548,9 @@ class CatsAndDogsViewController: ViewController {
         }
         for j in 0 ..< imageList.count {
             imageList[j].removeFromSuperview()
+        }
+        for j in 0 ..< boxList.count {
+            boxList[j].removeFromSuperview()
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
@@ -651,8 +670,12 @@ class CatsAndDogsViewController: ViewController {
             for k in 0 ..< imageList.count {
                 imageList[k].removeFromSuperview()
             }
+            for k in 0 ..< boxList.count {
+                boxList[k].removeFromSuperview()
+            }
             buttonList = [UIButton]()
             imageList = [UIImageView]()
+            boxList = [UIImageView]()
             
             for i in 0 ..< order.count {
                 let(a,b) = places[order[i]]
@@ -663,7 +686,7 @@ class CatsAndDogsViewController: ViewController {
                 if(i <= dogs - 1) {
                     
                     let image = UIImage(named: "newDog")!
-                    let imageView = UIImageView(frame:CGRect(x: (x + (100-(100.0*(image.size.width)/(image.size.height)))/2), y: y, width: 100.0*(image.size.width)/(image.size.height), height: 100.0))
+                    let imageView = UIImageView(frame:CGRect(x: (x + 5 + (100-(100.0*(image.size.width)/(image.size.height)))/2), y: y + 5, width: 90.0*(image.size.width)/(image.size.height), height: 90.0))
                     imageView.image = image
                     self.view.addSubview(imageView)
                     imageList.append(imageView)
@@ -676,7 +699,7 @@ class CatsAndDogsViewController: ViewController {
                     if(i <= cats + dogs - 1) {
                         
                         let image = UIImage(named: "newCat")!
-                        let imageView = UIImageView(frame:CGRect(x: (x + (100-(100.0*(image.size.width)/(image.size.height)))/2), y: y, width: 100.0*(image.size.width)/(image.size.height), height: 100.0))
+                        let imageView = UIImageView(frame:CGRect(x: (x + 5 + (100-(100.0*(image.size.width)/(image.size.height)))/2), y: y + 5, width: 90.0*(image.size.width)/(image.size.height), height: 90.0))
                         imageView.image = image
                         self.view.addSubview(imageView)
                         imageList.append(imageView)
@@ -685,6 +708,12 @@ class CatsAndDogsViewController: ViewController {
                         
                     }
                 }
+                
+                let box = UIImageView(frame: CGRect(x: x, y: y, width: 100, height: 100))
+                boxList.append(box)
+                box.layer.borderColor = UIColor.blue.cgColor
+                box.layer.borderWidth = 2
+                self.view.addSubview(box)
                 
                 let button = UIButton(type: UIButtonType.system)
                 buttonList.append(button)
