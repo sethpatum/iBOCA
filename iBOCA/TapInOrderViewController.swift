@@ -21,6 +21,7 @@ class TapInOrderViewController: ViewController {
     var numplaces = 0 //current # of buttons that light up in a row, -1
     var currpressed = 0 //order of button that is about to be pressed
     var numRepeats = 0 //how many times user messed up on the same numplaces, calling repeat()
+    var numErrors = 0
     
     var startTime2 = NSDate()
     
@@ -32,10 +33,9 @@ class TapInOrderViewController: ViewController {
     
     @IBOutlet weak var resetButton: UIButton!
     
-    @IBOutlet weak var resultsLabel: UILabel!
-    
     @IBOutlet weak var backButton: UIButton!
     
+    @IBOutlet weak var statusLabel: UILabel!
     
     var resultTmpList : [String:Any] = [:]
     var levelStartTime = Foundation.Date()
@@ -45,7 +45,6 @@ class TapInOrderViewController: ViewController {
     //start from 1st button; reset all info
     
     @IBAction func Reset(_ sender: Any) {
-        
         print("in reset")
         
         //backButton.isEnabled = false
@@ -55,8 +54,9 @@ class TapInOrderViewController: ViewController {
         
         numplaces = 0
         numRepeats = 0
+        numErrors = 0
         currpressed = 0
-        self.resultsLabel.text = ""
+        self.statusLabel.text = ""
         
         randomizeOrder()
         
@@ -65,46 +65,10 @@ class TapInOrderViewController: ViewController {
         }
         
         StartTest(resetButton)
-        
-        /*
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5){
-            if let wnd = self.view{
-                
-                let v = UIView(frame: wnd.bounds)
-                v.backgroundColor = UIColor.red
-                v.alpha = 1
-                
-                wnd.addSubview(v)
-                UIView.animate(withDuration: 2, animations: {
-                    v.alpha = 0.0
-                }, completion: {(finished:Bool) in
-                    print("inside")
-                    v.removeFromSuperview()
-                })
-            }
-            self.drawSequenceRecursively(num: 0)
-            self.startTime2 = NSDate()
-        }
- */
-        
     }
     
     //allow buttons to be pressed
     func enableButtons() {
-        /*if let wnd = self.view{
-         
-         var v = UIView(frame: wnd.bounds)
-         v.backgroundColor = UIColor.whiteColor()
-         v.alpha = 1
-         
-         wnd.addSubview(v)
-         UIView.animateWithDuration(2, animations: {
-         v.alpha = 0.0
-         }, completion: {(finished:Bool) in
-         print("inside")
-         v.removeFromSuperview()
-         })
-         }*/
         for (index, _) in order.enumerated() {
             buttonList[index].addTarget(self, action: #selector(buttonAction), for: UIControlEvents.touchUpInside)
         }
@@ -183,10 +147,7 @@ class TapInOrderViewController: ViewController {
             
         }
         
-        
         print("order is \(order)")
-        
-        
     }
     
     //randomize 1st order; light up 1st button
@@ -200,6 +161,7 @@ class TapInOrderViewController: ViewController {
         resetButton.isEnabled = false
         //backButton.isEnabled = true
         
+        statusLabel.text = ""
         
         randomizeBoard()
         
@@ -222,6 +184,7 @@ class TapInOrderViewController: ViewController {
         
         numplaces = 0
         numRepeats = 0
+        numErrors = 0
         
         
         randomizeOrder()
@@ -242,13 +205,14 @@ class TapInOrderViewController: ViewController {
             })
         }
  */
+        statusLabel.text = "Obsurve the pattern"
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
             self.drawSequenceRecursively(num: 0)
             self.startTime2 = NSDate()
             self.currpressed = 0
         }
         
-        self.resultsLabel.text = ""
+        //self.statusLabel.text = ""
     }
     
     @IBAction func EndTest(_ sender: Any) {
@@ -261,8 +225,14 @@ class TapInOrderViewController: ViewController {
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        donetest()
+    }
+    
+    
     func donetest() {
-        
         ended = true
         
         startButton.isEnabled = false
@@ -284,75 +254,40 @@ class TapInOrderViewController: ViewController {
             
             for (index, _) in self.order.enumerated() {
                 self.buttonList[index].backgroundColor = UIColor.darkGray
-                
-//                if resultsDisplayOn == true {
-                    self.resultsLabel.text = "Spatial span: \(self.numplaces)"
-//                }
-                
-                //let timestamp = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: .MediumStyle, timeStyle: .ShortStyle)
             }
+            
+            self.statusLabel.text = "Spatial span: \(self.numplaces)"
             result.longDescription.add("Forward spatial span: \(self.numplaces)")
             
             result.json["Places"] = self.numplaces
             result.json["Levels"] = self.resultList
+            result.json["Errors"] = self.numErrors
             resultsArray.add(result)
+            
+            result.shortDescription = "Spatial span of \(self.numplaces) with \(self.numErrors) errors"
             
             Status[TestForwardSpatialSpan] = TestStatus.Done
             
             self.numplaces = 0
             self.numRepeats = 0
-            
+            self.numErrors = 0
         }
     }
     
-    //light up the right # of buttons (numplaces+1) for current sequence; buttons enabled AFTER all light up
-    /*
-     func drawsequence() {
-     
-     println("drawing sequence")
-     
-     for (index, i) in enumerate(order) {
-     if index <= numplaces {
-     println("Setting \(index) to button \(i)")
-     
-     var delayTime:Double = Double(1+(index))
-     
-     delay(delayTime){
-     self.buttonList[index].backgroundColor = UIColor.greenColor()
-     }
-     delay(delayTime+1){
-     self.buttonList[index].backgroundColor = UIColor.redColor()
-     println("Drawing \(index)")
-     
-     }
-     
-     }
-     }
-     
-     
-     //enable buttons once finished lighting up
-     
-     delay(Double(numplaces+2)) {
-     println("...enabling buttons...numplaces = \(self.numplaces+2)")
-     self.enableButtons()
-     }
-     
-     }
-     */
+
     func drawSequenceRecursively(num:Int){
-        
-        
         if num > numplaces {
-            
-            
-            print("...enabling buttons...numplaces = \(self.numplaces+2)")
-            self.enableButtons()
-            self.levelStartTime = Foundation.Date()
-            self.resultTmpList.removeAll()
-        }
-            
-        else {
-            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                self.statusLabel.text = "Tap in the order of the pattern obsurved"
+                print("...enabling buttons...numplaces = \(self.numplaces+2)")
+                for (index, _) in self.order.enumerated() {
+                    self.buttonList[index].backgroundColor = UIColor.brown
+                }
+                self.enableButtons()
+                self.levelStartTime = Foundation.Date()
+                self.resultTmpList.removeAll()
+            }
+        } else {
             if ended == false{
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.4){
                     if self.ended == false {
@@ -366,16 +301,11 @@ class TapInOrderViewController: ViewController {
                                 
                                 self.drawSequenceRecursively(num: num2)
                             }
-                            
                         }
                     }
-                    
                 }
-                
             }
-            
         }
-        
     }
     
     //call when a mistake is made (-> repeat(), or finish if repeated already)
@@ -454,9 +384,10 @@ class TapInOrderViewController: ViewController {
         }
         
         //return color to normal, currpressed to zero (restarting that sequence), record the repeat, light up buttons
+       
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.5){
-            
             if self.ended == false {
+                self.statusLabel.text = "Obsurve the pattern"
                 print("in repeat")
                 for (index, _) in self.order.enumerated() {
                     self.buttonList[index].backgroundColor = UIColor.red
@@ -464,8 +395,11 @@ class TapInOrderViewController: ViewController {
                 
                 self.currpressed = 0
                 self.numRepeats += 1
+                self.numErrors += 1
                 self.randomizeOrder()
-                self.drawSequenceRecursively(num: 0)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
+                    self.drawSequenceRecursively(num: 0)
+                }
                 
             }
             
@@ -486,69 +420,18 @@ class TapInOrderViewController: ViewController {
                 self.currpressed = 0
                 self.randomizeOrder()
                 
-                for (index, _) in self.order.enumerated() {
-                    self.buttonList[index].backgroundColor = UIColor.blue
-                }
-                
-/*
-                if let wnd = self.view{
-                    
-                    let v = UIView(frame: wnd.bounds)
-                    v.backgroundColor = UIColor.white
-                    v.alpha = 1
-                    
-                    wnd.addSubview(v)
-                    UIView.animate(withDuration: 2, animations: {
-                        v.alpha = 0.0
-                    }, completion: {(finished:Bool) in
-                        print("inside")
-                        v.removeFromSuperview()
-                    })
-                    
-                }
- */
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.2){
-                    
+                    self.statusLabel.text = "Obsurve the pattern"
                     for (index, _) in self.order.enumerated() {
                         self.buttonList[index].backgroundColor = UIColor.red
                     }
-                    
-                    self.drawSequenceRecursively(num: 0)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                        self.drawSequenceRecursively(num: 0)
+                    }
                 }
                 
             }
         }
-        
-/*
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
-            if self.ended == false {
-                print("next; DRAWING RECURSIVE SEQUENCE")
-                self.numRepeats = 0
-                self.currpressed = 0
-                self.randomizeOrder()
-                if let wnd = self.view{
-                    
-                    let v = UIView(frame: wnd.bounds)
-                    v.backgroundColor = UIColor.white
-                    v.alpha = 1
-                    
-                    wnd.addSubview(v)
-                    UIView.animate(withDuration: 2, animations: {
-                        v.alpha = 0.0
-                    }, completion: {(finished:Bool) in
-                        print("inside")
-                        v.removeFromSuperview()
-                    })
-                    
-                }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
-                    self.drawSequenceRecursively(num: 0)
-                }
-                
-            }
-        }
- */
-        
     }
     
     //what happens when a user taps a button (if buttons are enabled at the time)
@@ -567,7 +450,7 @@ class TapInOrderViewController: ViewController {
                 sender.backgroundColor = UIColor.black
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-                    sender.backgroundColor = UIColor.red
+                    sender.backgroundColor = UIColor.brown
                 }
                 
                 //get out of loop if it's the wrong button; will eventually lead to repeat()

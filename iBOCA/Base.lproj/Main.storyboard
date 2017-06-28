@@ -886,13 +886,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="11" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chA-Ot-dY1">
-                                <rect key="frame" x="55" y="148" width="927" height="346"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yMe-5d-oVG">
                                 <rect key="frame" x="55" y="64" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -929,6 +922,13 @@
                                     <segue destination="BYZ-38-t0r" kind="show" id="LIO-jb-9kR"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezT-cu-DBi">
+                                <rect key="frame" x="490" y="62" width="372" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -936,8 +936,8 @@
                         <outlet property="backButton" destination="PcM-Lg-c2x" id="Tzu-Vp-Edt"/>
                         <outlet property="endButton" destination="l2k-BQ-PqR" id="N0V-Y0-xz6"/>
                         <outlet property="resetButton" destination="rxJ-PD-Ge4" id="qCy-zL-tdy"/>
-                        <outlet property="resultsLabel" destination="chA-Ot-dY1" id="QPm-Cp-YIh"/>
                         <outlet property="startButton" destination="yMe-5d-oVG" id="0mz-O8-cSW"/>
+                        <outlet property="statusLabel" destination="ezT-cu-DBi" id="4QT-lU-DvU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zZJ-fA-sOx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3052,7 +3052,7 @@
         <image name="seth1.jpg" width="960" height="960"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ZXe-jH-G6o"/>
+        <segue reference="LIO-jb-9kR"/>
         <segue reference="Ahl-wP-pho"/>
         <segue reference="G9E-xp-Whb"/>
     </inferredMetricsTieBreakers>

@@ -224,14 +224,16 @@ class TrailsAViewController: ViewController, UIPickerViewDelegate {
             num = TimeInterval(seconds)
             
             result.longDescription.add(String(describing: self.title))
-            result.longDescription.add("\(drawingView.incorrect) incorrect in \(minutes) minutes and \(seconds) second")
-            result.longDescription.add("The of segments are \(drawingView.bubbles.segmenttimes)\n")
+            result.longDescription.add("\(drawingView.nextBubb) correct and \(drawingView.incorrect) incorrect in \(minutes) minutes and \(seconds) second")
+            result.longDescription.add("The segments are \(drawingView.bubbles.segmenttimes)\n")
             result.longDescription.add("The incorrect segments are \(drawingView.incorrectlist)")
+            result.shortDescription = "and \(drawingView.nextBubb) correct"
             result.numErrors = drawingView.incorrect
             
             result.json["Path"] = drawingView.bubbles.jsontimes
             result.json["Name"] = self.title
             result.json["Errors"] = drawingView.incorrect
+            result.json["Correct Path Length"] = drawingView.nextBubb
             resultsArray.add(result)
             
             Status[TestTrails] = TestStatus.Done

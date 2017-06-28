@@ -116,7 +116,7 @@ class DigitSerialSeven:DigitBaseClass {
             lastNum = num
         }
    
-        if level >= MAXLEVEL {
+        if lastNum - 7 < 0 {
             // Done test
             base.InfoLabel.text = "Test Ended"
             DoEnd()
@@ -151,8 +151,10 @@ class DigitSerialSeven:DigitBaseClass {
             result.longDescription.add("\(i): \(enteredNumber[i]) --> Subtract 7: \(expectedNumber[i]) (Sequence 7: \(sequenceNumber[i]))  (\(elapsedTime) msec)")
         }
         result.json["Results"] = resultList
+        result.json["Errors"] = totErrors
+        result.json["Rounds"] = level
         
-        result.shortDescription = "\(startNum)->\(enteredNumber) sequence with \(totErrors) errors"
+        result.shortDescription = "\(startNum)->\(enteredNumber) sequence, \(level) rounds with \(totErrors) errors"
         
         resultsArray.add(result)
         Status[testStatus] = TestStatus.Done
