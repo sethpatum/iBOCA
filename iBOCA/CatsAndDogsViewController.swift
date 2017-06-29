@@ -186,6 +186,7 @@ class CatsAndDogsViewController: ViewController {
     
     
     @IBAction func sequenceSelected(_ sender: Any) {
+        // BUGBUG: Need to make sure a bad input will not crash the app
         
         let dogsAlone = field1.text
         var dogsCats1 = field2.text

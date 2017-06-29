@@ -32,12 +32,14 @@ enum TestStatus {
 
 var Status  = [TestStatus](repeating: TestStatus.NotStarted, count: 16)
 
+var doneSetup = false
 
 class LandingPage: ViewController {
     
     @IBOutlet weak var GotoTests: UIButton!
     
     @IBAction func GotoTests(_ sender: UIButton) {
+        
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         if atBIDMCOn {
             let nextViewController = storyBoard.instantiateViewController(withIdentifier: "main")
@@ -69,6 +71,12 @@ class LandingPage: ViewController {
         Status[TestSemanticListGeneration] = TestStatus.NotStarted
         Status[TestMOCAandGDTResults] = TestStatus.NotStarted
         Status[TestGDTResults] = TestStatus.NotStarted
+        
+        if doneSetup {
+            GotoTests.isEnabled = true
+        } else {
+            GotoTests.isEnabled = false
+        }
     }
     
     

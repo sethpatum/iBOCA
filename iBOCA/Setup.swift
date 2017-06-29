@@ -96,6 +96,8 @@ class Setup: ViewController {
         patiantID.text = PID.getID()
         adminName.text = PID.getName()
         adminInitials.text = PID.getInitials()
+        
+        doneSetup = true
     }
     
     

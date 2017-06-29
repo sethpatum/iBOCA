@@ -43,6 +43,32 @@ class TapInOrderViewController: ViewController {
     var resultList : [String:Any] = [:]
     
     
+    //randomize 1st order; light up 1st button
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
+        if testName == "ForwardSpatialSpan" {
+            forwardNotBackward = true
+            self.navigationItem.title = "Forward Spatial Span"
+        } else if testName == "BackwardSpatialSpan" {
+            forwardNotBackward = false
+            self.navigationItem.title = "Backward Spatial Span"
+        }
+
+        endButton.isEnabled = false
+        resetButton.isEnabled = false
+        //backButton.isEnabled = true
+        
+        statusLabel.text = ""
+        
+        randomizeBoard()
+        
+        randomizeOrder()
+        
+    }
+    
+    
     //start from 1st button; reset all info
     
     @IBAction func Reset(_ sender: Any) {
@@ -152,25 +178,6 @@ class TapInOrderViewController: ViewController {
         print("order is \(order)")
     }
     
-    //randomize 1st order; light up 1st button
-    override func viewDidLoad() {
-        
-        super.viewDidLoad()
-        
-        self.navigationItem.title = "Forward Spatial Span"
-        
-        endButton.isEnabled = false
-        resetButton.isEnabled = false
-        //backButton.isEnabled = true
-        
-        statusLabel.text = ""
-        
-        randomizeBoard()
-        
-        randomizeOrder()
-        
-    }
-    
     
     @IBAction func StartTest(_ sender: Any) {
         
@@ -207,7 +214,7 @@ class TapInOrderViewController: ViewController {
             })
         }
  */
-        statusLabel.text = "Obsurve the pattern"
+        statusLabel.text = "Observe the pattern"
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
             if self.forwardNotBackward {
                 self.drawSequenceRecursively(num: 0)
@@ -278,7 +285,11 @@ class TapInOrderViewController: ViewController {
             
             result.shortDescription = "Spatial span of \(self.numplaces) with \(self.numErrors) errors"
             
-            Status[TestForwardSpatialSpan] = TestStatus.Done
+            if self.forwardNotBackward {
+                Status[TestForwardSpatialSpan] = TestStatus.Done
+            } else {
+                Status[TestBackwardSpatialSpan] = TestStatus.Done
+            }
             
             self.numplaces = 0
             self.numRepeats = 0
@@ -291,8 +302,13 @@ class TapInOrderViewController: ViewController {
         if (forwardNotBackward && num > numplaces) ||
            (!forwardNotBackward && num < 0){
             DispatchQueue.main.asyncAfter(deadline: .now() + 1){
-                self.statusLabel.text = "Tap in the order of the pattern obsurved"
+                if self.forwardNotBackward {
+                    self.statusLabel.text = "Tap in the order of the pattern observed"
+                } else {
+                    self.statusLabel.text = "Tap in reverse order of the pattern observed"
+                }
                 print("...enabling buttons...numplaces = \(self.numplaces+2)")
+                
                 for (index, _) in self.order.enumerated() {
                     self.buttonList[index].backgroundColor = UIColor.brown
                 }
@@ -301,7 +317,7 @@ class TapInOrderViewController: ViewController {
                 self.resultTmpList.removeAll()
             }
         } else {
-            if ended == false{
+            if ended == false {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.4){
                     if self.ended == false {
                         self.buttonList[num].backgroundColor = UIColor.green
@@ -341,45 +357,31 @@ class TapInOrderViewController: ViewController {
             
             if numRepeats < 1 {
                 `repeat`()
-            }
                 
                 //if user has already repeated this level color changes to gray and test finishes
-            else{
-                /*
-                 for (index, i) in enumerate(order) {
-                 buttonList[index].backgroundColor = UIColor.darkGrayColor()
-                 }
-                 */
+            } else {
                 //account for delay when changing black back to red for most recently pressed button
                 donetest()
             }
             
-        }
             //true means user finished the sequence correctly up to numplaces
             //if numplaces is not maxxed out, light up one more button (-> next()), otherwise finish w/ perfect score
-        else {
+        } else {
             
-            if numplaces < buttonList.count-1{
+            if numplaces < buttonList.count - 1{
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
                     self.next()
                 }
                 
-            }
-            else {
-                /*
-                 for (index, i) in enumerate(order) {
-                 buttonList[index].backgroundColor = UIColor.darkGrayColor()
-                 }
-                 */
+            } else {
                 //account for delay when changing black back to red for most recently pressed button
                 donetest()
             }
-            
         }
-        
         print("Done in \(n)! \(status)")
     }
+    
     
     //user messed up; replay same sequence
     func `repeat`(){
@@ -397,14 +399,13 @@ class TapInOrderViewController: ViewController {
                     self.buttonList[index].backgroundColor = UIColor.lightGray
                 }
             }
-            
         }
         
         //return color to normal, currpressed to zero (restarting that sequence), record the repeat, light up buttons
        
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.5){
             if self.ended == false {
-                self.statusLabel.text = "Obsurve the pattern"
+                self.statusLabel.text = "Repeating, Observe the pattern"
                 print("in repeat")
                 for (index, _) in self.order.enumerated() {
                     self.buttonList[index].backgroundColor = UIColor.red
@@ -415,14 +416,14 @@ class TapInOrderViewController: ViewController {
                 self.numErrors += 1
                 self.randomizeOrder()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
-                    self.drawSequenceRecursively(num: 0)
+                    if self.forwardNotBackward {
+                        self.drawSequenceRecursively(num: 0)
+                    } else {
+                        self.drawSequenceRecursively(num: self.numplaces)
+                    }
                 }
-                
             }
-            
         }
-        
-        
     }
     
     //user completed sequence; reset repeats, increase numplaces so 1 more button lights up
@@ -438,15 +439,18 @@ class TapInOrderViewController: ViewController {
                 self.randomizeOrder()
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.2){
-                    self.statusLabel.text = "Obsurve the pattern"
+                    self.statusLabel.text = "Observe the pattern"
                     for (index, _) in self.order.enumerated() {
                         self.buttonList[index].backgroundColor = UIColor.red
                     }
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1){
-                        self.drawSequenceRecursively(num: 0)
+                        if self.forwardNotBackward {
+                            self.drawSequenceRecursively(num: 0)
+                        } else {
+                            self.drawSequenceRecursively(num: self.numplaces)
+                        }
                     }
                 }
-                
             }
         }
     }

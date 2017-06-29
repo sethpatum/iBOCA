@@ -36,7 +36,7 @@ class DigitBothDirection:DigitBaseClass {
     }
     
     override func DoStart() {
-        base.InfoLabel.text = "Tell the patiant the numbers, followed by intering his/her response"
+        base.InfoLabel.text = "Tell the patient the numbers, followed by intering his/her response"
         level = LevelStart() - 1
         redo = 0
         
