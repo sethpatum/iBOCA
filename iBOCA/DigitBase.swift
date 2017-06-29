@@ -149,7 +149,7 @@ class DigitBase: ViewController {
     
     func DisplayStringShowContinue(val:String) {
         if BackButton.isHidden == true {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
                 if val.characters.count == 0 {
                     //self.ContinueButton.isHidden = false
                     self.InfoLabel.text = "Start entering the number sequence given by patient, followed by done"
