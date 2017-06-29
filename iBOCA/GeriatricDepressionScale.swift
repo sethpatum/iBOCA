@@ -51,15 +51,16 @@ let answers = [false, true,  true,  true,  false,
                true,  false, true,  false, false]
 
 
-var justView: UIView!
-var scrollView: UIScrollView!
-
-var yesButtonList : [UIButton] = []
-var noButtonList : [UIButton] = []
-var buttonState : [Int] = [] // -1 mean no answer selected, 0 means No is slected, 1 means YES is selected
 
 
 class GeriatricDepressionScale:  ViewController {
+    var justView: UIView!
+    var scrollView: UIScrollView!
+    
+    var yesButtonList : [UIButton] = []
+    var noButtonList : [UIButton] = []
+    var buttonState : [Int] = [] // -1 mean no answer selected, 0 means No is slected, 1 means YES is selected
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,7 +72,6 @@ class GeriatricDepressionScale:  ViewController {
       
         let h = 100*questions.count + 100
         
-    
         justView = UIView(frame: CGRect(x:0, y:0, width:1024, height: h))
         scrollView = UIScrollView(frame: CGRect(x:0, y:100, width:view.bounds.width, height: view.bounds.height-100))
         scrollView.backgroundColor = UIColor.white
@@ -82,18 +82,19 @@ class GeriatricDepressionScale:  ViewController {
         view.addSubview(scrollView)
         
         for (i, val) in questions.enumerated() {
-            let label = UILabel(frame: CGRect(x: 20, y: 100*i + 50, width: 600, height: 21))
-            label.text = String(format:"%02d) ", i+1) + val
+            let label = UILabel(frame: CGRect(x: 20, y: 100*i + 50, width: 750, height: 24))
+            label.font = label.font.withSize(20)
+            label.text = String(format:"%2d) ", i+1) + val
             justView.addSubview(label)
             
             let ybtn = UIButton(type: .custom) as UIButton
             let nbtn = UIButton(type: .custom) as UIButton
-            
+        
             ybtn.backgroundColor = .gray
             nbtn.backgroundColor = .gray
             
-            ybtn.frame = CGRect(x: 700, y: 100*i + 50, width: 80, height: 40)
-            nbtn.frame = CGRect(x: 850, y: 100*i + 50, width: 80, height: 40)
+            ybtn.frame = CGRect(x: 770, y: 100*i + 40, width: 80, height: 40)
+            nbtn.frame = CGRect(x: 900, y: 100*i + 40, width: 80, height: 40)
             
             ybtn.setTitle("Yes", for: .normal)
             nbtn.setTitle("No", for: .normal)
