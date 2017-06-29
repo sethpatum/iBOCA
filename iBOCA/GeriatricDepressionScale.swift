@@ -126,39 +126,18 @@ class GeriatricDepressionScale:  ViewController {
     }
     
     func clickYes(b: UIButton!) {
-        // toggle button
         let i = findButton(button: b, list: yesButtonList)
-        if buttonState[i] == -1 {
-            b.backgroundColor = .blue
-            noButtonList[i].backgroundColor = .gray
-            buttonState[i] = 1
-        } else if buttonState[i] == 0 {
-            b.backgroundColor = .blue
-            noButtonList[i].backgroundColor = .gray
-            buttonState[i] = 1
-        } else {
-            b.backgroundColor = .gray
-            noButtonList[i].backgroundColor = .blue
-            buttonState[i] = 0
-        }
+        b.backgroundColor = .blue
+        noButtonList[i].backgroundColor = .gray
+        buttonState[i] = 1
+       
     }
     
     func clickNo(b:UIButton!) {
-        // toggle button
         let i = findButton(button: b, list: noButtonList)
-        if buttonState[i] == -1 {
-            b.backgroundColor = .blue
-            yesButtonList[i].backgroundColor = .gray
-            buttonState[i] = 0
-        } else if buttonState[i] == 0 {
-            b.backgroundColor = .gray
-            yesButtonList[i].backgroundColor = .blue
-            buttonState[i] = 1
-        } else {
-            b.backgroundColor = .blue
-            yesButtonList[i].backgroundColor = .gray
-            buttonState[i] = 0
-        }
+        b.backgroundColor = .blue
+        yesButtonList[i].backgroundColor = .gray
+        buttonState[i] = 0
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
