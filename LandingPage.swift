@@ -23,13 +23,14 @@ let TestBackwardSpatialSpan = 11
 let TestNampingPictures = 12
 let TestSemanticListGeneration = 13
 let TestMOCAandGDTResults = 14
+let TestGDTResults = 15
 
 
 enum TestStatus {
     case NotStarted, Running, Done
 }
 
-var Status  = [TestStatus](repeating: TestStatus.NotStarted, count: 15)
+var Status  = [TestStatus](repeating: TestStatus.NotStarted, count: 16)
 
 
 class LandingPage: ViewController {
@@ -67,7 +68,7 @@ class LandingPage: ViewController {
         Status[TestNampingPictures] = TestStatus.NotStarted
         Status[TestSemanticListGeneration] = TestStatus.NotStarted
         Status[TestMOCAandGDTResults] = TestStatus.NotStarted
- 
+        Status[TestGDTResults] = TestStatus.NotStarted
     }
     
     

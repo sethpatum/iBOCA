@@ -34,6 +34,7 @@ class MainViewController: ViewController, MFMailComposeViewControllerDelegate{
     @IBOutlet weak var ButtonNamingPictures: UIButton!
     @IBOutlet weak var ButtonSemanticListGeneration: UIButton!
     @IBOutlet weak var ButtonMOCAandGDT: UIButton!
+    @IBOutlet weak var ButtonGDT: UIButton!
     
     @IBOutlet weak var LabelSM: UILabel!
     @IBOutlet weak var LabelVA: UILabel!
@@ -135,6 +136,7 @@ class MainViewController: ViewController, MFMailComposeViewControllerDelegate{
         updateButton(button: ButtonNamingPictures, status: Status[TestNampingPictures])
         updateButton(button: ButtonSemanticListGeneration, status: Status[TestSemanticListGeneration])
         updateButton(button: ButtonMOCAandGDT, status: Status[TestMOCAandGDTResults])
+        updateButton(button: ButtonGDT, status: Status[TestGDTResults])
         
         if atBIDMCOn {
             ButtonMOCAandGDT.isHidden = true

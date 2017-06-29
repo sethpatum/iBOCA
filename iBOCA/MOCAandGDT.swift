@@ -28,14 +28,11 @@ class MOCAandGDT: ViewController, UIPickerViewDelegate  {
 
     @IBOutlet weak var MOCAtotal: UILabel!
     
-    @IBOutlet weak var GDTscore: UIPickerView!
-    
     @IBOutlet weak var Comments: UITextView!
     
     var buttonlist : [UIPickerView] = []
     let buttonval  = [5, 3, 2, 1, 3, 2, 1, 2, 5, 6]
     var buttonresults : [Int]  = [Int](repeating: 0, count: 10)
-    var GDTresults : Int = 0
     
     
     override func viewDidLoad() {
@@ -56,7 +53,6 @@ class MOCAandGDT: ViewController, UIPickerViewDelegate  {
             bl.delegate = self
         }
         
-        GDTscore.delegate = self
         
         MOCAtotal.text = "0"
         
@@ -70,10 +66,6 @@ class MOCAandGDT: ViewController, UIPickerViewDelegate  {
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
 
-        if pickerView == GDTscore {
-            return 31
-        }
-        
         for (i, bl) in buttonlist.enumerated() {
             if pickerView == bl {
                 return buttonval[i]+1
@@ -88,10 +80,6 @@ class MOCAandGDT: ViewController, UIPickerViewDelegate  {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
-        if pickerView == GDTscore {
-            GDTresults = row
-            return
-        }
         
         for (i, bl) in buttonlist.enumerated() {
             if pickerView == bl {
@@ -113,7 +101,7 @@ class MOCAandGDT: ViewController, UIPickerViewDelegate  {
 
     func done() {
         let result = Results()
-        result.name = "MOCA and GDT Results"
+        result.name = "MOCA Results"
         result.startTime = startTime
         result.endTime = Foundation.Date()
         result.json["MOCA Executive"]   = buttonresults[0]
@@ -127,10 +115,10 @@ class MOCAandGDT: ViewController, UIPickerViewDelegate  {
         result.json["MOCA Recall"]      = buttonresults[8]
         result.json["MOCA Orientation"] = buttonresults[9]
         result.json["MOCA TOTAL"] = MOCAtotal.text
-        result.json["GDT Score"] = GDTresults
+
         result.json["Comments"] = Comments.text
         
-        result.shortDescription = "MOCA=\(MOCAtotal.text!) GDT=\(GDTresults)"
+        result.shortDescription = "MOCA=\(MOCAtotal.text!)"
         
         resultsArray.add(result)
         Status[TestMOCAandGDTResults] = TestStatus.Done
