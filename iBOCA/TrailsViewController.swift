@@ -20,8 +20,9 @@ var selectedTest = 0
 class TrailsAViewController: ViewController, UIPickerViewDelegate {
     
     var drawingView: DrawingViewTrails!
-    
     var imageView: UIImageView!
+    
+    var ended = false
     
     var startTime = TimeInterval()
     var startTime2 = Foundation.Date()
@@ -35,6 +36,9 @@ class TrailsAViewController: ViewController, UIPickerViewDelegate {
     var TestTypes : [String] = []
     
     @IBOutlet weak var resultsLabel: UILabel!
+    
+    
+    
     
     @IBAction func StartButton(sender: AnyObject) {
         testPicker.isHidden = true
@@ -67,6 +71,7 @@ class TrailsAViewController: ViewController, UIPickerViewDelegate {
     func startTest() {
         startButton.isEnabled = false
         testPicker.isHidden = true
+        ended = false
 
         self.navigationItem.setHidesBackButton(true, animated:true)
         
@@ -110,7 +115,9 @@ class TrailsAViewController: ViewController, UIPickerViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        done()
+        if !ended {
+            done()
+        }
     }
     
     
@@ -199,6 +206,7 @@ class TrailsAViewController: ViewController, UIPickerViewDelegate {
     }
     
     func done() {
+        ended = true
         if drawingView != nil {
             drawingView.canDraw = false
             let imageSize = CGSize(width: screenSize!.maxX, height: screenSize!.maxY - 135)
@@ -227,7 +235,7 @@ class TrailsAViewController: ViewController, UIPickerViewDelegate {
             result.longDescription.add("\(drawingView.nextBubb) correct and \(drawingView.incorrect) incorrect in \(minutes) minutes and \(seconds) second")
             result.longDescription.add("The segments are \(drawingView.bubbles.segmenttimes)\n")
             result.longDescription.add("The incorrect segments are \(drawingView.incorrectlist)")
-            result.shortDescription = "and \(drawingView.nextBubb) correct"
+            result.shortDescription = "\(drawingView.incorrect) errors with \(drawingView.nextBubb) correct bubbles (test \(self.title!))"
             result.numErrors = drawingView.incorrect
             
             result.json["Path"] = drawingView.bubbles.jsontimes

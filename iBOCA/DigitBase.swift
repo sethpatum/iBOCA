@@ -39,6 +39,8 @@ class DigitBase: ViewController {
     
     var value:String = ""
     
+    var ended = false
+    
     let speechSynthesizer = AVSpeechSynthesizer()
     
     override func viewDidLoad() {
@@ -125,6 +127,7 @@ class DigitBase: ViewController {
     
     
     @IBAction func StartPressed(_ sender: UIButton) {
+        ended = false
         StartButton.isHidden = true
         EndButton.isHidden = false
         BackButton.isHidden = true
@@ -137,6 +140,7 @@ class DigitBase: ViewController {
     
     // This may be call more than when EndPressed, DoEnd may be call within the subclass, which should call this
     func EndTest() {
+        ended = true
         value = ""
         NumberLabel.text = ""
         KeypadLabel.text = ""
@@ -171,6 +175,15 @@ class DigitBase: ViewController {
             }
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        if !ended {
+            base!.DoEnd()
+        }
+    }
+    
     
 }
 

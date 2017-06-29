@@ -47,6 +47,8 @@ class SimpleMemoryTask: ViewController, UIPickerViewDelegate {
     
     var delayTime = Double()
     
+    var ended = false
+    
     @IBOutlet weak var next1: UIButton!
     @IBOutlet weak var start: UIButton!
     @IBOutlet weak var back: UIButton!
@@ -215,6 +217,7 @@ class SimpleMemoryTask: ViewController, UIPickerViewDelegate {
         }
         
     }
+    
     func startNewTask(){
         
         timerSM.invalidate()
@@ -810,7 +813,7 @@ class SimpleMemoryTask: ViewController, UIPickerViewDelegate {
     }
     
     func done(){
-        
+        ended = true
         //back.isEnabled = true
         
         afterBreakSM = false
@@ -869,7 +872,7 @@ class SimpleMemoryTask: ViewController, UIPickerViewDelegate {
         result.name = "Simple Memory"
         result.startTime = StartTimer
         result.endTime = Foundation.Date()
-        result.shortDescription = "Recall \(correctRecall) correct, \(incorrectRecall) incorrect.  Recognie \(correctRecognize) correct, \(incorrectRecognize) incorrect. Sets correct:\(imageSetSM), incorrect:\(incorrectImageSetSM)"
+        result.shortDescription = "Recall \(correctRecall) correct, \(incorrectRecall) incorrect.  Recognize \(correctRecognize) correct, \(incorrectRecognize) incorrect. (Sets correct:\(imageSetSM), incorrect:\(incorrectImageSetSM))"
         result.numErrors = numErrors
         
         resultList["CorrectImageSet"] = imageSetSM

@@ -241,7 +241,9 @@ class TapInOrderViewController: ViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        donetest()
+        if !ended {
+            donetest()
+        }
     }
     
     

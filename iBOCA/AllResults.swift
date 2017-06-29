@@ -105,7 +105,7 @@ class AllResults  {
                 }
                 let elapsedTime = r.endTime!.timeIntervalSince(r.startTime! as Date)
                 let duration = ((Double)((Int(1000*elapsedTime))))/1000.0
-                e += "<td>\(duration)</td>"
+                e += "<td align=\"right\">\(duration)</td>"
                 if r.shortDescription != nil {
                     e += "<td>\(r.shortDescription!)</td>"
                 }
@@ -207,6 +207,7 @@ class AllResults  {
         var tst : [String:String] = [:]
         tst["Device Name"] = UIDevice.current.name
         tst["Device ID"] = UIDevice.current.identifierForVendor?.uuidString
+        tst["Platform"] = platformString()
         
         let formatter = DateFormatter()
         formatter.dateFormat = "y-MM-dd HH:MM"
@@ -285,5 +286,79 @@ class AllResults  {
         let imgData:Data = UIImagePNGRepresentation(image)! as Data;
         let dataString = imgData.base64EncodedString(options: Data.Base64EncodingOptions(rawValue: 0))
         return dataString
+    }
+    
+    func platformString() -> String {
+        
+        var devSpec: String
+        
+        switch platform() {
+            
+        case "iPhone1,2": devSpec = "iPhone 3G"
+        case "iPhone2,1": devSpec = "iPhone 3GS"
+        case "iPhone3,1": devSpec = "iPhone 4"
+        case "iPhone3,3": devSpec = "Verizon iPhone 4"
+        case "iPhone4,1": devSpec = "iPhone 4S"
+        case "iPhone5,1": devSpec = "iPhone 5 (GSM)"
+        case "iPhone5,2": devSpec = "iPhone 5 (GSM+CDMA)"
+        case "iPhone5,3": devSpec = "iPhone 5c (GSM)"
+        case "iPhone5,4": devSpec = "iPhone 5c (GSM+CDMA)"
+        case "iPhone6,1": devSpec = "iPhone 5s (GSM)"
+        case "iPhone6,2": devSpec = "iPhone 5s (GSM+CDMA)"
+        case "iPhone7,1": devSpec = "iPhone 6 Plus"
+        case "iPhone7,2": devSpec = "iPhone 6"
+        case "iPod1,1": devSpec = "iPod Touch 1G"
+        case "iPod2,1": devSpec = "iPod Touch 2G"
+        case "iPod3,1": devSpec = "iPod Touch 3G"
+        case "iPod4,1": devSpec = "iPod Touch 4G"
+        case "iPod5,1": devSpec = "iPod Touch 5G"
+        case "iPad1,1": devSpec = "iPad"
+        case "iPad2,1": devSpec = "iPad 2 (WiFi)"
+        case "iPad2,2": devSpec = "iPad 2 (GSM)"
+        case "iPad2,3": devSpec = "iPad 2 (CDMA)"
+        case "iPad2,4": devSpec = "iPad 2 (WiFi)"
+        case "iPad2,5": devSpec = "iPad Mini (WiFi)"
+        case "iPad2,6": devSpec = "iPad Mini (GSM)"
+        case "iPad2,7": devSpec = "iPad Mini (GSM+CDMA)"
+        case "iPad3,1": devSpec = "iPad 3 (WiFi)"
+        case "iPad3,2": devSpec = "iPad 3 (GSM+CDMA)"
+        case "iPad3,3": devSpec = "iPad 3 (GSM)"
+        case "iPad3,4": devSpec = "iPad 4 (WiFi)"
+        case "iPad3,5": devSpec = "iPad 4 (GSM)"
+        case "iPad3,6": devSpec = "iPad 4 (GSM+CDMA)"
+        case "iPad4,1": devSpec = "iPad Air (WiFi)"
+        case "iPad4,2": devSpec = "iPad Air (Cellular)"
+        case "iPad4,4": devSpec = "iPad mini 2G (WiFi)"
+        case "iPad4,5": devSpec = "iPad mini 2G (Cellular)"
+            
+        case "iPad4,7": devSpec = "iPad mini 3 (WiFi)"
+        case "iPad4,8": devSpec = "iPad mini 3 (Cellular)"
+        case "iPad4,9": devSpec = "iPad mini 3 (China Model)"
+            
+        case "iPad5,3": devSpec = "iPad Air 2 (WiFi)"
+        case "iPad5,4": devSpec = "iPad Air 2 (Cellular)"
+            
+        case "i386": devSpec = "Simulator"
+        case "x86_64": devSpec = "Simulator"
+            
+        default: devSpec = "Unknown"
+        }
+        
+        return devSpec
+    }
+    
+    func platform() -> String {
+        var systemInfo = utsname()
+        uname(&systemInfo)
+        let size = Int(_SYS_NAMELEN) // is 32, but posix AND its init is 256....
+        
+        let s = withUnsafeMutablePointer(to: &systemInfo.machine) {p in
+            
+            p.withMemoryRebound(to: CChar.self, capacity: size, {p2 in
+                return String(cString: p2)
+            })
+            
+        }
+        return s
     }
 }
