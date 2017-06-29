@@ -137,6 +137,7 @@ class DigitBothDirection:DigitBaseClass {
         resultsArray.add(result)
         
         base.EndTest()
+        Status[testStatus] = TestStatus.Done
     }
     
     // Mainly redefined in the subclass
