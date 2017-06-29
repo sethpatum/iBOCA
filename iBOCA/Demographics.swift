@@ -44,10 +44,10 @@ class Demographics: ViewController, MFMailComposeViewControllerDelegate, UITextF
     
     
     @IBOutlet weak var EthnicityPicker: UIPickerView!
-    var ethnicData = ["Caucasian", "African American", "Latino", "Other"]
+    var ethnicData = ["Hispanic or Latino", "Not Hispanic or Latino"]
     
     @IBOutlet weak var RacePicker: UIPickerView!
-    var raceData = ["English", "Spanish", "Other",]
+    var raceData = ["White", "Black or African American", "Asian", "Native Hawaiian or Other Pacific Islander", "American Indian or Alaskan Native", "Multi-Racial", "Unknown", "Other",]
     
     @IBOutlet weak var AgePicker: UIPickerView!
     var ageData:[String] = makeAgeData()
