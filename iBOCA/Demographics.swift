@@ -40,7 +40,7 @@ class Demographics: ViewController, MFMailComposeViewControllerDelegate, UITextF
     
     
     @IBOutlet weak var EducationPicker: UIPickerView!
-    let educationData = ["< 9 yrs", "9-11 yrs", "High School Graduate", "Associates Degree", "Bachelors Degree", "Post Graduate Degree"]
+    let educationData = ["0 years", "1 years","2 years","3 years","4 years","5 years","6 years","7 years","8 years","9 years","10 years","11 years","12 years(High School)","13 years","14 years","15 years","16 years(College)","17 years","18 years","19 years", "20 years", "20+ years"]
     
     
     @IBOutlet weak var EthnicityPicker: UIPickerView!
