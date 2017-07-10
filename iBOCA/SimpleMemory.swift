@@ -949,7 +949,7 @@ class SimpleMemoryTask: ViewController, UIPickerViewDelegate {
         result.name = "Simple Memory"
         result.startTime = StartTimer
         result.endTime = Foundation.Date()
-        result.shortDescription = "Recall \(correctRecall) correct, \(incorrectRecall) incorrect.  Recognize \(correctRecognize) correct, \(incorrectRecognize) incorrect. (Sets correct:\(imageSetSM), incorrect:\(incorrectImageSetSM))"
+        result.shortDescription = "Recall: \(correctRecall) correct, \(incorrectRecall) incorrect.  Recognize: \(correctRecognize) correct, \(incorrectRecognize) incorrect. (Sets correct:\(imageSetSM), incorrect:\(incorrectImageSetSM))"
         result.numErrors = numErrors
         
         resultList["CorrectImageSet"] = imageSetSM

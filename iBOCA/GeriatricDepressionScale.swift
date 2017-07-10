@@ -142,12 +142,16 @@ class GeriatricDepressionScale:  ViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         var val = 0
+        var noans = 0
         for (i, ans) in answers.enumerated() {
             if buttonState[i] == 1 && ans {
                 val += 1
             }
             if buttonState[i] == 0 && !ans {
                 val += 1
+            }
+            if buttonState[i] == -1 {
+                noans += 1
             }
         }
         
@@ -156,6 +160,7 @@ class GeriatricDepressionScale:  ViewController {
         result.startTime = startTime
         result.endTime = Foundation.Date()
         result.json["GDT Score"] = val
+        result.json["Unanswered"] = noans
         
         var rest2 : [String:Any] = [:]
         for (i, q) in questions.enumerated() {
@@ -163,7 +168,7 @@ class GeriatricDepressionScale:  ViewController {
         }
         result.json["Results"] = rest2
         
-        result.shortDescription = "GDT=\(val)"
+        result.shortDescription = "GDT=\(val) with \(noans) unanswered"
         
         resultsArray.add(result)
         Status[TestGDTResults] = TestStatus.Done
