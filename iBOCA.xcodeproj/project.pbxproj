@@ -47,6 +47,7 @@
 		F261D4E61E3E339F0039A545 /* TrailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F261D4E51E3E339F0039A545 /* TrailsViewController.swift */; };
 		F261D4E81E3E33D00039A545 /* DrawingViewTrails.swift in Sources */ = {isa = PBXBuildFile; fileRef = F261D4E71E3E33D00039A545 /* DrawingViewTrails.swift */; };
 		F261D4EA1E3E33F00039A545 /* Bubbles.swift in Sources */ = {isa = PBXBuildFile; fileRef = F261D4E91E3E33F00039A545 /* Bubbles.swift */; };
+		F2748CDA1F13BD6B00799836 /* AckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2748CD91F13BD6B00799836 /* AckViewController.swift */; };
 		F27728A61E33C91A004F8A6E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27728A51E33C91A004F8A6E /* MainViewController.swift */; };
 		F27AEA941EEC6E7B00AFB3D1 /* DigitBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27AEA931EEC6E7B00AFB3D1 /* DigitBase.swift */; };
 		F27AEAA61EEC948600AFB3D1 /* DigitSpanForward.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27AEAA51EEC948600AFB3D1 /* DigitSpanForward.swift */; };
@@ -186,6 +187,7 @@
 		F261D4E51E3E339F0039A545 /* TrailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailsViewController.swift; sourceTree = "<group>"; };
 		F261D4E71E3E33D00039A545 /* DrawingViewTrails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingViewTrails.swift; sourceTree = "<group>"; };
 		F261D4E91E3E33F00039A545 /* Bubbles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bubbles.swift; sourceTree = "<group>"; };
+		F2748CD91F13BD6B00799836 /* AckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AckViewController.swift; sourceTree = "<group>"; };
 		F27728A51E33C91A004F8A6E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F27AEA931EEC6E7B00AFB3D1 /* DigitBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DigitBase.swift; sourceTree = "<group>"; };
 		F27AEAA51EEC948600AFB3D1 /* DigitSpanForward.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DigitSpanForward.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 			children = (
 				1B53650D1D7491CF0088B5D2 /* 3DFigureCopy.swift */,
 				1B49EEF21DAC3B6600931E8C /* 3DFigureDraw.swift */,
+				F2748CD91F13BD6B00799836 /* AckViewController.swift */,
 				1BC2DFEE1D4F821F0020D430 /* AppDelegate.swift */,
 				1BC2DFF51D4F821F0020D430 /* Assets.xcassets */,
 				E27BA37E1D523B8400619C07 /* BackwardDigitSpan.swift */,
@@ -612,6 +615,7 @@
 				1B49EEF31DAC3B6600931E8C /* 3DFigureDraw.swift in Sources */,
 				F27728A61E33C91A004F8A6E /* MainViewController.swift in Sources */,
 				F239513B1EFFE6A1004B09E5 /* PatiantID.swift in Sources */,
+				F2748CDA1F13BD6B00799836 /* AckViewController.swift in Sources */,
 				F27AEA941EEC6E7B00AFB3D1 /* DigitBase.swift in Sources */,
 				43960F4C1E3C0758006FDC7B /* CatsAndDogsViewController.swift in Sources */,
 				F24E6E701E1BC2C300E29995 /* ScaleView.swift in Sources */,
