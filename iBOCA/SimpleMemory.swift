@@ -88,6 +88,8 @@ class SimpleMemoryTask: ViewController, UIPickerViewDelegate {
     
     var orderRecognize = [Int]()
     
+    var testSelectButtons : [UIButton] = []
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -120,6 +122,9 @@ class SimpleMemoryTask: ViewController, UIPickerViewDelegate {
             
             testPickerLabel.isHidden = true
             incorrectPickerLabel.isHidden = true
+            for b in testSelectButtons {
+                b.isHidden = true
+            }
             
             start.removeTarget(self, action: #selector(startNewTask), for:.touchUpInside)
             start.removeTarget(self, action: #selector(startDisplayAlert), for:.touchUpInside)
@@ -139,6 +144,7 @@ class SimpleMemoryTask: ViewController, UIPickerViewDelegate {
             
             testPickerLabel.isHidden = false
             incorrectPickerLabel.isHidden = false
+            setupTestSelectButtons()
             
             imageSetSM = 0
             incorrectImageSetSM = 0
@@ -152,6 +158,70 @@ class SimpleMemoryTask: ViewController, UIPickerViewDelegate {
             start.addTarget(self, action: #selector(startDisplayAlert), for:.touchUpInside)
 //            startAlert()
         }
+        
+    }
+    
+    func setupTestSelectButtons() {
+        testSelectButtons = []
+        for (i, val) in ["Test A", "Test B", "Test C", "Test D"].enumerated() {
+            let button  = UIButton(frame: CGRect(x: 150+200*i, y: 250, width: 150, height: 50))
+            button.setTitle(String(val), for: .normal)
+            button.setTitleColor(UIColor.blue, for: .normal)
+            button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 40.0)
+            button.addTarget(self, action: #selector(SimpleMemoryTask.StartSelectButtonTapped), for: .touchDown)
+            button.isHidden = false
+            testSelectButtons.append(button)
+            view.addSubview(button)
+        }
+    }
+    
+    @objc fileprivate func StartSelectButtonTapped(button: UIButton){
+        let title = button.title(for: .normal)!
+        switch title {
+        case "Test A":
+            testPicker.selectRow(0, inComponent: 0, animated: true)
+            incorrectPicker.selectRow(4, inComponent: 0, animated: true)
+            imagesSM = images0
+            imageSetSM = 0
+            recognizeIncorrectSM = images4
+            incorrectImageSetSM = 4
+        case "Test B":
+            testPicker.selectRow(1, inComponent: 0, animated: true)
+            incorrectPicker.selectRow(5, inComponent: 0, animated: true)
+            imagesSM = images1
+            imageSetSM = 1
+            recognizeIncorrectSM = images5
+            incorrectImageSetSM = 5
+        case "Test C":
+            testPicker.selectRow(2, inComponent: 0, animated: true)
+            incorrectPicker.selectRow(6, inComponent: 0, animated: true)
+            imagesSM = images2
+            imageSetSM = 2
+            recognizeIncorrectSM = images6
+            incorrectImageSetSM = 6
+        case "Test D":
+            testPicker.selectRow(3, inComponent: 0, animated: true)
+            incorrectPicker.selectRow(7, inComponent: 0, animated: true)
+            imagesSM = images3
+            imageSetSM = 3
+            recognizeIncorrectSM = images7
+            incorrectImageSetSM = 7
+        default:
+            testPicker.selectRow(0, inComponent: 0, animated: true)
+            incorrectPicker.selectRow(0, inComponent: 0, animated: true)
+            imagesSM = images0
+            imageSetSM = 0
+            recognizeIncorrectSM = images0
+            incorrectImageSetSM = 0
+        }
+        
+        if(TestTypes[testPicker.selectedRow(inComponent: 0)] == IncorrectTypes[incorrectPicker.selectedRow(inComponent: 0)]){
+            start.isEnabled = false
+        }
+        else{
+            start.isEnabled = true
+        }
+
         
     }
     
@@ -183,6 +253,7 @@ class SimpleMemoryTask: ViewController, UIPickerViewDelegate {
             
             self.testPickerLabel.isHidden = false
             self.incorrectPickerLabel.isHidden = false
+            self.setupTestSelectButtons()
             
             self.startNewTask()
             
@@ -198,6 +269,9 @@ class SimpleMemoryTask: ViewController, UIPickerViewDelegate {
                 
                 self.testPickerLabel.isHidden = true
                 self.incorrectPickerLabel.isHidden = true
+                for b in self.testSelectButtons {
+                    b.isHidden = true
+                }
                 
                 self.start.isHidden = true
                 
@@ -254,6 +328,9 @@ class SimpleMemoryTask: ViewController, UIPickerViewDelegate {
         
         testPickerLabel.isHidden = true
         incorrectPickerLabel.isHidden = true
+        for b in testSelectButtons {
+            b.isHidden = true
+        }
         
         //back.isEnabled = false
         

@@ -24,7 +24,7 @@ class TapInOrderViewController: ViewController {
     var numErrors = 0
     var forwardNotBackward = true
     
-    var startTime2 = NSDate()
+    var startTime2 = Foundation.Date()
     
     var ended = false
     
@@ -41,6 +41,7 @@ class TapInOrderViewController: ViewController {
     var resultTmpList : [String:Any] = [:]
     var levelStartTime = Foundation.Date()
     var resultList : [String:Any] = [:]
+
     
     
     //randomize 1st order; light up 1st button
@@ -221,7 +222,7 @@ class TapInOrderViewController: ViewController {
             } else {
                 self.drawSequenceRecursively(num: self.numplaces)
             }
-            self.startTime2 = NSDate()
+            self.startTime2 = Foundation.Date()
             self.currpressed = 0
         }
         
@@ -270,8 +271,8 @@ class TapInOrderViewController: ViewController {
             }
             
 //some weird result stuff going on here (as date) if there are errors....
-            result.startTime = self.startTime2 as Date
-            result.endTime = NSDate() as Date
+            result.startTime = self.startTime2
+            result.endTime = Foundation.Date()
             
             for (index, _) in self.order.enumerated() {
                 self.buttonList[index].backgroundColor = UIColor.darkGray
@@ -302,7 +303,7 @@ class TapInOrderViewController: ViewController {
 
     func drawSequenceRecursively(num:Int){
         if (forwardNotBackward && num > numplaces) ||
-           (!forwardNotBackward && num < 0){
+            (!forwardNotBackward && num < 0){
             DispatchQueue.main.asyncAfter(deadline: .now() + 1){
                 if self.forwardNotBackward {
                     self.statusLabel.text = "Tap in the order of the pattern observed"
@@ -349,7 +350,11 @@ class TapInOrderViewController: ViewController {
         
         disableButtons()
         
-        resultList[String(numplaces*100+numRepeats)] = resultTmpList
+        var reslist: [String:Any] = [:]
+        reslist["Status"] = status
+        reslist["level"] = numplaces
+        reslist["keystrokes"] = resultTmpList
+        resultList[String(numplaces*100+numRepeats)] = reslist
         resultTmpList.removeAll()
         
         print("selection done")
