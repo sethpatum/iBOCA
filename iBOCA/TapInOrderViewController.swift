@@ -352,9 +352,9 @@ class TapInOrderViewController: ViewController {
         
         var reslist: [String:Any] = [:]
         reslist["Status"] = status
-        reslist["level"] = numplaces
+        reslist["level"] = numplaces + 1
         reslist["keystrokes"] = resultTmpList
-        resultList[String(numplaces*100+numRepeats)] = reslist
+        resultList[String((numplaces + 1)*100+numRepeats)] = reslist
         resultTmpList.removeAll()
         
         print("selection done")
