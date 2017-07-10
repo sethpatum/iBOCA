@@ -137,12 +137,8 @@ class MainViewController: ViewController, MFMailComposeViewControllerDelegate{
         updateButton(button: ButtonSemanticListGeneration, status: Status[TestSemanticListGeneration])
         updateButton(button: ButtonMOCAandGDT, status: Status[TestMOCAandGDTResults])
         updateButton(button: ButtonGDT, status: Status[TestGDTResults])
-        
-        if atBIDMCOn {
-            ButtonMOCAandGDT.isHidden = true
-        } else {
-            ButtonMOCAandGDT.isHidden = false
-        }
+
+        ButtonMOCAandGDT.isHidden = false
         
         segueToLanding = false
         var timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(update(timer:)), userInfo: nil, repeats: true)

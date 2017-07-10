@@ -41,13 +41,9 @@ class LandingPage: ViewController {
     @IBAction func GotoTests(_ sender: UIButton) {
         
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        if atBIDMCOn {
-            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "main")
-            self.present(nextViewController, animated:true, completion:nil)
-        } else {
-            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "Demographics")
-            self.present(nextViewController, animated:true, completion:nil)
-        }
+        
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "Demographics")
+        self.present(nextViewController, animated:true, completion:nil)
     }
     
     

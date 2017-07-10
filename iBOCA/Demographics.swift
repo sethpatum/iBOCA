@@ -104,12 +104,19 @@ class Demographics: ViewController, MFMailComposeViewControllerDelegate, UITextF
         RacePicker.delegate = self
         
         name = ""
+        
         AgePicker.selectRow(40, inComponent: 0, animated: false)
         age = ageData[AgePicker.selectedRow(inComponent: 0)]
+        
         Gender = genderData[GenderPicker.selectedRow(inComponent: 0)]
+        
         Ethnicity = ethnicData[EthnicityPicker.selectedRow(inComponent: 0)]
+        
+        EducationPicker.selectRow(12, inComponent: 0, animated: false)
         Education = educationData[EducationPicker.selectedRow(inComponent: 0)]
+        
         Race = raceData[RacePicker.selectedRow(inComponent: 0)]
+        
         MRField.text = PID.getID()
         
         CommentEntry.text = ""
@@ -117,15 +124,13 @@ class Demographics: ViewController, MFMailComposeViewControllerDelegate, UITextF
          
         testStartTime = Foundation.Date()
     }
-    
-    
    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
        
     }
     
-                    //pickerview setup
+    //pickerview setup
     func numberOfComponentsInPickerView(_ pickerView : UIPickerView!) -> Int{
         return 1
     }

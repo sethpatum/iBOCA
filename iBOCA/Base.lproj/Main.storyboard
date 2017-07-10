@@ -1300,7 +1300,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                 <connections>
                                     <action selector="emailChanged:" destination="uIz-3z-MW0" eventType="editingDidEnd" id="kFh-hU-hza"/>
                                     <action selector="emailChanged:" destination="7sQ-B6-R4d" eventType="editingDidEnd" id="mQH-xe-Wza"/>

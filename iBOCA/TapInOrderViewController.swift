@@ -169,7 +169,7 @@ class TapInOrderViewController: ViewController {
             
             let button = UIButton(type: UIButtonType.system)
             buttonList.append(button)
-            button.frame = CGRect(x: x, y: y, width: 50, height: 50)
+            button.frame = CGRect(x: x, y: y, width: 75, height: 75)
             button.backgroundColor = UIColor.red
             self.view.addSubview(button)
             
