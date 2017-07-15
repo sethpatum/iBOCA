@@ -61,7 +61,7 @@ class Demographics: ViewController, MFMailComposeViewControllerDelegate, UITextF
 
     
     @IBAction func updateMR(_ sender: AnyObject) {
-        PID.changeID(proposed: MRField.text!)
+        _ = PID.changeID(proposed: MRField.text!)
         MRField.text = PID.getID()
     }
     

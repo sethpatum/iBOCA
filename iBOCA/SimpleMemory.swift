@@ -731,7 +731,7 @@ class SimpleMemoryTask: ViewController, UIPickerViewDelegate {
         recallLabel.text = "0"
         self.view.addSubview(recallLabel)
         
-        for k in 0...5{
+        for _ in 0...5{
             recallTimes.append(-1)
         }
         
@@ -1022,7 +1022,7 @@ class SimpleMemoryTask: ViewController, UIPickerViewDelegate {
         
         //if 0, correct image on left; if 1, correct on right
         
-        for k in 0 ..< 6 {
+        for _ in 0 ..< 6 {
             orderRecognize.append(Int(arc4random_uniform(2)))
         }
         

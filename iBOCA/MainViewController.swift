@@ -146,7 +146,7 @@ class MainViewController: ViewController, MFMailComposeViewControllerDelegate{
         }
         
         segueToLanding = false
-        var timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(update(timer:)), userInfo: nil, repeats: true)
+        _ = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(update(timer:)), userInfo: nil, repeats: true)
     }
     
     

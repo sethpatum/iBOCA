@@ -250,7 +250,7 @@ class SerialSevens: ViewController {
 
     @IBAction func nextInput(_ sender: AnyObject) { //either records an error, or records as correct and moves onto the next step of the test
         let name = String(recordNum[0]) + String(recordNum[1])
-        var num = Int(name)
+        let num = Int(name)
         if num != correctNumb{
             numErrors += 1
             Errors.text = String(numErrors)

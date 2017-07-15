@@ -56,7 +56,7 @@ class DigitBothDirection:DigitBaseClass {
         base.NumberLabel.text = ""
         base.KeypadLabel.text = ""
         var candidate = [0, 1, 2, 4, 5, 6, 7, 8, 9]
-        for i in 0...level {
+        for _ in 0...level {
             let pos = (Int)(arc4random_uniform(UInt32(candidate.count)))
             genval = genval + String(candidate[pos])
             candidate.remove(at: pos)

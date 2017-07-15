@@ -99,7 +99,7 @@ class TrailsAViewController: ViewController, UIPickerViewDelegate {
         
         startTime2 = Foundation.Date()
         
-        var timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(update(timer:)), userInfo: nil, repeats: true)
+        _ = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(update(timer:)), userInfo: nil, repeats: true)
         
         startTime = NSDate.timeIntervalSinceReferenceDate
         timedConnectionsA = [Double]()

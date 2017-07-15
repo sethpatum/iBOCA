@@ -147,7 +147,7 @@ class DrawingViewTrails: UIView {
         
         
         // Create Circle
-        context?.addArc(center:CGPoint(x:CGFloat(x), y:CGFloat(y)), radius:CGFloat(20.0), startAngle:CGFloat(0), endAngle:CGFloat(M_PI * 2.0), clockwise:true)
+        context?.addArc(center:CGPoint(x:CGFloat(x), y:CGFloat(y)), radius:CGFloat(20.0), startAngle:CGFloat(0), endAngle:CGFloat(Double.pi * 2.0), clockwise:true)
         
         // Draw
        context!.strokePath()

@@ -66,21 +66,19 @@ class CatsAndDogsViewController: ViewController {
     @IBAction func Reset(_ sender: Any) {
         print("in reset")
         
-        if(buttonList != nil){
-            for k in 0 ..< buttonList.count {
-                buttonList[k].removeFromSuperview()
-            }
+        
+        for k in 0 ..< buttonList.count {
+            buttonList[k].removeFromSuperview()
         }
-        if(imageList != nil){
-            for j in 0 ..< imageList.count {
-                imageList[j].removeFromSuperview()
-            }
+        
+        for j in 0 ..< imageList.count {
+            imageList[j].removeFromSuperview()
         }
-        if(boxList != nil){
-            for j in 0 ..< boxList.count {
-                boxList[j].removeFromSuperview()
-            }
+        
+        for j in 0 ..< boxList.count {
+            boxList[j].removeFromSuperview()
         }
+        
         
         
         dogList = [Int]()
@@ -148,7 +146,7 @@ class CatsAndDogsViewController: ViewController {
         
         field1 = UITextField(frame: CGRect(x: 450, y: 200, width: 510, height: 100))
         if(UserDefaults.standard.object(forKey: "CandD-Dogs") != nil) {
-             field1.text = UserDefaults.standard.object(forKey: "CandD-Dogs") as! String
+             field1.text = (UserDefaults.standard.object(forKey: "CandD-Dogs") as! String)
         } else {
             field1.text = "2,3,4"
         }
@@ -159,7 +157,7 @@ class CatsAndDogsViewController: ViewController {
         
         field2 = UITextField(frame: CGRect(x: 450, y: 350, width: 510, height: 100))
         if(UserDefaults.standard.object(forKey: "CandD-Dogs-no-Cats") != nil) {
-            field2.text = UserDefaults.standard.object(forKey: "CandD-Dogs-no-Cats") as! String
+            field2.text = (UserDefaults.standard.object(forKey: "CandD-Dogs-no-Cats") as! String)
         } else {
             field2.text = "(2,2),(3,2),(4,2),(2,4),(3,4),(4,4)"
         }
@@ -170,7 +168,7 @@ class CatsAndDogsViewController: ViewController {
         
         field3 = UITextField(frame: CGRect(x: 450, y: 500, width: 510, height: 100))
         if(UserDefaults.standard.object(forKey: "CandD-Cats-no-Dogs") != nil) {
-            field3.text = UserDefaults.standard.object(forKey: "CandD-Cats-no-Dogs") as! String
+            field3.text = (UserDefaults.standard.object(forKey: "CandD-Cats-no-Dogs") as! String)
         } else {
             field3.text = "(2,2),(2,3),(2,4),(4,2),(4,3),(4,4)"
         }
@@ -532,7 +530,7 @@ class CatsAndDogsViewController: ViewController {
             
         }
         
-        var timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
+        _ = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
         
         startTime = NSDate.timeIntervalSinceReferenceDate
         
