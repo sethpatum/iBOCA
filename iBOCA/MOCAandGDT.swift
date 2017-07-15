@@ -57,6 +57,8 @@ class MOCAandGDT: ViewController, UIPickerViewDelegate  {
         MOCAtotal.text = "0"
         
         Comments.text = ""
+        Comments.layer.borderWidth = 1
+        Comments.layer.borderColor = UIColor.lightGray.cgColor
     }
     
     

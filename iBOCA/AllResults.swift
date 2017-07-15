@@ -58,11 +58,6 @@ class AllResults  {
             e += "<h4>Results recorded to server</h4>\n"
         }
         
-        
-        if(name != nil) {
-            e += "<h4>Subject Code: \(name!)</h4>\n"
-        }
-        
         if(Gender != nil) {
             e += "<h4>Gender:\(Gender!)</h4>\n"
         }
@@ -172,10 +167,6 @@ class AllResults  {
         
         if(emailOn) {
             jst["Emailed to"] = emailAddress
-        }
-
-        if(name != nil) {
-            jst["Subject Code"] = name!
         }
         
         if(Gender != nil) {
@@ -340,7 +331,7 @@ class AllResults  {
         case "i386": devSpec = "Simulator"
         case "x86_64": devSpec = "Simulator"
             
-        default: devSpec = "Unknown"
+        default: devSpec = platform()
         }
         
         return devSpec

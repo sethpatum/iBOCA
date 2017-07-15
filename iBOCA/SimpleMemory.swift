@@ -541,13 +541,22 @@ class SimpleMemoryTask: ViewController, UIPickerViewDelegate {
         
         arrowButton1.frame = CGRect(x: (256.0-(x1/2)), y: (471.0-(y1/2)), width: x1, height: y1)
         arrowButton1.setImage(image1, for: .normal)
-        arrowButton1.addTarget(self, action: #selector(recognize1), for:.touchUpInside)
-        self.view.addSubview(arrowButton1)
+        arrowButton1.removeTarget(nil, action:nil, for: .allEvents)
         
         arrowButton2.frame = CGRect(x: (768.0-(x2/2)), y: (471.0-(y2/2)), width: x2, height: y2)
         arrowButton2.setImage(image2, for: .normal)
-        arrowButton2.addTarget(self, action: #selector(recognize2), for:.touchUpInside)
-        self.view.addSubview(arrowButton2)
+        arrowButton2.removeTarget(nil, action:nil, for: .allEvents)
+        
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
+            self.view.addSubview(self.arrowButton1)
+            self.view.addSubview(self.arrowButton2)
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
+            self.arrowButton1.addTarget(self, action: #selector(SimpleMemoryTask.recognize1), for:.touchUpInside)
+            self.arrowButton2.addTarget(self, action: #selector(SimpleMemoryTask.recognize2), for:.touchUpInside)
+        }
         
     }
     
@@ -872,7 +881,6 @@ class SimpleMemoryTask: ViewController, UIPickerViewDelegate {
         }
             
         else{
-            
             arrowButton1.isEnabled = true
             arrowButton2.isEnabled = true
             

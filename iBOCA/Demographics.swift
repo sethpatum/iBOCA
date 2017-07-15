@@ -13,7 +13,6 @@ import AVFoundation
 
 var testStartTime = Foundation.Date()
 
-var name : String?
 var age : String?
 var Gender : String?
 var Education : String?
@@ -21,7 +20,6 @@ var Race : String?
 var Ethnicity : String?
 var Results1: [String] = []
 var Comments : String = ""
-
 
 
 
@@ -52,9 +50,7 @@ class Demographics: ViewController, MFMailComposeViewControllerDelegate, UITextF
     @IBOutlet weak var AgePicker: UIPickerView!
     var ageData:[String] = makeAgeData()
     
-    
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var nameField: UITextField!
+
     
     @IBOutlet weak var MRLabel: UILabel!
     @IBOutlet weak var MRField: UITextField!
@@ -62,9 +58,7 @@ class Demographics: ViewController, MFMailComposeViewControllerDelegate, UITextF
 
     @IBOutlet weak var CommentEntry: UITextView!
     
-    @IBAction func updateName(_ sender: AnyObject) {
-        name = nameField.text
-    }
+
     
     @IBAction func updateMR(_ sender: AnyObject) {
         PID.changeID(proposed: MRField.text!)
@@ -103,8 +97,6 @@ class Demographics: ViewController, MFMailComposeViewControllerDelegate, UITextF
         EducationPicker.delegate = self
         RacePicker.delegate = self
         
-        name = ""
-        
         AgePicker.selectRow(40, inComponent: 0, animated: false)
         age = ageData[AgePicker.selectedRow(inComponent: 0)]
         
@@ -120,6 +112,8 @@ class Demographics: ViewController, MFMailComposeViewControllerDelegate, UITextF
         MRField.text = PID.getID()
         
         CommentEntry.text = ""
+        CommentEntry.layer.borderWidth = 1
+        CommentEntry.layer.borderColor = UIColor.lightGray.cgColor
         Comments = ""
          
         testStartTime = Foundation.Date()
@@ -230,7 +224,6 @@ class Demographics: ViewController, MFMailComposeViewControllerDelegate, UITextF
     }
 
     @IBAction func TestDone(_ sender: AnyObject) {
-    Results1.append(name!)
     Results1.append(PID.getID())
     Results1.append(Gender!)
     Results1.append(Ethnicity!)

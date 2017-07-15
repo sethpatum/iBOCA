@@ -14,7 +14,6 @@ import AVFoundation
 
 
 class DigitSerialSeven:DigitBaseClass {
-    var level = -1
     var startNum = 0
     var lastNum = 0
     let MAXLEVEL = 7

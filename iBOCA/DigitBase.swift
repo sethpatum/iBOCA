@@ -165,8 +165,8 @@ class DigitBase: ViewController {
                 } else {
                     let c = String(val.characters.first!)
                     self.value = self.value + c
-                    self.NumberLabel.text = self.value
-                    
+                    let rest = String(Array(repeating: ".", count: self.base!.level - self.value.characters.count + 1))
+                    self.NumberLabel.text = self.value + rest
                     let utterence = AVSpeechUtterance(string: c)
                     self.speechSynthesizer.speak(utterence)
                     
@@ -190,6 +190,7 @@ class DigitBase: ViewController {
 
 // A hacky superclass that implementations can subclass as subclassing DigitBase don't work (cannot  initialize supervlasses within the sotrybaord)
 class DigitBaseClass {
+    var level = 0
     var testName = ""
     var testStatus = -1
     
