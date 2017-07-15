@@ -12,6 +12,7 @@ import UIKit
 
 class AckViewController:  ViewController {
 
+    @IBOutlet weak var versionLabel: UILabel!
     
     @IBAction func BCSbutton(_ sender: Any) {
         UIApplication.shared.openURL(NSURL(string: "http://www.bostoncognitive.org")! as URL)
@@ -24,6 +25,11 @@ class AckViewController:  ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //declare pickerviews
+        
+        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+        let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String
+        
+        versionLabel.text = "Version " + version! + " (build " + build! + ")"
         
     }
     

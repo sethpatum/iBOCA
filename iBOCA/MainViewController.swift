@@ -140,6 +140,11 @@ class MainViewController: ViewController, MFMailComposeViewControllerDelegate{
 
         ButtonMOCAandGDT.isHidden = false
         
+        // Do GDT only at BIDMC
+        if atBIDMCOn == false {
+            ButtonGDT.isHidden = true
+        }
+        
         segueToLanding = false
         var timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(update(timer:)), userInfo: nil, repeats: true)
     }

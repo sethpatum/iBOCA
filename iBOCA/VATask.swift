@@ -562,7 +562,6 @@ class VATask: ViewController, UIPickerViewDelegate {
         
         imageView.addGestureRecognizer(gestureHalf)
         imageView.isUserInteractionEnabled = true
-        
     }
     
     @IBAction func incorrectButton(_ sender: Any) {
