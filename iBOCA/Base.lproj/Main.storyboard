@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RmL-Z6-Ri2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RmL-Z6-Ri2">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -1258,7 +1258,6 @@
                                 <rect key="frame" x="146" y="396.5" width="51" height="31"/>
                                 <connections>
                                     <action selector="emailOnOff:" destination="uIz-3z-MW0" eventType="valueChanged" id="Fka-bV-NLA"/>
-                                    <action selector="emailOnOff:" destination="7sQ-B6-R4d" eventType="valueChanged" id="QTC-3x-wnG"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test Administrator Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Piw-Hj-uba">
@@ -1274,10 +1273,9 @@
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <action selector="adminNameChanged:" destination="uIz-3z-MW0" eventType="editingChanged" id="IEy-CO-FMi"/>
-                                    <action selector="emailChanged:" destination="7sQ-B6-R4d" eventType="editingDidEnd" id="vSF-fX-bSL"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID for the First Patiant" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qaW-D2-2dg">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID for the First Patient" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qaW-D2-2dg">
                                 <rect key="frame" x="146" y="238" width="230" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
@@ -1289,7 +1287,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="emailChanged:" destination="7sQ-B6-R4d" eventType="editingDidEnd" id="VLH-sX-EIF"/>
                                     <action selector="patiantIDEdited:" destination="uIz-3z-MW0" eventType="editingDidEnd" id="bHQ-mN-xhE"/>
                                 </connections>
                             </textField>
@@ -1321,16 +1318,31 @@
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                 <connections>
                                     <action selector="emailChanged:" destination="uIz-3z-MW0" eventType="editingDidEnd" id="kFh-hU-hza"/>
-                                    <action selector="emailChanged:" destination="7sQ-B6-R4d" eventType="editingDidEnd" id="mQH-xe-Wza"/>
                                 </connections>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Test Class" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z6c-Np-KYX">
+                                <rect key="frame" x="146" y="645" width="110" height="35"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pws-an-SEC">
+                                <rect key="frame" x="281" y="626" width="176" height="73"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="176" id="AHJ-1q-Ozm"/>
+                                    <constraint firstAttribute="height" constant="73" id="aL7-Hy-VUY"/>
+                                </constraints>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="DyP-wG-qya" firstAttribute="top" secondItem="t7J-3P-S9X" secondAttribute="bottom" constant="50" id="0Md-0F-raz"/>
                             <constraint firstItem="izf-PP-DQh" firstAttribute="top" secondItem="WRY-0z-msi" secondAttribute="bottom" constant="50" id="2MI-uY-Plw"/>
                             <constraint firstItem="HHK-GF-sPt" firstAttribute="centerY" secondItem="JHw-5f-zda" secondAttribute="centerY" id="6hj-Hi-vPB"/>
+                            <constraint firstItem="Pws-an-SEC" firstAttribute="centerY" secondItem="z6c-Np-KYX" secondAttribute="centerY" id="7g9-vA-2oa"/>
+                            <constraint firstItem="z6c-Np-KYX" firstAttribute="top" secondItem="izf-PP-DQh" secondAttribute="bottom" constant="39" id="Agx-fF-a7W"/>
                             <constraint firstItem="00M-sT-NB3" firstAttribute="leading" secondItem="Lpx-sn-b5u" secondAttribute="leading" id="B8f-ta-eUP"/>
+                            <constraint firstItem="z6c-Np-KYX" firstAttribute="leading" secondItem="JHw-5f-zda" secondAttribute="leading" id="Buc-gU-Hfc"/>
                             <constraint firstItem="WRY-0z-msi" firstAttribute="top" secondItem="sZB-af-wx7" secondAttribute="bottom" constant="50" id="Czw-b0-bbO"/>
                             <constraint firstItem="izf-PP-DQh" firstAttribute="centerY" secondItem="00M-sT-NB3" secondAttribute="centerY" id="EaO-cQ-18M"/>
                             <constraint firstItem="izf-PP-DQh" firstAttribute="leading" secondItem="WRY-0z-msi" secondAttribute="leading" id="Erv-as-g7K"/>
@@ -1353,6 +1365,7 @@
                             <constraint firstItem="Bth-VQ-NFx" firstAttribute="leading" secondItem="Lpx-sn-b5u" secondAttribute="leading" id="o6I-P7-ETD"/>
                             <constraint firstItem="DyP-wG-qya" firstAttribute="centerY" secondItem="qaW-D2-2dg" secondAttribute="centerY" id="onh-c1-m3x"/>
                             <constraint firstItem="DyP-wG-qya" firstAttribute="trailing" secondItem="HHK-GF-sPt" secondAttribute="trailing" id="rX3-qh-WkM"/>
+                            <constraint firstItem="Pws-an-SEC" firstAttribute="leading" secondItem="z6c-Np-KYX" secondAttribute="trailing" constant="25" id="vNL-0n-J9v"/>
                             <constraint firstItem="sZB-af-wx7" firstAttribute="centerY" secondItem="Bth-VQ-NFx" secondAttribute="centerY" id="wIT-66-Vr1"/>
                             <constraint firstItem="HHK-GF-sPt" firstAttribute="leading" secondItem="JHw-5f-zda" secondAttribute="trailing" constant="75" id="weT-0A-v3Y"/>
                             <constraint firstItem="WRY-0z-msi" firstAttribute="leading" secondItem="Lpx-sn-b5u" secondAttribute="trailing" constant="29" id="xbp-bT-LAa"/>
@@ -1367,6 +1380,8 @@
                         <outlet property="emailLabel" destination="JHw-5f-zda" id="Yu6-dk-ER6"/>
                         <outlet property="emailOnOff" destination="Bth-VQ-NFx" id="CGG-qV-HH7"/>
                         <outlet property="patiantID" destination="DyP-wG-qya" id="TE0-5s-1HD"/>
+                        <outlet property="testClass" destination="Pws-an-SEC" id="bTO-M4-qGc"/>
+                        <outlet property="testClassLabel" destination="z6c-Np-KYX" id="IGf-is-MkI"/>
                         <outlet property="transmitOnOff" destination="Lpx-sn-b5u" id="WD5-Qs-kg9"/>
                     </connections>
                 </viewController>
@@ -1418,7 +1433,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Patiant ID Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1uq-hQ-pX9">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Patient ID Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1uq-hQ-pX9">
                                 <rect key="frame" x="65" y="141" width="140" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1481,6 +1496,23 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Patient UID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N4A-Zu-n4U">
+                                <rect key="frame" x="71" y="627" width="87" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vtW-La-IvP">
+                                <rect key="frame" x="250" y="622" width="246" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="updatePUID:" destination="7sQ-B6-R4d" eventType="editingDidEnd" id="i1f-Ye-hAa"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -1492,9 +1524,8 @@
                         <outlet property="GenderPicker" destination="etS-mS-xye" id="KFo-no-nNY"/>
                         <outlet property="MRField" destination="JK8-nd-2CT" id="FU6-en-S8J"/>
                         <outlet property="MRLabel" destination="1uq-hQ-pX9" id="Pz1-c3-70Q"/>
+                        <outlet property="PatientUID" destination="vtW-La-IvP" id="5Ag-EN-rTX"/>
                         <outlet property="RacePicker" destination="2Ra-LU-vyr" id="CMU-TD-jlQ"/>
-                        <outlet property="email" destination="HHK-GF-sPt" id="QOJ-1r-NSc"/>
-                        <outlet property="emailOnOff" destination="Bth-VQ-NFx" id="kxr-72-fVL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EnL-3e-Mw3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2423,12 +2454,30 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ukp-Ds-fga">
-                                <rect key="frame" x="717" y="105" width="124" height="30"/>
+                                <rect key="frame" x="689" y="110" width="180" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="Don't Know"/>
+                                <state key="normal" title="Don't Know Date"/>
                                 <connections>
                                     <action selector="DontKnowDate:" destination="5Cz-GR-ydt" eventType="touchUpInside" id="uTm-wX-953"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lw1-LA-Gp3">
+                                <rect key="frame" x="689" y="162" width="176" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="Don't Know Year"/>
+                                <connections>
+                                    <action selector="DontKnowYear:" destination="5Cz-GR-ydt" eventType="touchUpInside" id="YEy-gS-A7E"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JfY-bh-V3b">
+                                <rect key="frame" x="689" y="62" width="198" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="Don't Know Month"/>
+                                <connections>
+                                    <action selector="DontKnowMonth:" destination="5Cz-GR-ydt" eventType="touchUpInside" id="fId-DW-zXT"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -3081,9 +3130,9 @@
         <image name="seth1.jpg" width="960" height="960"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ipq-nJ-yUj"/>
-        <segue reference="fV2-tM-D7d"/>
+        <segue reference="dL7-Sq-hiA"/>
         <segue reference="Ges-mF-PUS"/>
-        <segue reference="kTw-7t-VZN"/>
+        <segue reference="fV2-tM-D7d"/>
+        <segue reference="eep-iX-tUz"/>
     </inferredMetricsTieBreakers>
 </document>

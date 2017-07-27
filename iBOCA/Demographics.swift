@@ -20,6 +20,7 @@ var Race : String?
 var Ethnicity : String?
 var Results1: [String] = []
 var Comments : String = ""
+var PUID: String = ""
 
 
 
@@ -65,6 +66,12 @@ class Demographics: ViewController, MFMailComposeViewControllerDelegate, UITextF
         MRField.text = PID.getID()
     }
     
+
+    @IBOutlet weak var PatientUID: UITextField!
+    
+    @IBAction func updatePUID(_ sender: UITextField) {
+        PUID = sender.text!
+    }
 
    /*
     
@@ -117,6 +124,8 @@ class Demographics: ViewController, MFMailComposeViewControllerDelegate, UITextF
         Comments = ""
          
         testStartTime = Foundation.Date()
+        
+        PUID = ""
     }
    
     override func didReceiveMemoryWarning() {

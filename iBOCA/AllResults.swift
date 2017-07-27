@@ -53,9 +53,15 @@ class AllResults  {
         e += "<h4>Tester : \(PID.getName())</h4>\n"
         if atBIDMCOn {
             e += "<h4>Done at BIDMC </h4>\n"
+            e += "<h4>The Test Class: \(theTestClass) </h4>\n"
         }
+        
         if transmitOn {
             e += "<h4>Results recorded to server</h4>\n"
+        }
+        
+        if PUID != "" {
+            e += "<h4>Patiant Unique ID : \(PUID)</h4>\n"
         }
         
         if(Gender != nil) {
@@ -164,6 +170,13 @@ class AllResults  {
         jst["Patiant ID #"] = PID.getID()
         jst["Tester Name"] = PID.getName()
         jst["Done at BIDMC"] = String(atBIDMCOn)
+        if atBIDMCOn {
+            jst["The Test Class"] = String(theTestClass)
+        }
+        
+        if PUID != "" {
+            jst["Patient Unique ID"] = PUID
+        }
         
         if(emailOn) {
             jst["Emailed to"] = emailAddress

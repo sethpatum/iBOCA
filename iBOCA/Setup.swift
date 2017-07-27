@@ -17,8 +17,9 @@ var atBIDMCOn  : Bool = false
 var emailOn    : Bool = false
 var emailAddress       : String = ""
 var serverEmailAddress : String = "datacollect@bostoncognitive.org"
+var theTestClass : Int = 0
 
-class Setup: ViewController {
+class Setup: ViewController, UIPickerViewDelegate  {
 
     @IBOutlet weak var transmitOnOff: UISwitch!
     @IBOutlet weak var atBIDMCOnOff:  UISwitch!
@@ -29,6 +30,10 @@ class Setup: ViewController {
     @IBOutlet weak var adminInitials: UILabel!
     @IBOutlet weak var patiantID:     UITextField!
     
+    @IBOutlet weak var testClass: UIPickerView!
+    @IBOutlet weak var testClassLabel: UILabel!
+    
+    let NUMTESTCLASSES = 10
     
     @IBAction func transmitOnOff(_ sender: UISwitch) {
         transmitOn = transmitOnOff.isOn
@@ -41,6 +46,13 @@ class Setup: ViewController {
         UserDefaults.standard.set(atBIDMCOn, forKey: "AtBIDMC")
         UserDefaults.standard.synchronize()
         patiantID.text = PID.getID()
+        if atBIDMCOn == true {
+            testClass.isHidden = false
+            testClassLabel.isHidden = false
+        } else {
+            testClass.isHidden = true
+            testClassLabel.isHidden = true
+        }
     }
     
     
@@ -97,7 +109,43 @@ class Setup: ViewController {
         adminName.text = PID.getName()
         adminInitials.text = PID.getInitials()
         
+        testClass.delegate = self
+        if atBIDMCOn == true {
+            testClass.isHidden = false
+            testClassLabel.isHidden = false
+        } else {
+            testClass.isHidden = true
+            testClassLabel.isHidden = true
+        }
+        
         doneSetup = true
+    }
+    
+    func numberOfComponentsInPickerView(_ pickerView : UIPickerView!) -> Int{
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
+        if pickerView == testClass {
+            return NUMTESTCLASSES
+        } else {
+            return 1
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if pickerView == testClass {
+            selectedTest = row
+            return String(row+1)
+        } else {
+            return ""
+        }
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView == testClass {
+            theTestClass = row
+        } else  {
+        }
     }
     
     
