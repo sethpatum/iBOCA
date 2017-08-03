@@ -14,7 +14,6 @@ import AVFoundation
 
 
 class DigitSerialSeven:DigitBaseClass {
-    var level = -1
     var startNum = 0
     var lastNum = 0
     let MAXLEVEL = 7
@@ -26,17 +25,29 @@ class DigitSerialSeven:DigitBaseClass {
     var gotTime:[Date] = []
     var totErrors = 0
     var keys : [[String:String]] = [[:]]
+    var buttons : [UIButton] = []
     
     override func DoInitialize() {
         testName =  "Serial Sevens Test"
         testStatus = TestSerialSevens
         base.InfoLabel.text = "Press start to begin \(testName)"
-        base.disableKeypad()
+        base.hideKeypad()
         level = -1
+        
+        for (i, val) in [50, 60, 70, 80, 90, 100].enumerated() {
+            let button  = UIButton(frame: CGRect(x: 150+125*i, y: 150, width: 100, height: 50))
+            button.setTitle(String(val), for: .normal)
+            button.setTitleColor(UIColor.blue, for: .normal)
+            button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 42.0)
+            button.addTarget(self, action: #selector(DigitSerialSeven.StartNumberButtonTapped), for: .touchDown)
+            button.isHidden = true
+            buttons.append(button)
+            base.view.addSubview(button)
+        }
     }
     
     override func DoStart() {
-        base.InfoLabel.text = "Enter the starting number. Tell the patiant that number and instructions"
+        base.InfoLabel.text = "Select the starting number. Tell the patiant that number and instructions"
         level = -1
         startTime = Foundation.Date()
         
@@ -47,7 +58,25 @@ class DigitSerialSeven:DigitBaseClass {
         totErrors = 0
         keys = []
         
+        base.hideKeypad()
+        for button in buttons {
+            button.isHidden = false
+        }
+        
+    }
+    
+    @objc fileprivate func StartNumberButtonTapped(button: UIButton){
+        startNum = Int(button.title(for: .normal)!)!
+        lastNum = startNum
+        level = 0
+        for button in buttons {
+            button.isHidden = true
+        }
         base.enableKeypad()
+        
+        levelStartTime = Foundation.Date()
+        
+        base.InfoLabel.text = "Ask patiant for the selected start number minus 7, Enter it"
     }
     
     
@@ -55,27 +84,7 @@ class DigitSerialSeven:DigitBaseClass {
         base.disableKeypad()
         
         if level == -1 {
-            // At the begining of the test
-            guard let num = Int(base.value) else {
-                base.InfoLabel.text = "Error: Enter a number"
-                base.enableKeypad()
-                return
-            }
-            startNum = num
-            base.value = ""
-            base.KeypadLabel.text = ""
-            
-            if startNum < MAXLEVEL*7 + 1 {
-                base.InfoLabel.text = "Error: Start Number too small"
-                base.enableKeypad()
-                return
-            }
-            
-            // Got a good start
-            levelStartTime = Foundation.Date()
-            lastNum = startNum
-            level += 1
-             base.InfoLabel.text = "Ask patiant for previous number minus 7, Enter it"
+            // Should not get here....
        } else {
             // Middle of the test
             guard let num = Int(base.value) else {
@@ -89,13 +98,12 @@ class DigitSerialSeven:DigitBaseClass {
             base.value = ""
             
             if num == lastNum - 7 && num == startNum - 7*level {
-                base.InfoLabel.text = "Correct: Ask patiant for previous number minus 7, Enter it"
+                base.InfoLabel.text = "Correct: Ask patiant for number minus 7, Enter it"
             } else  if num == lastNum - 7 {
-                totErrors += 1
-                base.InfoLabel.text = "Incorrect sequence #: Ask patiant for previous number minus 7, Enter it"
+                base.InfoLabel.text = "Correct, but off the sequence: Ask patiant for number minus 7, Enter it"
             } else {
                 totErrors += 1
-                base.InfoLabel.text = "Incorrect subtraction: End the test or ask patiant for previous number minus 7 and enter it"
+                base.InfoLabel.text = "Incorrect subtraction: End the test or ask patiant for number minus 7 and enter it"
             }
             
             enteredNumber.append(num)
@@ -107,7 +115,7 @@ class DigitSerialSeven:DigitBaseClass {
             lastNum = num
         }
    
-        if level >= MAXLEVEL {
+        if (lastNum - 7 < 0) || (level >= 5) {
             // Done test
             base.InfoLabel.text = "Test Ended"
             DoEnd()
@@ -139,11 +147,13 @@ class DigitSerialSeven:DigitBaseClass {
             sttime = gotTime[i]
             res["time (msec)"] = elapsedTime
             resultList[i] = res
-            result.longDescription.add("\(i): \(enteredNumber[i]) --> Subtract 7: \(expectedNumber[i]), Sequence 7: \(sequenceNumber[i])  (\(elapsedTime) msec)")
+            result.longDescription.add("\(i): \(enteredNumber[i]) --> Subtract 7: \(expectedNumber[i]) (Sequence 7: \(sequenceNumber[i]))  (\(elapsedTime) msec)")
         }
         result.json["Results"] = resultList
+        result.json["Errors"] = totErrors
+        result.json["Rounds"] = level
         
-        result.shortDescription = "\(startNum)->\(enteredNumber) sequence with \(totErrors) errors"
+        result.shortDescription = "\(startNum)->\(enteredNumber) sequence, \(level) rounds with \(totErrors) errors"
         
         resultsArray.add(result)
         Status[testStatus] = TestStatus.Done

@@ -11,7 +11,7 @@ import Foundation
 import UIKit
 import AVFoundation
 
-class DigitBase: UIViewController {
+class DigitBase: ViewController {
     var base:DigitBaseClass? = nil  // Cannot do a subclass, so using composition
 
     @IBOutlet weak var StartButton: UIButton!
@@ -38,6 +38,8 @@ class DigitBase: UIViewController {
     @IBOutlet weak var InfoLabel: UILabel!
     
     var value:String = ""
+    
+    var ended = false
     
     let speechSynthesizer = AVSpeechSynthesizer()
     
@@ -125,6 +127,7 @@ class DigitBase: UIViewController {
     
     
     @IBAction func StartPressed(_ sender: UIButton) {
+        ended = false
         StartButton.isHidden = true
         EndButton.isHidden = false
         BackButton.isHidden = true
@@ -137,6 +140,7 @@ class DigitBase: UIViewController {
     
     // This may be call more than when EndPressed, DoEnd may be call within the subclass, which should call this
     func EndTest() {
+        ended = true
         value = ""
         NumberLabel.text = ""
         KeypadLabel.text = ""
@@ -149,7 +153,7 @@ class DigitBase: UIViewController {
     
     func DisplayStringShowContinue(val:String) {
         if BackButton.isHidden == true {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
                 if val.characters.count == 0 {
                     //self.ContinueButton.isHidden = false
                     self.InfoLabel.text = "Start entering the number sequence given by patient, followed by done"
@@ -161,8 +165,8 @@ class DigitBase: UIViewController {
                 } else {
                     let c = String(val.characters.first!)
                     self.value = self.value + c
-                    self.NumberLabel.text = self.value
-                    
+                    let rest = String(Array(repeating: ".", count: self.base!.level - self.value.characters.count + 1))
+                    self.NumberLabel.text = self.value + rest
                     let utterence = AVSpeechUtterance(string: c)
                     self.speechSynthesizer.speak(utterence)
                     
@@ -172,11 +176,21 @@ class DigitBase: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        if !ended {
+            base!.DoEnd()
+        }
+    }
+    
+    
 }
 
 
 // A hacky superclass that implementations can subclass as subclassing DigitBase don't work (cannot  initialize supervlasses within the sotrybaord)
 class DigitBaseClass {
+    var level = 0
     var testName = ""
     var testStatus = -1
     

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SerialSevens: UIViewController {
+class SerialSevens: ViewController {
     var timer = Timer()
     var counter = 0
     var StartTime = Foundation.Date()
@@ -39,7 +39,7 @@ class SerialSevens: UIViewController {
     @IBOutlet weak var start80: UIButton!
     @IBOutlet weak var start70: UIButton!
     @IBOutlet weak var start60: UIButton!
-    @IBOutlet weak var start50: UIButton!
+    @IBOutlet weak var start50: UIButton! //start buttons
     
     @IBOutlet weak var button0: UIButton!
     @IBOutlet weak var button1: UIButton!
@@ -50,7 +50,7 @@ class SerialSevens: UIViewController {
     @IBOutlet weak var button6: UIButton!
     @IBOutlet weak var button7: UIButton!
     @IBOutlet weak var button8: UIButton!
-    @IBOutlet weak var button9: UIButton!
+    @IBOutlet weak var button9: UIButton! //patient input buttons
     
     @IBOutlet weak var nextInput: UIButton!
     
@@ -59,7 +59,7 @@ class SerialSevens: UIViewController {
     var testName = 0
     var  correctNumb = 0
     
-    @IBAction func backButton(_ sender: Any) {
+    @IBAction func backButton(_ sender: Any) { //appends to results upon clicking back
         let result = Results()
         result.name = "Serial Sevens"
         result.startTime = startTime
@@ -95,7 +95,7 @@ class SerialSevens: UIViewController {
     }
     
     
-    @IBAction func press100(_ sender: AnyObject) {
+    @IBAction func press100(_ sender: AnyObject) { //hides start buttons and selects the sequence for 100
         correctNumb = 93
         expectedNums.text = String(correctNumb)
         start90.isHidden = true
@@ -107,7 +107,7 @@ class SerialSevens: UIViewController {
         processSelect()
     }
     
-    @IBAction func press90(_ sender: AnyObject) {
+    @IBAction func press90(_ sender: AnyObject) { //hides start buttons and selects the sequence for 90
         correctNumb = 83
         expectedNums.text = String(correctNumb)
         start100.isHidden = true
@@ -166,7 +166,7 @@ class SerialSevens: UIViewController {
     var recordNum : [Int] = []
     var numb = ""
     
-    func processPress() {
+    func processPress() {   //records the button press, and hides the other numbers
         print(recordNum)
         if (recordNum.count > 1 && recordNum.count < 3){
             numb = String(recordNum[0]) + String(recordNum[1])
@@ -189,7 +189,7 @@ class SerialSevens: UIViewController {
         currentNum.text = numb
     }
     
-    @IBAction func press0(_ sender: AnyObject) {
+    @IBAction func press0(_ sender: AnyObject) {    //appends the pressed button to recordNum
         recordNum.append(0)
         processPress()
     }
@@ -230,7 +230,7 @@ class SerialSevens: UIViewController {
         processPress()
     }
     
-    @IBAction func ResetButton(_ sender: AnyObject) {
+    @IBAction func ResetButton(_ sender: AnyObject) {   //clears recordNumb, hides the next button and reenables all buttons
         recordNum = []
         numb = ""
         nextInput.isHidden = true
@@ -248,9 +248,9 @@ class SerialSevens: UIViewController {
     }
     
 
-    @IBAction func nextInput(_ sender: AnyObject) {
+    @IBAction func nextInput(_ sender: AnyObject) { //either records an error, or records as correct and moves onto the next step of the test
         let name = String(recordNum[0]) + String(recordNum[1])
-        var num = Int(name)
+        let num = Int(name)
         if num != correctNumb{
             numErrors += 1
             Errors.text = String(numErrors)
@@ -264,14 +264,14 @@ class SerialSevens: UIViewController {
         recordNum = []
         currentNum.text = ""
         Records.append(name)
-        let name2 = String(describing: Records)
+        let name2 = String(describing: Records)     //timer stops, displays answers and appends the input
         recordedNums.text = name2
         print(Records)
         timer.invalidate()
         counter = 0
         countingLabel.text = String(counter)
         
-        let currTime = Foundation.Date()
+        let currTime = Foundation.Date()            //timer setup
         resultTmpList[String(responseNum)] = ["Value":name, "Time (msec)":Int(currTime.timeIntervalSince(startTime)*1000)]
 
         timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(SerialSevens.updateCounter), userInfo: nil, repeats: true)
@@ -279,7 +279,7 @@ class SerialSevens: UIViewController {
         responseNum += 1
         
 
-        if (responseNum >= 5){
+        if (responseNum >= 5){          //upon hitting 5 responses hides all buttons to prevent further input
             button0.isHidden = true
             button1.isHidden = true
             button2.isHidden = true
@@ -317,7 +317,7 @@ class SerialSevens: UIViewController {
         
     }
     
-    override func viewDidLoad() {
+    override func viewDidLoad() {           //hides input button at first
         super.viewDidLoad()
             button0.isHidden = true
             button1.isHidden = true

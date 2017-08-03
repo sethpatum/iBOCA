@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BackwardDigitSpan: UIViewController {
+class BackwardDigitSpan: ViewController {
     
     @IBOutlet weak var countingLabel: UILabel!
     
@@ -81,7 +81,7 @@ class BackwardDigitSpan: UIViewController {
     var startSetTime = Foundation.Date()
 
     
-    @IBAction func BackButton(_ sender: Any) {
+    @IBAction func BackButton(_ sender: Any) {      //records results upon pressing back
       
         let result = Results()
         result.name = "Backward Digit Span"
@@ -100,7 +100,7 @@ class BackwardDigitSpan: UIViewController {
         self.present(mainView!, animated:true)
     }
     
-    @IBAction func tester(_ sender: AnyObject) {
+    @IBAction func tester(_ sender: AnyObject) {    //sets up an array of numbers
         var num0 = " "
         var num1 = " "
         var num2 = " "
@@ -109,7 +109,7 @@ class BackwardDigitSpan: UIViewController {
         var num5 = " "
         var num6 = " "
         var num7 = " "
-        if(test >= 0 && test < 6){
+        if(test >= 0 && test < 6){                  //fills the numbers with random integers
              num0 = String(arc4random_uniform(9))
              num1 = String(arc4random_uniform(9))
             while num1 == num0{
@@ -119,14 +119,14 @@ class BackwardDigitSpan: UIViewController {
             while num2 == num1 {
                 num2 = String(arc4random_uniform(9))
             }
-            self.Label0.text = num0
+            self.Label0.text = num0                 //displays the chosen integers
             self.Label1.text = num1
             self.Label2.text = num2
             numOrder.append(num2)
             numOrder.append(num1)
             numOrder.append(num0)
         }
-        if(test >= 1 && test < 6){
+        if(test >= 1 && test < 6){                  //if the test number is over one add one integer to the sequence
             num3 = String(arc4random_uniform(9))
             while num3 == num2 {
                 num3 = String(arc4random_uniform(9))
@@ -135,7 +135,7 @@ class BackwardDigitSpan: UIViewController {
             numOrder.insert(num3, at:0)
         }
 
-        if(test >= 2 && test < 6){
+        if(test >= 2 && test < 6){                  //if the test # is over 2 add another integer
             num4 = String(arc4random_uniform(9))
             while num4 == num3 {
                 num4 = String(arc4random_uniform(9))
@@ -167,7 +167,7 @@ class BackwardDigitSpan: UIViewController {
             self.Label7.text = num7
             numOrder.insert(num7, at:0)
         }
-        if(test >= 6){
+        if(test >= 6){                  //clear the labels upon finishing the test
             self.Label0.text = ""
             self.Label1.text = ""
             self.Label2.text = ""
@@ -178,7 +178,7 @@ class BackwardDigitSpan: UIViewController {
             self.Label7.text = ""
         }
         Randomize.isHidden = true
-        if(test < 5){
+        if(test < 5){                       //display input buttons while the test is ongoing
             button0.isHidden = false
             button1.isHidden = false
             button2.isHidden = false
@@ -212,10 +212,10 @@ class BackwardDigitSpan: UIViewController {
         nums1 += numResponse[responses]
         CurrentNums.text = nums1
         responses += 1
-        if ( responses == (test + 3)){
+        if ( responses == (test + 3)){          //displays next button when there are enough inputs
             testDone.isHidden = false
         }
-        if(responses >= (test + 3)){
+        if(responses >= (test + 3)){            //hides input buttons when finished
             button0.isEnabled = false
             button1.isEnabled = false
             button2.isEnabled = false
@@ -235,7 +235,7 @@ class BackwardDigitSpan: UIViewController {
       
     }
     
-    @IBAction func button0(_ sender: AnyObject) {
+    @IBAction func button0(_ sender: AnyObject) {       //records patient input
         numResponse.append("0")
         processButton()
     }
@@ -296,7 +296,7 @@ class BackwardDigitSpan: UIViewController {
     }
 
     
-    @IBAction func testDone(_ sender: AnyObject) {
+    @IBAction func testDone(_ sender: AnyObject) {      //records all the results to their arrays and hides all buttons/stops the timer
         timer.invalidate()
         counter = 0
         countingLabel.text = String(counter)
@@ -352,7 +352,7 @@ class BackwardDigitSpan: UIViewController {
         button9.isEnabled = true
     }
     
-    override func viewDidLoad() {
+    override func viewDidLoad() {           //hides input buttons at beginning of test
         super.viewDidLoad()
         testDone.isHidden = true
         button0.isHidden = true

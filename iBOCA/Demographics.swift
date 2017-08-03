@@ -13,35 +13,15 @@ import AVFoundation
 
 var testStartTime = Foundation.Date()
 
-var name : String?
 var age : String?
 var Gender : String?
 var Education : String?
 var Race : String?
 var Ethnicity : String?
 var Results1: [String] = []
+var Comments : String = ""
+var PUID: String = ""
 
-
-let TestOrientation = 1
-let TestSimpleMemory = 2
-let TestVisualAssociation = 3
-let TestTrails = 4
-let TestForwardDigitSpan = 5
-let TestBackwardsDigitSpan = 6
-let TestCatsAndDogs = 7
-let Test3DFigureCopy = 8
-let TestSerialSevens = 9
-let TestForwardSpatialSpan = 10
-let TestBackwardSpatialSpan = 11
-let TestNampingPictures = 12
-let TestSemanticListGeneration = 13
-
-
-enum TestStatus {
-    case NotStarted, Running, Done
-}
-
-var Status  = [TestStatus](repeating: TestStatus.NotStarted, count: 14)
 
 
 func makeAgeData() -> [String] {
@@ -52,43 +32,46 @@ func makeAgeData() -> [String] {
     return str
 }
 
-class Demographics: UIViewController, MFMailComposeViewControllerDelegate, UITextFieldDelegate, UITextViewDelegate,UIPickerViewDelegate {
+class Demographics: ViewController, MFMailComposeViewControllerDelegate, UITextFieldDelegate, UITextViewDelegate,UIPickerViewDelegate {
     
     @IBOutlet weak var GenderPicker: UIPickerView!
     let genderData = ["Male", "Female", "Other", "Prefer Not To Say"]
     
     
     @IBOutlet weak var EducationPicker: UIPickerView!
-    let educationData = ["< 9 yrs", "9-11 yrs", "High School Graduate", "Associates Degree", "Bachelors Degree", "Post Graduate Degree"]
+    let educationData = ["0 years", "1 years","2 years","3 years","4 years","5 years","6 years","7 years","8 years","9 years","10 years","11 years","12 years(High School)","13 years","14 years","15 years","16 years(College)","17 years","18 years","19 years", "20 years", "20+ years"]
     
     
     @IBOutlet weak var EthnicityPicker: UIPickerView!
-    var ethnicData = ["Caucasian", "African American", "Latino", "Other"]
+    var ethnicData = ["Hispanic or Latino", "Not Hispanic or Latino"]
     
     @IBOutlet weak var RacePicker: UIPickerView!
-    var raceData = ["English", "Spanish", "Other",]
+    var raceData = ["White", "Black or African American", "Asian", "Native Hawaiian or Other Pacific Islander", "American Indian or Alaskan Native", "Multi-Racial", "Unknown", "Other",]
     
     @IBOutlet weak var AgePicker: UIPickerView!
     var ageData:[String] = makeAgeData()
     
-    
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var nameField: UITextField!
+
     
     @IBOutlet weak var MRLabel: UILabel!
     @IBOutlet weak var MRField: UITextField!
     
 
+    @IBOutlet weak var CommentEntry: UITextView!
     
-    @IBAction func updateName(_ sender: AnyObject) {
-        name = nameField.text
-    }
+
     
     @IBAction func updateMR(_ sender: AnyObject) {
-        PID.changeID(proposed: MRField.text!)
+        _ = PID.changeID(proposed: MRField.text!)
         MRField.text = PID.getID()
     }
     
+
+    @IBOutlet weak var PatientUID: UITextField!
+    
+    @IBAction func updatePUID(_ sender: UITextField) {
+        PUID = sender.text!
+    }
 
    /*
     
@@ -121,40 +104,36 @@ class Demographics: UIViewController, MFMailComposeViewControllerDelegate, UITex
         EducationPicker.delegate = self
         RacePicker.delegate = self
         
-        name = ""
         AgePicker.selectRow(40, inComponent: 0, animated: false)
         age = ageData[AgePicker.selectedRow(inComponent: 0)]
+        
         Gender = genderData[GenderPicker.selectedRow(inComponent: 0)]
+        
         Ethnicity = ethnicData[EthnicityPicker.selectedRow(inComponent: 0)]
+        
+        EducationPicker.selectRow(12, inComponent: 0, animated: false)
         Education = educationData[EducationPicker.selectedRow(inComponent: 0)]
+        
         Race = raceData[RacePicker.selectedRow(inComponent: 0)]
+        
         MRField.text = PID.getID()
         
-        Status[TestOrientation] = TestStatus.NotStarted
-        Status[TestSimpleMemory] = TestStatus.NotStarted
-        Status[TestVisualAssociation] = TestStatus.NotStarted
-        Status[TestTrails] = TestStatus.NotStarted
-        Status[TestForwardDigitSpan] = TestStatus.NotStarted
-        Status[TestBackwardsDigitSpan] = TestStatus.NotStarted
-        Status[TestCatsAndDogs] = TestStatus.NotStarted
-        Status[Test3DFigureCopy] = TestStatus.NotStarted
-        Status[TestSerialSevens] = TestStatus.NotStarted
-        Status[TestForwardSpatialSpan] = TestStatus.NotStarted
-        Status[TestBackwardSpatialSpan] = TestStatus.NotStarted
-        Status[TestNampingPictures] = TestStatus.NotStarted
-        Status[TestSemanticListGeneration] = TestStatus.NotStarted
+        CommentEntry.text = ""
+        CommentEntry.layer.borderWidth = 1
+        CommentEntry.layer.borderColor = UIColor.lightGray.cgColor
+        Comments = ""
          
         testStartTime = Foundation.Date()
+        
+        PUID = ""
     }
-    
-    
    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
        
     }
     
-                    //pickerview setup
+    //pickerview setup
     func numberOfComponentsInPickerView(_ pickerView : UIPickerView!) -> Int{
         return 1
     }
@@ -246,9 +225,14 @@ class Demographics: UIViewController, MFMailComposeViewControllerDelegate, UITex
         // 4. Present the alert.
         self.present(alert, animated: true, completion: nil)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        Comments = CommentEntry.text
+    }
 
     @IBAction func TestDone(_ sender: AnyObject) {
-    Results1.append(name!)
     Results1.append(PID.getID())
     Results1.append(Gender!)
     Results1.append(Ethnicity!)

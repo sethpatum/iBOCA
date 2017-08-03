@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ThreeDFigureCopy: UIViewController {
+class ThreeDFigureCopy: ViewController {
 
     @IBOutlet weak var StartButton: UIButton!
     @IBOutlet weak var CorrectButton: UIButton!
@@ -24,7 +24,7 @@ class ThreeDFigureCopy: UIViewController {
     var startTime2 = Foundation.Date()
     
     var drawing : ThreeDFigureDraw!
-    var drawingImageView : UIImageView!
+    var drawfrom : UIImageView? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,18 +46,25 @@ class ThreeDFigureCopy: UIViewController {
         //BUGBUG: This should not happen after the last result when the results are generated. However, for some reason, then the last drawn image is missing in the results! this will fix it.
         let img = drawCustomImage(CGSize(width: 500, height: 300))
         resultImages.append(img)
+        
+        if drawfrom != nil {
+            drawfrom!.removeFromSuperview()
+            drawfrom!.image = nil
+        }
 
         if curr < imagelist.count {
-            let imageView = UIImageView(frame:CGRect(x: 8, y: 250, width: 500, height: 300))
+            drawfrom = UIImageView(frame:CGRect(x: 8, y: 250, width: 500, height: 300))
             let image = UIImage(named: imagelist[curr])
-            imageView.image = image
-            imageView.layer.borderWidth = 2
-            self.view.addSubview(imageView)
+            drawfrom!.image = image
+            drawfrom!.layer.borderWidth = 2
+            self.view.addSubview(drawfrom!)
         } else {
             StartButton.isEnabled = true
             //BackButton.isHidden = false
             CorrectButton.isEnabled = false
             IncorrectButton.isEnabled = false
+            
+            drawing.removeFromSuperview()
             
             let result = Results()
             result.name = "3D Figure Copy"
@@ -96,12 +103,11 @@ class ThreeDFigureCopy: UIViewController {
         if  drawing != nil {
             drawing.removeFromSuperview()
         }
-        
-        if drawingImageView != nil {
-            drawingImageView.removeFromSuperview()
-            drawingImageView.image = nil
+        if drawfrom != nil {
+            drawfrom!.removeFromSuperview()
+            drawfrom!.image = nil
         }
-       
+
 
         let drawingFrame = CGRect(x: 516, y: 250, width: 500, height: 300)
         drawing = ThreeDFigureDraw(frame: drawingFrame)

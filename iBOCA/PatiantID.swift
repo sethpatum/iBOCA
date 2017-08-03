@@ -69,7 +69,7 @@ class PatiantID {
     }
     
     func getID() -> String {
-        return "\(currInitials)-\(currDate)-" + String(format: "%03d", currNum)
+        return "\(currDate)-\(currInitials)-" + String(format: "%03d", currNum)
     }
     
     func incID() {
@@ -87,7 +87,7 @@ class PatiantID {
     
     func setInitials() {
         if testAdminName == "" {
-            currInitials = "??"
+            currInitials = "XYZ"
             return
         }
 

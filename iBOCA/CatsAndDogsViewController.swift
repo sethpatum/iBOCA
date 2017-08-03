@@ -15,6 +15,7 @@ class CatsAndDogsViewController: ViewController {
     
     var buttonList = [UIButton]()
     var imageList = [UIImageView]()
+    var boxList = [UIImageView]()
     var places:[(Int,Int)] = [(150, 250), (450, 300), (350, 500), (600, 450), (800, 200), (700, 650), (850, 550), (250, 350), (150, 600), (300, 650)]
     //SHORTER LIST FOR TESTING: var places:[(Int,Int)] = [(100, 200), (450, 250), (350, 450), (600, 400)]
     var order = [Int]() //randomized order of buttons
@@ -65,21 +66,26 @@ class CatsAndDogsViewController: ViewController {
     @IBAction func Reset(_ sender: Any) {
         print("in reset")
         
-        if(buttonList != nil){
-            for k in 0 ..< buttonList.count {
-                buttonList[k].removeFromSuperview()
-            }
+        
+        for k in 0 ..< buttonList.count {
+            buttonList[k].removeFromSuperview()
         }
-        if(imageList != nil){
-            for j in 0 ..< imageList.count {
-                imageList[j].removeFromSuperview()
-            }
+        
+        for j in 0 ..< imageList.count {
+            imageList[j].removeFromSuperview()
         }
+        
+        for j in 0 ..< boxList.count {
+            boxList[j].removeFromSuperview()
+        }
+        
+        
         
         dogList = [Int]()
         catList = [Int]()
         buttonList = [UIButton]()
         imageList = [UIImageView]()
+        boxList = [UIImageView]()
         order = [Int]()
         pressed = [Int]()
         correctDogs = [Int]()
@@ -139,21 +145,33 @@ class CatsAndDogsViewController: ViewController {
         
         
         field1 = UITextField(frame: CGRect(x: 450, y: 200, width: 510, height: 100))
-        field1.text = "2,3,4"
+        if(UserDefaults.standard.object(forKey: "CandD-Dogs") != nil) {
+             field1.text = (UserDefaults.standard.object(forKey: "CandD-Dogs") as! String)
+        } else {
+            field1.text = "2,3,4"
+        }
         field1.borderStyle = UITextBorderStyle.roundedRect
         field1.keyboardType = UIKeyboardType.numbersAndPunctuation
         field1.isEnabled = true
         self.view.addSubview(field1)
         
         field2 = UITextField(frame: CGRect(x: 450, y: 350, width: 510, height: 100))
-        field2.text = "(2,2),(3,2),(4,2),(2,4),(3,4),(4,4)"
+        if(UserDefaults.standard.object(forKey: "CandD-Dogs-no-Cats") != nil) {
+            field2.text = (UserDefaults.standard.object(forKey: "CandD-Dogs-no-Cats") as! String)
+        } else {
+            field2.text = "(2,2),(3,2),(4,2),(2,4),(3,4),(4,4)"
+        }
         field2.borderStyle = UITextBorderStyle.roundedRect
         field2.keyboardType = UIKeyboardType.numbersAndPunctuation
         field2.isEnabled = true
         self.view.addSubview(field2)
         
         field3 = UITextField(frame: CGRect(x: 450, y: 500, width: 510, height: 100))
-        field3.text = "(2,2),(2,3),(2,4),(4,2),(4,3),(4,4)"
+        if(UserDefaults.standard.object(forKey: "CandD-Cats-no-Dogs") != nil) {
+            field3.text = (UserDefaults.standard.object(forKey: "CandD-Cats-no-Dogs") as! String)
+        } else {
+            field3.text = "(2,2),(2,3),(2,4),(4,2),(4,3),(4,4)"
+        }
         field3.borderStyle = UITextBorderStyle.roundedRect
         field3.keyboardType = UIKeyboardType.numbersAndPunctuation
         field3.isEnabled = true
@@ -166,6 +184,7 @@ class CatsAndDogsViewController: ViewController {
     
     
     @IBAction func sequenceSelected(_ sender: Any) {
+        // BUGBUG: Need to make sure a bad input will not crash the app
         
         let dogsAlone = field1.text
         var dogsCats1 = field2.text
@@ -188,45 +207,68 @@ class CatsAndDogsViewController: ViewController {
         field3.isEnabled = false
         sequenceSelectionButton.isHidden = true
         
-        let dogsAloneArr = dogsAlone?.components(separatedBy: ",")
+        UserDefaults.standard.set(field1.text, forKey:"CandD-Dogs")
+        UserDefaults.standard.set(field2.text, forKey:"CandD-Dogs-no-Cats")
+        UserDefaults.standard.set(field3.text, forKey:"CandD-Cats-no-Dogs")
+        UserDefaults.standard.synchronize()
         
-//        print(dogsAloneArr)
-        
-        for i in 0...(dogsAloneArr?.count)!-1 {
-            dogList.append(Int((dogsAloneArr?[i])!)!)
-            catList.append(0)
+        do {
+            let dogsAloneArr = dogsAlone?.components(separatedBy: ",")
+            
+            //        print(dogsAloneArr)
+            
+            let up0 = (dogsAloneArr?.count) ?? 0
+            for i in 0...up0 - 1 {
+                let x =  (dogsAloneArr?[i]) ?? "1"
+                let y =  Int(x) ?? 0
+                dogList.append(y)
+                catList.append(0)
+            }
+            
+            //        let separators = CharacterSet(charactersIn: "),(")
+            
+            let dogsCats1Arr = dogsCats1?.components(separatedBy: String("),("))
+            
+            //        print(dogsCats1Arr)
+            
+            let up1 = (dogsCats1Arr?.count) ?? 0
+            for i in 0...up1 - 1 {
+                let split1 = dogsCats1Arr?[i].components(separatedBy: ",")
+                let x1 = (split1?[0]) ?? "1"
+                let y1 = Int(x1) ?? 1
+                dogList.append(y1)
+                let x2 = (split1?[1]) ?? "1"
+                let y2 = Int(x2) ?? 1
+                catList.append(y2)
+            }
+            
+            let dogsCats2Arr = dogsCats2?.components(separatedBy: String("),("))
+            
+            //        print(dogsCats2Arr)
+            
+            let up2 = (dogsCats2Arr?.count) ?? 0
+            for i in 0...up2 - 1 {
+                let split2 = dogsCats2Arr?[i].components(separatedBy: ",")
+                let x1 = (split2?[0]) ?? "1"
+                let y1 = Int(x1) ?? 1
+                dogList.append(y1)
+                let x2 = (split2?[1]) ?? "1"
+                let y2 = Int(x2) ?? 1
+                catList.append(y2)
+            }
+            
+            break1 = (dogsAloneArr?.count) ?? 0
+            break2 = (dogsCats1Arr?.count) ?? 0 + break1
+            
+            cats = catList[0]
+            dogs = dogList[0]
+            
+            startAlert()
+        } catch {
+            break1 = 0
+            break2 = 0
+            resultsLabel.text = "Invalid Sequence Data"
         }
-        
-//        let separators = CharacterSet(charactersIn: "),(")
-        
-        let dogsCats1Arr = dogsCats1?.components(separatedBy: String("),("))
-        
-//        print(dogsCats1Arr)
-        
-        for i in 0...(dogsCats1Arr?.count)!-1 {
-            let split1 = dogsCats1Arr?[i].components(separatedBy: ",")
-            dogList.append(Int((split1?[0])!)!)
-            catList.append(Int((split1?[1])!)!)
-        }
-        
-        let dogsCats2Arr = dogsCats2?.components(separatedBy: String("),("))
-        
-//        print(dogsCats2Arr)
-        
-        for i in 0...(dogsCats2Arr?.count)!-1 {
-            let split2 = dogsCats2Arr?[i].components(separatedBy: ",")
-            dogList.append(Int((split2?[0])!)!)
-            catList.append(Int((split2?[1])!)!)
-        }
-        
-        break1 = (dogsAloneArr?.count)!
-        break2 = break1 + (dogsCats1Arr?.count)!
-        
-        cats = catList[0]
-        dogs = dogList[0]
-        
-        startAlert()
-        
     }
     
     
@@ -472,6 +514,14 @@ class CatsAndDogsViewController: ViewController {
                 }
             }
             
+         
+            let box = UIImageView(frame: CGRect(x: x, y: y, width: 100, height: 100))
+            boxList.append(box)
+            box.layer.borderColor = UIColor.blue.cgColor
+            box.layer.borderWidth = 2
+            self.view.addSubview(box)
+            
+            
             let button = UIButton(type: UIButtonType.system)
             buttonList.append(button)
             button.frame = CGRect(x: x, y: y, width: 100, height: 100)
@@ -480,7 +530,7 @@ class CatsAndDogsViewController: ViewController {
             
         }
         
-        var timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
+        _ = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
         
         startTime = NSDate.timeIntervalSinceReferenceDate
         
@@ -532,6 +582,9 @@ class CatsAndDogsViewController: ViewController {
         }
         for j in 0 ..< imageList.count {
             imageList[j].removeFromSuperview()
+        }
+        for j in 0 ..< boxList.count {
+            boxList[j].removeFromSuperview()
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
@@ -651,8 +704,12 @@ class CatsAndDogsViewController: ViewController {
             for k in 0 ..< imageList.count {
                 imageList[k].removeFromSuperview()
             }
+            for k in 0 ..< boxList.count {
+                boxList[k].removeFromSuperview()
+            }
             buttonList = [UIButton]()
             imageList = [UIImageView]()
+            boxList = [UIImageView]()
             
             for i in 0 ..< order.count {
                 let(a,b) = places[order[i]]
@@ -685,6 +742,12 @@ class CatsAndDogsViewController: ViewController {
                         
                     }
                 }
+                
+                let box = UIImageView(frame: CGRect(x: x, y: y, width: 100, height: 100))
+                boxList.append(box)
+                box.layer.borderColor = UIColor.blue.cgColor
+                box.layer.borderWidth = 2
+                self.view.addSubview(box)
                 
                 let button = UIButton(type: UIButtonType.system)
                 buttonList.append(button)

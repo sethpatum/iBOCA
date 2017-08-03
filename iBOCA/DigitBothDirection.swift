@@ -13,7 +13,6 @@ import AVFoundation
 
 // Inherited by both Forward and Backward digit span. They overrite two methods and done!
 class DigitBothDirection:DigitBaseClass {
-    var level = 0
     var genval:String = ""
     var redo = 0
     let MAX_REDO = 2
@@ -36,7 +35,7 @@ class DigitBothDirection:DigitBaseClass {
     }
     
     override func DoStart() {
-        base.InfoLabel.text = "Tell the patiant the numbers, followed by intering his/her response"
+        base.InfoLabel.text = "Tell the patient the numbers, followed by intering his/her response"
         level = LevelStart() - 1
         redo = 0
         
@@ -57,7 +56,7 @@ class DigitBothDirection:DigitBaseClass {
         base.NumberLabel.text = ""
         base.KeypadLabel.text = ""
         var candidate = [0, 1, 2, 4, 5, 6, 7, 8, 9]
-        for i in 0...level {
+        for _ in 0...level {
             let pos = (Int)(arc4random_uniform(UInt32(candidate.count)))
             genval = genval + String(candidate[pos])
             candidate.remove(at: pos)
@@ -137,6 +136,7 @@ class DigitBothDirection:DigitBaseClass {
         resultsArray.add(result)
         
         base.EndTest()
+        Status[testStatus] = TestStatus.Done
     }
     
     // Mainly redefined in the subclass

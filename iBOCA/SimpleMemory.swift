@@ -22,7 +22,7 @@ var incorrectImageSetSM = Int()
 var startTimeSM = TimeInterval()
 var timerSM = Timer()
 var StartTimer = Foundation.Date()
-class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
+class SimpleMemoryTask: ViewController, UIPickerViewDelegate {
     
     @IBOutlet weak var timerLabel: UILabel!
     
@@ -46,6 +46,8 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
     var recallIncorrectTimes = [Double]()
     
     var delayTime = Double()
+    
+    var ended = false
     
     @IBOutlet weak var next1: UIButton!
     @IBOutlet weak var start: UIButton!
@@ -86,6 +88,8 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
     
     var orderRecognize = [Int]()
     
+    var testSelectButtons : [UIButton] = []
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -118,6 +122,9 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
             
             testPickerLabel.isHidden = true
             incorrectPickerLabel.isHidden = true
+            for b in testSelectButtons {
+                b.isHidden = true
+            }
             
             start.removeTarget(self, action: #selector(startNewTask), for:.touchUpInside)
             start.removeTarget(self, action: #selector(startDisplayAlert), for:.touchUpInside)
@@ -137,6 +144,7 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
             
             testPickerLabel.isHidden = false
             incorrectPickerLabel.isHidden = false
+            setupTestSelectButtons()
             
             imageSetSM = 0
             incorrectImageSetSM = 0
@@ -150,6 +158,70 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
             start.addTarget(self, action: #selector(startDisplayAlert), for:.touchUpInside)
 //            startAlert()
         }
+        
+    }
+    
+    func setupTestSelectButtons() {
+        testSelectButtons = []
+        for (i, val) in ["Test A", "Test B", "Test C", "Test D"].enumerated() {
+            let button  = UIButton(frame: CGRect(x: 150+200*i, y: 250, width: 150, height: 50))
+            button.setTitle(String(val), for: .normal)
+            button.setTitleColor(UIColor.blue, for: .normal)
+            button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 40.0)
+            button.addTarget(self, action: #selector(SimpleMemoryTask.StartSelectButtonTapped), for: .touchDown)
+            button.isHidden = false
+            testSelectButtons.append(button)
+            view.addSubview(button)
+        }
+    }
+    
+    @objc fileprivate func StartSelectButtonTapped(button: UIButton){
+        let title = button.title(for: .normal)!
+        switch title {
+        case "Test A":
+            testPicker.selectRow(0, inComponent: 0, animated: true)
+            incorrectPicker.selectRow(4, inComponent: 0, animated: true)
+            imagesSM = images0
+            imageSetSM = 0
+            recognizeIncorrectSM = images4
+            incorrectImageSetSM = 4
+        case "Test B":
+            testPicker.selectRow(1, inComponent: 0, animated: true)
+            incorrectPicker.selectRow(5, inComponent: 0, animated: true)
+            imagesSM = images1
+            imageSetSM = 1
+            recognizeIncorrectSM = images5
+            incorrectImageSetSM = 5
+        case "Test C":
+            testPicker.selectRow(2, inComponent: 0, animated: true)
+            incorrectPicker.selectRow(6, inComponent: 0, animated: true)
+            imagesSM = images2
+            imageSetSM = 2
+            recognizeIncorrectSM = images6
+            incorrectImageSetSM = 6
+        case "Test D":
+            testPicker.selectRow(3, inComponent: 0, animated: true)
+            incorrectPicker.selectRow(7, inComponent: 0, animated: true)
+            imagesSM = images3
+            imageSetSM = 3
+            recognizeIncorrectSM = images7
+            incorrectImageSetSM = 7
+        default:
+            testPicker.selectRow(0, inComponent: 0, animated: true)
+            incorrectPicker.selectRow(0, inComponent: 0, animated: true)
+            imagesSM = images0
+            imageSetSM = 0
+            recognizeIncorrectSM = images0
+            incorrectImageSetSM = 0
+        }
+        
+        if(TestTypes[testPicker.selectedRow(inComponent: 0)] == IncorrectTypes[incorrectPicker.selectedRow(inComponent: 0)]){
+            start.isEnabled = false
+        }
+        else{
+            start.isEnabled = true
+        }
+
         
     }
     
@@ -181,6 +253,7 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
             
             self.testPickerLabel.isHidden = false
             self.incorrectPickerLabel.isHidden = false
+            self.setupTestSelectButtons()
             
             self.startNewTask()
             
@@ -196,6 +269,9 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
                 
                 self.testPickerLabel.isHidden = true
                 self.incorrectPickerLabel.isHidden = true
+                for b in self.testSelectButtons {
+                    b.isHidden = true
+                }
                 
                 self.start.isHidden = true
                 
@@ -215,6 +291,7 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
         }
         
     }
+    
     func startNewTask(){
         
         timerSM.invalidate()
@@ -251,6 +328,9 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
         
         testPickerLabel.isHidden = true
         incorrectPickerLabel.isHidden = true
+        for b in testSelectButtons {
+            b.isHidden = true
+        }
         
         //back.isEnabled = false
         
@@ -461,13 +541,22 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
         
         arrowButton1.frame = CGRect(x: (256.0-(x1/2)), y: (471.0-(y1/2)), width: x1, height: y1)
         arrowButton1.setImage(image1, for: .normal)
-        arrowButton1.addTarget(self, action: #selector(recognize1), for:.touchUpInside)
-        self.view.addSubview(arrowButton1)
+        arrowButton1.removeTarget(nil, action:nil, for: .allEvents)
         
         arrowButton2.frame = CGRect(x: (768.0-(x2/2)), y: (471.0-(y2/2)), width: x2, height: y2)
         arrowButton2.setImage(image2, for: .normal)
-        arrowButton2.addTarget(self, action: #selector(recognize2), for:.touchUpInside)
-        self.view.addSubview(arrowButton2)
+        arrowButton2.removeTarget(nil, action:nil, for: .allEvents)
+        
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
+            self.view.addSubview(self.arrowButton1)
+            self.view.addSubview(self.arrowButton2)
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
+            self.arrowButton1.addTarget(self, action: #selector(SimpleMemoryTask.recognize1), for:.touchUpInside)
+            self.arrowButton2.addTarget(self, action: #selector(SimpleMemoryTask.recognize2), for:.touchUpInside)
+        }
         
     }
     
@@ -642,7 +731,7 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
         recallLabel.text = "0"
         self.view.addSubview(recallLabel)
         
-        for k in 0...5{
+        for _ in 0...5{
             recallTimes.append(-1)
         }
         
@@ -792,7 +881,6 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
         }
             
         else{
-            
             arrowButton1.isEnabled = true
             arrowButton2.isEnabled = true
             
@@ -810,7 +898,7 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
     }
     
     func done(){
-        
+        ended = true
         //back.isEnabled = true
         
         afterBreakSM = false
@@ -824,22 +912,30 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
         imageSetResult = imageSetResult + delayResult + recallResult + recognizeResult
         delayResult = "Delay length of \(delayTime) seconds\n"
         
+        var correctRecall = 0
+        var incorrectRecall = 0
+        var correctRecognize = 0
+        var incorrectRecognize = 0
         for k in 0 ..< imagesSM.count {
             
             if(buttonTaps[k] == true) {
                 recallResult += "Recalled \(imagesSM[k]) correctly in \(recallTimes[k]) seconds\n"
+                correctRecall += 1
             }
             if(buttonTaps[k] == false) {
                 recallResult += "Did not recall \(imagesSM[k])\n"
                 numErrors += 1
+                incorrectRecall += 1
             }
             
             if(recognizeErrors[k] == 0){
                 recognizeResult += "Recognized \(imagesSM[k]) correctly in \(recognizeTimes[k]) seconds\n"
+                correctRecognize += 1
             }
             if(recognizeErrors[k] == 1){
                 recognizeResult += "Recognized \(imagesSM[k]) incorrectly in \(recognizeTimes[k]) seconds\n"
                 numErrors += 1
+                incorrectRecognize += 1
             }
             
             /*
@@ -861,12 +957,18 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
         result.name = "Simple Memory"
         result.startTime = StartTimer
         result.endTime = Foundation.Date()
-        result.shortDescription = imageSetResult + delayResult + recallResult + recognizeResult
+        result.shortDescription = "Recall: \(correctRecall) correct, \(incorrectRecall) incorrect.  Recognize: \(correctRecognize) correct, \(incorrectRecognize) incorrect. (Sets correct:\(imageSetSM), incorrect:\(incorrectImageSetSM))"
         result.numErrors = numErrors
         
         resultList["CorrectImageSet"] = imageSetSM
         resultList["IncorrectImageSet"] = incorrectImageSetSM
         resultList["DelayTime"] = delayTime
+        
+        resultList["Recall Correct"] =  correctRecall
+        resultList["Recall Incorrect"] =  incorrectRecall
+        resultList["Recognize Correct"] =   correctRecognize
+        resultList["Recognize Incorrect"] =   incorrectRecognize
+
         
         var tmpResultList : [String:Any] = [:]
         
@@ -898,6 +1000,7 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
             }
             tmpResultList1[imagesSM[i]] = ["Condition":res, "Time":recognizeTimes[i]]
         }
+
         resultList["Recall"] = tmpResultList1
         
         result.json = resultList
@@ -919,7 +1022,7 @@ class SimpleMemoryTask: UIViewController, UIPickerViewDelegate {
         
         //if 0, correct image on left; if 1, correct on right
         
-        for k in 0 ..< 6 {
+        for _ in 0 ..< 6 {
             orderRecognize.append(Int(arc4random_uniform(2)))
         }
         

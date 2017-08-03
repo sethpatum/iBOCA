@@ -21,13 +21,18 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        // iPadPro resizing
+        if self.view.frame.size.width > 1024 {
+            let scale = self.view.frame.size.width / 1024.0
+            self.view.transform = CGAffineTransform(scaleX: scale, y: scale);
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 
 }
 

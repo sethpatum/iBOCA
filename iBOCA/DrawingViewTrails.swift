@@ -81,19 +81,19 @@ class DrawingViewTrails: UIView {
         print("paths has \(paths.count) members; timedConnectionsA length is \(timedConnectionsA.count)")
         
         if (timedConnectionsA.count > 0){
-            
             for k in 1 ..< timedConnectionsA.count {
                 let z = timedConnectionsA[k] - timedConnectionsA[k-1]
                 
                 getColor2(i: z, alpha: 0.8).set()
                 
-                let path : UIBezierPath = paths[k]
-                
-                path.lineWidth = 7
-                path.lineCapStyle = CGLineCap.round
-                
-                path.stroke()
-                
+                if k < paths.count {
+                    let path : UIBezierPath = paths[k]
+                    
+                    path.lineWidth = 7
+                    path.lineCapStyle = CGLineCap.round
+                    
+                    path.stroke()
+                }
             }
             
         }
@@ -147,7 +147,7 @@ class DrawingViewTrails: UIView {
         
         
         // Create Circle
-        context?.addArc(center:CGPoint(x:CGFloat(x), y:CGFloat(y)), radius:CGFloat(20.0), startAngle:CGFloat(0), endAngle:CGFloat(M_PI * 2.0), clockwise:true)
+        context?.addArc(center:CGPoint(x:CGFloat(x), y:CGFloat(y)), radius:CGFloat(20.0), startAngle:CGFloat(0), endAngle:CGFloat(Double.pi * 2.0), clockwise:true)
         
         // Draw
        context!.strokePath()

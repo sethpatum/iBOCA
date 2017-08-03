@@ -15,6 +15,7 @@ class PicturesViewController: ViewController {
     var imageName = "House"
     var count = 0
     var corr = 0
+    var back = 0
     
     @IBOutlet weak var placeLabel: UILabel!
     
@@ -61,6 +62,7 @@ class PicturesViewController: ViewController {
         wrongList = [String]()
         count = 0
         corr = 0
+        back = 0
         imageName = getImageName()
         resultStatus.removeAll()
         resultTime.removeAll()
@@ -184,6 +186,7 @@ class PicturesViewController: ViewController {
         backButton.isEnabled = true
         
         count -= 1
+        back += 1
         if count == 0 {
             resetButton.isEnabled = false
             backButton.isEnabled = false
@@ -240,6 +243,11 @@ class PicturesViewController: ViewController {
             js[String(index)] = val
         }
         result.json["Results"] = js
+        result.json["Answered"] = count
+        result.json["Correct"] = corr
+        result.json["Gone Back"] = back
+        
+        result.shortDescription = "\(corr) correct with \(count) answered"
 
         
         resultsArray.add(result)
@@ -262,6 +270,7 @@ class PicturesViewController: ViewController {
         
         count = 0
         corr = 0
+        back = 0
         imageName = getImageName()
         
         let image = UIImage(named: imageName)

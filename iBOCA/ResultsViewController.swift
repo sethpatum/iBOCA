@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ResultsViewController: UIViewController {
+class ResultsViewController: ViewController {
     
     @IBOutlet weak var tableView: UITableView!
     

@@ -23,12 +23,15 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
     var Time : String?
     var TimeOK : Bool = false
     var DateOK : Bool = false
-    
-    
+    var dkDate : Bool = false
+    var dkMonth : Bool = false
+    var dkYear : Bool = false
+
+
     //pickerview content set up(defines options)
     
     @IBOutlet weak var WeekPicker: UIPickerView!
-    let weekData = ["Monday", "Tuesday", "Wednesday", "Thusday", "Friday", "Saturday", "Sunday", "Do not know"]
+    let weekData = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Do not know"]
     
     @IBOutlet weak var StatePicker: UIPickerView!
     let stateData = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia","Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming", "Don't Know"]
@@ -66,13 +69,17 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         TimeOK = TimeDiffOK(date1: startTime, date2: d.date)
     }
     
-    @IBAction func DontKnowDate(_ sender: Any) {
-        Date = "Dont Know"
-        currentDate.isUserInteractionEnabled = false
-        currentDate.alpha = 0.5
-        DateOK = false
+    @IBAction func DontKnowMonth(_ sender: UIButton) {
+        dkMonth = true
     }
     
+    @IBAction func DontKnowDate(_ sender: Any) {
+        dkDate = true
+    }
+    
+    @IBAction func DontKnowYear(_ sender: UIButton) {
+        dkYear = true
+    }
     
     @IBAction func DontKnowWeek(_ sender: Any) {
         Week = "Dont Know"
@@ -108,6 +115,10 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         WeekPicker.delegate = self
         StatePicker.delegate = self
         TownPicker.delegate = self
+        
+        dkDate = false
+        dkMonth = false
+        dkYear = false
         
         State = stateData[StatePicker.selectedRow(inComponent: 0)]
         // If a correct state name has been saved, use it
@@ -222,6 +233,9 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         result.json["Time Correct"] = TimeOK
         result.json["Date Correct"] = DateOK
         result.json["Week Correct"] = WeekOK
+        result.json["Dont Know Date"] = dkDate
+        result.json["Dont Know Month"] = dkMonth
+        result.json["Dont Know Year"] = dkYear
         
         result.shortDescription = "State: \(State!) "
         if Town! != "Correct" {
@@ -233,6 +247,17 @@ class OrientationTask:  ViewController, MFMailComposeViewControllerDelegate, UIT
         if DateOK == false {
             result.shortDescription = result.shortDescription! + " Date: \(Date!)(\(rightDate)) "
         }
+        if dkDate {
+            result.shortDescription = result.shortDescription! + " Don't know date "
+        }
+        if dkMonth {
+            result.shortDescription = result.shortDescription! + " Don't know month "
+        }
+ 
+        if dkYear {
+            result.shortDescription = result.shortDescription! + " Don't know year "
+        }
+        
         if TimeOK == false {
             result.shortDescription = result.shortDescription! + " Time: \(Time!)(\(rightTime)) "
         }

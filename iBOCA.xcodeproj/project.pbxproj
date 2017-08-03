@@ -32,6 +32,10 @@
 		E29AF0401D51134A00C4AF79 /* ForwardDigitSpan.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29AF03F1D51134A00C4AF79 /* ForwardDigitSpan.swift */; };
 		E2B9F8001DD144A70035FE0B /* VATask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B9F7FF1DD144A70035FE0B /* VATask.swift */; };
 		E2C906EB1D54DA1B00C0824E /* SerialSevens.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C906EA1D54DA1B00C0824E /* SerialSevens.swift */; };
+		F20FF4C61F04757300B806B7 /* GeriatricDepressionScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20FF4C51F04757300B806B7 /* GeriatricDepressionScale.swift */; };
+		F2229C7D1F01AC39000F2CBA /* crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2229C7C1F01AC39000F2CBA /* crypto.swift */; };
+		F2229CA61F01B078000F2CBA /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2229C881F01AFDF000F2CBA /* CryptoSwift.framework */; };
+		F2229CA71F01B078000F2CBA /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F2229C881F01AFDF000F2CBA /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F23951351EEE1ACF004B09E5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F23951341EEE1ACF004B09E5 /* AVFoundation.framework */; };
 		F23951371EF4B2DE004B09E5 /* DigitSerialSeven.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23951361EF4B2DE004B09E5 /* DigitSerialSeven.swift */; };
 		F23951391EFFD660004B09E5 /* Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23951381EFFD660004B09E5 /* Setup.swift */; };
@@ -43,11 +47,14 @@
 		F261D4E61E3E339F0039A545 /* TrailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F261D4E51E3E339F0039A545 /* TrailsViewController.swift */; };
 		F261D4E81E3E33D00039A545 /* DrawingViewTrails.swift in Sources */ = {isa = PBXBuildFile; fileRef = F261D4E71E3E33D00039A545 /* DrawingViewTrails.swift */; };
 		F261D4EA1E3E33F00039A545 /* Bubbles.swift in Sources */ = {isa = PBXBuildFile; fileRef = F261D4E91E3E33F00039A545 /* Bubbles.swift */; };
+		F2748CDA1F13BD6B00799836 /* AckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2748CD91F13BD6B00799836 /* AckViewController.swift */; };
 		F27728A61E33C91A004F8A6E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27728A51E33C91A004F8A6E /* MainViewController.swift */; };
 		F27AEA941EEC6E7B00AFB3D1 /* DigitBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27AEA931EEC6E7B00AFB3D1 /* DigitBase.swift */; };
 		F27AEAA61EEC948600AFB3D1 /* DigitSpanForward.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27AEAA51EEC948600AFB3D1 /* DigitSpanForward.swift */; };
 		F27AEAA81EED7A5F00AFB3D1 /* DigitBothDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27AEAA71EED7A5F00AFB3D1 /* DigitBothDirection.swift */; };
 		F27AEAAC1EED7AEF00AFB3D1 /* DigitSpanBackward.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27AEAAB1EED7AEF00AFB3D1 /* DigitSpanBackward.swift */; };
+		F2A0F1281F02626D00A92B1F /* LandingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A0F1271F02626D00A92B1F /* LandingPage.swift */; };
+		F2A0F12F1F02682500A92B1F /* MOCAandGDT.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A0F12E1F02682500A92B1F /* MOCAandGDT.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,7 +72,70 @@
 			remoteGlobalIDString = 1BC2DFEA1D4F821F0020D430;
 			remoteInfo = iBOCA;
 		};
+		F21C1FFA1F01B95D00523D85 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F21C1FF21F01B95D00523D85 /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 754BE45519693E190098E6F3;
+			remoteInfo = CryptoSwift;
+		};
+		F21C1FFC1F01B95D00523D85 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F21C1FF21F01B95D00523D85 /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 754BE46019693E190098E6F3;
+			remoteInfo = Tests;
+		};
+		F2229C871F01AFDF000F2CBA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F2229C821F01AFDF000F2CBA /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 754BE45519693E190098E6F3;
+			remoteInfo = CryptoSwift;
+		};
+		F2229C891F01AFDF000F2CBA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F2229C821F01AFDF000F2CBA /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 754BE46019693E190098E6F3;
+			remoteInfo = Tests;
+		};
+		F2229CA21F01B049000F2CBA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F2229C9D1F01B049000F2CBA /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 754BE45519693E190098E6F3;
+			remoteInfo = CryptoSwift;
+		};
+		F2229CA41F01B049000F2CBA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F2229C9D1F01B049000F2CBA /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 754BE46019693E190098E6F3;
+			remoteInfo = Tests;
+		};
+		F2229CA81F01B078000F2CBA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F2229C821F01AFDF000F2CBA /* CryptoSwift.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 754BE45419693E190098E6F3;
+			remoteInfo = CryptoSwift;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F2229CAA1F01B078000F2CBA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F2229CA71F01B078000F2CBA /* CryptoSwift.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1B49EEF21DAC3B6600931E8C /* 3DFigureDraw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 3DFigureDraw.swift; sourceTree = "<group>"; };
@@ -99,6 +169,13 @@
 		E29AF03F1D51134A00C4AF79 /* ForwardDigitSpan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForwardDigitSpan.swift; sourceTree = "<group>"; };
 		E2B9F7FF1DD144A70035FE0B /* VATask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VATask.swift; sourceTree = "<group>"; };
 		E2C906EA1D54DA1B00C0824E /* SerialSevens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerialSevens.swift; sourceTree = "<group>"; };
+		F20FF4C51F04757300B806B7 /* GeriatricDepressionScale.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeriatricDepressionScale.swift; sourceTree = "<group>"; };
+		F21C1FF21F01B95D00523D85 /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = CryptoSwift/CryptoSwift.xcodeproj; sourceTree = "<group>"; };
+		F2229C7C1F01AC39000F2CBA /* crypto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = crypto.swift; sourceTree = "<group>"; };
+		F2229C7E1F01AF35000F2CBA /* CryptoSwift */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CryptoSwift; sourceTree = "<group>"; };
+		F2229C801F01AF50000F2CBA /* CryptoSwift */ = {isa = PBXFileReference; lastKnownFileType = folder; name = CryptoSwift; path = CryptoSwift/Sources/CryptoSwift; sourceTree = "<group>"; };
+		F2229C821F01AFDF000F2CBA /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = CryptoSwift/CryptoSwift.xcodeproj; sourceTree = "<group>"; };
+		F2229C9D1F01B049000F2CBA /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = CryptoSwift/CryptoSwift.xcodeproj; sourceTree = SOURCE_ROOT; };
 		F23951341EEE1ACF004B09E5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		F23951361EF4B2DE004B09E5 /* DigitSerialSeven.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DigitSerialSeven.swift; sourceTree = "<group>"; };
 		F23951381EFFD660004B09E5 /* Setup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setup.swift; sourceTree = "<group>"; };
@@ -110,11 +187,14 @@
 		F261D4E51E3E339F0039A545 /* TrailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailsViewController.swift; sourceTree = "<group>"; };
 		F261D4E71E3E33D00039A545 /* DrawingViewTrails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingViewTrails.swift; sourceTree = "<group>"; };
 		F261D4E91E3E33F00039A545 /* Bubbles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bubbles.swift; sourceTree = "<group>"; };
+		F2748CD91F13BD6B00799836 /* AckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AckViewController.swift; sourceTree = "<group>"; };
 		F27728A51E33C91A004F8A6E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F27AEA931EEC6E7B00AFB3D1 /* DigitBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DigitBase.swift; sourceTree = "<group>"; };
 		F27AEAA51EEC948600AFB3D1 /* DigitSpanForward.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DigitSpanForward.swift; sourceTree = "<group>"; };
 		F27AEAA71EED7A5F00AFB3D1 /* DigitBothDirection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DigitBothDirection.swift; sourceTree = "<group>"; };
 		F27AEAAB1EED7AEF00AFB3D1 /* DigitSpanBackward.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DigitSpanBackward.swift; sourceTree = "<group>"; };
+		F2A0F1271F02626D00A92B1F /* LandingPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LandingPage.swift; path = ../LandingPage.swift; sourceTree = "<group>"; };
+		F2A0F12E1F02682500A92B1F /* MOCAandGDT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOCAandGDT.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +203,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F23951351EEE1ACF004B09E5 /* AVFoundation.framework in Frameworks */,
+				F2229CA61F01B078000F2CBA /* CryptoSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +227,7 @@
 		1BC2DFE21D4F821F0020D430 = {
 			isa = PBXGroup;
 			children = (
+				F21C1FF21F01B95D00523D85 /* CryptoSwift.xcodeproj */,
 				1BC2DFED1D4F821F0020D430 /* iBOCA */,
 				1BC2E0021D4F821F0020D430 /* iBOCATests */,
 				1BC2E00D1D4F821F0020D430 /* iBOCAUITests */,
@@ -169,31 +251,37 @@
 			children = (
 				1B53650D1D7491CF0088B5D2 /* 3DFigureCopy.swift */,
 				1B49EEF21DAC3B6600931E8C /* 3DFigureDraw.swift */,
+				F2748CD91F13BD6B00799836 /* AckViewController.swift */,
 				1BC2DFEE1D4F821F0020D430 /* AppDelegate.swift */,
 				1BC2DFF51D4F821F0020D430 /* Assets.xcassets */,
 				E27BA37E1D523B8400619C07 /* BackwardDigitSpan.swift */,
 				43960F4B1E3C0758006FDC7B /* CatsAndDogsViewController.swift */,
+				F2229C7C1F01AC39000F2CBA /* crypto.swift */,
+				F2229C9D1F01B049000F2CBA /* CryptoSwift.xcodeproj */,
 				E272DF011D74957F002F8295 /* Demographics.swift */,
 				F27AEA921EEC6E4200AFB3D1 /* DigitTests */,
 				E29AF03F1D51134A00C4AF79 /* ForwardDigitSpan.swift */,
+				F20FF4C51F04757300B806B7 /* GeriatricDepressionScale.swift */,
 				1BC2DFFA1D4F821F0020D430 /* Info.plist */,
+				F2A0F1271F02626D00A92B1F /* LandingPage.swift */,
 				1BC2DFF71D4F821F0020D430 /* LaunchScreen.storyboard */,
 				1BC2DFF21D4F821F0020D430 /* Main.storyboard */,
 				F27728A51E33C91A004F8A6E /* MainViewController.swift */,
+				F2A0F12E1F02682500A92B1F /* MOCAandGDT.swift */,
 				E2901DCE1D4F8C3700080F82 /* OrientationTask.swift */,
+				F239513A1EFFE6A1004B09E5 /* PatiantID.swift */,
 				E2037F1B1E47E7F000EE13EB /* Pictures */,
 				43343D471E3E66D5001779AC /* PicturesViewController.swift */,
 				F24E6E711E1BC2D800E29995 /* Results */,
 				1B65673F1D7DE07B00C92FA3 /* SemanticListGeneration.swift */,
 				E2C906EA1D54DA1B00C0824E /* SerialSevens.swift */,
+				F23951381EFFD660004B09E5 /* Setup.swift */,
 				4386775B1E33D551000309F2 /* SimpleMemory.swift */,
 				43343D451E3E66BC001779AC /* TapInOrderBackwardsViewController.swift */,
 				43343D431E3E66A3001779AC /* TapInOrderViewController.swift */,
 				F261D4E41E3E33620039A545 /* Trails */,
 				E2B9F7FF1DD144A70035FE0B /* VATask.swift */,
 				1BC2DFF01D4F821F0020D430 /* ViewController.swift */,
-				F23951381EFFD660004B09E5 /* Setup.swift */,
-				F239513A1EFFE6A1004B09E5 /* PatiantID.swift */,
 			);
 			path = iBOCA;
 			sourceTree = "<group>";
@@ -228,9 +316,39 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		F21C1FF31F01B95D00523D85 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F21C1FFB1F01B95D00523D85 /* CryptoSwift.framework */,
+				F21C1FFD1F01B95D00523D85 /* Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F2229C831F01AFDF000F2CBA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F2229C881F01AFDF000F2CBA /* CryptoSwift.framework */,
+				F2229C8A1F01AFDF000F2CBA /* Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F2229C9E1F01B049000F2CBA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F2229CA31F01B049000F2CBA /* CryptoSwift.framework */,
+				F2229CA51F01B049000F2CBA /* Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		F23951331EEE1ACF004B09E5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F2229C821F01AFDF000F2CBA /* CryptoSwift.xcodeproj */,
+				F2229C801F01AF50000F2CBA /* CryptoSwift */,
+				F2229C7E1F01AF35000F2CBA /* CryptoSwift */,
 				F23951341EEE1ACF004B09E5 /* AVFoundation.framework */,
 			);
 			name = Frameworks;
@@ -279,10 +397,12 @@
 				1BC2DFE71D4F821F0020D430 /* Sources */,
 				1BC2DFE81D4F821F0020D430 /* Frameworks */,
 				1BC2DFE91D4F821F0020D430 /* Resources */,
+				F2229CAA1F01B078000F2CBA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				F2229CA91F01B078000F2CBA /* PBXTargetDependency */,
 			);
 			name = iBOCA;
 			productName = iBOCA;
@@ -363,6 +483,20 @@
 			mainGroup = 1BC2DFE21D4F821F0020D430;
 			productRefGroup = 1BC2DFEC1D4F821F0020D430 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = F2229C831F01AFDF000F2CBA /* Products */;
+					ProjectRef = F2229C821F01AFDF000F2CBA /* CryptoSwift.xcodeproj */;
+				},
+				{
+					ProductGroup = F2229C9E1F01B049000F2CBA /* Products */;
+					ProjectRef = F2229C9D1F01B049000F2CBA /* CryptoSwift.xcodeproj */;
+				},
+				{
+					ProductGroup = F21C1FF31F01B95D00523D85 /* Products */;
+					ProjectRef = F21C1FF21F01B95D00523D85 /* CryptoSwift.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				1BC2DFEA1D4F821F0020D430 /* iBOCA */,
@@ -371,6 +505,51 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		F21C1FFB1F01B95D00523D85 /* CryptoSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CryptoSwift.framework;
+			remoteRef = F21C1FFA1F01B95D00523D85 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F21C1FFD1F01B95D00523D85 /* Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = Tests.xctest;
+			remoteRef = F21C1FFC1F01B95D00523D85 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F2229C881F01AFDF000F2CBA /* CryptoSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CryptoSwift.framework;
+			remoteRef = F2229C871F01AFDF000F2CBA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F2229C8A1F01AFDF000F2CBA /* Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = Tests.xctest;
+			remoteRef = F2229C891F01AFDF000F2CBA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F2229CA31F01B049000F2CBA /* CryptoSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CryptoSwift.framework;
+			remoteRef = F2229CA21F01B049000F2CBA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F2229CA51F01B049000F2CBA /* Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = Tests.xctest;
+			remoteRef = F2229CA41F01B049000F2CBA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1BC2DFE91D4F821F0020D430 /* Resources */ = {
@@ -409,6 +588,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F27AEAAC1EED7AEF00AFB3D1 /* DigitSpanBackward.swift in Sources */,
+				F20FF4C61F04757300B806B7 /* GeriatricDepressionScale.swift in Sources */,
 				E27BA37F1D523B8400619C07 /* BackwardDigitSpan.swift in Sources */,
 				E2B9F8001DD144A70035FE0B /* VATask.swift in Sources */,
 				1B6567401D7DE07B00C92FA3 /* SemanticListGeneration.swift in Sources */,
@@ -416,6 +596,7 @@
 				43343D461E3E66BC001779AC /* TapInOrderBackwardsViewController.swift in Sources */,
 				1B53650E1D7491CF0088B5D2 /* 3DFigureCopy.swift in Sources */,
 				F27AEAA61EEC948600AFB3D1 /* DigitSpanForward.swift in Sources */,
+				F2229C7D1F01AC39000F2CBA /* crypto.swift in Sources */,
 				1BC2DFF11D4F821F0020D430 /* ViewController.swift in Sources */,
 				E272DF021D74957F002F8295 /* Demographics.swift in Sources */,
 				4386775C1E33D551000309F2 /* SimpleMemory.swift in Sources */,
@@ -424,6 +605,7 @@
 				F23951391EFFD660004B09E5 /* Setup.swift in Sources */,
 				F24E6E6E1E1BC2C300E29995 /* AllResults.swift in Sources */,
 				F261D4E81E3E33D00039A545 /* DrawingViewTrails.swift in Sources */,
+				F2A0F12F1F02682500A92B1F /* MOCAandGDT.swift in Sources */,
 				E2C906EB1D54DA1B00C0824E /* SerialSevens.swift in Sources */,
 				E2901DCF1D4F8C3700080F82 /* OrientationTask.swift in Sources */,
 				F261D4EA1E3E33F00039A545 /* Bubbles.swift in Sources */,
@@ -433,9 +615,11 @@
 				1B49EEF31DAC3B6600931E8C /* 3DFigureDraw.swift in Sources */,
 				F27728A61E33C91A004F8A6E /* MainViewController.swift in Sources */,
 				F239513B1EFFE6A1004B09E5 /* PatiantID.swift in Sources */,
+				F2748CDA1F13BD6B00799836 /* AckViewController.swift in Sources */,
 				F27AEA941EEC6E7B00AFB3D1 /* DigitBase.swift in Sources */,
 				43960F4C1E3C0758006FDC7B /* CatsAndDogsViewController.swift in Sources */,
 				F24E6E701E1BC2C300E29995 /* ScaleView.swift in Sources */,
+				F2A0F1281F02626D00A92B1F /* LandingPage.swift in Sources */,
 				1BC2DFEF1D4F821F0020D430 /* AppDelegate.swift in Sources */,
 				F23951371EF4B2DE004B09E5 /* DigitSerialSeven.swift in Sources */,
 				F261D4E61E3E339F0039A545 /* TrailsViewController.swift in Sources */,
@@ -470,6 +654,11 @@
 			isa = PBXTargetDependency;
 			target = 1BC2DFEA1D4F821F0020D430 /* iBOCA */;
 			targetProxy = 1BC2E00B1D4F821F0020D430 /* PBXContainerItemProxy */;
+		};
+		F2229CA91F01B078000F2CBA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CryptoSwift;
+			targetProxy = F2229CA81F01B078000F2CBA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -586,6 +775,7 @@
 		1BC2E0141D4F821F0020D430 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 66YNRJ6GN4;
 				INFOPLIST_FILE = iBOCA/Info.plist;
@@ -600,6 +790,7 @@
 		1BC2E0151D4F821F0020D430 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 66YNRJ6GN4;
 				INFOPLIST_FILE = iBOCA/Info.plist;
