@@ -410,9 +410,17 @@ class CatsAndDogsViewController: ViewController {
     func startAlert(){
         
         print("getting to start alert")
-        
+                
         let alert = UIAlertController(title: "Start", message: "Follow instructions to tap cats and dogs behind the boxes.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Start", style: .default, handler: { (action) -> Void in
+        
+        let str = NSMutableAttributedString(string: "\nFollow instructions to tap cats and dogs behind the boxes.", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 30.0)])
+        alert.setValue(str, forKey: "attributedMessage")
+        
+        let header = NSMutableAttributedString(string: "Start", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 25.0)])
+        alert.setValue(header, forKey: "attributedTitle")
+        
+        
+        alert.addAction(UIAlertAction(title: "Start", style: .cancel, handler: { (action) -> Void in
             self.StartTest()
         }))
   
@@ -447,15 +455,15 @@ class CatsAndDogsViewController: ViewController {
         resetButton.isEnabled = false
         
         for index in 0 ..< order.count {
-            UIView.animate(withDuration: 0.5, animations:{
+            UIView.animate(withDuration: 0.2, animations:{
 //                self.buttonList[index].frame = CGRect(x: self.buttonList[index].frame.origin.x - 110, y: self.buttonList[index].frame.origin.y, width: self.buttonList[index].frame.size.width, height: self.buttonList[index].frame.size.height)
                 self.buttonList[index].alpha = 0.0
             })
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.8){
             for index in 0 ..< self.order.count {
-                UIView.animate(withDuration: 0.5, animations:{
+                UIView.animate(withDuration: 0.2, animations:{
 //                    self.buttonList[index].frame = CGRect(x: self.buttonList[index].frame.origin.x + 110, y: self.buttonList[index].frame.origin.y, width: self.buttonList[index].frame.size.width, height: self.buttonList[index].frame.size.height)
                     self.buttonList[index].alpha = 1.0
                 })
@@ -467,7 +475,7 @@ class CatsAndDogsViewController: ViewController {
             self.startTime = NSDate.timeIntervalSinceReferenceDate
  */
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.3){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0){
             self.endButton.isEnabled = true
             self.resetButton.isEnabled = true
             self.enableButtons()
@@ -777,7 +785,15 @@ class CatsAndDogsViewController: ViewController {
     }
     
     func alert(info:String, display: Bool, start: Bool){
+        
         let alert = UIAlertController(title: "Instructions", message: info, preferredStyle: .alert)
+        
+        let str = NSMutableAttributedString(string: "\n" + info, attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 50.0)])
+        alert.setValue(str, forKey: "attributedMessage")
+        
+        let header = NSMutableAttributedString(string: "Instructions", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 30.0)])
+        alert.setValue(header, forKey: "attributedTitle")
+        
         /*
          //2. Add the text field. You can configure it however you need.
          
@@ -787,7 +803,9 @@ class CatsAndDogsViewController: ViewController {
          })
          */
         //3. Grab the value from the text field, and print it when the user clicks OK.
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+        
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (action) -> Void in
             if(display == true){
                 self.display()
             }
@@ -795,6 +813,7 @@ class CatsAndDogsViewController: ViewController {
                 self.startTime2 = Foundation.Date()
             }
         }))
+        
         
         // 4. Present the alert.
         self.present(alert, animated: true, completion: nil)
