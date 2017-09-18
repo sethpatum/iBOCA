@@ -15,6 +15,7 @@ var displayImgTrailsA = false
 var bubbleColor:UIColor?
 
 var selectedTest = 0
+var numBubbles = 0
 
 
 class TrailsAViewController: ViewController, UIPickerViewDelegate {
@@ -34,6 +35,8 @@ class TrailsAViewController: ViewController, UIPickerViewDelegate {
     
     @IBOutlet weak var testPicker: UIPickerView!
     var TestTypes : [String] = []
+    
+    @IBOutlet weak var numBubblesPicker: UIPickerView!
     
     @IBOutlet weak var resultsLabel: UILabel!
     
@@ -58,8 +61,17 @@ class TrailsAViewController: ViewController, UIPickerViewDelegate {
         testPicker.delegate = self
         testPicker.transform = CGAffineTransform(scaleX: 0.8, y: 1.0)
         selectedTest = testPicker.selectedRow(inComponent: 0)
-        startButton.isHidden = false
         testPicker.isHidden = false
+        
+        numBubblesPicker.delegate = self
+        numBubblesPicker.transform = CGAffineTransform(scaleX: 0.8, y: 1.0)
+        numBubblesPicker.selectRow(TrailsTests[selectedTest].1.count - 3, inComponent: 0, animated:true)
+        numBubbles = numBubblesPicker.selectedRow(inComponent: 0) + 2
+        numBubblesPicker.isHidden = false
+        
+        
+        startButton.isHidden = false
+
         timerLabel.text = ""
         resultsLabel.text = ""
         
@@ -71,6 +83,7 @@ class TrailsAViewController: ViewController, UIPickerViewDelegate {
     func startTest() {
         startButton.isEnabled = false
         testPicker.isHidden = true
+        numBubblesPicker.isHidden = true
         ended = false
 
         self.navigationItem.setHidesBackButton(true, animated:true)
@@ -142,6 +155,8 @@ class TrailsAViewController: ViewController, UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
         if pickerView == testPicker {
             return TestTypes.count
+        } else  if pickerView == numBubblesPicker {
+            return TrailsTests[selectedTest].1.count - 2
         } else {
             return 1
         }
@@ -150,7 +165,11 @@ class TrailsAViewController: ViewController, UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView == testPicker {
             selectedTest = row
+            numBubblesPicker.reloadAllComponents()
             return TestTypes[row]
+        } else  if pickerView == numBubblesPicker {
+            numBubbles = row + 2
+            return String(row + 2)
         } else {
             return ""
         }
@@ -158,6 +177,10 @@ class TrailsAViewController: ViewController, UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == testPicker {
             selectedTest = row
+            numBubblesPicker.reloadAllComponents()
+            numBubblesPicker.selectRow(TrailsTests[selectedTest].1.count - 3, inComponent: 0, animated:true)
+        } else  if pickerView == numBubblesPicker {
+            numBubbles = row + 2
         } else  {
         }
     }
@@ -247,12 +270,14 @@ class TrailsAViewController: ViewController, UIPickerViewDelegate {
             Status[TestTrails] = TestStatus.Done
             
             testPicker.isHidden = false
+            numBubblesPicker.isHidden = false
         }
         
         displayImgTrailsA = false
         
         startButton.isEnabled = true
         testPicker.isHidden = false
+        numBubblesPicker.isHidden = false
         
         bubbleColor = UIColor(red:0.6, green:0.0, blue:0.0, alpha:1.0)
         

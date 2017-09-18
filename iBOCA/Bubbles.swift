@@ -12,7 +12,7 @@ import UIKit
 let TrailsTests : [(String, [(String, Int, Int)])] =
     [("Practice",[("1", 810, 280),
                   ("a", 710, 245),
-                  ("2", 820, 150),
+                  ("2", 420, 250),
                   ("b", 300, 130),
                   ("3", 375, 380)]),
      ("Trails B0", [("1", 710, 380),
@@ -135,7 +135,7 @@ let TrailsTests : [(String, [(String, Int, Int)])] =
                        ("i", 150, 550),
                        ("10",160, 300),
                        ("j", 250, 150)]),
-        ("Trails N1", [("1", 450, 330),
+        ("Trails B6", [("1", 450, 330),
                        ("a", 720, 440),
                        ("2", 800, 200),
                        ("b", 190, 270),
@@ -158,7 +158,7 @@ let TrailsTests : [(String, [(String, Int, Int)])] =
                        ("11",960, 580),
                        ("k", 970, 40),
                        ("12",600, 50),
-                       ("l", 830, 80)5vb])]
+                       ("l", 830, 80)])]
 
 
 
@@ -178,6 +178,18 @@ class BubblesA {
     
     var startTime = Foundation.Date()
     
+    var xmin = 1000
+    var xmax = 9
+    var ymin = 1000
+    var ymax = 0
+    func getrange() {
+        for (s, x, y) in bubblelist {
+            xmin = min(x, xmin)
+            xmax = max(x, xmax)
+            ymin = min(y, ymin)
+            ymax = max(y, ymax)
+        }
+    }
     
     //Rotate (180 degrees) or mirror (on x or y) the point
     var xt:Bool = false
@@ -186,6 +198,8 @@ class BubblesA {
     func transform(coord:(String, Int, Int)) -> (String, Int, Int) {
         var x = coord.1
         var y = coord.2
+        x = (x - xmin)*(950-40)/(xmax - xmin) + 40
+        y = (y - ymin)*(580-40)/(ymax - ymin) + 40
         if xt  {
             x  = 1010 - x
         }
@@ -198,7 +212,10 @@ class BubblesA {
     
     
     init() {
-        bubblelist = TrailsTests[selectedTest].1
+        for i in 0...numBubbles-1 {
+            bubblelist.append(TrailsTests[selectedTest].1[i])
+        }
+        getrange()
         bubblelist = bubblelist.map(transform)
         startTime = Foundation.Date()
         jsontimes.removeAll()

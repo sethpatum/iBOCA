@@ -191,7 +191,7 @@ class DrawingViewTrails: UIView {
             CTLineDraw(line, context!)
         }
         
-        if (TrailsTests[selectedTest].1.last?.0 == name) {
+        if (TrailsTests[selectedTest].1[numBubbles-1].0 == name) {
             let aFont = UIFont(name: "Menlo", size: 19)
             let attr = [NSFontAttributeName:aFont!,NSForegroundColorAttributeName:UIColor.black]
             let text = CFAttributedStringCreate(nil, "END" as CFString!, attr as CFDictionary!)
