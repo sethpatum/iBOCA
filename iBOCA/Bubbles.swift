@@ -178,6 +178,9 @@ class BubblesA {
     
     var startTime = Foundation.Date()
     
+    
+    // Frame the bubbles within the bounding box
+    // first get the bounding box
     var xmin = 1000
     var xmax = 9
     var ymin = 1000
@@ -199,7 +202,8 @@ class BubblesA {
         var x = coord.1
         var y = coord.2
         
-        let bcount = (24 - bubblelist.count) * 8
+        // frame the bubbles within the bounding box
+        let bcount = (24 - bubblelist.count) * 8 // more bubbles, larger area
         x = (x - xmin)*(950-40-2*bcount)/(xmax - xmin) + 40 + bcount
         y = (y - ymin)*(580-40-2*bcount)/(ymax - ymin) + 40 + bcount
         
@@ -209,7 +213,6 @@ class BubblesA {
         if yt {
             y = 625 - y
         }
-        //return (coord.0, Int(CGFloat(x)*screenSize!.maxX/1024.0), Int(CGFloat(y)*screenSize!.maxY/768.0))
         return (coord.0, x, y)
     }
     
