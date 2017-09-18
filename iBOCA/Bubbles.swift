@@ -186,7 +186,7 @@ class BubblesA {
     var ymin = 1000
     var ymax = 0
     func getrange() {
-        for (s, x, y) in bubblelist {
+        for (_, x, y) in bubblelist {
             xmin = min(x, xmin)
             xmax = max(x, xmax)
             ymin = min(y, ymin)
