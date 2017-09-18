@@ -198,16 +198,11 @@ class BubblesA {
     func transform(coord:(String, Int, Int)) -> (String, Int, Int) {
         var x = coord.1
         var y = coord.2
-        if bubblelist.count < 10 {
-            // frame it in a smaller box
-            x = (x - xmin)*(860-120)/(xmax - xmin) + 120
-            y = (y - ymin)*(480-120)/(ymax - ymin) + 120
-        } else {
-            // frame it in the full box
-            x = (x - xmin)*(950-40)/(xmax - xmin) + 40
-            y = (y - ymin)*(580-40)/(ymax - ymin) + 40
-        }
-    
+        
+        let bcount = (24 - bubblelist.count) * 8
+        x = (x - xmin)*(950-40-2*bcount)/(xmax - xmin) + 40 + bcount
+        y = (y - ymin)*(580-40-2*bcount)/(ymax - ymin) + 40 + bcount
+        
         if xt  {
             x  = 1010 - x
         }
