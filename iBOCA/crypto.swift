@@ -16,7 +16,7 @@ let initvec = "CV68au@dz7XPkFEb"
 
 func encryptString(str : String) -> Data {
     do {
-        let aes = try AES(key: key, iv: initvec, blockMode: .CBC, padding:ZeroPadding())
+        let aes = try AES(key: key, iv: initvec, blockMode: .CBC, padding:Padding.zeroPadding)
         let ciphertext = try aes.encrypt(Array(str.utf8))
         return Data(bytes: ciphertext)
     } catch { }
@@ -26,7 +26,7 @@ func encryptString(str : String) -> Data {
 
 func decryptString(ciphertext : Data) -> String {
     do {
-        let aes = try AES(key: key, iv: initvec, blockMode: .CBC, padding:ZeroPadding())
+        let aes = try AES(key: key, iv: initvec, blockMode: .CBC, padding:Padding.zeroPadding)
         let data = try aes.decrypt(ciphertext.bytes)
         return String(data: Data(bytes: data), encoding: String.Encoding.utf8)!
     } catch { }
