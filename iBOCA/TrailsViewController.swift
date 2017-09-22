@@ -263,6 +263,7 @@ class TrailsAViewController: ViewController, UIPickerViewDelegate {
             
             result.json["Path"] = drawingView.bubbles.jsontimes
             result.json["Name"] = self.title
+            result.json["Total Bubbles"] = numBubbles
             result.json["Errors"] = drawingView.incorrect
             result.json["Correct Path Length"] = drawingView.nextBubb
             resultsArray.add(result)
