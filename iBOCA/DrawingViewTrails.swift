@@ -6,19 +6,16 @@
 //  Copyright (c) 2015 sunspot. All rights reserved.
 //
 import Foundation
-
 import UIKit
-
-
 
 class DrawingViewTrails: UIView {
     
-    
     private var currPath = UIBezierPath()
-    
     var errorPath = UIBezierPath()
-    
     var mainPath = UIBezierPath()
+    
+    var startTime = Foundation.Date()
+    var resultpath: [String:Any] = [:]
     
     var bubbles = BubblesA()
     
@@ -33,10 +30,8 @@ class DrawingViewTrails: UIView {
         }
     }
     
-    
     //ADDITION
     var paths = [UIBezierPath]()
-    
     
     var countSinceCorrect = 0
     var canDraw = true
@@ -68,7 +63,6 @@ class DrawingViewTrails: UIView {
     
     
     func drawResultBackground() {
-        
         for bubble in bubbles.bubblelist {
             drawBubble(bubble: bubble)
         }
@@ -105,7 +99,6 @@ class DrawingViewTrails: UIView {
     override func draw(_ rect: CGRect) {
         print("in drawRect")
         
-        
         for bubble in bubbles.bubblelist {
             drawBubble(bubble: bubble)
         }
@@ -122,17 +115,16 @@ class DrawingViewTrails: UIView {
     
     func reset() {
         print("In reset")
-        
         mainPath.removeAllPoints()
         currPath.removeAllPoints()
         errorPath.removeAllPoints()
         
+        startTime = Foundation.Date()
         setNeedsDisplay()
     }
     
     func drawBubble(bubble:(String, Int, Int)) {
         //println("in drawbubble")
-        
         
         let (name, x, y) = bubble
         //println("Bubble \(bubble)")
@@ -144,7 +136,6 @@ class DrawingViewTrails: UIView {
         
         // Set the circle outerline-colour
         bubbleColor!.set()
-        
         
         // Create Circle
         context?.addArc(center:CGPoint(x:CGFloat(x), y:CGFloat(y)), radius:CGFloat(20.0), startAngle:CGFloat(0), endAngle:CGFloat(Double.pi * 2.0), clockwise:true)
@@ -168,7 +159,6 @@ class DrawingViewTrails: UIView {
         
        context?.textMatrix = CGAffineTransform(rotationAngle: CGFloat.pi).scaledBy(x: -1, y: 1)
   
-        
         let num = name.characters.count
         
         if num == 1 {
@@ -200,12 +190,9 @@ class DrawingViewTrails: UIView {
             context?.textPosition = CGPoint(x:CGFloat(x-16), y:CGFloat(y+41))
             CTLineDraw(line, context!)
         }
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        //println("Touch Begin")
-        
         if nextBubb != bubbles.bubblelist.count {
             canDraw = true
         }
@@ -215,152 +202,91 @@ class DrawingViewTrails: UIView {
         
         setNeedsDisplay()
         
-        //var currentPath = UIBezierPath()
-        
+        var action = "Moveto"
         if bubbles.inNewBubble(x: touch.location(in: self).x, y:touch.location(in: self).y) == true {
-            
-            
             if bubbles.inCorrectBubble() == true {
-                
                 mainPath.append(UIBezierPath(cgPath: currPath.cgPath))
                 
                 //ADDITION
-                
                 if bubbles.currentBubble == nextBubb {
                     var p = UIBezierPath()
                     p = UIBezierPath(cgPath: currPath.cgPath)
                     paths.append(p)
                     
-                    
                     print("paths added member; length is \(paths.count); currBubb = \(bubbles.currentBubble); nextBubb = \(bubbles.nextBubble)")
-                    
-                    
                     nextBubb += 1
-                    
+                    action = "Moveto next bubble \(bubbles.currentBubble)"
                 } else {
-                    
                     var p = UIBezierPath()
                     p = UIBezierPath(cgPath: currPath.cgPath)
                     errorPath.append(p)
-                    
+                    action = "Moveto not next bubble \(bubbles.currentBubble)"
                 }
                 
                 currPath.removeAllPoints()
                 currPath.move(to: touch.location(in: self))
-                
-                //                countSinceCorrect = 0
-                
                 print("in correct bubble")
                 
             } else {
-                
-                //                countSinceCorrect += 1
-                //                print("countSinceCorrect = \(countSinceCorrect)")
-                
-                //                if countSinceCorrect > 1 || (countSinceCorrect == 1 && (selectedTest == "Trails A Practice" || selectedTest == "Trails B Practice")) {
-                //                delay(1000.0) {
-                
                 self.errorPath.append(UIBezierPath(cgPath: self.currPath.cgPath))
-                
-                //                      print("countSinceCorrect = \(countSinceCorrect); removing all pts and resetting")
-                
-                
-                
                 currPath.removeAllPoints()
-                
-                //                      countSinceCorrect = 0
-                
                 self.canDraw = false
-                
                 self.incorrect += 1
-                
-                //                    }
-                //
-                
+                action = "Moveto incorrect bubble \(bubbles.currentBubble)"
             }
-            
         }
-        
+        let loc = touch.location(in: self)
+        resultpath[String(Foundation.Date().timeIntervalSince(startTime))] = ["x":loc.x, "y":loc.y, "status":action]
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        //println("Touch moved")
         let touch = touches.first! as UITouch
         if canDraw == true {
             currPath.addLine(to: touch.location(in: self))
             
             setNeedsDisplay()
-            
+            var action = "Lineto"
             if bubbles.inNewBubble(x: touch.location(in: self).x, y:touch.location(in: self).y) == true {
-                
                 print("in a new bubble")
                 
                 if bubbles.inCorrectBubble() == true {
-                    
                     mainPath.append(UIBezierPath(cgPath: currPath.cgPath))
                     
                     //ADDITION
-                    
                     if bubbles.currentBubble == nextBubb {
                         var p = UIBezierPath()
                         p = UIBezierPath(cgPath: currPath.cgPath)
                         paths.append(p)
-                        
-                        
+                
                         print("paths added member; length is \(paths.count); currBubb = \(bubbles.currentBubble); nextBubb = \(bubbles.nextBubble)")
-                        
-                        
                         nextBubb += 1
-                        
-                    }
-                    else {
+                        action = "Lineto next bubble \(bubbles.currentBubble)"
+                    } else {
                         var p = UIBezierPath()
                         p = UIBezierPath(cgPath: currPath.cgPath)
                         
                         errorPath.append(p)
                         currPath.removeAllPoints()
+                        action = "Lineto not next bubble \(bubbles.currentBubble)"
                     }
                     
                     currPath.removeAllPoints()
                     currPath.move(to: touch.location(in: self))
-                    
-                    //                    countSinceCorrect = 0
-                    
                     print("in correct bubble")
-                    
-                }
-                    
-                else {
-                    
-                    //                    countSinceCorrect += 1
+                } else {
                     print("countSinceCorrect = \(countSinceCorrect); currBubb = \(bubbles.currentBubble); nextBubb = \(bubbles.nextBubble)")
-                    
-                    //                    if countSinceCorrect > 1 || (countSinceCorrect == 1 && (selectedTest == "Trails A Practice" || selectedTest == "Trails B Practice")) {
-                    
-                    
-                    
                     errorPath.append(UIBezierPath(cgPath: currPath.cgPath))
-                    
-                    //                        print("countSinceCorrect = \(countSinceCorrect); removing all pts and resetting")
-                    
                     currPath.removeAllPoints()
-                    
-                    //                        countSinceCorrect = 0
-                    
                     canDraw = false
-                    
-                    
                     print("should have removed all pts")
-                    
                     incorrect += 1
                     incorrectlist.append("\(bubbles.lastBubble)->\(bubbles.currentBubble)")
-                    
-                    //                    }
-                    
+                    action = "Lineto incorrect bubble \(bubbles.currentBubble)"
                 }
             }
+            let loc = touch.location(in: self)
+            resultpath[String(Foundation.Date().timeIntervalSince(startTime))] = ["x":loc.x, "y":loc.y, "status":action]
         }
-        
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {

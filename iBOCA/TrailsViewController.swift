@@ -266,6 +266,9 @@ class TrailsAViewController: ViewController, UIPickerViewDelegate {
             result.json["Total Bubbles"] = numBubbles
             result.json["Errors"] = drawingView.incorrect
             result.json["Correct Path Length"] = drawingView.nextBubb
+            result.json["Full Path"] = drawingView.resultpath
+            
+            print(result.json)
             resultsArray.add(result)
             
             Status[TestTrails] = TestStatus.Done

@@ -27,6 +27,9 @@ class CatsAndDogsViewController: ViewController {
     var missedCats = [Int]()
     var incorrectRandom = [Int]()
     var times = [Double]()
+    var button_times = [Double]()
+    
+    var resultTmpList : [String:Any] = [:]
     
     var dogList = [Int]()
     var catList = [Int]()
@@ -66,7 +69,6 @@ class CatsAndDogsViewController: ViewController {
     @IBAction func Reset(_ sender: Any) {
         print("in reset")
         
-        
         for k in 0 ..< buttonList.count {
             buttonList[k].removeFromSuperview()
         }
@@ -78,8 +80,6 @@ class CatsAndDogsViewController: ViewController {
         for j in 0 ..< boxList.count {
             boxList[j].removeFromSuperview()
         }
-        
-        
         
         dogList = [Int]()
         catList = [Int]()
@@ -94,6 +94,8 @@ class CatsAndDogsViewController: ViewController {
         missedCats = [Int]()
         incorrectRandom = [Int]()
         times = [Double]()
+        button_times = [Double]()
+        resultTmpList = [:]
         timePassed = Double()
         startTime = TimeInterval()
         startTime2 = Foundation.Date()
@@ -110,8 +112,6 @@ class CatsAndDogsViewController: ViewController {
         
 //        StartTest(resetButton)
 //        startAlert()
-        
-        
     }
     
     var label1 = UILabel()
@@ -123,8 +123,6 @@ class CatsAndDogsViewController: ViewController {
     
     
     func setSequence(){
-        
-        
         label1 = UILabel(frame: CGRect(x: 50, y: 200, width: 350, height: 100))
         label1.textAlignment = .left
         label1.numberOfLines = 2
@@ -142,7 +140,6 @@ class CatsAndDogsViewController: ViewController {
         label3.numberOfLines = 2
         label3.text = "Cats with Dog Distractors:\n(Format: (#dogs1,#cats1),(#dogs2,#cats2)...)"
         self.view.addSubview(label3)
-        
         
         field1 = UITextField(frame: CGRect(x: 450, y: 200, width: 510, height: 100))
         if(UserDefaults.standard.object(forKey: "CandD-Dogs") != nil) {
@@ -179,7 +176,6 @@ class CatsAndDogsViewController: ViewController {
         
         sequenceSelectionButton.isHidden = false
         sequenceSelectionButton.isEnabled = true
-        
     }
     
     
@@ -294,6 +290,7 @@ class CatsAndDogsViewController: ViewController {
         //print("Button tapped")
         
         timePassed = findTime()
+        button_times.append(timePassed)
         
         //find which button user has tapped
         for i in 0...buttonList.count-1 {
@@ -305,8 +302,6 @@ class CatsAndDogsViewController: ViewController {
                 sender.isEnabled = false
                 
                 pressed.append(i)
-                
-                
             }
         }
         
@@ -368,7 +363,6 @@ class CatsAndDogsViewController: ViewController {
             array.append(i)
         }
         
-        
 //IDK IF THIS WILL WORK BACKWARDS???
         
         for k in 0...places.count-1 {
@@ -379,10 +373,7 @@ class CatsAndDogsViewController: ViewController {
             array.remove(at: random)
         }
         
-        
         print("order is \(order)")
-        
-        
     }
     
     //randomize 1st order; light up 1st button
@@ -404,7 +395,6 @@ class CatsAndDogsViewController: ViewController {
         setSequence()
         
 //        startAlert()
-        
     }
     
     func startAlert(){
@@ -429,13 +419,10 @@ class CatsAndDogsViewController: ViewController {
         }
         
 //        self.present(alert, animated: true, completion: nil)
-        
     }
     
     func update(timer: Timer) {
-        
         if(timeOfTap != -1.0){
-            
             let currTime = NSDate.timeIntervalSinceReferenceDate
             let diff = currTime - timeOfTap
             
@@ -443,9 +430,7 @@ class CatsAndDogsViewController: ViewController {
                 timeOfTap = -1.0
                 selectionDone()
             }
-            
         }
-        
     }
     
     func display(){
@@ -481,7 +466,6 @@ class CatsAndDogsViewController: ViewController {
             self.enableButtons()
             self.startTime = NSDate.timeIntervalSinceReferenceDate
         }
-        
     }
     
     func StartTest() {
@@ -507,7 +491,6 @@ class CatsAndDogsViewController: ViewController {
                 imageView.image = image
                 self.view.addSubview(imageView)
                 imageList.append(imageView)
-                
             }
                 
             else {
@@ -518,7 +501,6 @@ class CatsAndDogsViewController: ViewController {
                     imageView.image = image
                     self.view.addSubview(imageView)
                     imageList.append(imageView)
-                    
                 }
             }
             
@@ -610,16 +592,38 @@ class CatsAndDogsViewController: ViewController {
             var resulttxt = ""
             result.numErrors = 0
             
+            var reslist : [String:Any] = [:]
+            
             for k in 0 ..< self.level {
                 
                 var r = ""
                 if k < self.break2 {
                     r = "\(self.correctDogs[k]) dogs correctly selected out of \(self.missedDogs[k]+self.correctDogs[k]) dogs; \(self.incorrectCats[k]) cats incorrectly selected out of \(self.incorrectCats[k]+self.missedCats[k]) cats; \(self.incorrectRandom[k]) empty places incorrectly selected. Time: \(self.times[k]) seconds\n"
-                    result.numErrors += self.missedDogs[k] + self.incorrectCats[k] + self.incorrectRandom[k]
+                    let errors = self.missedDogs[k] + self.incorrectCats[k] + self.incorrectRandom[k]
+                    result.numErrors += errors
+                    var rl:[String:Any] = [:]
+                    rl["Dogs Correct"] = self.correctDogs[k]
+                    rl["Dogs Total"]  = self.missedDogs[k]+self.correctDogs[k]
+                    rl["Cats Incorrect"] = self.incorrectCats[k]
+                    rl["Cats Total"] = self.incorrectCats[k]+self.missedCats[k]
+                    rl["Empty Incorrect"] = self.incorrectRandom[k]
+                    rl["Time"] = self.times[k]
+                    rl["Num Errors"] = errors
+                    reslist[String(k)] = rl
                 }
                 else {
                     r = "\(self.correctDogs[k]) dogs incorrectly selected out of \(self.missedDogs[k]+self.correctDogs[k]) dogs; \(self.incorrectCats[k]) cats correctly selected out of \(self.incorrectCats[k]+self.missedCats[k]) cats; \(self.incorrectRandom[k]) empty places incorrectly selected. Time: \(self.times[k]) seconds\n"
-                    result.numErrors += self.correctDogs[k] + self.missedCats[k] + self.incorrectRandom[k]
+                    let errors = self.correctDogs[k] + self.missedCats[k] + self.incorrectRandom[k]
+                    result.numErrors += errors
+                    var rl:[String:Any] = [:]
+                    rl["Dogs inorrect"] = self.correctDogs[k]
+                    rl["Dogs Total"]  = self.missedDogs[k]+self.correctDogs[k]
+                    rl["Cats correct"] = self.incorrectCats[k]
+                    rl["Cats Total"] = self.incorrectCats[k]+self.missedCats[k]
+                    rl["Empty Incorrect"] = self.incorrectRandom[k]
+                    rl["Time"] = self.times[k]
+                    rl["Num Errors"] = errors
+                    reslist[String(k)] = rl
                 }
                 
                 resulttxt.append(r)
@@ -629,7 +633,7 @@ class CatsAndDogsViewController: ViewController {
             print(resulttxt)
             self.resultLabel.text = resulttxt
             
-            result.json = ["None":""]
+            result.json = ["Passes":self.resultTmpList, "Score":reslist]
             resultsArray.add(result)
             
             Status[TestCatsAndDogs] = TestStatus.Done
@@ -646,6 +650,8 @@ class CatsAndDogsViewController: ViewController {
         times.append(timePassed)
         timePassed = 0
         
+        var tmpres : [String:Any] = [:]
+        
         print("selection done; dogs = \(dogs), cats = \(cats)")
         
         var dogCount = 0
@@ -654,17 +660,20 @@ class CatsAndDogsViewController: ViewController {
         for k in 0 ..< pressed.count {
             if(pressed[k] < dogs){
                 dogCount += 1
+                tmpres[String(k)] = ["Type":"Dog", "Time":button_times[k]]
             }
             else {
                 if(pressed[k] < dogs + cats){
                     catCount += 1
+                    tmpres[String(k)] = ["Type":"Cat", "Time":button_times[k]]
                 }
                 else {
                     otherCount += 1
+                    tmpres[String(k)] = ["Type":"Other", "Time":button_times[k]]
                 }
             }
         }
-        
+        resultTmpList[String(level)] = ["Dogs":dogs, "Cats":cats, "Dogs found":dogCount, "Cats found":catCount, "Path":tmpres]
         pressed = [Int]()
         
         print("catCount = \(catCount), dogCount = \(dogCount), otherCount = \(otherCount), time = \(timePassed)")
@@ -688,6 +697,7 @@ class CatsAndDogsViewController: ViewController {
         level += 1
         
         print("next; level = \(level)")
+        button_times = [Double]()
         
         if (level == catList.count){
             if(repetition<0) {
@@ -735,9 +745,7 @@ class CatsAndDogsViewController: ViewController {
                     
                     //print("shoulda added dog images")
                     
-                }
-                    
-                else {
+                } else {
                     if(i <= cats + dogs - 1) {
                         
                         let image = UIImage(named: "cat1")!
@@ -747,7 +755,6 @@ class CatsAndDogsViewController: ViewController {
                         imageList.append(imageView)
                         
                         //print("shoulda added cat images")
-                        
                     }
                 }
                 
@@ -764,7 +771,6 @@ class CatsAndDogsViewController: ViewController {
                 self.view.addSubview(button)
                 
                 //print("shoulda added buttons")
-                
             }
             
             if(level == 0){
