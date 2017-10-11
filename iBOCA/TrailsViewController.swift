@@ -199,7 +199,6 @@ class TrailsAViewController: ViewController, UIPickerViewDelegate {
     }
     
     func update(timer: Timer) {
-        
         if stopTrailsA == false {
             let currTime = NSDate.timeIntervalSinceReferenceDate
             var diff: TimeInterval = currTime - startTime
@@ -281,12 +280,10 @@ class TrailsAViewController: ViewController, UIPickerViewDelegate {
         numBubblesPicker.isHidden = false
         
         bubbleColor = UIColor(red:0.6, green:0.0, blue:0.0, alpha:1.0)
-        
     }
     
     
     func drawCustomImage(size: CGSize) -> UIImage {
-        
         // Setup our context
         //let bounds = CGRect(origin: CGPoint.zero, size: size)
         let opaque = false
