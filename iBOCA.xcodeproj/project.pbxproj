@@ -36,6 +36,7 @@
 		F2229C7D1F01AC39000F2CBA /* crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2229C7C1F01AC39000F2CBA /* crypto.swift */; };
 		F2229CA61F01B078000F2CBA /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2229C881F01AFDF000F2CBA /* CryptoSwift.framework */; };
 		F2229CA71F01B078000F2CBA /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F2229C881F01AFDF000F2CBA /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F233EABF1F9423BF0012702C /* GoldStandard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233EABE1F9423BF0012702C /* GoldStandard.swift */; };
 		F23951351EEE1ACF004B09E5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F23951341EEE1ACF004B09E5 /* AVFoundation.framework */; };
 		F23951371EF4B2DE004B09E5 /* DigitSerialSeven.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23951361EF4B2DE004B09E5 /* DigitSerialSeven.swift */; };
 		F23951391EFFD660004B09E5 /* Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23951381EFFD660004B09E5 /* Setup.swift */; };
@@ -176,6 +177,7 @@
 		F2229C801F01AF50000F2CBA /* CryptoSwift */ = {isa = PBXFileReference; lastKnownFileType = folder; name = CryptoSwift; path = CryptoSwift/Sources/CryptoSwift; sourceTree = "<group>"; };
 		F2229C821F01AFDF000F2CBA /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = CryptoSwift/CryptoSwift.xcodeproj; sourceTree = "<group>"; };
 		F2229C9D1F01B049000F2CBA /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = CryptoSwift/CryptoSwift.xcodeproj; sourceTree = SOURCE_ROOT; };
+		F233EABE1F9423BF0012702C /* GoldStandard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldStandard.swift; sourceTree = "<group>"; };
 		F23951341EEE1ACF004B09E5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		F23951361EF4B2DE004B09E5 /* DigitSerialSeven.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DigitSerialSeven.swift; sourceTree = "<group>"; };
 		F23951381EFFD660004B09E5 /* Setup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setup.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				F261D4E41E3E33620039A545 /* Trails */,
 				E2B9F7FF1DD144A70035FE0B /* VATask.swift */,
 				1BC2DFF01D4F821F0020D430 /* ViewController.swift */,
+				F233EABE1F9423BF0012702C /* GoldStandard.swift */,
 			);
 			path = iBOCA;
 			sourceTree = "<group>";
@@ -601,6 +604,7 @@
 				E272DF021D74957F002F8295 /* Demographics.swift in Sources */,
 				4386775C1E33D551000309F2 /* SimpleMemory.swift in Sources */,
 				E29AF0401D51134A00C4AF79 /* ForwardDigitSpan.swift in Sources */,
+				F233EABF1F9423BF0012702C /* GoldStandard.swift in Sources */,
 				F24E6E6F1E1BC2C300E29995 /* ResultsViewController.swift in Sources */,
 				F23951391EFFD660004B09E5 /* Setup.swift in Sources */,
 				F24E6E6E1E1BC2C300E29995 /* AllResults.swift in Sources */,

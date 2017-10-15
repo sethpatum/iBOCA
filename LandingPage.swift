@@ -24,13 +24,14 @@ let TestNampingPictures = 12
 let TestSemanticListGeneration = 13
 let TestMOCAandGDTResults = 14
 let TestGDTResults = 15
+let TestGoldStandard = 16
 
 
 enum TestStatus {
     case NotStarted, Running, Done
 }
 
-var Status  = [TestStatus](repeating: TestStatus.NotStarted, count: 16)
+var Status  = [TestStatus](repeating: TestStatus.NotStarted, count: 20)
 
 var doneSetup = false
 
@@ -67,6 +68,7 @@ class LandingPage: ViewController {
         Status[TestSemanticListGeneration] = TestStatus.NotStarted
         Status[TestMOCAandGDTResults] = TestStatus.NotStarted
         Status[TestGDTResults] = TestStatus.NotStarted
+        Status[TestGoldStandard] = TestStatus.NotStarted
         
         if doneSetup {
             GotoTests.isEnabled = true
