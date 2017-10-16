@@ -22,7 +22,7 @@ class PatiantID {
         setInitials()
         
         let formatter = DateFormatter()
-        formatter.dateFormat = "MM-dd"
+        formatter.dateFormat = "MM-dd-YYYY"
         currDate = formatter.string(from: Foundation.Date())
         
         if UserDefaults.standard.object(forKey: "lastTestDate") != nil {
