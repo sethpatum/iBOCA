@@ -203,11 +203,6 @@ class CatsAndDogsViewController: ViewController {
         field3.isEnabled = false
         sequenceSelectionButton.isHidden = true
         
-        UserDefaults.standard.set(field1.text, forKey:"CandD-Dogs")
-        UserDefaults.standard.set(field2.text, forKey:"CandD-Dogs-no-Cats")
-        UserDefaults.standard.set(field3.text, forKey:"CandD-Cats-no-Dogs")
-        UserDefaults.standard.synchronize()
-        
         do {
             let dogsAloneArr = dogsAlone?.components(separatedBy: ",")
             
@@ -253,17 +248,20 @@ class CatsAndDogsViewController: ViewController {
                 catList.append(y2)
             }
             
-            //break1 = (dogsAloneArr?.count) ?? 0
-            //break2 = (dogsCats1Arr?.count) ?? 0 + break1
             break1 = up0
             break2 = up0 + up1
+            
+            UserDefaults.standard.set(field1.text, forKey:"CandD-Dogs")
+            UserDefaults.standard.set(field2.text, forKey:"CandD-Dogs-no-Cats")
+            UserDefaults.standard.set(field3.text, forKey:"CandD-Cats-no-Dogs")
+            UserDefaults.standard.synchronize()
             
             cats = catList[0]
             dogs = dogList[0]
             
-            print("doglist:", dogList)
-            print("catlist:", catList)
-            print("breaks:", break1, break2)
+            //print("doglist:", dogList)
+            //print("catlist:", catList)
+            //print("breaks:", break1, break2)
             
             startAlert()
         } catch {
