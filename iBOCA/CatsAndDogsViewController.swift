@@ -253,11 +253,17 @@ class CatsAndDogsViewController: ViewController {
                 catList.append(y2)
             }
             
-            break1 = (dogsAloneArr?.count) ?? 0
-            break2 = (dogsCats1Arr?.count) ?? 0 + break1
+            //break1 = (dogsAloneArr?.count) ?? 0
+            //break2 = (dogsCats1Arr?.count) ?? 0 + break1
+            break1 = up0
+            break2 = up0 + up1
             
             cats = catList[0]
             dogs = dogList[0]
+            
+            print("doglist:", dogList)
+            print("catlist:", catList)
+            print("breaks:", break1, break2)
             
             startAlert()
         } catch {
