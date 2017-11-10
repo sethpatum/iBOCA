@@ -436,8 +436,7 @@ class CatsAndDogsViewController: ViewController {
                 timeOfTap = -1.0 // reset the timer
                 selectionDone()
             }
-        }
-       if(timeOfStart != -1.0){  // from start timer running
+        } else if(timeOfStart != -1.0){  // from start timer running
             let diff = currTime - timeOfStart
             if(diff >= 3) { // wated too long to tap anyting
                 timeOfStart = -1.0 // reset from start timer
