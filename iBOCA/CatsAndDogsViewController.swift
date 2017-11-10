@@ -37,9 +37,8 @@ class CatsAndDogsViewController: ViewController {
     var break2 = Int()
     
     var timePassed = Double()
-    
-    var timeOfTap = Double()
-    var timeOfStart = Double()
+    var timeOfTap = Double()    // timer to figure out how long after the last tap
+    var timeOfStart = Double()  // timer to figure out how long after the start of the round
     
     @IBOutlet weak var sequenceSelectionButton: UIButton!
     
@@ -430,18 +429,18 @@ class CatsAndDogsViewController: ViewController {
     
     func update(timer: Timer) {
         let currTime = NSDate.timeIntervalSinceReferenceDate
-        if(timeOfTap != -1.0){
+        if(timeOfTap != -1.0){  // has tapped one of the boxes
             let diff = currTime - timeOfTap
-            timeOfStart = -1.0
-            if(diff >= 1.5){
-                timeOfTap = -1.0
+            timeOfStart = -1.0 // reset from start round timer
+            if(diff >= 1.5){ // too long after last tap
+                timeOfTap = -1.0 // reset the timer
                 selectionDone()
             }
         }
-       if(timeOfStart != -1.0){
+       if(timeOfStart != -1.0){  // from start timer running
             let diff = currTime - timeOfStart
-            if(diff >= 3) {
-                timeOfStart = -1.0
+            if(diff >= 3) { // wated too long to tap anyting
+                timeOfStart = -1.0 // reset from start timer
                 selectionDone()
             }
         }
