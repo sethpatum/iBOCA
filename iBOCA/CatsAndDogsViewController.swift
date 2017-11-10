@@ -39,6 +39,7 @@ class CatsAndDogsViewController: ViewController {
     var timePassed = Double()
     
     var timeOfTap = Double()
+    var timeOfStart = Double()
     
     @IBOutlet weak var sequenceSelectionButton: UIButton!
     
@@ -107,6 +108,7 @@ class CatsAndDogsViewController: ViewController {
         resetButton.isEnabled = false
         backButton.isEnabled = true
         timeOfTap = -1.0
+        timeOfStart = -1.0
         
         setSequence()
         
@@ -395,6 +397,7 @@ class CatsAndDogsViewController: ViewController {
         print("getting here")
         
         timeOfTap = -1.0
+        timeOfStart = -1.0
         
         setSequence()
         
@@ -426,12 +429,19 @@ class CatsAndDogsViewController: ViewController {
     }
     
     func update(timer: Timer) {
+        let currTime = NSDate.timeIntervalSinceReferenceDate
         if(timeOfTap != -1.0){
-            let currTime = NSDate.timeIntervalSinceReferenceDate
             let diff = currTime - timeOfTap
-            
+            timeOfStart = -1.0
             if(diff >= 1.5){
                 timeOfTap = -1.0
+                selectionDone()
+            }
+        }
+       if(timeOfStart != -1.0){
+            let diff = currTime - timeOfStart
+            if(diff >= 3) {
+                timeOfStart = -1.0
                 selectionDone()
             }
         }
@@ -469,6 +479,7 @@ class CatsAndDogsViewController: ViewController {
             self.resetButton.isEnabled = true
             self.enableButtons()
             self.startTime = NSDate.timeIntervalSinceReferenceDate
+            self.timeOfStart = NSDate.timeIntervalSinceReferenceDate
         }
     }
     
