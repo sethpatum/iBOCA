@@ -18,6 +18,7 @@ var emailOn    : Bool = false
 var emailAddress       : String = ""
 var serverEmailAddress : String = "datacollect@bostoncognitive.org"
 var theTestClass : Int = 0
+let testClassName = ["CNU", "COMM", "ECT", "DW", "PHY", "ICU", "B1", "B2", "B3", "TEST"]
 
 class Setup: ViewController, UIPickerViewDelegate  {
 
@@ -136,7 +137,7 @@ class Setup: ViewController, UIPickerViewDelegate  {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView == testClass {
             selectedTest = row
-            return String(row+1)
+            return testClassName[row]
         } else {
             return ""
         }
