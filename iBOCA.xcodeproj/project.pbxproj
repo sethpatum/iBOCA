@@ -33,6 +33,7 @@
 		E2B9F8001DD144A70035FE0B /* VATask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B9F7FF1DD144A70035FE0B /* VATask.swift */; };
 		E2C906EB1D54DA1B00C0824E /* SerialSevens.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C906EA1D54DA1B00C0824E /* SerialSevens.swift */; };
 		F20FF4C61F04757300B806B7 /* GeriatricDepressionScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20FF4C51F04757300B806B7 /* GeriatricDepressionScale.swift */; };
+		F21941581FD47C9800B0997D /* ProtocolData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21941571FD47C9800B0997D /* ProtocolData.swift */; };
 		F2229C7D1F01AC39000F2CBA /* crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2229C7C1F01AC39000F2CBA /* crypto.swift */; };
 		F2229CA61F01B078000F2CBA /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2229C881F01AFDF000F2CBA /* CryptoSwift.framework */; };
 		F2229CA71F01B078000F2CBA /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F2229C881F01AFDF000F2CBA /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -171,6 +172,7 @@
 		E2B9F7FF1DD144A70035FE0B /* VATask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VATask.swift; sourceTree = "<group>"; };
 		E2C906EA1D54DA1B00C0824E /* SerialSevens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerialSevens.swift; sourceTree = "<group>"; };
 		F20FF4C51F04757300B806B7 /* GeriatricDepressionScale.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeriatricDepressionScale.swift; sourceTree = "<group>"; };
+		F21941571FD47C9800B0997D /* ProtocolData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolData.swift; sourceTree = "<group>"; };
 		F21C1FF21F01B95D00523D85 /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = CryptoSwift/CryptoSwift.xcodeproj; sourceTree = "<group>"; };
 		F2229C7C1F01AC39000F2CBA /* crypto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = crypto.swift; sourceTree = "<group>"; };
 		F2229C7E1F01AF35000F2CBA /* CryptoSwift */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CryptoSwift; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 				F2748CD91F13BD6B00799836 /* AckViewController.swift */,
 				F239513A1EFFE6A1004B09E5 /* PatiantID.swift */,
 				E272DF011D74957F002F8295 /* Demographics.swift */,
+				F21941571FD47C9800B0997D /* ProtocolData.swift */,
 				F2A0F1271F02626D00A92B1F /* LandingPage.swift */,
 				F27728A51E33C91A004F8A6E /* MainViewController.swift */,
 				F2229C7C1F01AC39000F2CBA /* crypto.swift */,
@@ -591,6 +594,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F27AEAAC1EED7AEF00AFB3D1 /* DigitSpanBackward.swift in Sources */,
+				F21941581FD47C9800B0997D /* ProtocolData.swift in Sources */,
 				F20FF4C61F04757300B806B7 /* GeriatricDepressionScale.swift in Sources */,
 				E27BA37F1D523B8400619C07 /* BackwardDigitSpan.swift in Sources */,
 				E2B9F8001DD144A70035FE0B /* VATask.swift in Sources */,

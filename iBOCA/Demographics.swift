@@ -21,6 +21,8 @@ var Ethnicity : String?
 var Results1: [String] = []
 var Comments : String = ""
 var PUID: String = ""
+var ModeECT = false
+var Protocol = "A"
 
 
 
@@ -51,30 +53,33 @@ class Demographics: ViewController, MFMailComposeViewControllerDelegate, UITextF
     @IBOutlet weak var AgePicker: UIPickerView!
     var ageData:[String] = makeAgeData()
     
-
-    
     @IBOutlet weak var MRLabel: UILabel!
     @IBOutlet weak var MRField: UITextField!
     
-
     @IBOutlet weak var CommentEntry: UITextView!
-    
-
     
     @IBAction func updateMR(_ sender: AnyObject) {
         _ = PID.changeID(proposed: MRField.text!)
         MRField.text = PID.getID()
     }
-    
 
     @IBOutlet weak var PatientUID: UITextField!
     
     @IBAction func updatePUID(_ sender: UITextField) {
         PUID = sender.text!
     }
-
-   /*
     
+    @IBOutlet weak var protocolLabel: UILabel!
+    @IBOutlet weak var ProtocolPicker: UIPickerView!
+    var protocolData = ["A", "B", "C", "D", "E", "F", "G", "H"]
+    
+    @IBAction func NextPressed(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "main") as UIViewController
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    /*
     @IBOutlet weak var done: UIButton!
     
     @IBAction func done(_ sender: Any) {
@@ -103,6 +108,7 @@ class Demographics: ViewController, MFMailComposeViewControllerDelegate, UITextF
         EthnicityPicker.delegate = self
         EducationPicker.delegate = self
         RacePicker.delegate = self
+        ProtocolPicker.delegate = self
         
         AgePicker.selectRow(40, inComponent: 0, animated: false)
         age = ageData[AgePicker.selectedRow(inComponent: 0)]
@@ -126,6 +132,20 @@ class Demographics: ViewController, MFMailComposeViewControllerDelegate, UITextF
         testStartTime = Foundation.Date()
         
         PUID = ""
+        if atBIDMCOn == true && theTestClass == 2 {
+            ModeECT = true
+        } else {
+            ModeECT = false
+        }
+        
+        Protocol = protocolData[ProtocolPicker.selectedRow(inComponent: 0)]
+        if(ModeECT) {
+            protocolLabel.isHidden = false
+            ProtocolPicker.isHidden = false
+        } else {
+            protocolLabel.isHidden = true
+            ProtocolPicker.isHidden = true
+        }
     }
    
     override func didReceiveMemoryWarning() {
@@ -149,6 +169,8 @@ class Demographics: ViewController, MFMailComposeViewControllerDelegate, UITextF
             return educationData.count
         } else if pickerView == RacePicker {
             return raceData.count
+        } else if pickerView == ProtocolPicker {
+            return protocolData.count
         }
         return 1
     }
@@ -169,6 +191,9 @@ class Demographics: ViewController, MFMailComposeViewControllerDelegate, UITextF
         } else if pickerView == RacePicker {
             Race = raceData[row]
             return raceData[row]
+        } else if pickerView == ProtocolPicker {
+            Protocol = protocolData[row]
+            return protocolData[row]
         }
        return ""
     }
@@ -189,6 +214,8 @@ class Demographics: ViewController, MFMailComposeViewControllerDelegate, UITextF
             if Race == "Other" {
                 addOtherCondition(pickerView)
             }
+        } else if pickerView == ProtocolPicker {
+            Protocol = protocolData[row]
         }
     }
     

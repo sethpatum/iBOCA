@@ -17,9 +17,10 @@ var testName:String?
 class MainViewController: ViewController, MFMailComposeViewControllerDelegate{
     var mailSubject : String = "iBOCA Results of "
     
-    
     var segueToLanding = false // COmplete hack to get back to landing page.  The timer will keep issuing segue command if this variable is set. Deals with the asynchronous mail window (need to find a better way!)
     
+    // NOTE: All buttons have to have the keypath translatesAutoresizingMaskIntoConstraints unset!!!
+    // Otherwise setting constraints don't work
     @IBOutlet weak var ButtonOrientation: UIButton!
     @IBOutlet weak var ButtonSimpleMemory: UIButton!
     @IBOutlet weak var ButtonVisualAssociation: UIButton!
@@ -33,7 +34,7 @@ class MainViewController: ViewController, MFMailComposeViewControllerDelegate{
     @IBOutlet weak var ButtonBackwardSpatialSpan: UIButton!
     @IBOutlet weak var ButtonNamingPictures: UIButton!
     @IBOutlet weak var ButtonSemanticListGeneration: UIButton!
-    @IBOutlet weak var ButtonMOCAandGDT: UIButton!
+    @IBOutlet weak var ButtonMOCA: UIButton!
     @IBOutlet weak var ButtonGDT: UIButton!
     @IBOutlet weak var ButtonGoldStandard: UIButton!
     
@@ -41,6 +42,9 @@ class MainViewController: ViewController, MFMailComposeViewControllerDelegate{
     @IBOutlet weak var LabelVA: UILabel!
     
     @IBOutlet weak var PatiantID: UILabel!
+    
+    @IBOutlet weak var ButtonResults: UIButton!
+    @IBOutlet weak var ButtonDWP: UIButton!
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -123,25 +127,31 @@ class MainViewController: ViewController, MFMailComposeViewControllerDelegate{
         LabelVA.isHidden = true
         PatiantID.text = PID.getID()
         
-        updateButton(button: ButtonOrientation, status: Status[TestOrientation])
-        updateButton(button: ButtonSimpleMemory, status: Status[TestSimpleMemory])
-        updateButton(button: ButtonVisualAssociation, status: Status[TestVisualAssociation])
-        updateButton(button: ButtonTrails, status: Status[TestTrails])
-        updateButton(button: ButtonForwardDigitSpan, status: Status[TestForwardDigitSpan])
-        updateButton(button: ButtonBackwardDigitSpan, status: Status[TestBackwardsDigitSpan])
-        updateButton(button: ButtonCatsAndDogs, status: Status[TestCatsAndDogs])
-        updateButton(button: Button3DFigureCopy, status: Status[Test3DFigureCopy])
-        updateButton(button: ButtonSerialSevens, status: Status[TestSerialSevens])
-        updateButton(button: ButtonForwardSpatialSpan, status: Status[TestForwardSpatialSpan])
-        updateButton(button: ButtonBackwardSpatialSpan, status: Status[TestBackwardSpatialSpan])
-        updateButton(button: ButtonNamingPictures, status: Status[TestNampingPictures])
-        updateButton(button: ButtonSemanticListGeneration, status: Status[TestSemanticListGeneration])
-        updateButton(button: ButtonMOCAandGDT, status: Status[TestMOCAandGDTResults])
-        updateButton(button: ButtonGDT, status: Status[TestGDTResults])
-        updateButton(button: ButtonGoldStandard, status: Status[TestGoldStandard])
+        updateButton(id: 0, ectid:0, button: ButtonOrientation, status: Status[TestOrientation])
+        updateButton(id: 1, ectid:0, button: ButtonSimpleMemory, status: Status[TestSimpleMemory])
+        updateButton(id: 2, ectid:0, button: ButtonVisualAssociation, status: Status[TestVisualAssociation])
+        updateButton(id: 3, ectid:4, button: ButtonTrails, status: Status[TestTrails])
+        updateButton(id: 4, ectid:2, button: ButtonForwardDigitSpan, status: Status[TestForwardDigitSpan])
+        updateButton(id: 5, ectid:3, button: ButtonBackwardDigitSpan, status: Status[TestBackwardsDigitSpan])
+        updateButton(id: 6, ectid:1, button: ButtonCatsAndDogs, status: Status[TestCatsAndDogs])
+        updateButton(id: 7, ectid:0, button: Button3DFigureCopy, status: Status[Test3DFigureCopy])
+        updateButton(id: 8, ectid:5, button: ButtonSerialSevens, status: Status[TestSerialSevens])
+        updateButton(id: 9, ectid:6, button: ButtonForwardSpatialSpan, status: Status[TestForwardSpatialSpan])
+        updateButton(id:10, ectid:7, button: ButtonBackwardSpatialSpan, status: Status[TestBackwardSpatialSpan])
+        updateButton(id:11, ectid:0, button: ButtonNamingPictures, status: Status[TestNampingPictures])
+        updateButton(id:12, ectid:8, button: ButtonSemanticListGeneration, status: Status[TestSemanticListGeneration])
+        updateButton(id:13, ectid:0, button: ButtonGDT, status: Status[TestGDTResults])
+        updateButton(id:14, ectid:0, button: ButtonMOCA, status: Status[TestMOCAResults])
+        updateButton(id:15, ectid:0, button: ButtonGoldStandard, status: Status[TestGoldStandard])
 
-        ButtonMOCAandGDT.isHidden = false
-        ButtonGoldStandard.isHidden = false
+        if ModeECT == false {
+            ButtonMOCA.isHidden = false
+            ButtonGoldStandard.isHidden = false
+            ButtonResults.isHidden = false
+        } else {
+            ButtonResults.isHidden = true
+            //ButtonDWP.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant:690).isActive = true
+        }
         
         // Do GDT only at BIDMC
         if atBIDMCOn == false {
@@ -154,7 +164,7 @@ class MainViewController: ViewController, MFMailComposeViewControllerDelegate{
     }
     
     
-    func updateButton(button: UIButton, status : TestStatus) {
+    func updateButton(id: UInt, ectid: UInt, button: UIButton, status : TestStatus) {
         switch(status) {
         case .NotStarted:
             button.tintColor = UIColor.blue
@@ -169,6 +179,32 @@ class MainViewController: ViewController, MFMailComposeViewControllerDelegate{
             break
         }
         
+        for constraint in button.constraints {
+            button.removeConstraint(constraint)
+        }
+        if ModeECT {
+            button.isHidden = (ectid == 0 ? true:false)
+            if(ectid != 0) {
+                //for constraint in button.constraints {
+                //    button.removeConstraint(constraint)
+                // }
+                //button.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant:332).isActive = true
+                button.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+                button.centerYAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant:CGFloat(100+ectid*60)).isActive = true
+                //button.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant:CGFloat(100+id*60)).isActive = true
+                
+            }
+        } else {
+            if(id < 8) {
+                button.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant:250).isActive = true
+            } else  {
+                button.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant:-250).isActive = true
+            }
+            
+            let newid = ((id > 7) ? id - 8: id)
+            button.centerYAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant:CGFloat(200+newid*70)).isActive = true
+            print(id, newid)
+        }
     }
     
     func update(timer: Timer) {

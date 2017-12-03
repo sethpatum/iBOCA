@@ -22,7 +22,7 @@ let TestForwardSpatialSpan = 10
 let TestBackwardSpatialSpan = 11
 let TestNampingPictures = 12
 let TestSemanticListGeneration = 13
-let TestMOCAandGDTResults = 14
+let TestMOCAResults = 14
 let TestGDTResults = 15
 let TestGoldStandard = 16
 
@@ -66,7 +66,7 @@ class LandingPage: ViewController {
         Status[TestBackwardSpatialSpan] = TestStatus.NotStarted
         Status[TestNampingPictures] = TestStatus.NotStarted
         Status[TestSemanticListGeneration] = TestStatus.NotStarted
-        Status[TestMOCAandGDTResults] = TestStatus.NotStarted
+        Status[TestMOCAResults] = TestStatus.NotStarted
         Status[TestGDTResults] = TestStatus.NotStarted
         Status[TestGoldStandard] = TestStatus.NotStarted
         

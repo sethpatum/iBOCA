@@ -123,7 +123,7 @@ class MOCAandGDT: ViewController, UIPickerViewDelegate  {
         result.shortDescription = "MOCA=\(MOCAtotal.text!)"
         
         resultsArray.add(result)
-        Status[TestMOCAandGDTResults] = TestStatus.Done
+        Status[TestMOCAResults] = TestStatus.Done
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
