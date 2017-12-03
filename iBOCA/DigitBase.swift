@@ -153,6 +153,7 @@ class DigitBase: ViewController {
     
     func DisplayStringShowContinue(val:String) {
         if BackButton.isHidden == true {
+            // digit utterances in the sequence with a short delay in between
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
                 if val.characters.count == 0 {
                     //self.ContinueButton.isHidden = false
