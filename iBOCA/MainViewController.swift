@@ -140,17 +140,13 @@ class MainViewController: ViewController, MFMailComposeViewControllerDelegate{
         updateButton(id:10, ectid:7, button: ButtonBackwardSpatialSpan, status: Status[TestBackwardSpatialSpan])
         updateButton(id:11, ectid:0, button: ButtonNamingPictures, status: Status[TestNampingPictures])
         updateButton(id:12, ectid:8, button: ButtonSemanticListGeneration, status: Status[TestSemanticListGeneration])
-        updateButton(id:13, ectid:0, button: ButtonGDT, status: Status[TestGDTResults])
-        updateButton(id:14, ectid:0, button: ButtonMOCA, status: Status[TestMOCAResults])
+        updateButton(id:13, ectid:0, button: ButtonMOCA, status: Status[TestMOCAResults])
+        updateButton(id:14, ectid:0, button: ButtonGDT, status: Status[TestGDTResults])
         updateButton(id:15, ectid:0, button: ButtonGoldStandard, status: Status[TestGoldStandard])
 
         if ModeECT == false {
             ButtonMOCA.isHidden = false
             ButtonGoldStandard.isHidden = false
-            ButtonResults.isHidden = false
-        } else {
-            ButtonResults.isHidden = true
-            //ButtonDWP.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant:690).isActive = true
         }
         
         // Do GDT only at BIDMC
@@ -185,25 +181,18 @@ class MainViewController: ViewController, MFMailComposeViewControllerDelegate{
         if ModeECT {
             button.isHidden = (ectid == 0 ? true:false)
             if(ectid != 0) {
-                //for constraint in button.constraints {
-                //    button.removeConstraint(constraint)
-                // }
-                //button.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant:332).isActive = true
+                let order = ProtocolOrder[Protocol]![Int(ectid-1)]
                 button.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-                button.centerYAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant:CGFloat(100+ectid*60)).isActive = true
-                //button.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant:CGFloat(100+id*60)).isActive = true
-                
+                button.centerYAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant:CGFloat(180+order*70)).isActive = true
             }
         } else {
-            if(id < 8) {
+            if id < 8 {
                 button.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant:250).isActive = true
-            } else  {
+            } else {
                 button.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant:-250).isActive = true
             }
-            
-            let newid = ((id > 7) ? id - 8: id)
+            let newid = ((id < 8) ? id : id - 8)
             button.centerYAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant:CGFloat(200+newid*70)).isActive = true
-            print(id, newid)
         }
     }
     
